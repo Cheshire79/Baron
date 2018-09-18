@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BDDF1858-5F38-4D58-9F4B-89A0FEBD6391}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Uniject</RootNamespace>
+    <AssemblyName>Uniject</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Assets\Plugins\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Assets\Plugins\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;TEST</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ninject">
+      <HintPath>..\Assembly\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>..\Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\Assembly\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Impl\AndroidPlatformUtil.cs" />
+    <Compile Include="Impl\Collision.cs" />
+    <Compile Include="Impl\Factory.cs" />
+    <Compile Include="Impl\GameObjectBoundary.cs" />
+    <Compile Include="Impl\LevelLoadListener.cs" />
+    <Compile Include="Impl\Scoping.cs" />
+    <Compile Include="Impl\TestableAudioSource.cs" />
+    <Compile Include="Impl\TestableComponent.cs" />
+    <Compile Include="Impl\TestableGameObject.cs" />
+    <Compile Include="Impl\UnityAudioListener.cs" />
+    <Compile Include="Impl\UnityAudioSource.cs" />
+    <Compile Include="Impl\UnityBoxCollider.cs" />
+    <Compile Include="Impl\UnityGameObject.cs" />
+    <Compile Include="Impl\UnityGameObjectBridge.cs" />
+    <Compile Include="Impl\UnityInjector.cs" />
+    <Compile Include="Impl\UnityInput.cs" />
+    <Compile Include="Impl\UnityLayerMask.cs" />
+    <Compile Include="Impl\UnityLight.cs" />
+    <Compile Include="Impl\UnityLogger.cs" />
+    <Compile Include="Impl\UnityMath.cs" />
+    <Compile Include="Impl\UnityNavmeshAgent.cs" />
+    <Compile Include="Impl\UnityPhysics.cs" />
+    <Compile Include="Impl\UnityPhysicsMaterial.cs" />
+    <Compile Include="Impl\UnityResourceLoader.cs" />
+    <Compile Include="Impl\UnityRigidBody.cs" />
+    <Compile Include="Impl\UnityScreen.cs" />
+    <Compile Include="Impl\UnitySphereCollider.cs" />
+    <Compile Include="Impl\UnityTime.cs" />
+    <Compile Include="Impl\UnityTransform.cs" />
+    <Compile Include="Interface\IAudioListener.cs" />
+    <Compile Include="Interface\IAudioSource.cs" />
+    <Compile Include="Interface\IBoxCollider.cs" />
+    <Compile Include="Interface\ICollider.cs" />
+    <Compile Include="Interface\IInput.cs" />
+    <Compile Include="Interface\ILayerMask.cs" />
+    <Compile Include="Interface\ILight.cs" />
+    <Compile Include="Interface\ILogger.cs" />
+    <Compile Include="Interface\IMaths.cs" />
+    <Compile Include="Interface\INavmeshAgent.cs" />
+    <Compile Include="Interface\IPhysicMaterial.cs" />
+    <Compile Include="Interface\IPhysics.cs" />
+    <Compile Include="Interface\IPlatformUtil.cs" />
+    <Compile Include="Interface\IResourceLoader.cs" />
+    <Compile Include="Interface\IRigidBody.cs" />
+    <Compile Include="Interface\IScreen.cs" />
+    <Compile Include="Interface\ISphereCollider.cs" />
+    <Compile Include="Interface\ITime.cs" />
+    <Compile Include="Interface\ITransform.cs" />
+    <Compile Include="Interface\IUtil.cs" />
+    <Compile Include="Module\ComponentProvider.cs" />
+    <Compile Include="Module\GameObjectProvider.cs" />
+    <Compile Include="Module\LateBoundModule.cs" />
+    <Compile Include="Module\PrefabProvider.cs" />
+    <Compile Include="Module\ResourceProvider.cs" />
+    <Compile Include="Module\UnityModule.cs" />
+    <Compile Include="Module\UnityNinjectSettings.cs" />
+    <Compile Include="Module\XMLConfigProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\IntervalBasedCallback.cs" />
+    <Compile Include="Util\XMLConfigurationManager.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
