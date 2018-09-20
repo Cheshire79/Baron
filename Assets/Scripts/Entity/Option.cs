@@ -1,113 +1,122 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Newtonsoft.Json;
 
 namespace Baron.Entity
 {
-    public class Option
-    {
-        public static string BEGIN = "BEGIN";
-        public static string DEATH = "DEATH";
-        public static string VICTORY = "VICTORY";
-        public static string ACTION_INCREMENT_DAY = "INCREMENT_DAY";
-        public static string ACTION_ADVERTISEMENT = "ADV";
-        public static string TYPE_DEFAULT = "DEFAULT";
-        public static string TYPE_PROXY = "PROXY";
-        public static string ACTION_DISABLE_ME = "DISABLE_ME";
+	[Serializable]
+	public class Option : Entity
+	{
+		public static string BEGIN = "BEGIN";
+		public static string DEATH = "DEATH";
+		public static string VICTORY = "VICTORY";
+		public static string ACTION_INCREMENT_DAY = "INCREMENT_DAY";
+		public static string ACTION_ADVERTISEMENT = "ADV";
+		public static string TYPE_DEFAULT = "DEFAULT";
+		public static string TYPE_PROXY = "PROXY";
+		public static string ACTION_DISABLE_ME = "DISABLE_ME";
 
-        //private List<TrackImage> images;
-        //private List<TrackAudio> audio;
-        //private List<Item> items;
-        //private List<Item> requiredItems;
-        //private List<string> actions;
-        //private string type;
-        //private string text;
-        //private int duration;
+		[JsonProperty(PropertyName = "images")]
+		private List<TrackImage> _images;
+		[JsonProperty(PropertyName = "audio")]
+		private List<TrackAudio> _audio;
+		[JsonProperty(PropertyName = "items")]
+		private List<Item> _items;
+		[JsonProperty(PropertyName = "requiredItems")]
+		private List<Item> _requiredItems;
+		[JsonProperty(PropertyName = "actions")]
+		private List<string> _actions;
+		[JsonProperty(PropertyName = "type")]
+		private string _type;
+		[JsonProperty(PropertyName = "text")]
+		private string _text;
+		[JsonProperty(PropertyName = "duration")]
+		private int _duration;
 
-        //public Option()
-        //{
-        //    images = new List<>(2);
-        //    audio = new List<>(2);
-        //    items = new List<>(2);
-        //    requiredItems = new List<>(1);
-        //    actions = new List<>(1);
-        //}
+		public Option()
+		{
+			_images = new List<TrackImage>(2);
+			_audio = new List<TrackAudio>(2);
+			_items = new List<Item>(2);
+			_requiredItems = new List<Item>(1);
+			_actions = new List<string>(1);
+		}
 
-        ////    @Override
-        ////public String toString()
-        ////    {
-        ////        return id + " " + getType();
-        ////    }
 
-        //public String getType()
-        //{
-        //    return type != null ? type : TYPE_DEFAULT;
-        //}
+		public override string ToString()
+		{
+			return _id + " " + Type;
+		}
 
-        //public String getText()
-        //{
-        //    return text;
-        //}
+		public string Type
+		{
+			get { return _type != null ? _type : TYPE_DEFAULT; }
+			//get { return !string.IsNullOrWhiteSpace(_type) ? _type : TYPE_DEFAULT; }
+		}
 
-        //public List<TrackImage> getTrackImages()
-        //{
-        //    return images;
-        //}
+		public string Text
+		{
+			get { return _text; }
+		}
 
-        //public List<TrackAudio> getTrackAudio()
-        //{
-        //    return audio;
-        //}
+		public List<TrackImage> TrackImages
+		{
+		   get{ return _images; }
+		}
 
-        //public List<Item> getItems()
-        //{
-        //    return items;
-        //}
+		public List<TrackAudio> TrackAudio
+		{
+		   get{ return _audio; }
+		}
 
-        //public List<Item> getRequiredItems()
-        //{
-        //    return requiredItems;
-        //}
+		public List<Item> _Items
+		{
+		    get { return _items; }
+		}
 
-        //public List<String> getActions()
-        //{
-        //    return actions;
-        //}
+		public List<Item> RequiredItems
+		{
+		   get { return _requiredItems; }
+		}
 
-        //public int getDuration()
-        //{
-        //    return duration;
-        //}
+		public List<string> Actions
+		{
+		    get { return _actions; }
+		}
 
-        //public void setDuration(int duration)
-        //{
-        //    this.duration = duration;
-        //}
+		public int Duration
+		{
+		    get { return _duration; }
+			set { _duration = value; }
+		}
 
-        //public void reset()
-        //{
-        //    for (TrackAudio media : getTrackAudio())
-        //    {
-        //        media.setLocked(false);
-        //        media.setCompleted(false);
-        //    }
+		
 
-        //    for (TrackImage media : getTrackImages())
-        //    {
-        //        media.setLocked(false);
+		public void Reset()
+		{
+			
+			foreach(var media in TrackAudio)
+		   
+		    {
+		        media.IsLocked=false;
+		        media.Completed=false;
+		    }
 
-        //        Interaction interaction = media.getInteractionObject();
-        //        if (interaction != null)
-        //        {
-        //            interaction.setLocked(false);
-        //        }
-        //    }
-        //}
+			foreach (var media in TrackImages)
+		    {
+		        media.IsLocked=false;
 
-        //public boolean isProxy()
-        //{
-        //    return TYPE_PROXY.equals(type);
-        //}
-    }
+		        InteractionObject interaction = media.InteractionObject;
+		        if (interaction != null)
+		        {
+		            interaction.IsLocked=false;
+		        }
+		    }
+		}
+
+		public bool IsProxy
+		{
+		   get { return TYPE_PROXY.Equals(_type); }
+		}
+	}
 }

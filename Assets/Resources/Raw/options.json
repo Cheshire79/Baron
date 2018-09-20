@@ -1,0 +1,8226 @@
+[
+  {
+    "id": "DEATH"
+  },
+  {
+    "id": "BEGIN",
+    "type": "PROXY"
+  },
+  {
+    "id": "BEGIN_1",
+    "images": [
+      {
+        "id": "black",
+        "duration": 8000,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "a1b_0",
+        "duration": 8000,
+        "transition": "DEFAULT"
+      }
+    ],
+    "audio": [
+      {
+        "id": "a1"
+      }
+    ]
+  },
+  {
+    "id": "a4_no",
+    "type": "PROXY"
+  },
+  {
+    "id": "a4_no2",
+    "type": "PROXY"
+  },
+  {
+    "id": "BEGIN_no",
+    "type": "PROXY"
+  },
+  {
+    "id": "a4",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 3000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4"
+      }
+    ]
+  },
+  {
+    "id": "a4a_no",
+    "type": "PROXY"
+  },
+  {
+    "id": "a4e_no",
+    "type": "PROXY"
+  },
+  {
+    "id": "a32f1right",
+    "images": [
+      {
+        "id": "a18",
+        "duration": 4000
+      },
+      {
+        "id": "a32f1_1",
+        "duration": 8000
+      },
+      {
+        "id": "a32f1_2",
+        "duration": 71000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32f1right"
+      }
+    ]
+  },
+  {
+    "id": "a32f1notright",
+    "actions": [
+      "INCREMENT_DAY"
+    ],
+    "images": [
+      {
+        "id": "a18",
+        "duration": 10000
+      },
+      {
+        "id": "a16_3",
+        "duration": 9000
+      },
+      {
+        "id": "a15a",
+        "duration": 13000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32f1notright"
+      }
+    ]
+  },
+  {
+    "id": "a3",
+    "images": [
+      {
+        "id": "a1b_1",
+        "duration": 5000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a3"
+      }
+    ]
+  },
+  {
+    "id": "a1a",
+    "text": "Shout",
+    "images": [
+      {
+        "id": "a1b_0",
+        "duration": 6000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a1a"
+      }
+    ]
+  },
+  {
+    "id": "a1b",
+    "text": "rub your eyes",
+    "images": [
+      {
+        "id": "a1b_0",
+        "duration": 1001
+      },
+      {
+        "id": "a1b_1",
+        "duration": 26001
+      },
+      {
+        "id": "a1b_2",
+        "duration": 20001
+      },
+      {
+        "id": "a1b_3",
+        "duration": 14000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a1b"
+      }
+    ]
+  },
+  {
+    "id": "a2a",
+    "text": "A plane crash",
+    "images": [
+      {
+        "id": "a2a_1",
+        "duration": 52001
+      },
+      {
+        "id": "a2a_2",
+        "duration": 4000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a2a"
+      }
+    ]
+  },
+  {
+    "id": "a2b",
+    "text": "A storm at sea ",
+    "images": [
+      {
+        "id": "a2b_1",
+        "duration": 53000
+      },
+      {
+        "id": "a2b_2",
+        "duration": 7000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a2b"
+      }
+    ]
+  },
+  {
+    "id": "a2c",
+    "text": "An accident",
+    "images": [
+      {
+        "id": "a2c_1",
+        "duration": 100000
+      },
+      {
+        "id": "a2c_2",
+        "duration": 17000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a2c"
+      }
+    ]
+  },
+  {
+    "id": "a2d",
+    "text": "A bad luck",
+    "images": [
+      {
+        "id": "a2d_1",
+        "duration": 164000
+      },
+      {
+        "id": "a2d_2",
+        "duration": 91000
+      },
+      {
+        "id": "a2d_3",
+        "duration": 38000,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "black",
+        "duration": 20000,
+        "transition": "FADE_OUT"
+      },
+      {
+        "id": "a2d_3",
+        "duration": 58000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a2d"
+      }
+    ]
+  },
+  {
+    "id": "a2e",
+    "text": "Only a challenge that befell you",
+    "images": [
+      {
+        "id": "a2e",
+        "duration": 68000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a2e"
+      }
+    ]
+  },
+  {
+    "id": "a2da",
+    "text": "Leave the pilot",
+    "items": [
+      {
+        "id": "Code"
+      }
+    ],
+    "images": [
+      {
+        "id": "a2da",
+        "duration": 16000
+      },
+      {
+        "id": "a2dbb_3",
+        "duration": 8000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a2da"
+      }
+    ]
+  },
+  {
+    "id": "a2db",
+    "text": "Offer him a parachute",
+    "images": [
+      {
+        "id": "a2d_3",
+        "duration": 12000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a2db"
+      }
+    ]
+  },
+  {
+    "id": "a2dba",
+    "text": "Jump",
+    "items": [
+      {
+        "id": "Code"
+      }
+    ],
+    "images": [
+      {
+        "id": "a2da",
+        "duration": 16000
+      },
+      {
+        "id": "a2dbb_3",
+        "duration": 9000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a2da"
+      }
+    ]
+  },
+  {
+    "id": "a2dbb",
+    "text": "Substitute the pilot",
+    "items": [
+      {
+        "id": "Frak"
+      }
+    ],
+    "images": [
+      {
+        "id": "a2dbb_1",
+        "duration": 18000
+      },
+      {
+        "id": "a2dbb_2",
+        "duration": 53001
+      },
+      {
+        "id": "a2dbb_3",
+        "duration": 14000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a2dbb"
+      }
+    ]
+  },
+  {
+    "id": "a3a",
+    "text": "Keep lying on the sand under the scorching sun",
+    "images": [
+      {
+        "id": "a3a",
+        "duration": 38000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a3a"
+      }
+    ]
+  },
+  {
+    "id": "a3b",
+    "text": "Swim to get rid of that unnecessary hangover",
+    "images": [
+      {
+        "id": "a3b_1",
+        "duration": 71000
+      },
+      {
+        "id": "a3b_2",
+        "duration": 14000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a3b"
+      }
+    ]
+  },
+  {
+    "id": "a3c",
+    "text": "Go under the nearest tree to have a rest and recollect yourself",
+    "images": [
+      {
+        "id": "a3c_1",
+        "duration": 25001
+      },
+      {
+        "id": "a3c_2",
+        "duration": 18000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a3c"
+      },
+      {
+        "id": "a4"
+      }
+    ]
+  },
+  {
+    "id": "a4c",
+    "text": "You jump up, making polka moves",
+    "images": [
+      {
+        "id": "a4c_1",
+        "duration": 19500,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "black",
+        "duration": 15000,
+        "transition": "FADE_OUT"
+      },
+      {
+        "id": "a4c_2",
+        "duration": 23500
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4c"
+      }
+    ]
+  },
+  {
+    "id": "a4a",
+    "text": "Grasp the tree and climb up",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 14000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4a"
+      }
+    ]
+  },
+  {
+    "id": "a4b_1",
+    "text": "Pick up small stones and throw them at coconuts",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 61400
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4b"
+      }
+    ]
+  },
+  {
+    "id": "a4b_2",
+    "text": "Pick up small stones and throw them at coconuts",
+    "images": [
+      {
+        "id": "a3c_2",
+        "interaction": "PROTRACTOR"
+      }
+    ]
+  },
+  {
+    "id": "a4d",
+    "text": "Take the stone and hit it against the trunk",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 12000,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "black",
+        "duration": 13000,
+        "transition": "FADE_OUT"
+      },
+      {
+        "id": "a4c_2",
+        "duration": 11000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4d"
+      }
+    ]
+  },
+  {
+    "id": "a4e",
+    "text": "Try to find more coconut trees",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 11000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4e"
+      }
+    ]
+  },
+  {
+    "id": "a4aa",
+    "text": "Swear",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 2000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4aa"
+      }
+    ]
+  },
+  {
+    "id": "a4ab",
+    "text": "Try once more",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 10000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4ab"
+      }
+    ]
+  },
+  {
+    "id": "a4ac",
+    "text": "Give up this idea",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 5000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4ac"
+      }
+    ]
+  },
+  {
+    "id": "a4aba",
+    "text": "Tarzan",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 4000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4aba"
+      },
+      {
+        "id": "a4abcont"
+      }
+    ]
+  },
+  {
+    "id": "a4abb",
+    "text": " Amazon",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 3000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4abb"
+      },
+      {
+        "id": "a4abcont"
+      }
+    ]
+  },
+  {
+    "id": "a4abc",
+    "text": "viking",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 3000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4abc"
+      },
+      {
+        "id": "a4abcont"
+      }
+    ]
+  },
+  {
+    "id": "a4abd",
+    "text": "Uncle",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 2000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4abd"
+      },
+      {
+        "id": "a4abcont"
+      }
+    ]
+  },
+  {
+    "id": "a4abe",
+    "text": "Indian",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 5000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4abe"
+      },
+      {
+        "id": "a4abcont"
+      }
+    ]
+  },
+  {
+    "id": "a4aaa",
+    "text": "Swear",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 2000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4aaa"
+      }
+    ]
+  },
+  {
+    "id": "a4aab",
+    "text": "try once more",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 24000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4aab"
+      }
+    ]
+  },
+  {
+    "id": "a4aaaa",
+    "text": "Slowly climb down",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 5000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4aaaa"
+      }
+    ]
+  },
+  {
+    "id": "a4aaab",
+    "text": "Jump down",
+    "images": [
+      {
+        "id": "a3c_2",
+        "duration": 17000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4aaab"
+      }
+    ]
+  },
+  {
+    "id": "a4kr",
+    "type": "PROXY",
+    "text": "Say a Catchphrase"
+  },
+  {
+    "id": "a4ba",
+    "text": "Say a Catchphrase",
+    "type": "PROXY"
+  },
+  {
+    "id": "a4bb",
+    "text": "You simply go to see your trophy",
+    "images": [
+      {
+        "id": "a4c_2",
+        "duration": 3000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4bb"
+      }
+    ]
+  },
+  {
+    "id": "a4baa",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a2e",
+        "duration": 8000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4baa"
+      }
+    ]
+  },
+  {
+    "id": "a4bab",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a2e",
+        "duration": 8000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4bab"
+      }
+    ]
+  },
+  {
+    "id": "a4bac",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a2e",
+        "duration": 16000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4bac"
+      }
+    ]
+  },
+  {
+    "id": "a4bad",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a2e",
+        "duration": 16000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4bad"
+      }
+    ]
+  },
+  {
+    "id": "a4baf",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a2e",
+        "duration": 8000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4baf"
+      }
+    ]
+  },
+  {
+    "id": "a4bae",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a2e",
+        "duration": 13000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4bae"
+      }
+    ]
+  },
+  {
+    "id": "a4bag",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a2e",
+        "duration": 9000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a4bag"
+      }
+    ]
+  },
+  {
+    "id": "a5_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a5",
+    "text": "unknown",
+    "actions": [
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "a4c_2",
+        "duration": 7000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a5"
+      }
+    ]
+  },
+  {
+    "id": "a5a",
+    "text": "Use a machete",
+    "images": [
+      {
+        "id": "a4c_2",
+        "duration": 9000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a5a"
+      }
+    ]
+  },
+  {
+    "id": "a5b",
+    "text": "Take the coconut and hit it against the trunk",
+    "images": [
+      {
+        "id": "a4c_2",
+        "duration": 7200,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "black",
+        "duration": 11900,
+        "transition": "FADE_OUT"
+      },
+      {
+        "id": "a4c_2",
+        "duration": 4500
+      }
+    ],
+    "audio": [
+      {
+        "id": "a5b"
+      }
+    ]
+  },
+  {
+    "id": "a5c",
+    "text": "Knock a coconut with a stone",
+    "images": [
+      {
+        "id": "a4c_2",
+        "duration": 13000
+      },
+      {
+        "id": "a5b",
+        "duration": 11000
+      },
+      {
+        "id": "a3c_1",
+        "duration": 19000
+      },
+      {
+        "id": "a6",
+        "duration": 38500
+      }
+    ],
+    "audio": [
+      {
+        "id": "a5c"
+      },
+      {
+        "id": "a6"
+      }
+    ]
+  },
+  {
+    "id": "a5ba",
+    "text": "Continue furiously",
+    "images": [
+      {
+        "id": "a4c_2",
+        "duration": 7500
+      },
+      {
+        "id": "a5b",
+        "duration": 9500
+      },
+      {
+        "id": "a3c_1",
+        "duration": 19000
+      },
+      {
+        "id": "a6",
+        "duration": 36000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a5ba"
+      },
+      {
+        "id": "a6"
+      }
+    ]
+  },
+  {
+    "id": "a6",
+    "type": "PROXY",
+    "text": "Unknown"
+  },
+  {
+    "id": "a5bb",
+    "text": "Change your plan",
+    "images": [
+      {
+        "id": "a4c_2",
+        "duration": 4000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a5bb"
+      }
+    ]
+  },
+  {
+    "id": "a6_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a15_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a32",
+    "text": "unknown",
+    "type": "PROXY"
+  },
+  {
+    "id": "a37cfish_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a37d",
+    "text": "Make a flag",
+    "type": "PROXY"
+  },
+  {
+    "id": "a36a",
+    "text": "Paddle to the east",
+    "type": "PROXY"
+  },
+  {
+    "id": "a36b",
+    "text": "Paddle to the west",
+    "type": "PROXY"
+  },
+  {
+    "id": "a36c",
+    "text": "Noкуди не гребсти",
+    "type": "PROXY"
+  },
+  {
+    "id": "a26c_no",
+    "type": "PROXY",
+    "text": "Нападаєш зброєю"
+  },
+  {
+    "id": "a32a2_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a32a_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a32_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a32a2_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a32a3_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a32a",
+    "text": "Збудувати човен і податися геть з цього острову",
+    "actions": [
+      "INCREMENT_DAY"
+    ],
+    "type": "PROXY"
+  },
+  {
+    "id": "a29_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a26_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a25_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a22b_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a17_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a6a",
+    "text": "Shout",
+    "images": [
+      {
+        "id": "a6",
+        "duration": 8000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a6a"
+      }
+    ]
+  },
+  {
+    "id": "a6b",
+    "text": "Climb a tree",
+    "images": [
+      {
+        "id": "a6",
+        "duration": 4500
+      },
+      {
+        "id": "a6b",
+        "duration": 5500
+      }
+    ],
+    "audio": [
+      {
+        "id": "a6b"
+      }
+    ]
+  },
+  {
+    "id": "a7a",
+    "text": " You roughly spat on them and rubbed them",
+    "images": [
+      {
+        "id": "a6b",
+        "duration": 17000
+      },
+      {
+        "id": "a8b",
+        "duration": 13000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a7a"
+      },
+      {
+        "id": "a8"
+      }
+    ]
+  },
+  {
+    "id": "a7b",
+    "text": "Cunningly rubbed them against each other",
+    "images": [
+      {
+        "id": "a6b",
+        "duration": 17000
+      },
+      {
+        "id": "a8b",
+        "duration": 13000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a7b"
+      },
+      {
+        "id": "a8"
+      }
+    ]
+  },
+  {
+    "id": "a7c",
+    "text": "Wiped them on dry ground",
+    "images": [
+      {
+        "id": "a6b",
+        "duration": 16000
+      },
+      {
+        "id": "a8b",
+        "duration": 13000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a7c"
+      },
+      {
+        "id": "a8"
+      }
+    ]
+  },
+  {
+    "id": "a7d",
+    "text": " Smacked your lips",
+    "images": [
+      {
+        "id": "a6b",
+        "duration": 16000
+      },
+      {
+        "id": "a8b",
+        "duration": 13000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a7d"
+      },
+      {
+        "id": "a8"
+      }
+    ]
+  },
+  {
+    "id": "a8a",
+    "text": "Climb there",
+    "images": [
+      {
+        "id": "a8b",
+        "duration": 6500
+      },
+      {
+        "id": "a8a",
+        "duration": 5500,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "black",
+        "duration": 6000,
+        "transition": "FADE_OUT"
+      }
+    ],
+    "audio": [
+      {
+        "id": "a8a"
+      }
+    ]
+  },
+  {
+    "id": "a8b",
+    "text": "Look around",
+    "images": [
+      {
+        "id": "a8b",
+        "duration": 77000
+      },
+      {
+        "id": "a9",
+        "duration": 23000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a8b"
+      }
+    ]
+  },
+  {
+    "id": "a9",
+    "text": "Day 2",
+    "actions": [
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "a9",
+        "duration": 60000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a9"
+      }
+    ]
+  },
+  {
+    "id": "a10",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a9",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a10"
+      }
+    ]
+  },
+  {
+    "id": "a10a",
+    "text": "Kill bill",
+    "images": [
+      {
+        "id": "a9",
+        "duration": 40000
+      },
+      {
+        "id": "a8a",
+        "duration": 9000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a10a"
+      }
+    ]
+  },
+  {
+    "id": "a10b",
+    "text": "March",
+    "images": [
+      {
+        "id": "a9",
+        "duration": 46000
+      },
+      {
+        "id": "a6b",
+        "duration": 8000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a10b"
+      },
+      {
+        "id": "a11"
+      }
+    ]
+  },
+  {
+    "id": "a10b_2",
+    "text": "March",
+    "images": [
+      {
+        "id": "a11",
+        "interaction": "CONFIRM"
+      }
+    ]
+  },
+  {
+    "id": "a12",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a12_1",
+        "duration": 35000
+      },
+      {
+        "id": "a12_2",
+        "duration": 12000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a12"
+      }
+    ]
+  },
+  {
+    "id": "a10c",
+    "text": "Venia Drkin - Ya v koyem veke pomnu vas",
+    "images": [
+      {
+        "id": "a9",
+        "duration": 47001
+      },
+      {
+        "id": "a6b",
+        "duration": 8001
+      }
+    ],
+    "audio": [
+      {
+        "id": "a10c"
+      },
+      {
+        "id": "a11"
+      }
+    ]
+  },
+  {
+    "id": "a10c_2",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a11",
+        "interaction": "CONFIRM"
+      }
+    ]
+  },
+  {
+    "id": "a10d",
+    "text": "Old-fashioned song",
+    "images": [
+      {
+        "id": "a9",
+        "duration": 47001
+      },
+      {
+        "id": "a6b",
+        "duration": 8001
+      }
+    ],
+    "audio": [
+      {
+        "id": "a10d"
+      },
+      {
+        "id": "a11"
+      }
+    ]
+  },
+  {
+    "id": "a10d_2",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a11",
+        "interaction": "CONFIRM"
+      }
+    ]
+  },
+  {
+    "id": "a12a_1",
+    "text": "To the left of the path ",
+    "images": [
+      {
+        "id": "a12_2",
+        "duration": 5000
+      },
+      {
+        "id": "a13_1",
+        "duration": 20000
+      },
+      {
+        "id": "a13_2",
+        "duration": 31500
+      },
+      {
+        "id": "a13_3",
+        "duration": 8000
+      },
+      {
+        "id": "a13_4",
+        "duration": 38000
+      },
+      {
+        "id": "a13_3",
+        "duration": 11000
+      },
+      {
+        "id": "a14",
+        "duration": 8000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a12a"
+      },
+      {
+        "id": "a13"
+      }
+    ]
+  },
+  {
+    "id": "a12a_2",
+    "text": "To the left of the path ",
+    "images": [
+      {
+        "id": "a14",
+        "interaction": "CONFIRM"
+      }
+    ]
+  },
+  {
+    "id": "a12b_1",
+    "text": "To the right of the path ",
+    "images": [
+      {
+        "id": "a12_2",
+        "duration": 3000
+      },
+      {
+        "id": "a13_1",
+        "duration": 23000
+      },
+      {
+        "id": "a13_2",
+        "duration": 29500
+      },
+      {
+        "id": "a13_3",
+        "duration": 6000
+      },
+      {
+        "id": "a13_4",
+        "duration": 49000
+      },
+      {
+        "id": "a14",
+        "duration": 8000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a12b"
+      },
+      {
+        "id": "a13"
+      }
+    ]
+  },
+  {
+    "id": "a12b_2",
+    "text": "To the right of the path ",
+    "images": [
+      {
+        "id": "a14",
+        "interaction": "CONFIRM"
+      }
+    ]
+  },
+  {
+    "id": "a14",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a14",
+        "duration": 2000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a14"
+      }
+    ]
+  },
+  {
+    "id": "a14a",
+    "text": "Mango",
+    "images": [
+      {
+        "id": "a14",
+        "duration": 11000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a14a"
+      },
+      {
+        "id": "a15"
+      }
+    ]
+  },
+  {
+    "id": "a14b",
+    "text": "Cashew",
+    "images": [
+      {
+        "id": "a14",
+        "duration": 11000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a14b"
+      },
+      {
+        "id": "a15"
+      }
+    ]
+  },
+  {
+    "id": "a14c",
+    "text": "Wild apple",
+    "images": [
+      {
+        "id": "a14",
+        "duration": 11000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a14c"
+      },
+      {
+        "id": "a15"
+      }
+    ]
+  },
+  {
+    "id": "a14d",
+    "text": "Avokado",
+    "images": [
+      {
+        "id": "a14",
+        "duration": 11000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a14d"
+      },
+      {
+        "id": "a15"
+      }
+    ]
+  },
+  {
+    "id": "a15a",
+    "text": "A cabin built of branches and covered with palm leaves",
+    "items": [
+      {
+        "id": "Building"
+      }
+    ],
+    "images": [
+      {
+        "id": "a13_2",
+        "duration": 32000
+      },
+      {
+        "id": "a15a",
+        "duration": 27000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a15a"
+      }
+    ]
+  },
+  {
+    "id": "a15b",
+    "text": "Something like a Native American cone-shaped tent, but made of palm branches",
+    "items": [
+      {
+        "id": "Vigvam"
+      }
+    ],
+    "images": [
+      {
+        "id": "a13_2",
+        "duration": 75000
+      },
+      {
+        "id": "a15b",
+        "duration": 32000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a15b"
+      }
+    ]
+  },
+  {
+    "id": "a15c",
+    "text": "A small wooden house, with a chimney and loopholes",
+    "items": [
+      {
+        "id": "Dig"
+      }
+    ],
+    "images": [
+      {
+        "id": "a13_2",
+        "duration": 95000
+      },
+      {
+        "id": "a15c",
+        "duration": 21000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a15c"
+      }
+    ]
+  },
+  {
+    "id": "a15d",
+    "text": "A large two-storey cottage, with ornamental carving and a spiky picket fence",
+    "items": [
+      {
+        "id": "Cottedge"
+      }
+    ],
+    "images": [
+      {
+        "id": "a15d_1",
+        "duration": 20500
+      },
+      {
+        "id": "a13_2",
+        "duration": 102500
+      },
+      {
+        "id": "a15d_2",
+        "duration": 42000
+      },
+      {
+        "id": "a15d_3",
+        "duration": 85000
+      },
+      {
+        "id": "a15d_4",
+        "duration": 19000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a15d"
+      }
+    ]
+  },
+  {
+    "id": "a16",
+    "text": "Day 3",
+    "actions": [
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "a16",
+        "duration": 20000
+      },
+      {
+        "id": "a16_1",
+        "duration": 12000
+      },
+      {
+        "id": "a16_2",
+        "duration": 12000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a16"
+      }
+    ]
+  },
+  {
+    "id": "a16a",
+    "text": "Eat a couple of them",
+    "images": [
+      {
+        "id": "a16_2",
+        "duration": 14000
+      },
+      {
+        "id": "a16_3",
+        "duration": 18000
+      },
+      {
+        "id": "a16a",
+        "duration": 5000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a16a"
+      }
+    ]
+  },
+  {
+    "id": "a16b",
+    "text": "Don't eat",
+    "images": [
+      {
+        "id": "a16_2",
+        "duration": 8500
+      },
+      {
+        "id": "a16a",
+        "duration": 3500
+      }
+    ],
+    "audio": [
+      {
+        "id": "a16b"
+      }
+    ]
+  },
+  {
+    "id": "a16aa",
+    "text": "Unidentified Flying Object",
+    "images": [
+      {
+        "id": "a16aa_1",
+        "duration": 5001
+      },
+      {
+        "id": "a16aa_2",
+        "duration": 19001
+      },
+      {
+        "id": "a16_1",
+        "duration": 3000
+      },
+      {
+        "id": "a16acont",
+        "duration": 16000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a16aa"
+      }
+    ]
+  },
+  {
+    "id": "a16ab",
+    "text": "Pirates",
+    "images": [
+      {
+        "id": "a16ab",
+        "duration": 27000
+      },
+      {
+        "id": "a16_1",
+        "duration": 3000
+      },
+      {
+        "id": "a16acont",
+        "duration": 25000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a16ab"
+      }
+    ]
+  },
+  {
+    "id": "a16ac",
+    "text": "Taxmen",
+    "images": [
+      {
+        "id": "a16ac",
+        "duration": 35000
+      },
+      {
+        "id": "a16_1",
+        "duration": 3000
+      },
+      {
+        "id": "a16acont",
+        "duration": 23000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a16ac"
+      }
+    ]
+  },
+  {
+    "id": "a17a",
+    "text": "Catch turtles",
+    "images": [
+      {
+        "id": "a17a",
+        "duration": 29000
+      },
+      {
+        "id": "a18",
+        "duration": 28000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a17a"
+      },
+      {
+        "id": "a18and19"
+      }
+    ]
+  },
+  {
+    "id": "a17b",
+    "text": "Dive for oysters",
+    "images": [
+      {
+        "id": "a3b_1",
+        "duration": 73000
+      },
+      {
+        "id": "a17b",
+        "duration": 53000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a17b"
+      }
+    ]
+  },
+  {
+    "id": "a17ba",
+    "text": "5 crabs",
+    "images": [
+      {
+        "id": "a17b",
+        "duration": 4000
+      },
+      {
+        "id": "a18",
+        "duration": 18000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a17ba"
+      },
+      {
+        "id": "a18and19"
+      }
+    ]
+  },
+  {
+    "id": "a17bb",
+    "text": "10 crabs",
+    "images": [
+      {
+        "id": "a17b",
+        "duration": 19000
+      },
+      {
+        "id": "a18",
+        "duration": 18000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a17bb"
+      },
+      {
+        "id": "a18and19"
+      }
+    ]
+  },
+  {
+    "id": "a17c",
+    "text": "Hunt a seagull",
+    "images": [
+      {
+        "id": "a17c_1",
+        "duration": 27000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a17c"
+      }
+    ]
+  },
+  {
+    "id": "a17ca",
+    "text": "Let’s start hunting",
+    "images": [
+      {
+        "id": "a17c_1",
+        "duration": 2001
+      },
+      {
+        "id": "a17c_1a",
+        "transition": "FADE_OUT",
+        "duration": 28001
+      },
+      {
+        "id": "black",
+        "transition": "FADE_OUT",
+        "duration": 9001
+      },
+      {
+        "id": "a17c_1a",
+        "duration": 20001
+      },
+      {
+        "id": "a17c_2",
+        "duration": 24000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a17ca"
+      },
+      {
+        "id": "a17cbcont"
+      }
+    ]
+  },
+  {
+    "id": "a17cb",
+    "text": "Savage man!",
+    "images": [
+      {
+        "id": "a17c_1",
+        "duration": 1001
+      },
+      {
+        "id": "a17c_1a",
+        "transition": "FADE_OUT",
+        "duration": 28001
+      },
+      {
+        "id": "black",
+        "transition": "FADE_OUT",
+        "duration": 9001
+      },
+      {
+        "id": "a17c_1a",
+        "duration": 20001
+      },
+      {
+        "id": "a17c_2",
+        "duration": 24000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a17ca"
+      },
+      {
+        "id": "a17cbcont"
+      }
+    ]
+  },
+  {
+    "id": "a17caa",
+    "text": "To kill",
+    "images": [
+      {
+        "id": "a17c_2",
+        "duration": 8500
+      },
+      {
+        "id": "a17caa",
+        "duration": 3500
+      },
+      {
+        "id": "a18",
+        "duration": 18000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a17caa"
+      },
+      {
+        "id": "a18and19"
+      }
+    ]
+  },
+  {
+    "id": "a17cab",
+    "text": "To let go",
+    "images": [
+      {
+        "id": "a17c_2",
+        "duration": 35000
+      },
+      {
+        "id": "a17cab_1",
+        "duration": 26000
+      },
+      {
+        "id": "a17cab_2",
+        "duration": 26000
+      },
+      {
+        "id": "a18",
+        "duration": 18000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a17cab"
+      },
+      {
+        "id": "a18and19"
+      }
+    ]
+  },
+  {
+    "id": "a19a_1",
+    "text": "Eyes, when you were walking to the beach in the morning",
+    "items": [
+      {
+        "id": "Map"
+      }
+    ],
+    "images": [
+      {
+        "id": "a18",
+        "duration": 22000
+      },
+      {
+        "id": "a19a_1",
+        "duration": 17000
+      },
+      {
+        "id": "a19a_2",
+        "duration": 65000
+      },
+      {
+        "id": "map",
+        "duration": 30000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a19a"
+      }
+    ]
+  },
+  {
+    "id": "a19a_2",
+    "text": "Eyes, when you were walking to the beach in the morning",
+    "images": [
+      {
+        "id": "map",
+        "interaction": "CONFIRM"
+      }
+    ]
+  },
+  {
+    "id": "a19a_3",
+    "text": "Eyes, when you were walking to the beach in the morning",
+    "images": [
+      {
+        "id": "map",
+        "duration": 8000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a19acont"
+      }
+    ]
+  },
+  {
+    "id": "a19b",
+    "text": "Back, when you were walking to the beach in the morning",
+    "items": [
+      {
+        "id": "KNO3"
+      }
+    ],
+    "images": [
+      {
+        "id": "a18",
+        "duration": 20000
+      },
+      {
+        "id": "a19b",
+        "duration": 44000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a19b"
+      }
+    ]
+  },
+  {
+    "id": "a19_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a20_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a21_no",
+    "type": "PROXY",
+    "text": "unknown"
+  },
+  {
+    "id": "a23_no",
+    "type": "PROXY",
+    "actions": [
+      "ADV"
+    ],
+    "text": "Day 4"
+  },
+  {
+    "id": "a20",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a20",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "a20"
+      }
+    ]
+  },
+  {
+    "id": "a20a",
+    "text": "Go to get some fruits",
+    "images": [
+      {
+        "id": "a20a_1",
+        "duration": 26000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a20a"
+      }
+    ]
+  },
+  {
+    "id": "a20aa",
+    "text": "Yes",
+    "images": [
+      {
+        "id": "a20a_1",
+        "duration": 3500
+      },
+      {
+        "id": "a20",
+        "duration": 3500
+      }
+    ],
+    "audio": [
+      {
+        "id": "a20aa"
+      }
+    ]
+  },
+  {
+    "id": "a20ab",
+    "text": "No",
+    "images": [
+      {
+        "id": "a20a_1",
+        "duration": 54000
+      },
+      {
+        "id": "a1b_3",
+        "duration": 33000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a20ab"
+      }
+    ]
+  },
+  {
+    "id": "a20aba_1",
+    "text": "Throw the gum away",
+    "images": [
+      {
+        "id": "a1b_3",
+        "duration": 17000
+      },
+      {
+        "id": "a20a_2",
+        "duration": 54000
+      },
+      {
+        "id": "a20a_3",
+        "duration": 59000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a20aba"
+      },
+      {
+        "id": "a20afin"
+      }
+    ]
+  },
+  {
+    "id": "a20aba_2",
+    "text": "nothing",
+    "images": [
+      {
+        "id": "a0",
+        "interaction": "VIDEO"
+      }
+    ]
+  },
+  {
+    "id": "a20aba_3",
+    "text": "nothing",
+    "images": [
+      {
+        "id": "a21_1",
+        "duration": 33000
+      },
+      {
+        "id": "a21_2",
+        "duration": 21000
+      },
+      {
+        "id": "a21_3",
+        "duration": 9000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a21"
+      }
+    ]
+  },
+  {
+    "id": "a20abb_1",
+    "text": "Chew the gum",
+    "images": [
+      {
+        "id": "a1b_3",
+        "duration": 16000
+      },
+      {
+        "id": "a20a_2",
+        "duration": 54000
+      },
+      {
+        "id": "a20a_3",
+        "duration": 59000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a20abb"
+      },
+      {
+        "id": "a20afin"
+      }
+    ]
+  },
+  {
+    "id": "a20abb_2",
+    "text": "nothing",
+    "images": [
+      {
+        "id": "a0",
+        "interaction": "VIDEO"
+      }
+    ]
+  },
+  {
+    "id": "a20abb_3",
+    "text": "nothing",
+    "images": [
+      {
+        "id": "a21_1",
+        "duration": 32000
+      },
+      {
+        "id": "a21_2",
+        "duration": 20000
+      },
+      {
+        "id": "a21_3",
+        "duration": 9000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a21"
+      }
+    ]
+  },
+  {
+    "id": "a20abc_1",
+    "text": "Share your gum with you",
+    "images": [
+      {
+        "id": "a1b_3",
+        "duration": 26000
+      },
+      {
+        "id": "a20a_2",
+        "duration": 54000
+      },
+      {
+        "id": "a20a_3",
+        "duration": 58000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a20abc"
+      },
+      {
+        "id": "a20afin"
+      }
+    ]
+  },
+  {
+    "id": "a20abc_2",
+    "text": "nothing",
+    "images": [
+      {
+        "id": "a0",
+        "interaction": "VIDEO"
+      }
+    ]
+  },
+  {
+    "id": "a20abc_3",
+    "text": "nothing",
+    "images": [
+      {
+        "id": "a21_1",
+        "duration": 42000
+      },
+      {
+        "id": "a21_2",
+        "duration": 30000
+      },
+      {
+        "id": "a21_3",
+        "duration": 9000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a21"
+      }
+    ]
+  },
+  {
+    "id": "a20b",
+    "text": "Go to find pyrite",
+    "images": [
+      {
+        "id": "a20",
+        "duration": 22000
+      },
+      {
+        "id": "a20b",
+        "duration": 68000
+      },
+      {
+        "id": "a21_1",
+        "duration": 42000
+      },
+      {
+        "id": "a21_2",
+        "duration": 30000
+      },
+      {
+        "id": "a21_3",
+        "duration": 9000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a20b"
+      },
+      {
+        "id": "a21"
+      }
+    ]
+  },
+  {
+    "id": "a20c",
+    "text": "Remember a small transparent packet on the beach",
+    "images": [
+      {
+        "id": "a20",
+        "duration": 5000
+      },
+      {
+        "id": "a1b_2",
+        "duration": 30000
+      },
+      {
+        "id": "a20c",
+        "duration": 40000
+      },
+      {
+        "id": "a21_1",
+        "duration": 42000
+      },
+      {
+        "id": "a21_2",
+        "duration": 30000
+      },
+      {
+        "id": "a21_3",
+        "duration": 9000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a20c"
+      },
+      {
+        "id": "a21"
+      }
+    ]
+  },
+  {
+    "id": "a20e",
+    "text": "Steal fire from Olympus",
+    "images": [
+      {
+        "id": "a20e",
+        "duration": 15000
+      },
+      {
+        "id": "a20",
+        "duration": 3000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a20e"
+      }
+    ]
+  },
+  {
+    "id": "a21a",
+    "text": "Rush to the fire",
+    "images": [
+      {
+        "id": "a21a",
+        "duration": 49000
+      },
+      {
+        "id": "a21_3",
+        "duration": 8000
+      },
+      {
+        "id": "a21_1",
+        "duration": 16000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a21a"
+      },
+      {
+        "id": "a22"
+      }
+    ]
+  },
+  {
+    "id": "a21b",
+    "text": "Grab you knife",
+    "images": [
+      {
+        "id": "a21_3",
+        "duration": 6000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a21b"
+      }
+    ]
+  },
+  {
+    "id": "a21c",
+    "text": "Run away",
+    "images": [
+      {
+        "id": "a16_1",
+        "duration": 4001,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "black",
+        "duration": 11000,
+        "transition": "FADE_OUT"
+      }
+    ],
+    "audio": [
+      {
+        "id": "a21c"
+      }
+    ]
+  },
+  {
+    "id": "a22a",
+    "text": "Fall asleep under a tree near the fire, taking the dagger",
+    "images": [
+      {
+        "id": "a21_1",
+        "duration": 24001,
+        "transition": "FADE_OUT"
+      },
+      {
+        "id": "black",
+        "duration": 6000,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "a22a",
+        "duration": 10000,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "black",
+        "duration": 3000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a22a"
+      }
+    ]
+  },
+  {
+    "id": "a22b_1",
+    "text": "Make a protective circle of fires, and fall asleep within it",
+    "images": [
+      {
+        "id": "a22b_1",
+        "duration": 25000
+      },
+      {
+        "id": "a23_1",
+        "duration": 58000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a22b"
+      },
+      {
+        "id": "a23"
+      }
+    ]
+  },
+  {
+    "id": "a23_cont",
+    "text": "unknown",
+    "type": "PROXY"
+  },
+  {
+    "id": "a22b_2",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a22b_2",
+        "duration": 25000
+      },
+      {
+        "id": "a23_2",
+        "duration": 58000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a22b"
+      },
+      {
+        "id": "a23"
+      }
+    ]
+  },
+  {
+    "id": "a22b_3",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a22b_3",
+        "duration": 25000
+      },
+      {
+        "id": "a23_3",
+        "duration": 58000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a22b"
+      },
+      {
+        "id": "a23"
+      }
+    ]
+  },
+  {
+    "id": "a22b",
+    "text": "unknown",
+    "type": "PROXY"
+  },
+  {
+    "id": "a22b_4",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a22b_4",
+        "duration": 25000
+      },
+      {
+        "id": "a23_4",
+        "duration": 58000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a22b"
+      },
+      {
+        "id": "a23"
+      }
+    ]
+  },
+  {
+    "id": "a23",
+    "text": "Day 4",
+    "type": "PROXY"
+  },
+  {
+    "id": "a23_1",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a23_1",
+        "duration": 55000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a23"
+      }
+    ]
+  },
+  {
+    "id": "a23_2",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a23_2",
+        "duration": 55000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a23"
+      }
+    ]
+  },
+  {
+    "id": "a23_3",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a23_3",
+        "duration": 55000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a23"
+      }
+    ]
+  },
+  {
+    "id": "a23_4",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a23_4",
+        "duration": 55000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a23"
+      }
+    ]
+  },
+  {
+    "id": "a23a",
+    "text": "A deep pitfal",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 41000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a23a"
+      }
+    ]
+  },
+  {
+    "id": "a23b",
+    "text": "A spear",
+    "items": [
+      {
+        "id": "Spear"
+      }
+    ],
+    "images": [
+      {
+        "id": "a23b",
+        "duration": 39000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a23b"
+      }
+    ]
+  },
+  {
+    "id": "a23c",
+    "text": "An arrow",
+    "items": [
+      {
+        "id": "Arrow"
+      }
+    ],
+    "images": [
+      {
+        "id": "a23c",
+        "duration": 120500
+      }
+    ],
+    "audio": [
+      {
+        "id": "a23c"
+      }
+    ]
+  },
+  {
+    "id": "a23d",
+    "text": "A very sharp dagger",
+    "items": [
+      {
+        "id": "Knife"
+      }
+    ],
+    "images": [
+      {
+        "id": "a13_4",
+        "duration": 15000
+      },
+      {
+        "id": "a23d_2",
+        "duration": 11000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a23d"
+      }
+    ]
+  },
+  {
+    "id": "a23e",
+    "text": "A toxic dagger",
+    "items": [
+      {
+        "id": "Toxic_knife"
+      }
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 5000
+      },
+      {
+        "id": "a16_1",
+        "duration": 6000
+      },
+      {
+        "id": "a16_2",
+        "duration": 61000
+      },
+      {
+        "id": "a13_4",
+        "duration": 9000
+      },
+      {
+        "id": "a23e",
+        "duration": 10000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a23e"
+      }
+    ]
+  },
+  {
+    "id": "a24a",
+    "text": "Confidence ",
+    "images": [
+      {
+        "id": "a2e",
+        "duration": 14000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a24a"
+      }
+    ]
+  },
+  {
+    "id": "a24b",
+    "text": "Solemnity",
+    "images": [
+      {
+        "id": "a2e",
+        "duration": 18000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a24b"
+      }
+    ]
+  },
+  {
+    "id": "a24c",
+    "text": "Fear",
+    "images": [
+      {
+        "id": "a2e",
+        "duration": 5000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a24c"
+      }
+    ]
+  },
+  {
+    "id": "a25frak",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a25",
+        "duration": 28000
+      },
+      {
+        "id": "a25frak_0",
+        "duration": 11000
+      },
+      {
+        "id": "a25frak_1",
+        "duration": 37000
+      },
+      {
+        "id": "a25frak_2",
+        "duration": 48000
+      },
+      {
+        "id": "a25frak_3",
+        "duration": 60000
+      },
+      {
+        "id": "a25frak_4",
+        "duration": 23000
+      },
+      {
+        "id": "a25frak_5",
+        "duration": 77000,
+        "transition": "FADE_OUT"
+      },
+      {
+        "id": "black",
+        "duration": 36000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a25bag"
+      },
+      {
+        "id": "a25frak"
+      }
+    ]
+  },
+  {
+    "id": "a25code",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a25",
+        "duration": 28001
+      },
+      {
+        "id": "a25frak_0",
+        "duration": 12001
+      },
+      {
+        "id": "a25code_1",
+        "duration": 15001
+      },
+      {
+        "id": "a25code_2",
+        "duration": 27001,
+        "transition": "FADE_OUT"
+      },
+      {
+        "id": "black",
+        "duration": 4000,
+        "transition": "FADE_OUT"
+      },
+      {
+        "id": "a25frak_0",
+        "duration": 14001
+      },
+      {
+        "id": "a25code_3",
+        "duration": 14001
+      },
+      {
+        "id": "a26",
+        "duration": 12001
+      }
+    ],
+    "audio": [
+      {
+        "id": "a25bag"
+      },
+      {
+        "id": "a25code"
+      },
+      {
+        "id": "a26"
+      }
+    ]
+  },
+  {
+    "id": "a25box",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a25",
+        "duration": 30000
+      },
+      {
+        "id": "a25box",
+        "duration": 57000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a25"
+      }
+    ]
+  },
+  {
+    "id": "a25a",
+    "text": "With all your might hurl the plate into the sea",
+    "images": [
+      {
+        "id": "a25box",
+        "duration": 14000
+      },
+      {
+        "id": "a26",
+        "duration": 18000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a25a"
+      },
+      {
+        "id": "a26"
+      }
+    ]
+  },
+  {
+    "id": "a25b",
+    "text": "Take funding",
+    "items": [
+      {
+        "id": "Tab"
+      }
+    ],
+    "images": [
+      {
+        "id": "a25box",
+        "duration": 9000
+      },
+      {
+        "id": "a26",
+        "duration": 18000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a25b"
+      },
+      {
+        "id": "a26"
+      }
+    ]
+  },
+  {
+    "id": "a26",
+    "text": "unknown",
+    "type": "PROXY"
+  },
+  {
+    "id": "a37c_all",
+    "text": "unknown",
+    "type": "PROXY"
+  },
+  {
+    "id": "a37d_all",
+    "text": "unknown",
+    "type": "PROXY"
+  },
+  {
+    "id": "a26a",
+    "text": "With a battle cry rush to it",
+    "images": [
+      {
+        "id": "a26",
+        "duration": 7500
+      },
+      {
+        "id": "a26a",
+        "duration": 64500
+      },
+      {
+        "id": "a21_1",
+        "duration": 24000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a26a"
+      },
+      {
+        "id": "a26chase"
+      },
+      {
+        "id": "a27"
+      }
+    ]
+  },
+  {
+    "id": "a32gpoint1",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "unknown"
+      }
+    ]
+  },
+  {
+    "id": "a32gpoint2",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "unknown"
+      }
+    ]
+  },
+  {
+    "id": "a32gpoint3",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "unknown"
+      }
+    ]
+  },
+  {
+    "id": "a32gpoint4",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "unknown"
+      }
+    ]
+  },
+  {
+    "id": "a32gpoint5",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "unknown"
+      }
+    ]
+  },
+  {
+    "id": "a32gpoint6",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "unknown"
+      }
+    ]
+  },
+  {
+    "id": "a32gpoint7",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "unknown"
+      }
+    ]
+  },
+  {
+    "id": "lastpoint",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "unknown"
+      }
+    ]
+  },
+  {
+    "id": "a26b",
+    "text": "You slowly creep up to it",
+    "images": [
+      {
+        "id": "a26",
+        "duration": 4500
+      },
+      {
+        "id": "a26a",
+        "duration": 64500
+      },
+      {
+        "id": "a21_1",
+        "duration": 24000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a26b"
+      },
+      {
+        "id": "a26chase"
+      },
+      {
+        "id": "a27"
+      }
+    ]
+  },
+  {
+    "id": "a26c",
+    "text": "Shoot a bow",
+    "images": [
+      {
+        "id": "a26",
+        "duration": 42000
+      },
+      {
+        "id": "a21_1",
+        "duration": 24000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a26c"
+      },
+      {
+        "id": "a27"
+      }
+    ]
+  },
+  {
+    "id": "a26d",
+    "text": "Throw a dagger",
+    "images": [
+      {
+        "id": "a26",
+        "duration": 18000
+      },
+      {
+        "id": "a21_1",
+        "duration": 24000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a26d"
+      },
+      {
+        "id": "a27"
+      }
+    ]
+  },
+  {
+    "id": "a26e",
+    "text": "Throw a spear",
+    "images": [
+      {
+        "id": "a26",
+        "duration": 18000
+      },
+      {
+        "id": "a21_1",
+        "duration": 24000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a26e"
+      },
+      {
+        "id": "a27"
+      }
+    ]
+  },
+  {
+    "id": "a26f",
+    "text": "Wait in an ambush until the prey comes closer",
+    "images": [
+      {
+        "id": "a26",
+        "duration": 18000
+      },
+      {
+        "id": "a21_1",
+        "duration": 24000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a26f"
+      },
+      {
+        "id": "a27"
+      }
+    ]
+  },
+  {
+    "id": "a26g",
+    "text": "Mimic the cries of partridge",
+    "images": [
+      {
+        "id": "a26",
+        "duration": 22000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a26g"
+      }
+    ]
+  },
+  {
+    "id": "a28",
+    "text": "Day 5",
+    "type": "PROXY",
+    "actions": [
+      "ADV"
+    ]
+  },
+  {
+    "id": "a28a",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a28_1",
+        "duration": 29500
+      },
+      {
+        "id": "a28_2",
+        "duration": 19500
+      }
+    ],
+    "audio": [
+      {
+        "id": "a28a"
+      },
+      {
+        "id": "a29"
+      }
+    ]
+  },
+  {
+    "id": "a28b",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a28_1",
+        "duration": 28500
+      },
+      {
+        "id": "a28_2",
+        "duration": 19500
+      }
+    ],
+    "audio": [
+      {
+        "id": "a28b"
+      },
+      {
+        "id": "a29"
+      }
+    ]
+  },
+  {
+    "id": "a28c",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a28_1",
+        "duration": 28500
+      },
+      {
+        "id": "a28_2",
+        "duration": 19500
+      }
+    ],
+    "audio": [
+      {
+        "id": "a28c"
+      },
+      {
+        "id": "a29"
+      }
+    ]
+  },
+  {
+    "id": "a29",
+    "text": "unknown",
+    "type": "PROXY"
+  },
+  {
+    "id": "a29a",
+    "text": "Run away",
+    "images": [
+      {
+        "id": "a1b_1",
+        "duration": 17001,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "black",
+        "duration": 7000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a29a"
+      }
+    ]
+  },
+  {
+    "id": "a29b",
+    "text": "Grab your weapon",
+    "type": "PROXY"
+  },
+  {
+    "id": "a29ba",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a29b_2",
+        "duration": 50000
+      },
+      {
+        "id": "a30",
+        "duration": 28000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a29ba"
+      },
+      {
+        "id": "a30"
+      }
+    ]
+  },
+  {
+    "id": "a29bb",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a29b_1",
+        "duration": 650000
+      },
+      {
+        "id": "a30",
+        "duration": 28000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a29ba"
+      },
+      {
+        "id": "a30"
+      }
+    ]
+  },
+  {
+    "id": "a29bd",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a29b_3",
+        "duration": 55000,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "black",
+        "duration": 16000,
+        "transition": "FADE_OUT"
+      },
+      {
+        "id": "a13_1",
+        "duration": 49000
+      },
+      {
+        "id": "a30",
+        "duration": 35000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a29ba"
+      },
+      {
+        "id": "a30"
+      }
+    ]
+  },
+  {
+    "id": "a29bc",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a29b_3",
+        "duration": 23000,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "black",
+        "duration": 11000,
+        "transition": "FADE_OUT"
+      },
+      {
+        "id": "a13_1",
+        "duration": 52000
+      },
+      {
+        "id": "a30",
+        "duration": 28000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a29ba"
+      },
+      {
+        "id": "a30"
+      }
+    ]
+  },
+  {
+    "id": "a29c",
+    "text": "Threaten the animal",
+    "images": [
+      {
+        "id": "a28_2",
+        "duration": 8000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a29c"
+      }
+    ]
+  },
+  {
+    "id": "a29d",
+    "text": "Try to negotiate",
+    "images": [
+      {
+        "id": "a28_2",
+        "duration": 18000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a29d"
+      }
+    ]
+  },
+  {
+    "id": "a29e",
+    "text": "Try to make friend",
+    "images": [
+      {
+        "id": "a28_2",
+        "duration": 14000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a29e"
+      }
+    ]
+  },
+  {
+    "id": "a29f",
+    "text": "Decide to fight the animal barehand",
+    "images": [
+      {
+        "id": "a28_2",
+        "duration": 30000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a29f"
+      }
+    ]
+  },
+  {
+    "id": "a29fa",
+    "text": "Yes!",
+    "images": [
+      {
+        "id": "a28_2",
+        "duration": 12000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a29fa"
+      }
+    ]
+  },
+  {
+    "id": "a29faa",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a29f",
+        "duration": 44000
+      },
+      {
+        "id": "a30",
+        "duration": 28000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a29faa"
+      },
+      {
+        "id": "a30"
+      }
+    ]
+  },
+  {
+    "id": "a29fab",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a29f",
+        "duration": 13000
+      },
+      {
+        "id": "a22a",
+        "duration": 13000,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "black",
+        "duration": 2000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a29fab"
+      }
+    ]
+  },
+  {
+    "id": "a29fb",
+    "text": "No, no, no! I am scared!",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 12000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a29fb"
+      }
+    ]
+  },
+  {
+    "id": "a30",
+    "type": "PROXY"
+  },
+  {
+    "id": "a30a",
+    "text": "Cut the puma for your banquet",
+    "items": [
+      {
+        "id": "Clothes"
+      }
+    ],
+    "images": [
+      {
+        "id": "a0",
+        "interaction": "SPARK"
+      }
+    ]
+  },
+  {
+    "id": "a30aa",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 15000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a30acont"
+      }
+    ]
+  },
+  {
+    "id": "a30ab",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 15000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a30acont"
+      }
+    ]
+  },
+  {
+    "id": "a30ac",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 15000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a30acont"
+      }
+    ]
+  },
+  {
+    "id": "a30b_1",
+    "text": "Skin the animal",
+    "items": [
+      {
+        "id": "Skin"
+      }
+    ],
+    "images": [
+      {
+        "id": "a30",
+        "duration": 27000
+      },
+      {
+        "id": "a30b_1",
+        "duration": 38500
+      }
+    ],
+    "audio": [
+      {
+        "id": "a30b"
+      }
+    ]
+  },
+  {
+    "id": "a30b_2",
+    "text": "nothing",
+    "images": [
+      {
+        "id": "a30b_21",
+        "interaction": "MUSIC"
+      }
+    ]
+  },
+  {
+    "id": "a30b_3",
+    "text": "no",
+    "images": [
+      {
+        "id": "a30bcont_1",
+        "duration": 42000
+      },
+      {
+        "id": "a30bcont_2",
+        "duration": 38000
+      },
+      {
+        "id": "black",
+        "duration": 5000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a30bcont_2"
+      }
+    ]
+  },
+  {
+    "id": "a30c",
+    "text": "Bury the animal",
+    "items": [
+      {
+        "id": "Clothes"
+      }
+    ],
+    "images": [
+      {
+        "id": "a30",
+        "duration": 48000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a30c"
+      }
+    ]
+  },
+  {
+    "id": "a30ca",
+    "text": "Good luck!",
+    "images": [
+      {
+        "id": "a30",
+        "duration": 2000
+      },
+      {
+        "id": "a30c",
+        "duration": 71000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a30ca"
+      },
+      {
+        "id": "a30ccont"
+      }
+    ]
+  },
+  {
+    "id": "a30cb",
+    "text": "Good riddance!",
+    "images": [
+      {
+        "id": "a30",
+        "duration": 1000
+      },
+      {
+        "id": "a30c",
+        "duration": 71000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a30cb"
+      },
+      {
+        "id": "a30ccont"
+      }
+    ]
+  },
+  {
+    "id": "a30cc",
+    "text": "What have I done?",
+    "images": [
+      {
+        "id": "a30",
+        "duration": 1000
+      },
+      {
+        "id": "a30c",
+        "duration": 71000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a30cc"
+      },
+      {
+        "id": "a30ccont"
+      }
+    ]
+  },
+  {
+    "id": "a30cd",
+    "text": "Damn me",
+    "images": [
+      {
+        "id": "a30",
+        "duration": 2000
+      },
+      {
+        "id": "a30c",
+        "duration": 71000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a30cd"
+      },
+      {
+        "id": "a30ccont"
+      }
+    ]
+  },
+  {
+    "id": "a32_1",
+    "text": "Day 6",
+    "actions": [
+      "INCREMENT_DAY"
+    ],
+    "images": [
+      {
+        "id": "a23_1",
+        "duration": 40000
+      },
+      {
+        "id": "a32",
+        "duration": 6000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday6"
+      },
+      {
+        "id": "a32"
+      }
+    ]
+  },
+  {
+    "id": "a32_2",
+    "text": "Day 6",
+    "actions": [
+      "INCREMENT_DAY"
+    ],
+    "images": [
+      {
+        "id": "a23_2",
+        "duration": 40000
+      },
+      {
+        "id": "a32",
+        "duration": 6000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday6"
+      },
+      {
+        "id": "a32"
+      }
+    ]
+  },
+  {
+    "id": "a32_4",
+    "text": "Day 6",
+    "actions": [
+      "INCREMENT_DAY"
+    ],
+    "images": [
+      {
+        "id": "a23_4",
+        "duration": 40000
+      },
+      {
+        "id": "a32",
+        "duration": 6000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday6"
+      },
+      {
+        "id": "a32"
+      }
+    ]
+  },
+  {
+    "id": "a32sk_1",
+    "actions": [
+      "INCREMENT_DAY"
+    ],
+    "text": "Day 6",
+    "images": [
+      {
+        "id": "a23_1",
+        "duration": 40000
+      },
+      {
+        "id": "a32sk",
+        "duration": 6000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday6"
+      },
+      {
+        "id": "a32"
+      }
+    ]
+  },
+  {
+    "id": "a32sk_2",
+    "text": "Day 6",
+    "actions": [
+      "INCREMENT_DAY"
+    ],
+    "images": [
+      {
+        "id": "a23_2",
+        "duration": 40000
+      },
+      {
+        "id": "a32sk",
+        "duration": 6000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday6"
+      },
+      {
+        "id": "a32"
+      }
+    ]
+  },
+  {
+    "id": "a32sk_3",
+    "actions": [
+      "INCREMENT_DAY"
+    ],
+    "text": "Day 6",
+    "images": [
+      {
+        "id": "a23_4",
+        "duration": 40000
+      },
+      {
+        "id": "a32sk",
+        "duration": 6000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday6"
+      },
+      {
+        "id": "a32"
+      }
+    ]
+  },
+  {
+    "id": "a32acl",
+    "text": " to build a boat and go away from this island",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 21000
+      },
+      {
+        "id": "a32a_1",
+        "duration": 48000
+      },
+      {
+        "id": "a32a_2cl",
+        "duration": 22000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32a"
+      }
+    ]
+  },
+  {
+    "id": "a32ask",
+    "text": "Build a boat and go away from this island",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 21000
+      },
+      {
+        "id": "a32a_1",
+        "duration": 48000
+      },
+      {
+        "id": "a32a_2sk",
+        "duration": 22000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32a"
+      }
+    ]
+  },
+  {
+    "id": "a32aa",
+    "text": "Laugh scarily",
+    "type": "PROXY"
+  },
+  {
+    "id": "a32ab",
+    "text": "Smiled warmly",
+    "type": "PROXY"
+  },
+  {
+    "id": "a32aacl",
+    "text": "Laugh scarily",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 23000
+      }
+    ],
+    "items": [
+      {
+        "id": "Bad"
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32aa"
+      },
+      {
+        "id": "a32aacl"
+      }
+    ]
+  },
+  {
+    "id": "a32aask",
+    "text": "Laugh scarily",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 15000
+      }
+    ],
+    "items": [
+      {
+        "id": "Bad"
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32aa"
+      },
+      {
+        "id": "a32aask"
+      }
+    ]
+  },
+  {
+    "id": "a32abcl",
+    "text": "Smiled warmly",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 71000
+      }
+    ],
+    "items": [
+      {
+        "id": "Good"
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32abcl"
+      }
+    ]
+  },
+  {
+    "id": "a32absk",
+    "text": "Smiled warmly",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 73000
+      }
+    ],
+    "items": [
+      {
+        "id": "Good"
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32absk"
+      }
+    ]
+  },
+  {
+    "id": "a32aaa",
+    "text": "Say goodbye",
+    "type": "PROXY"
+  },
+  {
+    "id": "a32aaaskgood",
+    "text": "Say goodbye",
+    "images": [
+      {
+        "id": "a32a_2sk",
+        "duration": 9000
+      },
+      {
+        "id": "islandend",
+        "duration": 27000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32aaagood"
+      }
+    ]
+  },
+  {
+    "id": "a32aaaclgood",
+    "text": "Say goodbye",
+    "images": [
+      {
+        "id": "a32a_2cl",
+        "duration": 11000
+      },
+      {
+        "id": "islandend",
+        "duration": 27000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32aaagood"
+      }
+    ]
+  },
+  {
+    "id": "a32aaaclbad",
+    "text": "Say goodbye",
+    "images": [
+      {
+        "id": "a32a_2cl",
+        "duration": 11000
+      },
+      {
+        "id": "islandend",
+        "duration": 13000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32aaabad"
+      }
+    ]
+  },
+  {
+    "id": "a32aaaskbad",
+    "text": "Say goodbye",
+    "images": [
+      {
+        "id": "a32a_2sk",
+        "duration": 11000
+      },
+      {
+        "id": "islandend",
+        "duration": 13000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32aaabad"
+      }
+    ]
+  },
+  {
+    "id": "a32aaabad",
+    "text": "Say goodbye",
+    "type": "PROXY"
+  },
+  {
+    "id": "a32aaagood",
+    "text": "Say goodbye",
+    "type": "PROXY"
+  },
+  {
+    "id": "a32a2_1",
+    "text": "Nothing",
+    "type": "PROXY"
+  },
+  {
+    "id": "a32a2_2",
+    "text": "Nothing",
+    "type": "PROXY"
+  },
+  {
+    "id": "a32a2_11",
+    "text": "Nothing",
+    "type": "PROXY"
+  },
+  {
+    "id": "a32a2_12",
+    "text": "Nothing",
+    "type": "PROXY"
+  },
+  {
+    "id": "a32a2_21",
+    "text": "Nothing",
+    "type": "PROXY"
+  },
+  {
+    "id": "a32a2_22",
+    "text": "Nothing",
+    "type": "PROXY"
+  },
+  {
+    "id": "a32a3_no",
+    "text": "Nothing",
+    "type": "PROXY"
+  },
+  {
+    "id": "a32aab",
+    "text": "Set the island on fire and run away",
+    "images": [
+      {
+        "id": "a32aab",
+        "duration": 9000
+      },
+      {
+        "id": "islandonfire",
+        "duration": 31000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32aab"
+      }
+    ]
+  },
+  {
+    "id": "a32aac",
+    "text": "Bless the island",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 11000
+      },
+      {
+        "id": "a32a_3",
+        "duration": 3000
+      },
+      {
+        "id": "islandend",
+        "duration": 16000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32aac"
+      }
+    ]
+  },
+  {
+    "id": "a32aad",
+    "text": "Remember about iron plate",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 25500
+      },
+      {
+        "id": "a32a_3",
+        "duration": 23500
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32aad"
+      }
+    ]
+  },
+  {
+    "id": "a33",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a33",
+        "duration": 21000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a33"
+      }
+    ]
+  },
+  {
+    "id": "a33a",
+    "text": "Cheerful motif",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 64000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a33a"
+      },
+      {
+        "id": "a34"
+      }
+    ]
+  },
+  {
+    "id": "a33b",
+    "text": "Sad motive",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 74000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a33b"
+      },
+      {
+        "id": "a34"
+      }
+    ]
+  },
+  {
+    "id": "a34a",
+    "text": "How do I get myself in this messe",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 33000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a34a"
+      },
+      {
+        "id": "a35"
+      }
+    ]
+  },
+  {
+    "id": "a34b",
+    "text": "Better luck tomorrow",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 34000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a34b"
+      },
+      {
+        "id": "a35"
+      }
+    ]
+  },
+  {
+    "id": "a34c",
+    "text": "That’s so cool",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 32000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a34c"
+      },
+      {
+        "id": "a35"
+      }
+    ]
+  },
+  {
+    "id": "a34d",
+    "text": "Boring!",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 81000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a34d"
+      },
+      {
+        "id": "a35"
+      }
+    ]
+  },
+  {
+    "id": "a35",
+    "text": "unknown",
+    "actions": [
+      "INCREMENT_DAY"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 31000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a35"
+      }
+    ]
+  },
+  {
+    "id": "a32b",
+    "text": "Prepare a big pile of the fuel wood to give a signal",
+    "actions": [
+      "INCREMENT_DAY",
+      "DISABLE_ME"
+    ],
+    "images": [
+      {
+        "id": "a32",
+        "duration": 48000
+      },
+      {
+        "id": "a32b",
+        "duration": 154000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32b"
+      }
+    ]
+  },
+  {
+    "id": "ajoke",
+    "type": "PROXY",
+    "text": "Пусто"
+  },
+  {
+    "id": "ajoke_all",
+    "type": "PROXY",
+    "text": "Пусто"
+  },
+  {
+    "id": "ajokea",
+    "text": "Build a boat and go away from this island",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 9000
+      }
+    ],
+    "audio": [
+      {
+        "id": "ajoke"
+      }
+    ]
+  },
+  {
+    "id": "ajokeb",
+    "text": "Prepare a big pile of the fuel wood to give a signal",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 10000
+      }
+    ],
+    "audio": [
+      {
+        "id": "ajoke"
+      }
+    ]
+  },
+  {
+    "id": "ajokec",
+    "text": "Start a fire to attract attention",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 10000
+      }
+    ],
+    "audio": [
+      {
+        "id": "ajoke"
+      }
+    ]
+  },
+  {
+    "id": "ajoked",
+    "text": "Make some word from different objects on the shore",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 10000
+      }
+    ],
+    "audio": [
+      {
+        "id": "ajoke"
+      }
+    ]
+  },
+  {
+    "id": "ajokee",
+    "text": "Construct the rocket to give a signal",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 10000
+      }
+    ],
+    "audio": [
+      {
+        "id": "ajoke"
+      }
+    ]
+  },
+  {
+    "id": "ajoke2",
+    "text": "Sleep",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 8000
+      }
+    ],
+    "audio": [
+      {
+        "id": "ajoke2"
+      }
+    ]
+  },
+  {
+    "id": "ajokef",
+    "text": "Refer to the map once again",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 10000
+      }
+    ],
+    "audio": [
+      {
+        "id": "ajoke"
+      }
+    ]
+  },
+  {
+    "id": "ajokeg",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 10000
+      }
+    ],
+    "audio": [
+      {
+        "id": "ajoke"
+      }
+    ]
+  },
+  {
+    "id": "a32c",
+    "text": "Start a fire to attract attention",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 18000
+      },
+      {
+        "id": "a32c_1",
+        "duration": 90000
+      },
+      {
+        "id": "a32c_2",
+        "duration": 11800
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32c"
+      }
+    ]
+  },
+  {
+    "id": "a32d",
+    "text": "Make some word from different objects on the shore",
+    "actions": [
+      "INCREMENT_DAY",
+      "DISABLE_ME"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 3000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32d"
+      }
+    ]
+  },
+  {
+    "id": "a38sos",
+    "text": "nothing",
+    "images": [
+      {
+        "id": "unknwon",
+        "duration": 69000
+      },
+      {
+        "id": "a32",
+        "duration": 6000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a38sos"
+      }
+    ]
+  },
+  {
+    "id": "a38sossk",
+    "text": "nothing",
+    "images": [
+      {
+        "id": "unknwon",
+        "duration": 69000
+      },
+      {
+        "id": "a32sk",
+        "duration": 6000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a38sos"
+      }
+    ]
+  },
+  {
+    "id": "a32da",
+    "text": "SOS!",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 35000
+      },
+      {
+        "id": "a32da",
+        "duration": 5000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32d2a"
+      },
+      {
+        "id": "a32dcont"
+      },
+      {
+        "id": "a32da"
+      }
+    ]
+  },
+  {
+    "id": "a32db",
+    "text": "MAMA!",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 36000
+      },
+      {
+        "id": "a32db",
+        "duration": 28000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32d2b"
+      },
+      {
+        "id": "a32dcont"
+      },
+      {
+        "id": "a32db"
+      }
+    ]
+  },
+  {
+    "id": "a32dc",
+    "text": "HELP!",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 34000
+      },
+      {
+        "id": "a32dc",
+        "duration": 32000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32d2c"
+      },
+      {
+        "id": "a32dcont"
+      },
+      {
+        "id": "a32dc"
+      }
+    ]
+  },
+  {
+    "id": "a32dd",
+    "text": "Biar a hend!",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 36000
+      },
+      {
+        "id": "a32dd",
+        "duration": 40000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32d2d"
+      },
+      {
+        "id": "a32dcont"
+      },
+      {
+        "id": "a32dd"
+      }
+    ]
+  },
+  {
+    "id": "a32e_1",
+    "text": "Construct the rocket to give a signal",
+    "actions": [
+      "DISABLE_ME"
+    ],
+    "images": [
+      {
+        "id": "a32",
+        "duration": 9000
+      },
+      {
+        "id": "a19b",
+        "duration": 49000
+      },
+      {
+        "id": "a0",
+        "duration": 11000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32e_1"
+      }
+    ]
+  },
+  {
+    "id": "a32e_2",
+    "text": "Construct the rocket to give a signal",
+    "images": [
+      {
+        "id": "a0",
+        "interaction": "COUNTER"
+      }
+    ]
+  },
+  {
+    "id": "a32ea",
+    "text": "Noчого",
+    "images": [
+      {
+        "id": "a32e",
+        "duration": 33000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32eall"
+      },
+      {
+        "id": "a32ea"
+      }
+    ]
+  },
+  {
+    "id": "a32eb_1",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a32e",
+        "duration": 14000
+      },
+      {
+        "id": "a32e_1",
+        "duration": 66000
+      },
+      {
+        "id": "a32e_1",
+        "duration": 65000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32eall"
+      },
+      {
+        "id": "a32eb"
+      }
+    ]
+  },
+  {
+    "id": "a32eb_2",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a32e_1",
+        "interaction": "CONFIRM"
+      }
+    ]
+  },
+  {
+    "id": "a32eb_3",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a32e_1",
+        "duration": 56000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32ebcont"
+      }
+    ]
+  },
+  {
+    "id": "a32ec",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a32e",
+        "duration": 28000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32eall"
+      },
+      {
+        "id": "a32ec"
+      }
+    ]
+  },
+  {
+    "id": "a32ed",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a32e",
+        "duration": 28000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32eall"
+      },
+      {
+        "id": "a32ed"
+      }
+    ]
+  },
+  {
+    "id": "a32ef",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a32e",
+        "duration": 33000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32eall"
+      },
+      {
+        "id": "a32ef"
+      }
+    ]
+  },
+  {
+    "id": "a32eexit",
+    "text": "Make something else",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 12000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32eexit"
+      }
+    ]
+  },
+  {
+    "id": "a32emore",
+    "text": "Try again",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 8000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32emore"
+      }
+    ]
+  },
+  {
+    "id": "a32f",
+    "text": "Refer to the map once again",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 5000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32f_1"
+      }
+    ]
+  },
+  {
+    "id": "a32f_1",
+    "text": "Refer to the map once again",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 5000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32f_1"
+      }
+    ]
+  },
+  {
+    "id": "a32f_2",
+    "text": "Refer to the map once again",
+    "images": [
+      {
+        "id": "map",
+        "interaction": "MAP"
+      }
+    ]
+  },
+  {
+    "id": "a32f_3",
+    "text": "Refer to the map once again",
+    "images": [
+      {
+        "id": "a0",
+        "duration": 2000
+      }
+    ],
+    "audio": [
+      {
+        "id": "unknown2"
+      }
+    ]
+  },
+  {
+    "id": "a32f_4",
+    "text": "Refer to the map once again",
+    "images": [
+      {
+        "id": "a0",
+        "interaction": "COMPAS"
+      }
+    ]
+  },
+  {
+    "id": "a32f1",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a32f1_1",
+        "duration": 9000
+      },
+      {
+        "id": "a32f1_2",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32f1"
+      }
+    ]
+  },
+  {
+    "id": "a32f1a",
+    "text": "Yes",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 25000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32f1a"
+      }
+    ]
+  },
+  {
+    "id": "a32f1ab",
+    "text": "No",
+    "images": [
+      {
+        "id": "a32f1_2",
+        "duration": 11000
+      },
+      {
+        "id": "a32f1_1",
+        "duration": 16000
+      },
+      {
+        "id": "entercode",
+        "duration": 14000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32f1ab"
+      },
+      {
+        "id": "a32fexit"
+      },
+      {
+        "id": "a32fexit2"
+      }
+    ]
+  },
+  {
+    "id": "a32f1aa_1",
+    "type": "PROXY",
+    "text": "Yes"
+  },
+  {
+    "id": "a32f1aa_2",
+    "text": "Yes",
+    "images": [
+      {
+        "id": "ear",
+        "interaction": "ABRUPT_EXIT"
+      }
+    ]
+  },
+  {
+    "id": "a32fexitcont",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "entercode0",
+        "duration": 16000
+      },
+      {
+        "id": "a32",
+        "duration": 16000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32fexitcont"
+      }
+    ]
+  },
+  {
+    "id": "a32fb_1",
+    "text": "No",
+    "images": [
+      {
+        "id": "a32f1_2",
+        "duration": 11000
+      },
+      {
+        "id": "a32f1_1",
+        "duration": 28000
+      },
+      {
+        "id": "entercode0",
+        "duration": 4390
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32fno1"
+      },
+      {
+        "id": "a32fexit"
+      },
+      {
+        "id": "a32fexit2"
+      }
+    ]
+  },
+  {
+    "id": "a32fb_2",
+    "text": "No",
+    "images": [
+      {
+        "id": "a0",
+        "interaction": "PASSWORD"
+      }
+    ]
+  },
+  {
+    "id": "a32f1ab_1",
+    "text": "No",
+    "images": [
+      {
+        "id": "a32f1_2",
+        "duration": 5000
+      },
+      {
+        "id": "a32f1_1",
+        "duration": 16000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32fno2"
+      },
+      {
+        "id": "a32fexit"
+      },
+      {
+        "id": "a32fexit2"
+      }
+    ]
+  },
+  {
+    "id": "a32f1ab_2",
+    "text": "No",
+    "images": [
+      {
+        "id": "a0",
+        "interaction": "PASSWORD"
+      }
+    ]
+  },
+  {
+    "id": "a32fexitcont",
+    "images": [
+      {
+        "id": "a32f1_2",
+        "duration": 16000
+      },
+      {
+        "id": "a32f1_2",
+        "duration": 21000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32fexitcont"
+      }
+    ]
+  },
+  {
+    "id": "acode1_1",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a0",
+        "interaction": "HELM"
+      }
+    ]
+  },
+  {
+    "id": "acode1_2",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "code1cont2_1",
+        "duration": 18000
+      },
+      {
+        "id": "code1cont2_2",
+        "duration": 20000,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "black",
+        "duration": 6000,
+        "transition": "FADE_OUT"
+      },
+      {
+        "id": "code1_1",
+        "duration": 37000
+      },
+      {
+        "id": "code1_2",
+        "duration": 5000,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "code1_3",
+        "duration": 13000,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "code1_4",
+        "duration": 18000,
+        "transition": "DEFAULT"
+      }
+    ],
+    "audio": [
+      {
+        "id": "acode1_2"
+      }
+    ]
+  },
+  {
+    "id": "acode1_3",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a0",
+        "interaction": "RIDDLE"
+      }
+    ]
+  },
+  {
+    "id": "aexplosion",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "code1_3",
+        "duration": 1500,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 3000,
+        "transition": "DEFAULT"
+      },
+      {
+        "id": "black",
+        "duration": 6500
+      }
+    ],
+    "audio": [
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "acode2",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 3000
+      }
+    ],
+    "audio": [
+      {
+        "id": "acode2"
+      }
+    ]
+  },
+  {
+    "id": "acode2a1",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 5000
+      }
+    ],
+    "audio": [
+      {
+        "id": "acode2a1"
+      }
+    ]
+  },
+  {
+    "id": "acode2a2",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 5000
+      }
+    ],
+    "audio": [
+      {
+        "id": "acode2a2"
+      }
+    ]
+  },
+  {
+    "id": "acode2a3",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 4000
+      }
+    ],
+    "audio": [
+      {
+        "id": "acode2a3"
+      }
+    ]
+  },
+  {
+    "id": "acode2a4",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 4000
+      }
+    ],
+    "audio": [
+      {
+        "id": "acode2a4"
+      }
+    ]
+  },
+  {
+    "id": "acode2a5",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 4000
+      }
+    ],
+    "audio": [
+      {
+        "id": "acode2a5"
+      }
+    ]
+  },
+  {
+    "id": "af1",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "af1"
+      }
+    ]
+  },
+  {
+    "id": "af1c",
+    "text": "де гроші лежать?!!",
+    "images": [
+      {
+        "id": "code1_4",
+        "duration": 15000
+      },
+      {
+        "id": "code2win",
+        "duration": 16001
+      },
+      {
+        "id": "code3",
+        "duration": 10000
+      },
+      {
+        "id": "a32",
+        "duration": 1003000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af1c"
+      },
+      {
+        "id": "acode2win"
+      },
+      {
+        "id": "acode3cont"
+      }
+    ]
+  },
+  {
+    "id": "acode2win",
+    "text": "where the money lie down?!!",
+    "images": [
+      {
+        "id": "code1_4",
+        "duration": 11000
+      },
+      {
+        "id": "code2win",
+        "duration": 16001
+      },
+      {
+        "id": "code3",
+        "duration": 10000
+      },
+      {
+        "id": "a32",
+        "duration": 4000
+      }
+    ],
+    "audio": [
+      {
+        "id": "acode2win"
+      },
+      {
+        "id": "acode3cont"
+      }
+    ]
+  },
+  {
+    "id": "af2c",
+    "text": "the fifth of November...",
+    "images": [
+      {
+        "id": "code1_4",
+        "duration": 16000
+      },
+      {
+        "id": "code2win",
+        "duration": 16001
+      },
+      {
+        "id": "code3",
+        "duration": 10000
+      },
+      {
+        "id": "a32",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af2c"
+      },
+      {
+        "id": "acode2win"
+      },
+      {
+        "id": "acode3cont"
+      }
+    ]
+  },
+  {
+    "id": "af3a",
+    "text": " there is always choice in the life!",
+    "images": [
+      {
+        "id": "code1_4",
+        "duration": 18000
+      },
+      {
+        "id": "code2win",
+        "duration": 16001
+      },
+      {
+        "id": "code3",
+        "duration": 10000
+      },
+      {
+        "id": "a32",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af3c"
+      },
+      {
+        "id": "acode2win"
+      },
+      {
+        "id": "acode3cont"
+      }
+    ]
+  },
+  {
+    "id": "af4d",
+    "text": "You will dig&&&",
+    "images": [
+      {
+        "id": "code1_4",
+        "duration": 12000
+      },
+      {
+        "id": "code2win",
+        "duration": 16001
+      },
+      {
+        "id": "code3",
+        "duration": 10000
+      },
+      {
+        "id": "a32",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af4d"
+      },
+      {
+        "id": "acode2win"
+      },
+      {
+        "id": "acode3cont"
+      }
+    ]
+  },
+  {
+    "id": "af5a",
+    "text": "Then fight!!!&&&",
+    "images": [
+      {
+        "id": "code1_4",
+        "duration": 18000
+      },
+      {
+        "id": "code2win",
+        "duration": 16001
+      },
+      {
+        "id": "code3",
+        "duration": 10000
+      },
+      {
+        "id": "a32",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af5a"
+      },
+      {
+        "id": "acode2win"
+      },
+      {
+        "id": "acode3cont"
+      }
+    ]
+  },
+  {
+    "id": "af6d",
+    "text": "Frankly, my dear, i don't give a damn...",
+    "images": [
+      {
+        "id": "code1_4",
+        "duration": 13000
+      },
+      {
+        "id": "code2win",
+        "duration": 16001
+      },
+      {
+        "id": "code3",
+        "duration": 10000
+      },
+      {
+        "id": "a32",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af6d"
+      },
+      {
+        "id": "acode2win"
+      },
+      {
+        "id": "acode3cont"
+      }
+    ]
+  },
+  {
+    "id": "af7a",
+    "text": "Abrakadabra!",
+    "images": [
+      {
+        "id": "code1_4",
+        "duration": 25000
+      },
+      {
+        "id": "code3",
+        "duration": 10000
+      },
+      {
+        "id": "a32",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af7a"
+      },
+      {
+        "id": "acode3cont"
+      }
+    ]
+  },
+  {
+    "id": "af1b",
+    "text": "Yes ",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 2000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af1b"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af1a",
+    "text": "й від дачі?!",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 5000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af1a"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af1d",
+    "text": "No",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 2000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af1d"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af2a",
+    "text": "the fifth of september...",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 5000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af2a"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af2b",
+    "text": "the fifth of October... ",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 4000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af2b"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af2d",
+    "text": "the fifth of december...",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 4000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af2d"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af3b",
+    "text": "У мене теж якось малувато варіантів ",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 4000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af3a"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af3c",
+    "text": "Неправда!",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af3c"
+      }
+    ]
+  },
+  {
+    "id": "af3d",
+    "text": "А в кого він є? ",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 8000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af3d"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af4a",
+    "text": "Але я - особливий, третій тип - владика цього острову!",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 8000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af4a"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af4b",
+    "text": "У мене є пушки",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 3000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af4b"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af4c",
+    "text": "Але оскільки ми не на дикому заході, то не буде Noяких пушок і Noяких ям",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 5000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af4c"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af5b",
+    "text": "Я - король Англії!",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 4000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af5b"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af5c",
+    "text": "Будь ласка, зроби це заради мене",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af5c"
+      }
+    ]
+  },
+  {
+    "id": "af5d",
+    "text": "А якщо подумати?",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af5d"
+      }
+    ]
+  },
+  {
+    "id": "af6b",
+    "text": "Що, люба?",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af5b"
+      },
+      {
+        "id": "af6"
+      }
+    ]
+  },
+  {
+    "id": "af6c",
+    "text": "Я весь увага",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 5000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af6c"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af6a",
+    "text": "Не хочу слухати твоїх пояснень",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 5000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af6a"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af7b",
+    "text": "Хастала віста, бейбі!",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 3000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af7b"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af7c",
+    "text": "Це ще не кінець!",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 2000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af7c"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af7d",
+    "text": "Прочитати Заповіт",
+    "images": [
+      {
+        "id": "a32",
+        "duration": 33000
+      },
+      {
+        "id": "codeexplosion",
+        "duration": 1500
+      },
+      {
+        "id": "a0",
+        "duration": 1000000
+      }
+    ],
+    "audio": [
+      {
+        "id": "af7d"
+      },
+      {
+        "id": "aexplosion"
+      }
+    ]
+  },
+  {
+    "id": "af2",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "af2"
+      }
+    ]
+  },
+  {
+    "id": "af3",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "af3"
+      }
+    ]
+  },
+  {
+    "id": "af4",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "af4"
+      }
+    ]
+  },
+  {
+    "id": "af5",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "af5"
+      }
+    ]
+  },
+  {
+    "id": "af6",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "af6"
+      }
+    ]
+  },
+  {
+    "id": "af7",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "af7"
+      }
+    ]
+  },
+  {
+    "id": "a33",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "unknown2"
+      }
+    ]
+  },
+  {
+    "id": "a36",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a33",
+        "duration": 13000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a36"
+      }
+    ]
+  },
+  {
+    "id": "a36acl",
+    "text": "Paddle to the east",
+    "images": [
+      {
+        "id": "a33",
+        "duration": 1000
+      },
+      {
+        "id": "a37_1",
+        "duration": 179000
+      },
+      {
+        "id": "a37_2cl",
+        "duration": 28000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a36aandb"
+      },
+      {
+        "id": "a37"
+      }
+    ]
+  },
+  {
+    "id": "a36ask",
+    "text": "Paddle to the east",
+    "images": [
+      {
+        "id": "a33",
+        "duration": 1009
+      },
+      {
+        "id": "a37_1",
+        "duration": 179000
+      },
+      {
+        "id": "a37_2sk",
+        "duration": 28000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a36aandb"
+      },
+      {
+        "id": "a37"
+      }
+    ]
+  },
+  {
+    "id": "a36bcl",
+    "text": "Paddle to the west",
+    "images": [
+      {
+        "id": "a33",
+        "duration": 1009
+      },
+      {
+        "id": "a37_1",
+        "duration": 179000
+      },
+      {
+        "id": "a37_2cl",
+        "duration": 28000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a36aandb"
+      },
+      {
+        "id": "a37"
+      }
+    ]
+  },
+  {
+    "id": "a36bsk",
+    "text": "Paddle to the west",
+    "images": [
+      {
+        "id": "a33",
+        "duration": 1009
+      },
+      {
+        "id": "a37_1",
+        "duration": 179000
+      },
+      {
+        "id": "a37_2sk",
+        "duration": 28000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a36aandb"
+      },
+      {
+        "id": "a37"
+      }
+    ]
+  },
+  {
+    "id": "a37",
+    "text": "unknown",
+    "type": "PROXY",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "unknown"
+      }
+    ]
+  },
+  {
+    "id": "a36ccl",
+    "text": "Do not paddle anywhere",
+    "images": [
+      {
+        "id": "a33",
+        "duration": 1009
+      },
+      {
+        "id": "a37_1",
+        "duration": 179000
+      },
+      {
+        "id": "a37_2cl",
+        "duration": 28000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a36c"
+      },
+      {
+        "id": "a37"
+      }
+    ]
+  },
+  {
+    "id": "a36csk",
+    "text": "Do not paddle anywhere",
+    "images": [
+      {
+        "id": "a33",
+        "duration": 1009
+      },
+      {
+        "id": "a37_1",
+        "duration": 179000
+      },
+      {
+        "id": "a37_2sk",
+        "duration": 28000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a36c"
+      },
+      {
+        "id": "a37"
+      }
+    ]
+  },
+  {
+    "id": "a37a",
+    "text": "Shout, jump, scream",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 10001
+      },
+      {
+        "id": "a37cfish",
+        "duration": 11000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37a"
+      }
+    ]
+  },
+  {
+    "id": "a37b",
+    "text": "Shout, jump, scream",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 13001
+      },
+      {
+        "id": "a37cfish",
+        "duration": 11000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37b"
+      }
+    ]
+  },
+  {
+    "id": "a37c",
+    "text": "Raise the sacred plate",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 31000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37c"
+      }
+    ]
+  },
+  {
+    "id": "a37ca",
+    "text": "Drop an curtsey",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 8000,
+        "transition": "FADE_OUT"
+      },
+      {
+        "id": "black",
+        "duration": 37000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37ca"
+      }
+    ]
+  },
+  {
+    "id": "a37cb",
+    "text": "Shout happily",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 3500,
+        "transition": "FADE_OUT"
+      },
+      {
+        "id": "black",
+        "duration": 39500
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37cb"
+      }
+    ]
+  },
+  {
+    "id": "a37cc",
+    "text": "Dance",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 7500,
+        "transition": "FADE_OUT"
+      },
+      {
+        "id": "black",
+        "duration": 40500
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37cc"
+      }
+    ]
+  },
+  {
+    "id": "a37cd",
+    "text": "Jump a somersault",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 9000,
+        "transition": "FADE_OUT"
+      },
+      {
+        "id": "black",
+        "duration": 39000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37cd"
+      }
+    ]
+  },
+  {
+    "id": "a37catab",
+    "text": "Drop an curtsey ",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 7000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37catab"
+      }
+    ]
+  },
+  {
+    "id": "a37cbtab",
+    "text": "Shout happily",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1001
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37cbtab"
+      }
+    ]
+  },
+  {
+    "id": "a37cctab",
+    "text": "Dance",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 7001
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37cctab"
+      }
+    ]
+  },
+  {
+    "id": "a37cdtab",
+    "text": "Jump a somersault",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 9001
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37cdtab"
+      }
+    ]
+  },
+  {
+    "id": "a37tab",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1
+      }
+    ],
+    "audio": [
+      {
+        "id": "unknown"
+      }
+    ]
+  },
+  {
+    "id": "a37ccontcl",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a37ccontcl",
+        "duration": 79000
+      },
+      {
+        "id": "a37cfish",
+        "duration": 11000
+      },
+      {
+        "id": "a37_2sk",
+        "duration": 11000
+      },
+      {
+        "id": "a37cfish_2",
+        "duration": 37000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37ccontcl"
+      },
+      {
+        "id": "a37cfish"
+      },
+      {
+        "id": "a37cfisha"
+      }
+    ]
+  },
+  {
+    "id": "a37ccontsk",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "a37ccontsk",
+        "duration": 107000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37ccontsk"
+      }
+    ]
+  },
+  {
+    "id": "a37ccontska",
+    "text": " It is not for sale",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 28000
+      },
+      {
+        "id": "a37cfish",
+        "duration": 11000
+      },
+      {
+        "id": "a37_2sk",
+        "duration": 11000
+      },
+      {
+        "id": "a37cfish_2",
+        "duration": 37000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37ccontska"
+      },
+      {
+        "id": "a37cfish"
+      },
+      {
+        "id": "a37cfisha"
+      }
+    ]
+  },
+  {
+    "id": "a37ccontskb",
+    "text": "Million!",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 90000
+      },
+      {
+        "id": "a37cfish",
+        "duration": 24000
+      },
+      {
+        "id": "a37_2sk",
+        "duration": 11000
+      },
+      {
+        "id": "a37cfish_2",
+        "duration": 24000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37ccontskb"
+      },
+      {
+        "id": "a37cfish"
+      },
+      {
+        "id": "a37cfishb"
+      }
+    ]
+  },
+  {
+    "id": "a37ccontskc",
+    "text": "The title of King of the Island",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 72000
+      },
+      {
+        "id": "a37cfish",
+        "duration": 16000
+      },
+      {
+        "id": "a37_2sk",
+        "duration": 11000
+      },
+      {
+        "id": "a37cfish_2",
+        "duration": 12000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37ccontskc"
+      },
+      {
+        "id": "a37cfish"
+      },
+      {
+        "id": "a37cfishc"
+      }
+    ]
+  },
+  {
+    "id": "a37ccontskd",
+    "text": "1 diamond 100 carats, 3 bricks of gold and a thousand dollars",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 80000
+      },
+      {
+        "id": "a37cfish",
+        "duration": 17000
+      },
+      {
+        "id": "a37cfish_2",
+        "duration": 43000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37ccontskd"
+      },
+      {
+        "id": "a37cfish"
+      },
+      {
+        "id": "a37cfishb"
+      }
+    ]
+  },
+  {
+    "id": "a37dcl",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 35000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37dcl"
+      }
+    ]
+  },
+  {
+    "id": "aend1",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "black",
+        "duration": 42000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aend1"
+      }
+    ]
+  },
+  {
+    "id": "a37dsk",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 32000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a37dsk"
+      }
+    ]
+  },
+  {
+    "id": "a32gg",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 4000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32gg"
+      }
+    ]
+  },
+  {
+    "id": "a32g1",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32g1"
+      }
+    ]
+  },
+  {
+    "id": "a32ggc",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32ggc"
+      }
+    ]
+  },
+  {
+    "id": "a32gc",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32gc"
+      }
+    ]
+  },
+  {
+    "id": "a32gg",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32gg"
+      }
+    ]
+  },
+  {
+    "id": "a32ge1nod",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32ge1nod"
+      }
+    ]
+  },
+  {
+    "id": "a32gnobnocnod",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32gnobnocnod"
+      }
+    ]
+  },
+  {
+    "id": "a32ge1",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32ge1"
+      }
+    ]
+  },
+  {
+    "id": "a32gnobnoc",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32gnobnoc"
+      }
+    ]
+  },
+  {
+    "id": "a32gh",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32gh"
+      }
+    ]
+  },
+  {
+    "id": "a32gl",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32gl"
+      }
+    ]
+  },
+  {
+    "id": "a32gg0",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32gg0"
+      }
+    ]
+  },
+  {
+    "id": "a32ge11",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32ge11"
+      }
+    ]
+  },
+  {
+    "id": "a32gf",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32gf"
+      }
+    ]
+  },
+  {
+    "id": "a32gy",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32gy"
+      }
+    ]
+  },
+  {
+    "id": "a32gstay",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32gstay"
+      }
+    ]
+  },
+  {
+    "id": "a32gnostay",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32gnostay"
+      }
+    ]
+  },
+  {
+    "id": "a32ggfire",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32ggfire"
+      }
+    ]
+  },
+  {
+    "id": "a32gk",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32gk"
+      }
+    ]
+  },
+  {
+    "id": "a32gnok",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32gnok"
+      }
+    ]
+  },
+  {
+    "id": "a32gcont",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32gcont"
+      }
+    ]
+  },
+  {
+    "id": "a32g_1",
+    "text": "Build a lighthouse",
+    "actions": [
+      "INCREMENT_DAY",
+      "DISABLE_ME"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 22000
+      }
+    ],
+    "audio": [
+      {
+        "id": "a32g"
+      }
+    ]
+  },
+  {
+    "id": "a32g_2",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "a0",
+        "interaction": "BEACON"
+      }
+    ]
+  },
+  {
+    "id": "mayes",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mayes"
+      }
+    ]
+  },
+  {
+    "id": "mano",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mano"
+      }
+    ]
+  },
+  {
+    "id": "mbyes",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mbyes"
+      }
+    ]
+  },
+  {
+    "id": "mbno",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mbno"
+      }
+    ]
+  },
+  {
+    "id": "mcyes",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mcyes"
+      }
+    ]
+  },
+  {
+    "id": "mcno",
+    "text": "unknown",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mcno"
+      }
+    ]
+  },
+  {
+    "id": "me1",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "me1"
+      }
+    ]
+  },
+  {
+    "id": "me2",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "me2"
+      }
+    ]
+  },
+  {
+    "id": "mdyes",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mdyes"
+      }
+    ]
+  },
+  {
+    "id": "mdno",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mdno"
+      }
+    ]
+  },
+  {
+    "id": "mfyes",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mfyes"
+      }
+    ]
+  },
+  {
+    "id": "mfno",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mfno"
+      }
+    ]
+  },
+  {
+    "id": "mhyes",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mhyes"
+      }
+    ]
+  },
+  {
+    "id": "mhno",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mhno"
+      }
+    ]
+  },
+  {
+    "id": "mino",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mino"
+      }
+    ]
+  },
+  {
+    "id": "miyes",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "miyes"
+      }
+    ]
+  },
+  {
+    "id": "mjyes",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mjyes"
+      }
+    ]
+  },
+  {
+    "id": "mjno",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mjno"
+      }
+    ]
+  },
+  {
+    "id": "mkyes",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mkyes"
+      }
+    ]
+  },
+  {
+    "id": "mkno",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mkno"
+      }
+    ]
+  },
+  {
+    "id": "myyes",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "myyes"
+      }
+    ]
+  },
+  {
+    "id": "myno",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "myno"
+      }
+    ]
+  },
+  {
+    "id": "mlyes",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mlyes"
+      }
+    ]
+  },
+  {
+    "id": "mlno",
+    "text": "Build a lighthouse",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "mlno"
+      }
+    ]
+  },
+  {
+    "id": "aday6_sossk",
+    "text": "Day6",
+    "actions": [
+      "INCREMENT_DAY",
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday6"
+      }
+    ]
+  },
+  {
+    "id": "aday7_sossk",
+    "text": "Day7",
+    "actions": [
+      "INCREMENT_DAY",
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday7"
+      }
+    ]
+  },
+  {
+    "id": "aday8_sossk",
+    "text": "Day8",
+    "actions": [
+      "INCREMENT_DAY",
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday8"
+      }
+    ]
+  },
+  {
+    "id": "aday9_sossk",
+    "text": "Day9",
+    "actions": [
+      "INCREMENT_DAY",
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday9"
+      }
+    ]
+  },
+  {
+    "id": "aday6_sos",
+    "text": "Day6",
+    "actions": [
+      "INCREMENT_DAY",
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday6"
+      }
+    ]
+  },
+  {
+    "id": "aday7_sos",
+    "text": "Day7",
+    "actions": [
+      "INCREMENT_DAY",
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday7"
+      }
+    ]
+  },
+  {
+    "id": "aday8_sos",
+    "text": "Day8",
+    "actions": [
+      "INCREMENT_DAY",
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday8"
+      }
+    ]
+  },
+  {
+    "id": "aday9_sos",
+    "text": "Day9",
+    "actions": [
+      "INCREMENT_DAY",
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday9"
+      }
+    ]
+  },
+  {
+    "id": "aday6",
+    "text": "Day6",
+    "actions": [
+      "INCREMENT_DAY",
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday6"
+      }
+    ]
+  },
+  {
+    "id": "aday7",
+    "text": "Day7",
+    "actions": [
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday7"
+      }
+    ]
+  },
+  {
+    "id": "aday8",
+    "text": "Day8",
+    "actions": [
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday8"
+      }
+    ]
+  },
+  {
+    "id": "aday9",
+    "text": "Day9",
+    "actions": [
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday9"
+      }
+    ]
+  },
+  {
+    "id": "aday6_sk",
+    "actions": [
+      "INCREMENT_DAY",
+      "ADV"
+    ],
+    "text": "Day6",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday6"
+      }
+    ]
+  },
+  {
+    "id": "aday7_sk",
+    "actions": [
+      "INCREMENT_DAY",
+      "ADV"
+    ],
+    "text": "Day7",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday7"
+      }
+    ]
+  },
+  {
+    "id": "aаф_sk",
+    "text": "Day7",
+    "actions": [
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday7"
+      }
+    ]
+  },
+  {
+    "id": "aday8_sk",
+    "text": "Day8",
+    "actions": [
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday8"
+      }
+    ]
+  },
+  {
+    "id": "aday9_sk",
+    "text": "Day9",
+    "actions": [
+      "ADV"
+    ],
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday9"
+      }
+    ]
+  },
+  {
+    "id": "aday6_in_sea",
+    "text": "Day6",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday6"
+      }
+    ]
+  },
+  {
+    "id": "aday7_in_sea",
+    "text": "Day7",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday7"
+      }
+    ]
+  },
+  {
+    "id": "aday8_in_sea",
+    "text": "Day8",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday8"
+      }
+    ]
+  },
+  {
+    "id": "days_in_sea",
+    "text": "ДNo в морі",
+    "type": "PROXY"
+  },
+  {
+    "id": "days",
+    "text": "ДNo",
+    "type": "PROXY"
+  },
+  {
+    "id": "adays32d",
+    "text": "ДNo sos",
+    "type": "PROXY"
+  },
+  {
+    "id": "aday6_in_sea_sk",
+    "text": "Day6",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday6"
+      }
+    ]
+  },
+  {
+    "id": "aday7_in_sea_sk",
+    "text": "Day7",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday7"
+      }
+    ]
+  },
+  {
+    "id": "aday8_in_sea_sk",
+    "text": "Day8",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday8"
+      }
+    ]
+  },
+  {
+    "id": "aday9_in_sea_sk",
+    "text": "Day9",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday9"
+      }
+    ]
+  },
+  {
+    "id": "aday9_in_sea",
+    "text": "Day9",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 1000
+      }
+    ],
+    "audio": [
+      {
+        "id": "aday9"
+      }
+    ]
+  },
+  {
+    "id": "writers",
+    "text": "титри",
+    "images": [
+      {
+        "id": "unknown",
+        "duration": 74000
+      }
+    ],
+    "audio": [
+      {
+        "id": "writers"
+      }
+    ]
+  }
+]

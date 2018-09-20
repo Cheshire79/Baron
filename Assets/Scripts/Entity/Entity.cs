@@ -1,12 +1,13 @@
 ﻿using System;
-
+using Newtonsoft.Json;
 
 namespace Baron.Entity
 {
     [Serializable]
     public class Entity
     {
-        protected string _id;
+		[JsonProperty(PropertyName = "id")]
+		protected string _id;
 
         public Entity()
         {
@@ -17,7 +18,8 @@ namespace Baron.Entity
             _id = id;
         }
 
-        public virtual string Id
+		[JsonIgnore]
+		public virtual string Id
         {
             get { return _id; }
             set { _id = value; }

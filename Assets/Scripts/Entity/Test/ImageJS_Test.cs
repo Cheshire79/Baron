@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+//using UnityEngine;
+//using UnityEngine.Serialization;
+using Newtonsoft.Json;
 
 namespace Assets.Scripts.Entity.Test
 {
@@ -14,8 +17,20 @@ namespace Assets.Scripts.Entity.Test
     [Serializable]
     public class AudioJS_Test
     {
-        public string Id;
-        public int Duration;
+		//[JsonProperty(PropertyName = "FooBar")]
+		//[SerializeField]
+		[JsonIgnore]
+		public string Id
+		{
+			get{ return _id; }
+			set { _id = value; }
+		}
+		
+		[JsonProperty(PropertyName = "id")]
+		//[SerializeField]
+		private string _id;
+	//	[JsonProperty(PropertyName = "Dura")]
+		public int Duration;
     }
 
     [Serializable]

@@ -10,12 +10,17 @@ namespace Baron.Controller
         public AppController(ILobbyController lobbyController, IDataLoader dataLoader)
         {
             _lobbyController = lobbyController;
-            ShowLobby();
-            //dataLoader.TestJson();
-            dataLoader.ReadFromJson();
-        }
+			// ShowLobby();
+			//dataLoader.TestLoadOptionJson();
+			dataLoader.TestLoadTreeJson();
+			//dataLoader.TestLoadDataJson();
+			//dataLoader.TestArrayJson();
 
-        private void ShowLobby()
+			//dataLoader.ReadFromJson();
+			//	dataLoader.TestArrayJson();
+		}
+
+		private void ShowLobby()
         {
             _lobbyController.ShowView();
         }
