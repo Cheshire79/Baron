@@ -40,12 +40,12 @@ namespace Baron.Service
 				//ASCII
 				.GetString(txtAsset.bytes);
 			Entity.Tree tree = JsonConvert.DeserializeObject<Entity.Tree>(tileFile);
-			CustomLogger.Log("new Json brunch1 urf8: " + tree.Option + " " );
+			CustomLogger.Log("new Json brunch1 urf8: " + tree.OptionId + " " );
 			foreach (var item1 in tree.InventoryBranches)
 			{
 			//	CustomLogger.Log("new Json option urf8: " + item1.Branches + " " + item.Text);
 				foreach (var item2 in item1.Branches)
-					CustomLogger.Log("new Json brunch2 urf8: " + item2.Option + " " + item2.Action);
+					CustomLogger.Log("new Json brunch2 urf8: " + item2.OptionId + " " + item2.Action);
 			}
 		}
 		public void TestLoadDataJson()

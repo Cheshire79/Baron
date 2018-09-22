@@ -56,7 +56,6 @@ GameObject:
   - component: {fileID: 224187313192932270}
   - component: {fileID: 222782389565439230}
   - component: {fileID: 114261052129128514}
-  - component: {fileID: 114797075713782810}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -139,7 +138,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 62d1af7367500bb42863ac9782da786c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f274e8ceeada9e547abdbdec3e94b375, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -192,18 +191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartButtonGUI: {fileID: 114952517069740848}
---- !u!114 &114797075713782810
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1389733945150434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb3f3ceccb3d33744bf87e61dc1faa54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StartButtonGUI: {fileID: 0}
 --- !u!114 &114927838336032154
 MonoBehaviour:
   m_ObjectHideFlags: 1
