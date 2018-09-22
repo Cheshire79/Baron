@@ -10,11 +10,14 @@ namespace Baron.Entity
 		public static string BEGIN = "BEGIN";
 		public static string DEATH = "DEATH";
 		public static string VICTORY = "VICTORY";
-		public static string ACTION_INCREMENT_DAY = "INCREMENT_DAY";
-		public static string ACTION_ADVERTISEMENT = "ADV";
+
 		public static string TYPE_DEFAULT = "DEFAULT";
 		public static string TYPE_PROXY = "PROXY";
+		public static string TYPE_INTERACTION = "INTERACTION";
+
 		public static string ACTION_DISABLE_ME = "DISABLE_ME";
+		public static string ACTION_INCREMENT_DAY = "INCREMENT_DAY";
+		public static string ACTION_ADVERTISEMENT = "ADV";
 
 		[JsonProperty(PropertyName = "images")]
 		private List<TrackImage> _images;
@@ -28,10 +31,20 @@ namespace Baron.Entity
 		private List<string> _actions;
 		[JsonProperty(PropertyName = "type")]
 		private string _type;
+
+		[JsonProperty(PropertyName = "interaction")]
+		private string _interactionId;
 		[JsonProperty(PropertyName = "text")]
 		private string _text;
 		[JsonProperty(PropertyName = "duration")]
-		private int _duration;
+		private float _duration;
+
+
+		[JsonIgnore]
+		private TrackImage _currentImage;
+		[JsonIgnore]
+		private TrackAudio _currentAudio;
+
 
 		public Option()
 		{
@@ -42,6 +55,100 @@ namespace Baron.Entity
 			_actions = new List<string>(1);
 		}
 
+		public void Init()
+		{
+			_currentImage = null;
+			_currentAudio = null;
+
+			float offset = 0;
+			int size = _images.Count;
+
+			for (int i = 0; i < size; i++)
+			{
+				TrackImage current = _images[i];
+
+				current.IsLocked = false;
+				current.IsCompleted = false;
+
+				Interaction interaction = current.InteractionObject;
+				if (interaction != null)
+				{
+					interaction.IsLocked = false;
+				}
+
+				TrackImage next = null;
+				TrackImage prev = null;
+				if (size > 1)
+				{
+					if (i == 0)
+					{
+						next = _images[i + 1];
+					}
+					else if (i == size - 1)
+					{
+						prev = _images[i - 1];
+					}
+					else
+					{
+						next = _images[i + 1];
+						prev = _images[i - 1];
+					}
+				}
+
+				current.Previous = prev;
+				current.Next = next;
+
+				current.StartsAt = offset;
+				current.FinishesAt = offset += current.Duration;
+
+				if (i == size - 1)
+				{
+					current.FinishesAt = Math.Max(current.FinishesAt, _duration);
+				}
+			}
+
+			offset = 0;
+			size = _audio.Count;
+
+			for (int i = 0; i < size; i++)
+			{
+				TrackAudio current = _audio[i];
+
+				current.IsLocked = false;
+				current.IsCompleted = false;
+
+				TrackAudio next = null;
+				TrackAudio prev = null;
+				if (size > 1)
+				{
+					if (i == 0)
+					{
+						next = _audio[i + 1];
+					}
+					else if (i == size - 1)
+					{
+						prev = _audio[i - 1];
+					}
+					else
+					{
+						next = _audio[i + 1];
+						prev = _audio[i - 1];
+					}
+				}
+
+				current.Previous = prev;
+				current.Next = next;
+
+				current.StartsAt = offset;
+				current.FinishesAt = offset += current.Duration;
+
+				if (i == size - 1)
+				{
+					current.FinishesAt = Math.Max(current.FinishesAt, _duration);
+				}
+			}
+
+		}
 
 		public override string ToString()
 		{
@@ -61,62 +168,137 @@ namespace Baron.Entity
 
 		public List<TrackImage> TrackImages
 		{
-		   get{ return _images; }
+			get { return _images; }
 		}
 
 		public List<TrackAudio> TrackAudio
 		{
-		   get{ return _audio; }
+			get { return _audio; }
 		}
 
 		public List<Item> _Items
 		{
-		    get { return _items; }
+			get { return _items; }
 		}
 
 		public List<Item> RequiredItems
 		{
-		   get { return _requiredItems; }
+			get { return _requiredItems; }
 		}
 
 		public List<string> Actions
 		{
-		    get { return _actions; }
+			get { return _actions; }
 		}
 
-		public int Duration
+		public float Duration
 		{
-		    get { return _duration; }
+			get { return _duration; }
 			set { _duration = value; }
 		}
 
-		
-
-		public void Reset()
+		public void Update(int progress, int max)
 		{
-			
-			foreach(var media in TrackAudio)
-		   
-		    {
-		        media.IsLocked=false;
-		        media.Completed=false;
-		    }
+			_currentImage = null;
+			_currentAudio = null;
 
-			foreach (var media in TrackImages)
-		    {
-		        media.IsLocked=false;
+			if (progress == 0)
+			{
+				_currentImage = firstImage();
+				_currentAudio = firstAudio();
+			}
+			else if (progress == max)
+			{
+				_currentImage = lastImage();
+				_currentAudio = lastAudio();
+			}
 
-		        InteractionObject interaction = media.InteractionObject;
-		        if (interaction != null)
-		        {
-		            interaction.IsLocked=false;
-		        }
-		    }
+			foreach (TrackImage trackImage in _images)
+			{
+
+				trackImage.Progress = progress;
+
+				if (trackImage.StartsAt <= progress && progress < trackImage.FinishesAt)
+				{
+					trackImage.IsCompleted = false;
+					_currentImage = trackImage;
+				}
+				else if (progress < trackImage.StartsAt)
+				{
+					trackImage.IsCompleted = false;
+				}
+				else if (trackImage.FinishesAt <= progress)
+				{
+					trackImage.IsCompleted = true;
+				}
+			}
+
+			foreach (TrackAudio trackAudio in _audio)
+			{
+
+				if (trackAudio.StartsAt <= progress && progress < trackAudio.FinishesAt)
+				{
+					trackAudio.IsCompleted = false;
+					_currentAudio = trackAudio;
+				}
+					else if (progress < trackAudio.StartsAt)
+					{
+						trackAudio.IsCompleted = false;
+					}
+						else if (trackAudio.FinishesAt <= progress)
+						{
+							trackAudio.IsCompleted = true;
+						}
+			}
 		}
 
 		public bool IsProxy
 		{
-		   get { return TYPE_PROXY.Equals(_type); }
+			get { return TYPE_PROXY.Equals(_type); }
 		}
+
+		public bool ContainsDayAction()
+		{
+			return _actions.Contains(ACTION_INCREMENT_DAY);
+		}
+
+		public bool IsInteraction
+		{
+			get { return TYPE_INTERACTION.Equals(_type) && _interactionId != null; }
+		}
+
+		public bool IsFinal
+		{
+			get { return DEATH.Equals(_id) || VICTORY.Equals(_id); }
+		}
+
+		private TrackImage firstImage()
+		{
+			if (_images.Count == 0) return null;
+
+			return _images[0];
+		}
+
+		private TrackImage lastImage()
+		{
+			if (_images.Count == 0) return null;
+
+			return _images[_images.Count - 1];
+		}
+
+		private TrackAudio firstAudio()
+		{
+			if (_audio.Count == 0) return null;
+
+			return _audio[0];
+		}
+
+		private TrackAudio lastAudio()
+		{
+			if (_audio.Count == 0) return null;
+
+			return _audio[_audio.Count - 1];
+		}
+
 	}
 }

@@ -6,13 +6,24 @@ namespace Baron.Entity
     [Serializable]
     public abstract class TrackMedia: Entity
     {
+		[JsonProperty(PropertyName = "startsAt")]
+		private float _startsAt;
+
+		[JsonProperty(PropertyName = "finishesAt")]
+		private float _finishesAt;
+
+		[JsonProperty(PropertyName = "isLocked")]
+		private bool _isLocked;
+
+		[JsonProperty(PropertyName = "isCompleted")]
+		private bool _isCompleted;
+
 		[JsonIgnore]
-		protected int _progress;
-        protected int _startsAt;
-        protected int _finishesAt;
-        protected bool _isLocked;
-        protected TrackMedia _previous;
-        protected TrackMedia _next;
+		protected float _progress;
+		[JsonIgnore]
+		protected TrackMedia _previous;
+		[JsonIgnore]
+		protected TrackMedia _next;
 
 		//@Override//todo
 		//public boolean equals(Object obj)
@@ -22,21 +33,15 @@ namespace Baron.Entity
 		//    } else return super.equals(obj);
 		//}
 
-		//  public abstract int GetDuration();
+		public abstract float Duration { get; set; }
 
-		[JsonIgnore]
-		public abstract int Duration { get; set; }
-
-
-		public  int StartsAt
+		public  float StartsAt
         {
             get { return _startsAt; }
             set { _startsAt = value; }
         }
 
-
-		[JsonIgnore]
-		public int FinishesAt
+		public float FinishesAt
         {
             get { return _finishesAt; }
             set { _finishesAt = value; }
@@ -67,11 +72,17 @@ namespace Baron.Entity
             return _next == null;
         }
 
-		public int Progress
+		public float Progress
         {
             get { return _progress; }
             set { _progress = value; }
         }
- 
-    }
+
+		public bool IsCompleted
+		{
+			get { return _isCompleted; }
+			set { _isCompleted = value; }
+		}
+
+	}
 }

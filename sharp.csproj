@@ -321,7 +321,7 @@
     <Compile Include="Assets\Scripts\DI\InjectionRoot.cs" />
     <Compile Include="Assets\Scripts\Entity\Branch.cs" />
     <Compile Include="Assets\Scripts\Entity\Entity.cs" />
-    <Compile Include="Assets\Scripts\Entity\InteractionObject.cs" />
+    <Compile Include="Assets\Scripts\Entity\Interaction.cs" />
     <Compile Include="Assets\Scripts\Entity\InventoryBranch.cs" />
     <Compile Include="Assets\Scripts\Entity\Item.cs" />
     <Compile Include="Assets\Scripts\Entity\Option.cs" />
@@ -336,6 +336,7 @@
     <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\Module\BaronModule.cs" />
     <Compile Include="Assets\Scripts\Service\DataLoader.cs" />
+    <Compile Include="Assets\Scripts\Service\GameBase.cs" />
     <Compile Include="Assets\Scripts\Service\IDataLoader.cs" />
     <Compile Include="Assets\Scripts\Service\InteractionFactory.cs" />
     <Compile Include="Assets\Scripts\Service\StringUtils.cs" />

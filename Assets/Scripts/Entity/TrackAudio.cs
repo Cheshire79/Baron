@@ -6,31 +6,41 @@ using Newtonsoft.Json;
 
 namespace Baron.Entity
 {
-   public class TrackAudio: TrackMedia
-    {
+	public class TrackAudio : TrackMedia
+	{
 		[JsonProperty(PropertyName = "duration")]
-		private int _duration;
-        private bool _isCompleted;
+		private float _duration;
 
-		//[JsonIgnore]
+		//[JsonIgnore] //todo
+		//	public MediaPlayer player;
+
+		[JsonProperty(PropertyName = "isPrepared")]
+		private bool _isPrepared;
+
+		[JsonProperty(PropertyName = "isPreparing")]
+		private bool _isPreparing;
+
 		public override string Id
-        {
-            get { return _id != null ? _id.ToLower() : null; }
-        }
+		{
+			get { return _id; }
+		}
 
-		//[JsonIgnore]
-		public override int Duration
-        {
-            get { return _duration; }
-            set { _duration = value; }
-        }
-		
-		//[JsonIgnore]
-		public bool Completed
-        {
-            get { return _isCompleted; }
-            set { _isCompleted = value; }
-        }
+		public override float Duration
+		{
+			get { return _duration; }
+			set { _duration = value; }
+		}
 
-    }
+		public bool IsPrepared
+		{
+			get	{	return _isPrepared;	}
+			set	{	_isPrepared = value;}
+		}
+
+		public bool IsPreparing
+		{
+			get	{	return _isPreparing;}
+			set	{_isPreparing = value;	}
+		}
+	}
 }

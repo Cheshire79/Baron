@@ -6,53 +6,39 @@ namespace Baron.Entity
 {
 	public class TrackImage : TrackMedia
 	{
-		[JsonProperty(PropertyName = "duration")]
-		private int _duration;
+		[JsonProperty(PropertyName = "altId")]
+		private string _altId;
+
+		[JsonProperty(PropertyName = "duration")]			
+		private float _duration; 
+
+		[JsonProperty(PropertyName = "interaction")]
 		private string _interaction;
+
+		[JsonProperty(PropertyName = "transition")]
 		private string _transition;
 
-		private InteractionObject _interactionObject;//todo check rename
+		[JsonIgnore]
+		private Interaction _interactionObject;//todo check rename
 
-	//	[JsonIgnore]
+
 		public override string Id
 		{
-			get { return _id != null ? _id.ToLower() : null; }
+			get { return _id; }
 		}
 
-	//	[JsonIgnore]
-		public override int Duration
+		public override float Duration
 		{
 			get { return _interaction != null ? 1500 : _duration; }
 			set { _duration = value; }
 		}
 
-		//	@Override
-		//public int getDuration()
-		//	{		return interaction != null ? 1500 : duration;	}
-
-		//	public void setDuration(int duration)
-		//	{		this.duration = duration;	}
-
-
-		[JsonIgnore]
 		public string Interaction
 		{
 			get { return _interaction != null ? _interaction : InteractionFactory.INTERACTION_NONE; }
 			set { _interaction = value; }
 		}
 
-		//public String getInteraction()
-		//{
-		//	return interaction != null ? interaction : InteractionFactory.INTERACTION_NONE;
-		//}
-
-		//public void setInteraction(String interaction)
-		//{
-		//	this.interaction = interaction;
-		//}
-
-
-		//[JsonIgnore]
 		public string Transition
 		{
 			get
@@ -64,21 +50,17 @@ namespace Baron.Entity
 			set { _interaction = value; }
 		}
 
-		//public String getTransition()
-		//{			return transition != null					? transition					: TransitionFactory.DEFAULT;		}
-
-
-	//	[JsonIgnore]
-		public InteractionObject InteractionObject
+		public Interaction InteractionObject
 		{
 			get { return _interactionObject; }
 			set { _interactionObject = value; }
 		}
 
-		//public Interaction getInteractionObject()
-		//{			return interactionObject;		}
+		public string AltId
+		{
+			get { return _altId;}
+			set	{ _altId = value;}
+		}
 
-		//public void setInteractionObject(Interaction interactionObject)
-		//{			this.interactionObject = interactionObject;		}
 	}
 }

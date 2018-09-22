@@ -1,19 +1,25 @@
 ﻿using Baron.Service;
 using System;
+using Newtonsoft.Json;
 
 namespace Baron.Entity
 {
-	public class InteractionObject
+	public class Interaction
 	{
+		[JsonProperty(PropertyName = "option")]
 		private string _option;
+
+		[JsonProperty(PropertyName = "name")]
 		private string _name;
+
+		[JsonProperty(PropertyName = "isLocked")]
 		private bool _isLocked;
 
-		public InteractionObject(string name) : this(name, StringUtils.Cid())
+		public Interaction(string name) : this(name, StringUtils.Cid())
 		{
 		}
 
-		public InteractionObject(String name, String option)
+		public Interaction(String name, String option)
 		{
 			_option = option;
 			_name = name;

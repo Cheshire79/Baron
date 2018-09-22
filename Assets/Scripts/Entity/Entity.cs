@@ -12,11 +12,7 @@ namespace Baron.Entity
         public Entity()
         {
         }
-
-        public Entity(string id)
-        {
-            _id = id;
-        }
+       
 
 		[JsonIgnore]
 		public virtual string Id

@@ -15,16 +15,10 @@ namespace Baron.Entity
 		private string _cid;
 
 		[JsonProperty(PropertyName = "option")]
-		private string _option;
+		private string _optionId;
 
 		[JsonProperty(PropertyName = "action")]
 		private string _action;
-
-		[JsonProperty(PropertyName = "isCompleted")]
-		private bool _isCompleted;
-
-		[JsonProperty(PropertyName = "order")]
-		private int _order;
 
 		[JsonProperty(PropertyName = "params")]
 		private OptionParams _params;
@@ -37,10 +31,10 @@ namespace Baron.Entity
 			_options = new List<InventoryBranch>();
 		}
 
-		public Branch(string option) : this()
+		public Branch(string optionId) : this()
 		{
 
-			_option = option;
+			_optionId = optionId;
 		}
 
 		public Branch(String option, String cid) : this(option)
@@ -48,9 +42,9 @@ namespace Baron.Entity
 			_cid = cid;
 		}
 
-		public string Option
+		public string OptionId
 		{
-			get { return _option; }
+			get { return _optionId; }
 		}
 
 		public string Action
@@ -71,12 +65,7 @@ namespace Baron.Entity
 		public void AddInventoryBranch(InventoryBranch inventoryBranch)
 		{
 			_options.Add(inventoryBranch);
-		}
-
-		public int Order
-		{
-			get { return _order; }
-		}
+		}		
 
 		public string Cid
 		{
@@ -98,9 +87,7 @@ namespace Baron.Entity
 
 		public String Signature
 		{
-			get { return _cid + " " + _option
-					 + " " + _action
-					 + " " + (_isCompleted ? "+" : "-");
+			get { return _cid + " " + _optionId;
 			}
 		}
 
@@ -108,16 +95,14 @@ namespace Baron.Entity
 		{
 			get { return _params; }
 		}
+		public bool isClick
+		{
+			get { return ACTION_CLICK.Equals(_action); }
+		}
+		public bool isFinal
+		{
+			get { return Option.DEATH.Equals(_optionId) || Option.VICTORY.Equals(_optionId); }
+		}
 
-		public bool IsCompleted
-		{
-			get { return _isCompleted; }
-			set { _isCompleted = value; }
-		}
-		
-		public void Reset()
-		{
-			_isCompleted = false;
-		}
 	}
 }
