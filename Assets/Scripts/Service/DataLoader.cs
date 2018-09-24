@@ -22,6 +22,14 @@ namespace Baron.Service
 
 	public class DataLoader : IDataLoader
 	{
+		public void LoadData(GameBase gameBase)
+		{
+
+			TextAsset txtAsset = (TextAsset)Resources.Load("Raw/tree", typeof(TextAsset));
+			string tileFile = Encoding.UTF8.GetString(txtAsset.bytes);
+			Entity.Tree tree = JsonConvert.DeserializeObject<Entity.Tree>(tileFile);
+			gameBase.Tree=tree;
+		}
 		public void TestLoadOptionJson()
 		{
 			TextAsset txtAsset = (TextAsset)Resources.Load("Raw/options", typeof(TextAsset));

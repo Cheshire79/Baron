@@ -1,4 +1,5 @@
 ﻿using Baron.Entity;
+using Baron.History;
 using CustomTools;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,8 @@ namespace Baron.Service
 		public static bool isFinaleReached = false;
 
 		private Tree _tree;
-		//private History history;
+		private History.History _history;
+
 		private List<Option> _optionRegistry;
 		//private List<Image> imageRegistry;
 		//private List<Audio> audioRegistry;
@@ -132,7 +134,13 @@ namespace Baron.Service
 			set { _tree = value; }
 		}
 
-		
+		public History.History History
+		{
+			get	{return _history;}
+			set	{_history = value;}
+		}
+
+
 
 		//public History getHistory()
 		//{

@@ -95,11 +95,11 @@ namespace Baron.Entity
 		{
 			get { return _params; }
 		}
-		public bool isClick
+		public bool IsClick
 		{
 			get { return ACTION_CLICK.Equals(_action); }
 		}
-		public bool isFinal
+		public bool IsFinal
 		{
 			get { return Option.DEATH.Equals(_optionId) || Option.VICTORY.Equals(_optionId); }
 		}

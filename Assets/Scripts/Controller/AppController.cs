@@ -9,10 +9,16 @@ namespace Baron.Controller
 
         public AppController(ILobbyController lobbyController, IDataLoader dataLoader)
         {
-            _lobbyController = lobbyController;
+			GameBase gameBase = new GameBase();
+			History.History history= new History.History(gameBase);
+			gameBase.History = history;
+			dataLoader.LoadData(gameBase);
+			BrunchController brunchController = new BrunchController(gameBase);
+			brunchController.StartGame(true);
+					   _lobbyController = lobbyController;
 			// ShowLobby();
 			//dataLoader.TestLoadOptionJson();
-			dataLoader.TestLoadTreeJson();
+			//dataLoader.TestLoadTreeJson();
 			//dataLoader.TestLoadDataJson();
 			//dataLoader.TestArrayJson();
 
