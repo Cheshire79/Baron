@@ -42,9 +42,21 @@ namespace Baron.Entity
 
 		[JsonIgnore]
 		private TrackImage _currentImage;
+
+		public TrackImage CurrentImage
+		{
+			get	{ return _currentImage; }
+			set	{ _currentImage = value; }
+		}
+
 		[JsonIgnore]
 		private TrackAudio _currentAudio;
 
+		public TrackAudio СurrentAudioe
+		{
+			get	{ return _currentAudio; }
+			set	{ _currentAudio = value; }
+		}
 
 		public Option()
 		{
@@ -57,7 +69,7 @@ namespace Baron.Entity
 
 		public void Init()
 		{
-			_currentImage = null;
+			CurrentImage = null;
 			_currentAudio = null;
 
 			float offset = 0;
@@ -199,17 +211,17 @@ namespace Baron.Entity
 
 		public void Update(int progress, int max)
 		{
-			_currentImage = null;
+			CurrentImage = null;
 			_currentAudio = null;
 
 			if (progress == 0)
 			{
-				_currentImage = firstImage();
+				CurrentImage = firstImage();
 				_currentAudio = firstAudio();
 			}
 			else if (progress == max)
 			{
-				_currentImage = lastImage();
+				CurrentImage = lastImage();
 				_currentAudio = lastAudio();
 			}
 
@@ -221,7 +233,7 @@ namespace Baron.Entity
 				if (trackImage.StartsAt <= progress && progress < trackImage.FinishesAt)
 				{
 					trackImage.IsCompleted = false;
-					_currentImage = trackImage;
+					CurrentImage = trackImage;
 				}
 				else if (progress < trackImage.StartsAt)
 				{
@@ -241,14 +253,14 @@ namespace Baron.Entity
 					trackAudio.IsCompleted = false;
 					_currentAudio = trackAudio;
 				}
-					else if (progress < trackAudio.StartsAt)
-					{
-						trackAudio.IsCompleted = false;
-					}
-						else if (trackAudio.FinishesAt <= progress)
-						{
-							trackAudio.IsCompleted = true;
-						}
+				else if (progress < trackAudio.StartsAt)
+				{
+					trackAudio.IsCompleted = false;
+				}
+				else if (trackAudio.FinishesAt <= progress)
+				{
+					trackAudio.IsCompleted = true;
+				}
 			}
 		}
 

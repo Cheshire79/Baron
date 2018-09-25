@@ -15,6 +15,8 @@ namespace Baron.Controller
 			dataLoader.LoadData(gameBase);
 			BrunchController brunchController = new BrunchController(gameBase);
 			brunchController.StartGame(true);
+
+
 					   _lobbyController = lobbyController;
 			// ShowLobby();
 			//dataLoader.TestLoadOptionJson();

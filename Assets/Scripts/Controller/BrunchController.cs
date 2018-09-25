@@ -58,6 +58,60 @@ namespace Baron.Controller
 					foreach( var item in scenario.Branches)
 					{
 						CustomLogger.Log("Getted Branches "+item.Id +" "+item.OptionId);
+
+					}
+
+
+					//
+					TrackBranch trackBranch = scenario.CurrentBranch;
+					if (trackBranch == null) return;					
+					Option option = OptionRepository.find(_gameBase, trackBranch.OptionId);
+
+					foreach (var item in option.TrackImages)
+					{
+						CustomLogger.Log("Getted Branches " + item.Id + " " + item.Duration);
+
+					}
+					Branch currentBranch = FindCurrentBranch(false);
+
+					//HashSet<string> uniqueItems = new HashSet<string>();
+					//InventoryBranch currentInventoryBranch=TreeParser.FindInventoryBranch(_gameBase, currentBranch, uniqueItems);
+					string cid="";
+					foreach (var item in currentBranch.InventoryBranches)
+					{
+						foreach (var item1 in item.Branches)
+						{
+							CustomLogger.Log("Getted inner  branches " + item1.OptionId);
+							cid = item1.Cid;
+						}
+
+					}
+					//	InventoryBranch currentInventoryBranch = currentBranch.InventoryBranches;
+					//	foreach (var item in currentInventoryBranch.Branches)
+					//{
+					//	CustomLogger.Log("Getted inner  branches " + item.OptionId );
+
+					//}
+
+					CustomLogger.Log("________________________ " + cid);
+
+
+					scenario = _scenarioManager.CreateScenario(_gameBase, cid);
+
+					_gameBase.History.SetScenario(scenario);
+					foreach (var item in scenario.Branches)
+					{
+						CustomLogger.Log(" 2        Getted Branches " + item.Id + " " + item.OptionId);
+					}
+
+					 trackBranch = scenario.CurrentBranch;
+					if (trackBranch == null) return;
+					 option = OptionRepository.find(_gameBase, trackBranch.OptionId);
+
+					foreach (var item in option.TrackImages)
+					{
+						CustomLogger.Log("2        Getted Branches " + item.Id + " " + item.Duration);
+
 					}
 
 				}

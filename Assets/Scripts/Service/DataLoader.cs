@@ -29,6 +29,11 @@ namespace Baron.Service
 			string tileFile = Encoding.UTF8.GetString(txtAsset.bytes);
 			Entity.Tree tree = JsonConvert.DeserializeObject<Entity.Tree>(tileFile);
 			gameBase.Tree=tree;
+			 txtAsset = (TextAsset)Resources.Load("Raw/options", typeof(TextAsset));
+			tileFile = Encoding.UTF8.GetString(txtAsset.bytes);
+			List<Option> options = JsonConvert.DeserializeObject<List<Option>>(tileFile);
+			gameBase.OptionRegistry= options;
+
 		}
 		public void TestLoadOptionJson()
 		{
