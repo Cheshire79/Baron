@@ -14,7 +14,7 @@ namespace Baron.Service
 			Scenario scenario = new Scenario();
 			scenario.Cid = StringUtils.Cid();
 
-			Branch branch = TreeParser.FindBranchByCid(gameBase, cid);
+			Branch branch = TreeParser.FindBranchByCid(gameBase, cid);//+
 
 			if (branch.IsReference)
 			{
@@ -29,7 +29,7 @@ namespace Baron.Service
 				branch = reference;
 			}
 
-			FindScenario(gameBase, branch, scenario);
+			FindScenario(gameBase, branch, scenario); //todo ask
 
 			scenario.Init();
 
@@ -55,7 +55,7 @@ namespace Baron.Service
 			return scenario;
 		}
 
-		private void FindScenario(GameBase gameBase, Branch from, Scenario scenario)
+		private void FindScenario(GameBase gameBase, Branch from, Scenario scenario) // need to check
 		{
 			CustomLogger.Log("BranchScenarioManager  findScenario " + from + " #" + scenario.Branches.Count);
 
@@ -67,7 +67,7 @@ namespace Baron.Service
 			if (option != null //&& BranchPresenter.isCreated()
 				)
 			{
-				if (option.IsInteraction)
+				if (option.IsInteraction)// to ask
 				{
 					//InteractionStrategy strategy = InteractionFactory.CreateInstance(option.interaction);
 
@@ -92,7 +92,7 @@ namespace Baron.Service
 
 				//NOTE Scenario is completed due to INCREMENT_DAY action in option.
 				//But new scenario will be created after.
-				TrackBranch lastBranch = scenario.Last();
+				TrackBranch lastBranch = scenario.Last();// to ask
 				if (lastBranch != null)
 				{
 					lastBranch.IsBeforeNewScenario = true;

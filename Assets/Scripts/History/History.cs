@@ -26,7 +26,7 @@ namespace Baron.History
 			Tree tree = _gameBase.Tree;
 			if (tree == null) return;
 
-			Branch initial = TreeParser.FindBranchByOption(_gameBase, GameBase.INITIAL_BRANCH, true, null);
+			Branch initial = TreeParser.FindBranchByOption(_gameBase, GameBase.INITIAL_BRANCH, true, null);//checked 10_09_18
 			if (initial == null) return;
 			_initialBranch = initial;
 

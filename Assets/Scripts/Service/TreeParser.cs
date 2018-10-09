@@ -8,7 +8,7 @@ namespace Baron.Service
 {
 	public class TreeParser
 	{
-		public static Branch FindBranchByOption(GameBase gameBase, String id, bool hasAction, HashSet<string> excludeIds)
+		public static Branch FindBranchByOption(GameBase gameBase, String id, bool hasAction, HashSet<string> excludeIds)//checked 10_09_18
 		{
 			Tree tree = gameBase.Tree;
 			if (tree == null) return null;
@@ -16,12 +16,12 @@ namespace Baron.Service
 			return FindBranchByOption(tree, id, hasAction, excludeIds);
 		}
 
-		public static Branch FindBranchByOption(Branch root, string id,  bool hasAction, HashSet<string> excludeIds)
+		public static Branch FindBranchByOption(Branch root, string id,  bool hasAction, HashSet<string> excludeIds)//checked 10_09_18
 		{
 			if (id == null)
 				throw new ArgumentNullException("Id should not be null");
 
-			if (id.Equals(root.OptionId))
+			if (id.Equals(root.OptionId)) // reason
 			{
 				if (excludeIds == null || !excludeIds.Contains(root.Cid))
 				{
@@ -46,7 +46,8 @@ namespace Baron.Service
 
 			return null;
 		}
-		public static Branch FindBranchByCid(GameBase gameBase, string cid)
+
+		public static Branch FindBranchByCid(GameBase gameBase, string cid)//checked 10_09_18
 		{
 			if (gameBase == null) return null;
 
@@ -89,7 +90,7 @@ namespace Baron.Service
 			return null;
 		}
 
-		private static Branch FindBranchByCid(Branch branch, string cid)
+		private static Branch FindBranchByCid(Branch branch, string cid)//checked 10_09_18
 		{
 			if (cid == null)
 				throw new ArgumentNullException("Cid should not be null");
@@ -136,92 +137,92 @@ namespace Baron.Service
 
 			return null;
 
-			if (currentBranch.InventoryBranches.Count == 0)
-			{
-				throw new ArgumentException("Missing inventory branches: " + currentBranch);
-			}
+			//if (currentBranch.InventoryBranches.Count == 0)
+			//{
+			//	throw new ArgumentException("Missing inventory branches: " + currentBranch);
+			//}
 
-			History.History history = gameBase.History;
-			if (history == null) return null;
+			//History.History history = gameBase.History;
+			//if (history == null) return null;
 
-			//int currentDay = history.getDay();
+			////int currentDay = history.getDay();
 
-			InventoryBranch currentInventoryBranch = null;
-			InventoryBranch defaultInventoryBranch = null;
-			InventoryBranch emptyInventoryBranch = null;
+			//InventoryBranch currentInventoryBranch = null;
+			//InventoryBranch defaultInventoryBranch = null;
+			//InventoryBranch emptyInventoryBranch = null;
 
-			foreach (InventoryBranch inventoryBranch in currentBranch.InventoryBranches)
-			{
-				return null;
-				List<String> inventory = inventoryBranch.Inventory;
+			//foreach (InventoryBranch inventoryBranch in currentBranch.InventoryBranches)
+			//{
+			//	return null;
+			//	List<String> inventory = inventoryBranch.Inventory;
 
-				if (IsEmptyInventory(inventory))
-				{
+			//	if (IsEmptyInventory(inventory))
+			//	{
 
-					emptyInventoryBranch = inventoryBranch;
+			//		emptyInventoryBranch = inventoryBranch;
 
-				}
-				else if (IsDefaultInventory(inventory))
-				{
+			//	}
+			//	else if (IsDefaultInventory(inventory))
+			//	{
 
-					defaultInventoryBranch = inventoryBranch;
+			//		defaultInventoryBranch = inventoryBranch;
 
-				}
-				else
-				{
+			//	}
+			//	else
+			//	{
 
-					List<bool> canSeeInventoryBranch = new List<bool>(inventory.Count);
+			//		List<bool> canSeeInventoryBranch = new List<bool>(inventory.Count);
 
-					foreach (String item in inventory)
-					{
+			//		foreach (String item in inventory)
+			//		{
 
-						if (IsGlobalInventory(gameBase, item))
-						{
+			//			if (IsGlobalInventory(gameBase, item))
+			//			{
 
-							canSeeInventoryBranch.add(history.globalInventory.size() > 0 && history.globalInventory.contains(item));
+			//				canSeeInventoryBranch.add(history.globalInventory.size() > 0 && history.globalInventory.contains(item));
 
-						}
-						else if (isDayInventory(item))
-						{
+			//			}
+			//			else if (isDayInventory(item))
+			//			{
 
-							int requestedDay = Integer.parseInt(item.replace(InventoryBranch.DAY_PREFIX, ""));
-							canSeeInventoryBranch.add(requestedDay == currentDay);
+			//				int requestedDay = Integer.parseInt(item.replace(InventoryBranch.DAY_PREFIX, ""));
+			//				canSeeInventoryBranch.add(requestedDay == currentDay);
 
-						}
-						else
-						{
+			//			}
+			//			else
+			//			{
 
-							canSeeInventoryBranch.add(!uniqueItems.isEmpty() && uniqueItems.contains(item));
+			//				canSeeInventoryBranch.add(!uniqueItems.isEmpty() && uniqueItems.contains(item));
 
-						}
+			//			}
 
-					}
+			//		}
 
 
-					if (canSeeInventoryBranch.size() > 0 && canSeeInventoryBranch.indexOf(false) == -1)
-					{
-						currentInventoryBranch = inventoryBranch;
-						break;
-					}
-				}
-			}
+			//		if (canSeeInventoryBranch.size() > 0 && canSeeInventoryBranch.indexOf(false) == -1)
+			//		{
+			//			currentInventoryBranch = inventoryBranch;
+			//			break;
+			//		}
+			//	}
+			//}
 
-			if (currentInventoryBranch == null)
-			{
-				if (emptyInventoryBranch != null)
-				{
-					currentInventoryBranch = emptyInventoryBranch;
-				}
-				else if (defaultInventoryBranch != null)
-				{
-					currentInventoryBranch = defaultInventoryBranch;
-				}
-			}
+			//if (currentInventoryBranch == null)
+			//{
+			//	if (emptyInventoryBranch != null)
+			//	{
+			//		currentInventoryBranch = emptyInventoryBranch;
+			//	}
+			//	else if (defaultInventoryBranch != null)
+			//	{
+			//		currentInventoryBranch = defaultInventoryBranch;
+			//	}
+			//}
 
-			if (currentInventoryBranch == null)
-				throw new ArgumentException("Could not determine InventoryBranch");
+			//if (currentInventoryBranch == null)
+			//	throw new ArgumentException("Could not determine InventoryBranch");
 
-			return currentInventoryBranch;
+			//return currentInventoryBranch;
 		}
 
 		public static bool IsEmptyInventory(List<string> inventory)
@@ -255,9 +256,10 @@ namespace Baron.Service
 		}
 		public static bool IsGlobalInventory(GameBase gameBase, string name)
 		{
-			Item item = ItemRepository.find(gameBase, name);
+			//Item item = ItemRepository.find(gameBase, name);
 
-			return item != null && item.isGlobal;
+			//return item != null && item.isGlobal;
+			return false;
 		}
 	}
 }

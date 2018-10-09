@@ -50,11 +50,13 @@ namespace Baron.Controller
 				Scenario scenario = new Scenario();
 				if (scenario.Cid == null)
 				{
-					Branch branch = GetStartBranch();
+					Branch branch = GetStartBranch();//checked 10_09_18
 					scenario = _scenarioManager.CreateScenario(_gameBase, branch.Cid);
 
 					_gameBase.History.SetScenario(scenario);
 
+
+					// finished origin code
 					foreach( var item in scenario.Branches)
 					{
 						CustomLogger.Log("Getted Branches "+item.Id +" "+item.OptionId);
@@ -145,7 +147,7 @@ namespace Baron.Controller
 			History.History history = _gameBase.History;
 			if (history == null) return null;
 
-			UpdateInitialBranch();
+			UpdateInitialBranch(); // just create initial brunch
 
 			Branch defaultBranch = history.GetInitialBranch();
 			Branch currentBranch;
