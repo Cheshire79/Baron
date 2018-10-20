@@ -1,10 +1,9 @@
-﻿using Baron.Entity;
-using Baron.History;
+﻿using Assets.Scripts.Service;
+using Baron.Entity;
 using CustomTools;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
 
 namespace Baron.Service
 {
@@ -29,7 +28,7 @@ namespace Baron.Service
 		private List<Item> _itemRegistry;
 		//private List<Riddle> riddleRegistry;
 		//private List<BeaconItem> beaconItemRegistry;
-		private TrackImage previousTrackImage;
+		private TrackImage _previousTrackImage;
 		private TrackAudio currentTrackAudio;
 
 		public GameBase()
@@ -184,7 +183,7 @@ namespace Baron.Service
 			
 			try
 			{
-				previousTrackImage = null;
+				_previousTrackImage = null;
 				currentTrackAudio = null;
 				isPaused = false;
 				isFinaleReached = false;
@@ -202,16 +201,16 @@ namespace Baron.Service
 
 		public TrackImage getPreviousTrackImage()
 		{
-			return previousTrackImage;
+			return _previousTrackImage;
 		}
 
-		//public void setPreviousTrackImage(TrackImage trackImage)
-		//{
-		//	if (trackImage != null && BackgroundImageService.PREVIOUS_BACKGROUND.equals(trackImage.getId()))
-		//		return;
+		public void setPreviousTrackImage(TrackImage trackImage)
+		{
+			if (trackImage != null && BackgroundImageService.PREVIOUS_BACKGROUND.Equals(trackImage.Id))
+				return;
 
-		//	this.previousTrackImage = trackImage;
-		//}
+			_previousTrackImage = trackImage;
+		}
 
 		//public TrackAudio getCurrentTrackAudio()
 		//{

@@ -18,7 +18,9 @@ namespace Baron.Controller
         {
             _viewFactory = viewFactory;
             _view = viewFactory.CreateLobbyView();
-            _view.PlayNowButtonClicked += PlayNow;
+			_view.Show();
+
+			_view.PlayNowButtonClicked += PlayNow;
             //    _view.BackButtonClicked += ShowDialogBoxOnExit; todo
         }
 

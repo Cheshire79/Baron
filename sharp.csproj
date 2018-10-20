@@ -320,8 +320,11 @@
     <Compile Include="Assets\Scripts\Controller\LobbyController.cs" />
     <Compile Include="Assets\Scripts\DI\BaronInjectors.cs" />
     <Compile Include="Assets\Scripts\DI\InjectionRoot.cs" />
+    <Compile Include="Assets\Scripts\Entity\Audio.cs" />
     <Compile Include="Assets\Scripts\Entity\Branch.cs" />
+    <Compile Include="Assets\Scripts\Entity\Chrono\PlayerEvent.cs" />
     <Compile Include="Assets\Scripts\Entity\Entity.cs" />
+    <Compile Include="Assets\Scripts\Entity\Image.cs" />
     <Compile Include="Assets\Scripts\Entity\Interaction.cs" />
     <Compile Include="Assets\Scripts\Entity\InventoryBranch.cs" />
     <Compile Include="Assets\Scripts\Entity\Item.cs" />
@@ -329,6 +332,7 @@
     <Compile Include="Assets\Scripts\Entity\OptionParams.cs" />
     <Compile Include="Assets\Scripts\Entity\OptionRepository.cs" />
     <Compile Include="Assets\Scripts\Entity\Scenario.cs" />
+    <Compile Include="Assets\Scripts\Entity\Sharing.cs" />
     <Compile Include="Assets\Scripts\Entity\Test\AudioArrayHolder.cs" />
     <Compile Include="Assets\Scripts\Entity\Test\ImageJS_Test.cs" />
     <Compile Include="Assets\Scripts\Entity\Test\TrackAudioArrayHolder.cs" />
@@ -338,8 +342,17 @@
     <Compile Include="Assets\Scripts\Entity\TrackMedia.cs" />
     <Compile Include="Assets\Scripts\Entity\Tree.cs" />
     <Compile Include="Assets\Scripts\Game.cs" />
+    <Compile Include="Assets\Scripts\History\AchievementEntry.cs" />
+    <Compile Include="Assets\Scripts\History\AudioEntry.cs" />
+    <Compile Include="Assets\Scripts\History\Entry.cs" />
     <Compile Include="Assets\Scripts\History\History.cs" />
+    <Compile Include="Assets\Scripts\History\ImageEntry.cs" />
+    <Compile Include="Assets\Scripts\History\InteractionEntry.cs" />
+    <Compile Include="Assets\Scripts\History\OptionActionEntry.cs" />
+    <Compile Include="Assets\Scripts\History\Save.cs" />
     <Compile Include="Assets\Scripts\Module\BaronModule.cs" />
+    <Compile Include="Assets\Scripts\Service\BackgroundImageService.cs" />
+    <Compile Include="Assets\Scripts\Service\BackgroundMediaService.cs" />
     <Compile Include="Assets\Scripts\Service\BranchDecisionManager.cs" />
     <Compile Include="Assets\Scripts\Service\BranchScenarioManager.cs" />
     <Compile Include="Assets\Scripts\Service\DataLoader.cs" />
@@ -348,6 +361,7 @@
     <Compile Include="Assets\Scripts\Service\InteractionFactory.cs" />
     <Compile Include="Assets\Scripts\Service\StringUtils.cs" />
     <Compile Include="Assets\Scripts\Service\TreeParser.cs" />
+    <Compile Include="Assets\Scripts\Strategy\Background\AbstractTransition.cs" />
     <Compile Include="Assets\Scripts\Strategy\Background\TransitionFactory.cs" />
     <Compile Include="Assets\Scripts\Tools\GUI\ButtonAdv.cs" />
     <Compile Include="Assets\Scripts\Tools\UnityLogToFBR.cs" />

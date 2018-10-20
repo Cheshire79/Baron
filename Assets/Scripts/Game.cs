@@ -6,9 +6,16 @@ namespace Baron
 {
     [GameObjectBoundary]
     public class Game : TestableComponent
-    {
+	{
+		//Script - InjectionRoot
+		//  public string TypeToInstantiate =Baron.Game
 
-        private readonly IAppController _appController;
+		//FBRLogger -UnityLogToFBR
+		//public string LogViewerHost = 127.0.0.2
+
+		//LobbyChildernReference
+		// ButtonAdv StartButtonGUI
+		private readonly IAppController _appController;
 
         public Game(TestableGameObject obj, IAppController appController) : base(obj)
         {
