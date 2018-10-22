@@ -1,21 +1,26 @@
 ﻿using Baron.Entity;
-using Baron.Service;
 using CustomTools;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Assets.Scripts.Service
+namespace Baron.Service
 {
 	public abstract class BackgroundMediaService
 	{
-		public void Resume(Scenario scenario, GameBase gameBase)
+		protected GameBase _gameBase;
+
+		public BackgroundMediaService(GameBase gameBase)
+		{
+			_gameBase = gameBase;
+		}
+
+		public void Resume(Scenario scenario//, GameBase gameBase
+			)
 		{
 
 			try
 			{
-				Execute(scenario, gameBase);
+				Execute(scenario//, gameBase
+					);
 			}
 			catch (Exception e)
 			{
@@ -23,7 +28,8 @@ namespace Assets.Scripts.Service
 			}
 		}
 
-		public abstract void Execute(Scenario scenario, GameBase gameBase);
+		public abstract void Execute(Scenario scenario//, GameBase gameBase
+			);
 
 	}
 }

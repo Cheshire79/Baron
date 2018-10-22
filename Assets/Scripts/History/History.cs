@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Service;
-using Baron.Entity;
+﻿using Baron.Entity;
 using Baron.Entity.Chrono;
 using Baron.Service;
 using CustomTools;
@@ -96,6 +95,11 @@ namespace Baron.History // wait for check
 		 */
 		[JsonProperty(PropertyName = "images")]
 		private List<ImageEntry> _images;
+
+		public List<ImageEntry> Images
+		{
+			get { return _images; }
+		}
 		/**
 		 * Opened audio on all iterations
 		 */
@@ -279,7 +283,7 @@ namespace Baron.History // wait for check
 			foreach (Entry item in _images)
 
 			{
-				if (item.name.Equals(id))
+				if (item.Name.Equals(id))
 				{
 					return true;
 				}
@@ -308,7 +312,7 @@ namespace Baron.History // wait for check
 			Save save = _activeSave;
 			foreach (Entry item in save.Inventory)
 			{
-				if (id.Equals(item.name))
+				if (id.Equals(item.Name))
 				{
 					return false;
 				}
@@ -324,7 +328,7 @@ namespace Baron.History // wait for check
 			Save save = _activeSave;
 			foreach (Entry item in save.Inventory)
 			{
-				if (item.name.Equals(id))
+				if (item.Name.Equals(id))
 				{
 					save.Inventory.Remove(item);
 					return;
@@ -351,7 +355,7 @@ namespace Baron.History // wait for check
 		{
 			foreach (ImageEntry item in _images)
 			{
-				if (id.Equals(item.name))
+				if (id.Equals(item.Name))
 				{
 					return false;
 				}
@@ -378,7 +382,7 @@ namespace Baron.History // wait for check
 		{
 			foreach (Entry item in _audio)
 			{
-				if (id.Equals(item.name))
+				if (id.Equals(item.Name))
 				{
 					return false;
 				}
@@ -403,7 +407,7 @@ namespace Baron.History // wait for check
 			ImageEntry entry = null;
 			foreach (ImageEntry item in _images)
 			{
-				if (image.Id.Equals(item.name))
+				if (image.Id.Equals(item.Name))
 				{
 					entry = item;
 					break;
@@ -418,7 +422,7 @@ namespace Baron.History // wait for check
 			AudioEntry entry = null;
 			foreach (AudioEntry item in _audio)
 			{
-				if (audio.Id.Equals(item.name))
+				if (audio.Id.Equals(item.Name))
 				{
 					entry = item;
 					break;
@@ -436,7 +440,7 @@ namespace Baron.History // wait for check
 		{
 			foreach (Entry item in _audio)
 			{
-				if (item.name.Equals(id))
+				if (item.Name.Equals(id))
 				{
 					return true;
 				}
@@ -527,7 +531,7 @@ namespace Baron.History // wait for check
 			HashSet<string> uniqueItems = new HashSet<string>();// _activeSave.inventory.Count);
 			foreach (Entry entry in _activeSave.Inventory)
 			{
-				uniqueItems.Add(entry.name);
+				uniqueItems.Add(entry.Name);
 			}
 			return uniqueItems;
 		}
@@ -543,13 +547,13 @@ namespace Baron.History // wait for check
 			CustomLogger.Log("History Increment day: " + _activeSave.Day);
 		}
 
-		public bool containsInOptionActionHistory(Branch branch, String action)
+		public bool ContainsInOptionActionHistory(Branch branch, String action)
 		{
 
 			foreach (OptionActionEntry entry in _activeSave.CompletedOptionActions)
 
 			{
-				if (entry.name.Equals(action) && branch.Cid.Equals(entry.BranchCid))
+				if (entry.Name.Equals(action) && branch.Cid.Equals(entry.BranchCid))
 				{
 					return true;
 				}
@@ -557,12 +561,12 @@ namespace Baron.History // wait for check
 			return false;
 		}
 
-		public HashSet<String> getDisabledBranchCID()
+		public HashSet<String> GetDisabledBranchCID()
 		{
 			return _activeSave.DisabledBranchCID;
 		}
 
-		public HashSet<String> getDisabledOptions()
+		public HashSet<String> GetDisabledOptions()
 		{
 			return _activeSave.DisabledOptions;
 		}
@@ -593,7 +597,7 @@ namespace Baron.History // wait for check
 			if (save.Steps.Count > 0)
 			{
 				Entry last = save.Steps.Peek();     //.Peek(save.steps.Count - 1);
-				if (last.name.Equals(cid))
+				if (last.Name.Equals(cid))
 					return false;
 			}
 			save.Steps.Push(new Entry(cid));
@@ -601,12 +605,12 @@ namespace Baron.History // wait for check
 			return true;
 		}
 
-		public bool hasBranch(Branch branch)
+		public bool HasBranch(Branch branch)
 		{
 			Save save = _activeSave;
 			foreach (Entry step in save.Steps)
 			{
-				if (step.name.Equals(branch.Cid))
+				if (step.Name.Equals(branch.Cid))
 				{
 					return true;
 				}
@@ -615,7 +619,7 @@ namespace Baron.History // wait for check
 			return false;
 		}
 
-		public Stack<Entry> getSteps()
+		public Stack<Entry> GetSteps()
 		{
 			return _activeSave.Steps;
 		}

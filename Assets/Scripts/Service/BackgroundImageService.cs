@@ -1,17 +1,22 @@
 ﻿using Baron.Entity;
-using Baron.History;
-using Baron.Service;
+using Baron.Listener;
 using CustomTools;
 using System;
 
 
-namespace Assets.Scripts.Service
+namespace Baron.Service
 {
 	public class BackgroundImageService: BackgroundMediaService
 	{
+		private ImageViewedInBranchListener _imageViewedInBranchListener;
+		public BackgroundImageService(GameBase gameBase) :base(gameBase)
+		{
+			_imageViewedInBranchListener = new ImageViewedInBranchListener(gameBase);
+		}
 		public const string PREVIOUS_BACKGROUND = "unknown";
 
-		public override void Execute(Scenario scenario, GameBase gameBase)
+		public override void Execute(Scenario scenario//, GameBase gameBase
+			)
 		{
 
 			// if (!BranchPresenter.isCreated()) return;
@@ -25,12 +30,12 @@ namespace Assets.Scripts.Service
 				if (trackBranch == null) return;
 
 			//	GameBase gameBase = presenter.getGameBase();
-				if (gameBase == null) return;
+				if (_gameBase == null) return;
 
-				History history = gameBase.History;
+				History.History history = _gameBase.History;
 				if (history == null) return;
 
-				Option option = OptionRepository.find(gameBase, trackBranch.OptionId);
+				Option option = OptionRepository.find(_gameBase, trackBranch.OptionId);
 
 				if (option == null) return;
 
@@ -56,7 +61,7 @@ namespace Assets.Scripts.Service
 
 				//BranchActivity activity = presenter.getActivity();
 
-				TrackImage previousTrackMedia = gameBase.getPreviousTrackImage();
+				TrackImage previousTrackMedia = _gameBase.GetPreviousTrackImage();
 				String currentBackground = history.GetCurrentBackground();
 
 				switch (currentTrackMedia.Id)
@@ -80,6 +85,7 @@ namespace Assets.Scripts.Service
 					// я так понимаю что тут я должен отметить что видел єту картинку
 					//presenter.dispatch(@Event.IMAGE_VIEWED, currentTrackMedia.Id);
 					// need to save progre and history
+					_imageViewedInBranchListener.OnReceive(currentTrackMedia.Id);
 
 				}
 
@@ -103,7 +109,7 @@ namespace Assets.Scripts.Service
 
 				//	transition.build(currentTrackMedia);
 
-					gameBase.setPreviousTrackImage(currentTrackMedia);
+					_gameBase.SetPreviousTrackImage(currentTrackMedia);
 
 				}
 				catch (Exception e)

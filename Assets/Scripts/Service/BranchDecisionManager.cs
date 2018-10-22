@@ -3,14 +3,12 @@ using Baron.Utils;
 using CustomTools;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Baron.Service
 {
 	public class BranchDecisionManager
 	{
-		public static string BRANCH_A29FAA = "a29faa";
+		public const string BRANCH_A29FAA = "a29faa";
 		public const string BRANCH_A29FAB = "a29fab";
 		public const string RANDOM_BRANCH_A4BA = "a4ba";
 		public const string RANDOM_BRANCH_A29FA = "a29fa";

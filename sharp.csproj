@@ -13,12 +13,14 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.0p4</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -323,6 +325,7 @@
     <Compile Include="Assets\Scripts\Entity\Chrono\PlayerEvent.cs" />
     <Compile Include="Assets\Scripts\Entity\Entity.cs" />
     <Compile Include="Assets\Scripts\Entity\Image.cs" />
+    <Compile Include="Assets\Scripts\Entity\ImageRepository.cs" />
     <Compile Include="Assets\Scripts\Entity\Interaction.cs" />
     <Compile Include="Assets\Scripts\Entity\InventoryBranch.cs" />
     <Compile Include="Assets\Scripts\Entity\Item.cs" />
@@ -348,7 +351,9 @@
     <Compile Include="Assets\Scripts\History\InteractionEntry.cs" />
     <Compile Include="Assets\Scripts\History\OptionActionEntry.cs" />
     <Compile Include="Assets\Scripts\History\Save.cs" />
+    <Compile Include="Assets\Scripts\Listener\ImageViewedInBranchListener.cs" />
     <Compile Include="Assets\Scripts\Module\BaronModule.cs" />
+    <Compile Include="Assets\Scripts\Service\AchievementPointService.cs" />
     <Compile Include="Assets\Scripts\Service\BackgroundImageService.cs" />
     <Compile Include="Assets\Scripts\Service\BackgroundMediaService.cs" />
     <Compile Include="Assets\Scripts\Service\BranchDecisionManager.cs" />

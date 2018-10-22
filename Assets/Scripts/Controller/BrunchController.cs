@@ -2,21 +2,23 @@
 using Baron.Service;
 using CustomTools;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Baron.Controller
 {
 	public class BrunchController
 	{
 		private GameBase _gameBase;
-		protected BranchScenarioManager _scenarioManager;
+		private BranchScenarioManager _scenarioManager;
+		private BackgroundImageService _backgroundImageService;
 
 		public BrunchController(GameBase gameBase)
 		{
 			_gameBase = gameBase;
 			_scenarioManager = new BranchScenarioManager();
+			_backgroundImageService = new BackgroundImageService(_gameBase);
+			//backgroundAudioService = new BackgroundAudioService(activity);
+
+
 
 		}
 		public void StartGame(bool isBlackBackground)
@@ -55,9 +57,14 @@ namespace Baron.Controller
 
 					_gameBase.History.SetScenario(scenario);
 
+					if (_backgroundImageService != null && _gameBase.History.GetCurrentBackground() != null)
+					{
+						_backgroundImageService.Resume(scenario);
+					}
+
 
 					// finished origin code
-					foreach( var item in scenario.Branches)
+					foreach ( var item in scenario.Branches)
 					{
 						CustomLogger.Log("Getted Branches "+item.Id +" "+item.OptionId);
 

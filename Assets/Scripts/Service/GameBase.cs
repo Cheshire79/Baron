@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Service;
-using Baron.Entity;
+﻿using Baron.Entity;
+using Baron.History;
 using CustomTools;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ namespace Baron.Service
 	public class GameBase
 	{
 		public static string INITIAL_BRANCH = "BEGIN_1";
-      //  private static string tag = GameBase.class.getSimpleName();
+		//  private static string tag = GameBase.class.getSimpleName();
 
 		public static bool isPaused = false;
 		public static bool isMute = false;
@@ -23,8 +23,8 @@ namespace Baron.Service
 		private History.History _history;
 
 		private List<Option> _optionRegistry;
-		//private List<Image> imageRegistry;
-		//private List<Audio> audioRegistry;
+		private List<Image> _imageRegistry;
+		private List<Audio> _audioRegistry;
 		private List<Item> _itemRegistry;
 		//private List<Riddle> riddleRegistry;
 		//private List<BeaconItem> beaconItemRegistry;
@@ -35,11 +35,17 @@ namespace Baron.Service
 		{
 			//history = new History();
 			_optionRegistry = new List<Option>();
-			//imageRegistry = new List<>();
-			//audioRegistry = new List<>();
+			_imageRegistry = new List<Image>();
+			_audioRegistry = new List<Audio>();
 			_itemRegistry = new List<Item>();
 			//riddleRegistry = new List<>();
 			//beaconItemRegistry = new List<>();
+		}
+
+		public List<Audio> AudioRegistry
+		{
+			get { return _audioRegistry; }
+			set { _audioRegistry = value; }
 		}
 
 		public List<Option> OptionRegistry
@@ -48,12 +54,14 @@ namespace Baron.Service
 			set { _optionRegistry = value; }
 		}
 
-		
+		public List<Image> ImageRegistry
+		{
+			get { return _imageRegistry; }
+			set { _imageRegistry = value; }
+		}
 
-		//public List<Image> getImageRegistry()
-		//{
-		//	return imageRegistry;
-		//}
+
+
 
 		//public void setImageRegistry(List<Image> imageRegistry)
 		//{
@@ -87,28 +95,18 @@ namespace Baron.Service
 		//	return filtered;
 		//}
 
-		//public List<Audio> getAudioRegistryForGallery()
-		//{
-		//	ArrayList<Audio> filtered = new ArrayList<>(getAudioRegistry().size());
-		//	for (Audio i : getAudioRegistry())
-		//	{
-		//		if (i.isFail())
-		//		{
-		//			filtered.add(i);
-		//		}
-		//	}
-		//	return filtered;
-		//}
-
-		//public List<Audio> getAudioRegistry()
-		//{
-		//	return audioRegistry;
-		//}
-
-		//public void setAudioRegistry(List<Audio> audioRegistry)
-		//{
-		//	this.audioRegistry = audioRegistry;
-		//}
+		public List<Audio> GetAudioRegistryForGallery()
+		{
+			List<Audio> filtered = new List<Audio>(AudioRegistry.Count);
+			foreach (Audio i in AudioRegistry)
+			{
+				if (i.IsFail)
+				{
+					filtered.Add(i);
+				}
+			}
+			return filtered;
+		}
 
 		public List<Item> ItemRegistry
 		{
@@ -116,7 +114,7 @@ namespace Baron.Service
 			set { _itemRegistry = value; }
 		}
 
-		
+
 		//public HashSet<String> getInventory()
 		//{
 		//	HashSet<String> registry = new HashSet<>(itemRegistry.size());
@@ -135,8 +133,8 @@ namespace Baron.Service
 
 		public History.History History
 		{
-			get	{return _history;}
-			set	{_history = value;}
+			get { return _history; }
+			set { _history = value; }
 		}
 
 
@@ -177,10 +175,10 @@ namespace Baron.Service
 		//	this.beaconItemRegistry = beaconItemRegistry;
 		//}
 
-		public void reset()
+		public void Reset()
 		{
 			CustomLogger.Log(" GAme Base reset");
-			
+
 			try
 			{
 				_previousTrackImage = null;
@@ -195,16 +193,16 @@ namespace Baron.Service
 			catch (Exception e)
 			{
 				//Log.e(tag, e);
-				CustomLogger.Log(" "+e.Message);
+				CustomLogger.Log(" " + e.Message);
 			}
 		}
 
-		public TrackImage getPreviousTrackImage()
+		public TrackImage GetPreviousTrackImage()
 		{
 			return _previousTrackImage;
 		}
 
-		public void setPreviousTrackImage(TrackImage trackImage)
+		public void SetPreviousTrackImage(TrackImage trackImage)
 		{
 			if (trackImage != null && BackgroundImageService.PREVIOUS_BACKGROUND.Equals(trackImage.Id))
 				return;
@@ -222,52 +220,53 @@ namespace Baron.Service
 		//	this.currentTrackAudio = currentTrackAudio;
 		//}
 
-		//public boolean isAllWinnerOptionsOpened()
-		//{
-		//	if (history == null) return false;
+		public bool IsAllWinnerOptionsOpened()
+		{
+			if (_history == null) return false;
 
-		//	HashSet<String> options = new HashSet<>(5);
-		//	options.add(AchievementPointService.option_a25frak);
-		//	options.add(AchievementPointService.option_a32eb_1);
-		//	options.add(AchievementPointService.option_a37ccontcl);
-		//	options.add(AchievementPointService.option_a37ccontska);
-		//	options.add(AchievementPointService.option_a37ccontskb);
-		//	options.add(AchievementPointService.option_a37ccontskc);
-		//	options.add(AchievementPointService.option_a37ccontskd);
-		//	options.add(AchievementPointService.option_a37dcl);
-		//	options.add(AchievementPointService.option_a37dsk);
+			HashSet<string> options = new HashSet<string>();
+			options.Add(AchievementPointService.option_a25frak);
+			options.Add(AchievementPointService.option_a32eb_1);
+			options.Add(AchievementPointService.option_a37ccontcl);
+			options.Add(AchievementPointService.option_a37ccontska);
+			options.Add(AchievementPointService.option_a37ccontskb);
+			options.Add(AchievementPointService.option_a37ccontskc);
+			options.Add(AchievementPointService.option_a37ccontskd);
+			options.Add(AchievementPointService.option_a37dcl);
+			options.Add(AchievementPointService.option_a37dsk);
 
-		//	for (String option : options)
-		//	{
-		//		boolean contains = false;
 
-		//		for (Entry entry : history.getSteps())
-		//		{
-		//			Branch branch = TreeParser.findBranchByCid(this, entry.getName());
-		//			if (branch != null)
-		//			{
-		//				if (branch.getOption().equals(option))
-		//				{
-		//					contains = true;
-		//					break;
-		//				}
+			foreach (string option in options)
+			{
+				bool contains = false;
 
-		//			}
-		//		}
+				foreach (Entry entry in _history.GetSteps())
+				{
+					Branch branch = TreeParser.FindBranchByCid(this, entry.Name);
+					if (branch != null)
+					{
+						if (branch.OptionId.Equals(option))
+						{
+							contains = true;
+							break;
+						}
 
-		//		if (!contains) return false;
-		//	}
+					}
+				}
 
-		//	for (InteractionEntry entry : history.getCompletedInteractions())
-		//	{
-		//		switch (entry.getType())
-		//		{
-		//			case InteractionFactory.INTERACTION_BEACON:
-		//				return entry.isCompleted();
-		//		}
-		//	}
+				if (!contains) return false;
+			}
 
-		//	return false;
-		//}
+			foreach (InteractionEntry entry in _history.CompletedInteractions)
+			{
+				switch (entry.Type)
+				{
+					case InteractionFactory.INTERACTION_BEACON:
+						return entry.IsCompleted;
+				}
+			}
+
+			return false;
+		}
 	}
 }

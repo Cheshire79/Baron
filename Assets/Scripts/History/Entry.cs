@@ -7,7 +7,7 @@ namespace Baron.History
 	public class Entry//: IValid todo the reason
 	{
 		[JsonProperty(PropertyName = "name")]
-		public string name;
+		private string _name;
 		[JsonProperty(PropertyName = "createdAt")]
 		public string createdAt;
 
@@ -21,12 +21,12 @@ namespace Baron.History
 
 		public Entry(string name) : this()
 		{
-			this.name = name;
+			_name = name;
 		}
 
-		public String getName()
+		public String Name
 		{
-			return name;
+			get { return _name; }
 		}
 
 		public String getCreatedAt()
@@ -36,12 +36,12 @@ namespace Baron.History
 
 		public override string ToString()
 		{
-			return createdAt + ": " + name;
+			return createdAt + ": " + _name;
 		}
 
 		public bool IsValid()
 		{
-			return name != null && createdAt != null;
+			return _name != null && createdAt != null;
 		}
 	}
 }

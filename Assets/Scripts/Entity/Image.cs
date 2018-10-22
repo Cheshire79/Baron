@@ -56,7 +56,7 @@ namespace Baron.Entity
 			get { return _description; }
 		}
 
-		public bool Bonus
+		public bool IsBonus
 		{
 			get { return _isSuperBonus || _isCompleteBonus || _isSpecialBonus; }
 		}
