@@ -351,6 +351,7 @@
     <Compile Include="Assets\Scripts\History\InteractionEntry.cs" />
     <Compile Include="Assets\Scripts\History\OptionActionEntry.cs" />
     <Compile Include="Assets\Scripts\History\Save.cs" />
+    <Compile Include="Assets\Scripts\Listener\ApplicationResumedListener.cs" />
     <Compile Include="Assets\Scripts\Listener\ImageViewedInBranchListener.cs" />
     <Compile Include="Assets\Scripts\Module\BaronModule.cs" />
     <Compile Include="Assets\Scripts\Service\AchievementPointService.cs" />

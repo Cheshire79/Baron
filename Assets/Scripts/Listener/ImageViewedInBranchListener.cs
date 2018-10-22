@@ -7,7 +7,7 @@ namespace Baron.Listener
 {
 	public class ImageViewedInBranchListener
 	{
-		protected GameBase _gameBase;
+		private GameBase _gameBase;
 
 		public ImageViewedInBranchListener(GameBase gameBase)
 		{
@@ -16,6 +16,7 @@ namespace Baron.Listener
 
 		public void OnReceive(string id)
 		{
+			CustomLogger.Log("ImageViewedInBranchListener ");
 			try
 			{
 				History.History history = _gameBase.History;

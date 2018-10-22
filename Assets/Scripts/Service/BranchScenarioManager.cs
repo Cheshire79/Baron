@@ -1,8 +1,7 @@
-﻿using Baron.Entity;
+﻿using Baron.Controller;
+using Baron.Entity;
 using CustomTools;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace Baron.Service
@@ -80,9 +79,9 @@ namespace Baron.Service
 						//Branch nextBranch = TreeParser.FindNextBranchByInventory(gameBase, altBranch);
 						//if (nextBranch != null)
 						//{
-					//		FindScenario(gameBase, nextBranch, scenario);
-					//		return;
-					//	}
+						//		FindScenario(gameBase, nextBranch, scenario);
+						//		return;
+						//	}
 					}
 				}
 			}
@@ -159,6 +158,47 @@ namespace Baron.Service
 			bool isInteraction = option != null && option.IsInteraction;
 
 			return isFinalBranch || isInteraction;
+		}
+
+		public void ResumeScenario(GameBase gameBase, BrunchController brunchController)
+		{
+
+			CustomLogger.Log("BranchScenarioManager resumeScenario");
+
+			//	if (!BranchPresenter.isCreated()) return;
+
+			//	final BranchPresenter presenter = BranchPresenter.getInstance();
+			//	final BranchActivity activity = presenter.getActivity();
+
+			try
+			{
+
+				//		presenter.onHistoryAvailable(new Presenter.OnHistoryAvailable() {
+				//		@Override
+
+				//		public void onSuccess(History history)
+				//		{
+
+				Scenario scenario = gameBase.History.GetScenario();
+				if (!scenario.IsValid())
+				{
+					CustomLogger.Log("BranchScenarioManager  Scenario is not valid. Resetting");
+					Branch branch = brunchController.GetStartBranch();//todo !!!!
+
+					scenario = CreateScenario(gameBase, branch.Cid);
+
+					gameBase.History.SetScenario(scenario);
+				}
+
+				//			presenter.getProgressBarManager().start(scenario);
+
+
+
+			}
+			catch (Exception e)
+			{
+				CustomLogger.Log("BranchScenarioManager ResumeScenario" + e);
+			}
 		}
 	}
 }

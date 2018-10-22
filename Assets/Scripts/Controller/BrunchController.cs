@@ -1,4 +1,5 @@
 ﻿using Baron.Entity;
+using Baron.Listener;
 using Baron.Service;
 using CustomTools;
 using System;
@@ -11,13 +12,14 @@ namespace Baron.Controller
 		private BranchScenarioManager _scenarioManager;
 		private BackgroundImageService _backgroundImageService;
 
+		private ApplicationResumedListener _applicationResumedListener;
 		public BrunchController(GameBase gameBase)
 		{
 			_gameBase = gameBase;
 			_scenarioManager = new BranchScenarioManager();
 			_backgroundImageService = new BackgroundImageService(_gameBase);
 			//backgroundAudioService = new BackgroundAudioService(activity);
-
+			_applicationResumedListener = new ApplicationResumedListener(_gameBase, _scenarioManager);
 
 
 		}
@@ -63,7 +65,10 @@ namespace Baron.Controller
 					}
 
 
+					// dispatch(Event.APPLICATION_RESUMED, false); next
 					// finished origin code
+					_applicationResumedListener.onReceive(false,this);
+
 					foreach ( var item in scenario.Branches)
 					{
 						CustomLogger.Log("Getted Branches "+item.Id +" "+item.OptionId);
