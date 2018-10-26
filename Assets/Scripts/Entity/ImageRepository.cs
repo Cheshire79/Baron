@@ -5,12 +5,8 @@ namespace Baron.Entity
 {
 	public class ImageRepository
 	{
-		//public static Image find(RobinzonActivity context, final String id)
-		//{
-		//	return find(context.getPresenter().getGameBase(), id);
-		//}
 
-		public static Image find(GameBase gameBase, string id)
+		public static Image Find(GameBase gameBase, string id)
 		{
 			if (id == null) return null;
 
@@ -94,7 +90,7 @@ namespace Baron.Entity
 		public static List<Image> getGalleryBonuses(GameBase gameBase)
 		{
 			List<Image> images = new List<Image>();
-			foreach (Image image  in gameBase.ImageRegistry)
+			foreach (Image image in gameBase.ImageRegistry)
 			{
 				if (!image.IsHidden)
 				{

@@ -224,7 +224,7 @@ namespace Baron.History // wait for check
 		private Branch _initialBranch;
 		//private Scenario _scenario;
 		public History(GameBase gameBase)
-		{ 
+		{
 			_gameBase = gameBase;
 			_saves = new List<Save>(SAVE_LIMIT);
 			_audio = new List<AudioEntry>(10);
@@ -474,6 +474,19 @@ namespace Baron.History // wait for check
 			_unsyncedPlayerEvents.Add(@event);
 		}
 
+		public void AddPlayerEvent(string name, string type)
+		{
+			if (name == null || type == null) return;
+
+			PlayerEvent @event = new PlayerEvent();
+			@event.Name = name;
+
+			@event.Type = type;
+
+			AddUnsyncedPlayerEvent(@event);
+			AddTotalPlayerEvent(@event);
+		}
+
 		public void AddCompletedInteraction(string name, string type, bool isCompleted)
 		{
 			InteractionEntry entry = new InteractionEntry(name);
@@ -587,6 +600,15 @@ namespace Baron.History // wait for check
 		public void AddCompletedInteraction(Interaction interaction, string type, bool isCompleted)
 		{
 			AddCompletedInteraction(interaction.Name, type, isCompleted);
+		}
+
+		public void AddCompletedOptionAction(String cid, String action)
+		{
+			OptionActionEntry entry = new OptionActionEntry(action);
+			entry.BranchCid = cid;
+
+
+			_activeSave.CompletedOptionActions.Add(entry);
 		}
 
 		public bool AddStep(Branch branch)

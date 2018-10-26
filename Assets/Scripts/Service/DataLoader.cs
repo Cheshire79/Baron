@@ -34,6 +34,36 @@ namespace Baron.Service
 			List<Option> options = JsonConvert.DeserializeObject<List<Option>>(tileFile);
 			gameBase.OptionRegistry= options;
 
+
+			txtAsset = (TextAsset)Resources.Load("Raw/images", typeof(TextAsset));
+			tileFile = Encoding.UTF8.GetString(txtAsset.bytes);
+			List<Image> images = JsonConvert.DeserializeObject<List<Image>>(tileFile);
+			gameBase.ImageRegistry = images;
+
+			txtAsset = (TextAsset)Resources.Load("Raw/audio", typeof(TextAsset));
+			tileFile = Encoding.UTF8.GetString(txtAsset.bytes);
+			List<Audio> audios = JsonConvert.DeserializeObject<List<Audio>>(tileFile);
+			gameBase.AudioRegistry = audios;
+
+
+
+			/*
+			 *  List<Item> items = loadItems(resources.openRawResource(R.raw.items));
+        gameBase.setItemRegistry(items);
+
+        List<Image> images = loadImages(resources.openRawResource(R.raw.images));
+        gameBase.setImageRegistry(images);
+
+        List<Audio> audio = loadAudio(resources.openRawResource(R.raw.audio));
+        gameBase.setAudioRegistry(audio);
+
+        List<Riddle> riddles = loadRiddles(resources.openRawResource(R.raw.riddles));
+        gameBase.setRiddleRegistry(riddles);
+
+        List<BeaconItem> beaconItems = loadBeaconItems(resources.openRawResource(R.raw.beacon_items));
+        gameBase.setBeaconItemRegistry(beaconItems);
+			 * */
+
 		}
 		public void TestLoadOptionJson()
 		{

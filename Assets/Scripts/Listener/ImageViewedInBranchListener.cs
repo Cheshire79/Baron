@@ -8,28 +8,30 @@ namespace Baron.Listener
 	public class ImageViewedInBranchListener
 	{
 		private GameBase _gameBase;
+		AchievementPointService _aps;
 
 		public ImageViewedInBranchListener(GameBase gameBase)
 		{
 			_gameBase = gameBase;
+			_aps = new AchievementPointService(_gameBase);
 		}
 
 		public void OnReceive(string id)
 		{
-			CustomLogger.Log("ImageViewedInBranchListener ");
+			CustomLogger.Log("ImageViewedInBranchListener OnReceivestring=============================== " + id);
 			try
 			{
 				History.History history = _gameBase.History;
 				if (history == null) return;
 
-				Image image = ImageRepository.find(_gameBase, id);
+				Image image = ImageRepository.Find(_gameBase, id);
 				if (image == null) return;
 
 				if (history.AddImage(image))
 				{
-					AchievementPointService aps = new AchievementPointService(_gameBase);
-					aps.OnImageOpened(image);
-					aps.UnlockAllImagesIfCompleted();
+					
+					_aps.OnImageOpened(image);
+					_aps.UnlockAllImagesIfCompleted();
 
 					//todo syncHistory();
 					history.ValidateProgress();

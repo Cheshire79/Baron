@@ -25,9 +25,9 @@ namespace Baron.Entity
 			get { return _id; }
 		}
 
-		public override float Duration
+		public override int Duration
 		{
-			get { return _duration; }
+			get { return (int)_duration; }
 			set { _duration = value; }
 		}
 

@@ -13,14 +13,12 @@ namespace Baron.Service
 			_gameBase = gameBase;
 		}
 
-		public void Resume(Scenario scenario//, GameBase gameBase
-			)
+		public void Resume(Scenario scenario)
 		{
 
 			try
 			{
-				Execute(scenario//, gameBase
-					);
+				Execute(scenario);
 			}
 			catch (Exception e)
 			{
@@ -28,8 +26,7 @@ namespace Baron.Service
 			}
 		}
 
-		public abstract void Execute(Scenario scenario//, GameBase gameBase
-			);
-
+		public abstract void Execute(Scenario scenario);
+	
 	}
 }

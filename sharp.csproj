@@ -321,7 +321,11 @@
     <Compile Include="Assets\Scripts\DI\BaronInjectors.cs" />
     <Compile Include="Assets\Scripts\DI\InjectionRoot.cs" />
     <Compile Include="Assets\Scripts\Entity\Audio.cs" />
+    <Compile Include="Assets\Scripts\Entity\AudioRepository .cs" />
     <Compile Include="Assets\Scripts\Entity\Branch.cs" />
+    <Compile Include="Assets\Scripts\Entity\Chrono\Category.cs" />
+    <Compile Include="Assets\Scripts\Entity\Chrono\GameEvent.cs" />
+    <Compile Include="Assets\Scripts\Entity\Chrono\Locale.cs" />
     <Compile Include="Assets\Scripts\Entity\Chrono\PlayerEvent.cs" />
     <Compile Include="Assets\Scripts\Entity\Entity.cs" />
     <Compile Include="Assets\Scripts\Entity\Image.cs" />
@@ -352,9 +356,12 @@
     <Compile Include="Assets\Scripts\History\OptionActionEntry.cs" />
     <Compile Include="Assets\Scripts\History\Save.cs" />
     <Compile Include="Assets\Scripts\Listener\ApplicationResumedListener.cs" />
+    <Compile Include="Assets\Scripts\Listener\AudioPlayedInBranchListener.cs" />
     <Compile Include="Assets\Scripts\Listener\ImageViewedInBranchListener.cs" />
+    <Compile Include="Assets\Scripts\Listener\TrackCompletedListener.cs" />
     <Compile Include="Assets\Scripts\Module\BaronModule.cs" />
     <Compile Include="Assets\Scripts\Service\AchievementPointService.cs" />
+    <Compile Include="Assets\Scripts\Service\BackgroundAudioService.cs" />
     <Compile Include="Assets\Scripts\Service\BackgroundImageService.cs" />
     <Compile Include="Assets\Scripts\Service\BackgroundMediaService.cs" />
     <Compile Include="Assets\Scripts\Service\BranchDecisionManager.cs" />
@@ -363,7 +370,9 @@
     <Compile Include="Assets\Scripts\Service\GameBase.cs" />
     <Compile Include="Assets\Scripts\Service\IDataLoader.cs" />
     <Compile Include="Assets\Scripts\Service\InteractionFactory.cs" />
+    <Compile Include="Assets\Scripts\Service\ProgressBarManager.cs" />
     <Compile Include="Assets\Scripts\Service\StringUtils.cs" />
+    <Compile Include="Assets\Scripts\Service\TrackService.cs" />
     <Compile Include="Assets\Scripts\Service\TreeParser.cs" />
     <Compile Include="Assets\Scripts\Strategy\Background\AbstractTransition.cs" />
     <Compile Include="Assets\Scripts\Strategy\Background\TransitionFactory.cs" />

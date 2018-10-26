@@ -26,9 +26,9 @@ namespace Baron.Entity
 
 		[JsonIgnore]
 		private float _duration;
-		public float Duration
+		public int Duration
 		{
-			get { return _duration; }
+			get { return (int)_duration; }
 			set { _duration = value; }
 		}
 
@@ -74,7 +74,7 @@ namespace Baron.Entity
 
 		public void Init()
 		{
-			float offset = 0;
+			int offset = 0;
 			int size = Branches.Count;
 			_duration = 0;
 

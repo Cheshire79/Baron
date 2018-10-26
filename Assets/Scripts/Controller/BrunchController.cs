@@ -11,13 +11,15 @@ namespace Baron.Controller
 		private GameBase _gameBase;
 		private BranchScenarioManager _scenarioManager;
 		private BackgroundImageService _backgroundImageService;
-
+		private TrackService _trackService;
 		private ApplicationResumedListener _applicationResumedListener;
 		public BrunchController(GameBase gameBase)
 		{
 			_gameBase = gameBase;
-			_scenarioManager = new BranchScenarioManager();
 			_backgroundImageService = new BackgroundImageService(_gameBase);
+			_trackService = new TrackService(_backgroundImageService, new BackgroundAudioService(_gameBase));
+
+			_scenarioManager = new BranchScenarioManager(_gameBase, this, _trackService);
 			//backgroundAudioService = new BackgroundAudioService(activity);
 			_applicationResumedListener = new ApplicationResumedListener(_gameBase, _scenarioManager);
 
@@ -67,19 +69,19 @@ namespace Baron.Controller
 
 					// dispatch(Event.APPLICATION_RESUMED, false); next
 					// finished origin code
-					_applicationResumedListener.onReceive(false,this);
+					_applicationResumedListener.onReceive(false, this);
 
-					foreach ( var item in scenario.Branches)
+					foreach (var item in scenario.Branches)
 					{
-						CustomLogger.Log("Getted Branches "+item.Id +" "+item.OptionId);
+						CustomLogger.Log("Getted Branches " + item.Id + " " + item.OptionId);
 
 					}
 
 
 					//
 					TrackBranch trackBranch = scenario.CurrentBranch;
-					if (trackBranch == null) return;					
-					Option option = OptionRepository.find(_gameBase, trackBranch.OptionId);
+					if (trackBranch == null) return;
+					Option option = OptionRepository.Find(_gameBase, trackBranch.OptionId);
 
 					foreach (var item in option.TrackImages)
 					{
@@ -90,7 +92,7 @@ namespace Baron.Controller
 
 					//HashSet<string> uniqueItems = new HashSet<string>();
 					//InventoryBranch currentInventoryBranch=TreeParser.FindInventoryBranch(_gameBase, currentBranch, uniqueItems);
-					string cid="";
+					string cid = "";
 					foreach (var item in currentBranch.InventoryBranches)
 					{
 						foreach (var item1 in item.Branches)
@@ -110,23 +112,23 @@ namespace Baron.Controller
 					CustomLogger.Log("________________________ " + cid);
 
 
-					scenario = _scenarioManager.CreateScenario(_gameBase, cid);
+					//scenario = _scenarioManager.CreateScenario(_gameBase, cid);
 
-					_gameBase.History.SetScenario(scenario);
-					foreach (var item in scenario.Branches)
-					{
-						CustomLogger.Log(" 2        Getted Branches " + item.Id + " " + item.OptionId);
-					}
+					//_gameBase.History.SetScenario(scenario);
+					//foreach (var item in scenario.Branches)
+					//{
+					//	CustomLogger.Log(" 2        Getted Branches " + item.Id + " " + item.OptionId);
+					//}
 
-					 trackBranch = scenario.CurrentBranch;
-					if (trackBranch == null) return;
-					 option = OptionRepository.find(_gameBase, trackBranch.OptionId);
+					// trackBranch = scenario.CurrentBranch;
+					//if (trackBranch == null) return;
+					// option = OptionRepository.Find(_gameBase, trackBranch.OptionId);
 
-					foreach (var item in option.TrackImages)
-					{
-						CustomLogger.Log("2        Getted Branches " + item.Id + " " + item.Duration);
+					//foreach (var item in option.TrackImages)
+					//{
+					//	CustomLogger.Log("2        Getted Branches " + item.Id + " " + item.Duration);
 
-					}
+					//}
 
 				}
 
@@ -232,6 +234,36 @@ namespace Baron.Controller
 			}
 
 			return TreeParser.FindBranchByCid(_gameBase, id);
+		}
+
+		public Option FindCurrentOption(bool enabledOnly)
+		{
+			try
+			{
+				History.History history = _gameBase.History;
+				if (history == null) return null;
+
+				Branch currentBranch = FindCurrentBranch(enabledOnly);
+				if (currentBranch == null) return null;
+
+				Option currentOption = OptionRepository.Find(_gameBase, currentBranch.OptionId);
+				if (currentOption == null) return null;
+
+				if (enabledOnly)
+				{
+					if (history.GetDisabledOptions().Contains(currentOption.Id))
+					{
+						CustomLogger.Log("BrunchController Option " + currentOption.Id + " is disabled");
+						return null;
+					}
+				}
+				return currentOption;
+			}
+			catch (Exception e)
+			{
+				CustomLogger.Log("BrunchController Exc" + e.Message);
+			}
+			return null;
 		}
 
 	}

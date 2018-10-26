@@ -366,5 +366,35 @@ namespace Baron.Service
 
 			return isAllImagesViewed && isAllBonusesViewed && isAllSpecialBonusesViewed;
 		}
+
+		public bool UnlockAllAudioIfCompleted()
+		{
+
+			History.History history = _gameBase.History;
+			if (history == null) return false;
+			
+
+			bool isAllFailsInHistory = true;
+			foreach (Audio a in _gameBase.GetAudioRegistryForGallery())
+			{
+				if (!history.ContainsInAudioHistory(a))
+				{
+					isAllFailsInHistory = false;
+					break;
+				}
+			}
+
+			if (isAllFailsInHistory && !history.IsAllAudioOpened)
+			{
+
+				OnAllAudioOpened();
+
+				history.IsAllAudioOpened = true;
+
+				return true;
+			}
+
+			return false;
+		}
 	}
 }

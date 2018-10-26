@@ -7,24 +7,35 @@ namespace Baron.Entity
 	[Serializable]
 	public class Option : Entity
 	{
-		public static string BEGIN = "BEGIN";
-		public static string DEATH = "DEATH";
-		public static string VICTORY = "VICTORY";
+		public const string BEGIN = "BEGIN";
+		public const string DEATH = "DEATH";
+		public const string VICTORY = "VICTORY";
 
-		public static string TYPE_DEFAULT = "DEFAULT";
-		public static string TYPE_PROXY = "PROXY";
-		public static string TYPE_INTERACTION = "INTERACTION";
+		public const string TYPE_DEFAULT = "DEFAULT";
+		public const string TYPE_PROXY = "PROXY";
+		public const string TYPE_INTERACTION = "INTERACTION";
 
-		public static string ACTION_DISABLE_ME = "DISABLE_ME";
-		public static string ACTION_INCREMENT_DAY = "INCREMENT_DAY";
-		public static string ACTION_ADVERTISEMENT = "ADV";
+		public const string ACTION_DISABLE_ME = "DISABLE_ME";
+		public const string ACTION_INCREMENT_DAY = "INCREMENT_DAY";
+		public const string ACTION_ADVERTISEMENT = "ADV";
 
 		[JsonProperty(PropertyName = "images")]
 		private List<TrackImage> _images;
 		[JsonProperty(PropertyName = "audio")]
 		private List<TrackAudio> _audio;
+		public List<TrackAudio> Audio
+		{
+			get { return _audio; }
+		}
+
 		[JsonProperty(PropertyName = "items")]
 		private List<Item> _items;
+
+		public List<Item> Items
+		{
+			get { return _items; }
+		}
+
 		[JsonProperty(PropertyName = "requiredItems")]
 		private List<Item> _requiredItems;
 		[JsonProperty(PropertyName = "actions")]
@@ -45,19 +56,21 @@ namespace Baron.Entity
 
 		public TrackImage CurrentImage
 		{
-			get	{ return _currentImage; }
-			set	{ _currentImage = value; }
+			get { return _currentImage; }
+			set { _currentImage = value; }
 		}
 
 		[JsonIgnore]
 		private TrackAudio _currentAudio;
 
-		public TrackAudio СurrentAudioe
+		public TrackAudio CurrentAudio
 		{
-			get	{ return _currentAudio; }
-			set	{ _currentAudio = value; }
+			get { return _currentAudio; }
+			set { _currentAudio = value; }
 		}
 
+		[JsonIgnore]
+		public bool IsInitialized;
 		public Option()
 		{
 			_images = new List<TrackImage>(2);
@@ -66,13 +79,12 @@ namespace Baron.Entity
 			_requiredItems = new List<Item>(1);
 			_actions = new List<string>(1);
 		}
-
-		public void Init()
+		public void Init(int offset)
 		{
-			CurrentImage = null;
+			_currentImage = null;
 			_currentAudio = null;
 
-			float offset = 0;
+			int imageOffset = offset;
 			int size = _images.Count;
 
 			for (int i = 0; i < size; i++)
@@ -81,6 +93,7 @@ namespace Baron.Entity
 
 				current.IsLocked = false;
 				current.IsCompleted = false;
+				current.AltId = null;
 
 				Interaction interaction = current.InteractionObject;
 				if (interaction != null)
@@ -110,8 +123,8 @@ namespace Baron.Entity
 				current.Previous = prev;
 				current.Next = next;
 
-				current.StartsAt = offset;
-				current.FinishesAt = offset += current.Duration;
+				current.StartsAt = imageOffset;
+				current.FinishesAt = imageOffset += current.Duration;
 
 				if (i == size - 1)
 				{
@@ -119,7 +132,7 @@ namespace Baron.Entity
 				}
 			}
 
-			offset = 0;
+			int audioOffset = offset;
 			size = _audio.Count;
 
 			for (int i = 0; i < size; i++)
@@ -151,8 +164,8 @@ namespace Baron.Entity
 				current.Previous = prev;
 				current.Next = next;
 
-				current.StartsAt = offset;
-				current.FinishesAt = offset += current.Duration;
+				current.StartsAt = audioOffset;
+				current.FinishesAt = audioOffset += current.Duration;
 
 				if (i == size - 1)
 				{
@@ -160,6 +173,7 @@ namespace Baron.Entity
 				}
 			}
 
+			IsInitialized = true;
 		}
 
 		public override string ToString()
@@ -203,9 +217,9 @@ namespace Baron.Entity
 			get { return _actions; }
 		}
 
-		public float Duration
+		public int Duration
 		{
-			get { return _duration; }
+			get { return (int)_duration; }
 			set { _duration = value; }
 		}
 

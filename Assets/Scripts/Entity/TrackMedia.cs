@@ -25,7 +25,7 @@ namespace Baron.Entity
 		[JsonIgnore]
 		protected TrackMedia _next;
 
-		//@Override//todo
+		//@Override//todo!
 		//public boolean equals(Object obj)
 		//{
 		//    if (obj instanceof Entity) {
@@ -33,11 +33,11 @@ namespace Baron.Entity
 		//    } else return super.equals(obj);
 		//}
 
-		public abstract float Duration { get; set; }
+		public abstract int Duration { get; set; }
 
-		public  float StartsAt
+		public  int StartsAt
         {
-            get { return _startsAt; }
+            get { return (int)_startsAt; }
             set { _startsAt = value; }
         }
 
@@ -72,9 +72,9 @@ namespace Baron.Entity
             return _next == null;
         }
 
-		public float Progress
+		public int Progress
         {
-            get { return _progress; }
+            get { return (int)_progress; }
             set { _progress = value; }
         }
 

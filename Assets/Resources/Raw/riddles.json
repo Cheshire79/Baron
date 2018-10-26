@@ -1,0 +1,352 @@
+[
+  {
+    "id": "1",
+    "audio": [
+      {
+        "id": "af1"
+      }
+    ],
+    "options": [
+      {
+        "text": "Й від дачі?!",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af1a"
+          }
+        ],
+        "duration": 1000
+      },
+      {
+        "text": "Так",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af1b"
+          }
+        ],
+        "duration": 500
+      },
+      {
+        "text": "Де гроші лежать?!!",
+        "type": "CORRECT",
+        "audio": [
+          {
+            "id": "af1c"
+          }
+        ],
+        "duration": 1000
+      },
+      {
+        "text": "Ні",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af1d"
+          }
+        ],
+        "duration": 500
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "audio": [
+      {
+        "id": "af2"
+      }
+    ],
+    "options": [
+      {
+        "text": "The fifth of September...",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af2a"
+          }
+        ],
+        "duration": 1500
+      },
+      {
+        "text": "The fifth of October...",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af2b"
+          }
+        ],
+        "duration": 1000
+      },
+      {
+        "text": "The fifth of November...",
+        "type": "CORRECT",
+        "audio": [
+          {
+            "id": "af2c"
+          }
+        ],
+        "duration": 1000
+      },
+      {
+        "text": "The fifth of December...",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af2d"
+          }
+        ],
+        "duration": 1000
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "audio": [
+      {
+        "id": "af3"
+      }
+    ],
+    "options": [
+      {
+        "text": "В житті завжди є вибір!",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af3a"
+          }
+        ],
+        "duration": 2000
+      },
+      {
+        "text": "У мене теж якось малувато варіантів",
+        "type": "CORRECT",
+        "audio": [
+          {
+            "id": "af3b"
+          }
+        ],
+        "duration": 3000
+      },
+      {
+        "text": "Неправда!",
+        "type": "NEUTRAL",
+        "audio": [
+          {
+            "id": "af3c"
+          }
+        ],
+        "duration": 0
+      },
+      {
+        "text": "А в кого він є?",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af3d"
+          }
+        ],
+        "duration": 1000
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "audio": [
+      {
+        "id": "af4"
+      }
+    ],
+    "options": [
+      {
+        "text": "Але я - особливий, третій тип - владика цього острову!",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af4a"
+          }
+        ],
+        "duration": 5000
+      },
+      {
+        "text": "У мене є пушки",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af4b"
+          }
+        ],
+        "duration": 1000
+      },
+      {
+        "text": "Але оскільки ми не на дикому заході, то не буде ніяких пушок і ніяких ям",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af4c"
+          }
+        ],
+        "duration": 2500
+      },
+      {
+        "text": "Ти будеш копати",
+        "type": "CORRECT",
+        "audio": [
+          {
+            "id": "af4d"
+          }
+        ],
+        "duration": 1000
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "audio": [
+      {
+        "id": "af5"
+      }
+    ],
+    "options": [
+      {
+        "text": "Тоді бийся!",
+        "type": "CORRECT",
+        "audio": [
+          {
+            "id": "af5a"
+          }
+        ],
+        "duration": 1000
+      },
+      {
+        "text": "Я - король Англії!",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af5b"
+          }
+        ],
+        "duration": 1500
+      },
+      {
+        "text": "Будь ласка, зроби це заради мене",
+        "type": "NEUTRAL",
+        "audio": [
+          {
+            "id": "af5c"
+          }
+        ],
+        "duration": 0
+      },
+      {
+        "text": "А якщо подумати?",
+        "type": "NEUTRAL",
+        "audio": [
+          {
+            "id": "af5d"
+          }
+        ],
+        "duration": 0
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "audio": [
+      {
+        "id": "af6"
+      }
+    ],
+    "options": [
+      {
+        "text": "Не хочу слухати твоїх пояснень",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af6a"
+          }
+        ],
+        "duration": 2000
+      },
+      {
+        "text": "Що, люба?",
+        "type": "NEUTRAL",
+        "audio": [
+          {
+            "id": "af6b"
+          }
+        ],
+        "duration": 0
+      },
+      {
+        "text": "Я весь увага",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af6c"
+          }
+        ],
+        "duration": 1000
+      },
+      {
+        "text": "Чесно кажучи, люба, мені наплювати",
+        "type": "CORRECT",
+        "audio": [
+          {
+            "id": "af6d"
+          }
+        ],
+        "duration": 2000
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "audio": [
+      {
+        "id": "af7"
+      }
+    ],
+    "options": [
+      {
+        "text": "Абракадабра",
+        "type": "CORRECT",
+        "audio": [
+          {
+            "id": "af7a"
+          }
+        ],
+        "duration": 1000
+      },
+      {
+        "text": "Хастала віста, бейбі!",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af7b"
+          }
+        ],
+        "duration": 2000
+      },
+      {
+        "text": "Це ще не кінець!",
+        "type": "INCORRECT",
+        "audio": [
+          {
+            "id": "af7c"
+          }
+        ],
+        "duration": 1000
+      },
+      {
+        "text": "Прочитати Заповіт",
+        "type": "DANGER",
+        "audio": [
+          {
+            "id": "af7d"
+          }
+        ],
+        "duration": 15000
+      }
+    ]
+  }
+]

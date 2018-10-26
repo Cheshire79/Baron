@@ -6,19 +6,19 @@ using System;
 
 namespace Baron.Service
 {
-	public class BackgroundImageService: BackgroundMediaService
+	public class BackgroundImageService : BackgroundMediaService
 	{
+		private string _currentImage = "";
 		private ImageViewedInBranchListener _imageViewedInBranchListener;
-		public BackgroundImageService(GameBase gameBase) :base(gameBase)
+		public BackgroundImageService(GameBase gameBase) : base(gameBase)
 		{
 			_imageViewedInBranchListener = new ImageViewedInBranchListener(gameBase);
 		}
 		public const string PREVIOUS_BACKGROUND = "unknown";
 
-		public override void Execute(Scenario scenario//, GameBase gameBase
-			)
+		public override void Execute(Scenario scenario)
 		{
-
+			 
 			// if (!BranchPresenter.isCreated()) return;
 
 			//BranchPresenter presenter = BranchPresenter.getInstance();
@@ -29,13 +29,13 @@ namespace Baron.Service
 				TrackBranch trackBranch = scenario.CurrentBranch;
 				if (trackBranch == null) return;
 
-			//	GameBase gameBase = presenter.getGameBase();
+				//	GameBase gameBase = presenter.getGameBase();
 				if (_gameBase == null) return;
 
 				History.History history = _gameBase.History;
 				if (history == null) return;
 
-				Option option = OptionRepository.find(_gameBase, trackBranch.OptionId);
+				Option option = OptionRepository.Find(_gameBase, trackBranch.OptionId);
 
 				if (option == null) return;
 
@@ -56,13 +56,19 @@ namespace Baron.Service
 
 				TrackImage currentTrackMedia = option.CurrentImage;
 				if (currentTrackMedia == null) return;
+				 if (!_currentImage.Equals(currentTrackMedia.Id) )
+				{
+					_currentImage=currentTrackMedia.Id;
 
-				currentTrackMedia.Progress=milliseconds;
+					CustomLogger.Log("----------image------------ BackgroundImageService =" + currentTrackMedia.Id + ", " + currentTrackMedia.AltId);
+				}
+
+				currentTrackMedia.Progress = milliseconds;
 
 				//BranchActivity activity = presenter.getActivity();
 
 				TrackImage previousTrackMedia = _gameBase.GetPreviousTrackImage();
-				String currentBackground = history.GetCurrentBackground();
+				string currentBackground = history.GetCurrentBackground();
 
 				switch (currentTrackMedia.Id)
 				{
@@ -78,8 +84,8 @@ namespace Baron.Service
 						break;
 				}
 
-				currentTrackMedia.Progress=milliseconds;
-
+				currentTrackMedia.Progress = milliseconds;
+				// do not save allready visit media
 				if (!history.ContainsInImageHistory(currentTrackMedia.Id))
 				{
 					// я так понимаю что тут я должен отметить что видел єту картинку
@@ -95,7 +101,7 @@ namespace Baron.Service
 
 					currentTrackMedia.IsLocked = true;
 
-					CustomLogger.Log(" BackgroundImageService execute " + currentTrackMedia + " " + scenario.Progress + "/" + scenario.Duration);
+					CustomLogger.Log(" BackgroundImageService execute " + currentTrackMedia.AltId + "    " + scenario.Progress + "/" + scenario.Duration);
 					// show picture
 					//AbstractTransition currentTransitionIm = TransitionFactory.getCurrentStrategy();
 					//if (currentTransitionIm != null)
@@ -103,11 +109,11 @@ namespace Baron.Service
 					//	currentTransitionIm.beforeBuild(currentTrackMedia);
 					//}
 
-				//	AbstractTransition transition = TransitionFactory.create(currentTrackMedia, activity);
+					//	AbstractTransition transition = TransitionFactory.create(currentTrackMedia, activity);
 
 					//transition.beforeBuild(currentTrackMedia);
 
-				//	transition.build(currentTrackMedia);
+					//	transition.build(currentTrackMedia);
 
 					_gameBase.SetPreviousTrackImage(currentTrackMedia);
 
@@ -122,6 +128,10 @@ namespace Baron.Service
 			{
 				CustomLogger.Log("BackgroundImageService " + e);
 			}
+		}
+		public void Pause()
+		{
+
 		}
 	}
 }

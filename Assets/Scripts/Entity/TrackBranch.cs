@@ -53,9 +53,9 @@ namespace Baron.Entity
 			set { _isBeforeNewScenario = value; }
 		}
 
-		public override float Duration
+		public override int Duration
 		{
-			get { return _duration; } //todo ask
+			get { return (int)_duration; } //todo ask
 			set { _duration = value; }
 		}
 

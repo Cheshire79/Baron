@@ -5,7 +5,7 @@ namespace Baron.Entity
 {
 	public class OptionRepository
 	{
-		public static Option find(GameBase gameBase, String id)
+		public static Option Find(GameBase gameBase, String id)
 		{
 			if (id == null) return null;
 
