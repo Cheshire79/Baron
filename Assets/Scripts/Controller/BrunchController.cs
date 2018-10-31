@@ -13,7 +13,20 @@ namespace Baron.Controller
 		private BackgroundImageService _backgroundImageService;
 		private TrackService _trackService;
 		private ApplicationResumedListener _applicationResumedListener;
-		public BrunchController(GameBase gameBase)
+		private BranchDecisionManager _branchDecisionManager;
+
+		public BranchDecisionManager BranchDecisionManager
+		{
+			get { return _branchDecisionManager; }
+		}
+
+		IBranchViewController _branchViewController;
+
+		public IBranchViewController BranchViewController
+		{
+			get { return _branchViewController; }
+		}
+		public BrunchController(GameBase gameBase, IBranchViewController branchViewController)
 		{
 			_gameBase = gameBase;
 			_backgroundImageService = new BackgroundImageService(_gameBase);
@@ -23,6 +36,8 @@ namespace Baron.Controller
 			//backgroundAudioService = new BackgroundAudioService(activity);
 			_applicationResumedListener = new ApplicationResumedListener(_gameBase, _scenarioManager);
 
+			_branchDecisionManager = new BranchDecisionManager(gameBase);
+			_branchViewController = branchViewController;
 
 		}
 		public void StartGame(bool isBlackBackground)

@@ -1,5 +1,7 @@
 ﻿using Baron.Controller;
+using Baron.Entity;
 using Baron.Service;
+using Baron.Strategy.Decision;
 using CustomTools;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,14 @@ namespace Baron.Listener
 	public class TrackCompletedListener
 	{
 		private BrunchController _brunchController;
+		GameBase _gameBase;
+
+		public TrackCompletedListener(BrunchController brunchController, GameBase gameBase)
+		{
+			_brunchController = brunchController;
+			_gameBase=gameBase;
+		}
+
 		public void OnReceive()
 		{
 			CustomLogger.Log("TrackCompletedListener");
@@ -30,14 +40,14 @@ namespace Baron.Listener
 			{
 			//	final BranchPresenter presenter = BranchPresenter.getInstance();
 
-				//Branch branch = presenter.findCurrentBranch(false);
+				Branch branch = _brunchController.FindCurrentBranch(false);
 
 				CustomLogger.Log("TrackCompletedListener Track completed for branch: " + " branch");
 
-				//BranchDecisionManager decisionManager = _brunchController.BranchDecisionManager;
+				BranchDecisionManager decisionManager = _brunchController.BranchDecisionManager;
 
-				//CompletedDecision decision = new CompletedDecision(decisionManager, branch);
-			//	decision.decide();
+				CompletedDecision decision = new CompletedDecision(decisionManager, branch, _brunchController, _gameBase);
+				decision.Decide();
 
 				//presenter.syncHistory();
 

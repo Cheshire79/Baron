@@ -314,8 +314,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Controller\AppController.cs" />
     <Compile Include="Assets\Scripts\Controller\BaseViewController.cs" />
+    <Compile Include="Assets\Scripts\Controller\BranchViewController.cs" />
     <Compile Include="Assets\Scripts\Controller\BrunchController.cs" />
     <Compile Include="Assets\Scripts\Controller\IAppController.cs" />
+    <Compile Include="Assets\Scripts\Controller\IBranchViewController.cs" />
     <Compile Include="Assets\Scripts\Controller\ILobbyController.cs" />
     <Compile Include="Assets\Scripts\Controller\LobbyController.cs" />
     <Compile Include="Assets\Scripts\DI\BaronInjectors.cs" />
@@ -358,6 +360,7 @@
     <Compile Include="Assets\Scripts\Listener\ApplicationResumedListener.cs" />
     <Compile Include="Assets\Scripts\Listener\AudioPlayedInBranchListener.cs" />
     <Compile Include="Assets\Scripts\Listener\ImageViewedInBranchListener.cs" />
+    <Compile Include="Assets\Scripts\Listener\ShowBranchesListener.cs" />
     <Compile Include="Assets\Scripts\Listener\TrackCompletedListener.cs" />
     <Compile Include="Assets\Scripts\Module\BaronModule.cs" />
     <Compile Include="Assets\Scripts\Service\AchievementPointService.cs" />
@@ -376,10 +379,13 @@
     <Compile Include="Assets\Scripts\Service\TreeParser.cs" />
     <Compile Include="Assets\Scripts\Strategy\Background\AbstractTransition.cs" />
     <Compile Include="Assets\Scripts\Strategy\Background\TransitionFactory.cs" />
+    <Compile Include="Assets\Scripts\Strategy\Decision\CompletedDecision.cs" />
+    <Compile Include="Assets\Scripts\Strategy\Decision\Decision.cs" />
     <Compile Include="Assets\Scripts\Tools\GUI\ButtonAdv.cs" />
     <Compile Include="Assets\Scripts\Tools\UnityLogToFBR.cs" />
     <Compile Include="Assets\Scripts\Utils\RMath.cs" />
     <Compile Include="Assets\Scripts\View\AbstractViewFactory.cs" />
+    <Compile Include="Assets\Scripts\View\BranchView\IBranchView.cs" />
     <Compile Include="Assets\Scripts\View\IView.cs" />
     <Compile Include="Assets\Scripts\View\IViewStack.cs" />
     <Compile Include="Assets\Scripts\View\LobbyView\ILobbyView.cs" />

@@ -7,13 +7,14 @@ namespace Baron.Controller
     {
         private ILobbyController _lobbyController;
 
-        public AppController(ILobbyController lobbyController, IDataLoader dataLoader)
+        public AppController(ILobbyController lobbyController, IDataLoader dataLoader, IBranchViewController branchViewController)
         {
 			GameBase gameBase = new GameBase();
 			History.History history= new History.History(gameBase);
 			gameBase.History = history;
 			dataLoader.LoadData(gameBase);
-			BrunchController brunchController = new BrunchController(gameBase);
+			
+			BrunchController brunchController = new BrunchController(gameBase, branchViewController);
 			brunchController.StartGame(true);
 
 

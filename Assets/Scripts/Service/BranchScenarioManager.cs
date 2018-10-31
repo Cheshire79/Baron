@@ -1,6 +1,7 @@
 ﻿using Baron.Controller;
 using Baron.Entity;
 using Baron.Entity.Chrono;
+using Baron.Listener;
 using CustomTools;
 using System;
 using System.Text;
@@ -12,11 +13,13 @@ namespace Baron.Service
 		private GameBase _gameBase;
 		private ProgressBarManager _progressBarManager;
 		private BrunchController _brunchController;
+		private TrackCompletedListener _trackCompletedListener;
 		public BranchScenarioManager(GameBase gameBase, BrunchController brunchController,  TrackService trackService)
 		{
 			_gameBase = gameBase;
 			_progressBarManager = new ProgressBarManager(gameBase, this, trackService);
 			_brunchController = brunchController;
+			_trackCompletedListener = new TrackCompletedListener(brunchController,_gameBase);
 		}
 
 
@@ -367,6 +370,7 @@ namespace Baron.Service
 			//final BranchPresenter presenter = BranchPresenter.getInstance();
 
 			//presenter.dispatch(Event.TRACK_COMPLETED); todo
+			_trackCompletedListener.OnReceive();
 		}
 		private void ResumeGameAndStartScenario()
 		{

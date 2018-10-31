@@ -47,15 +47,17 @@ namespace Baron
 
             Bind<IAppController>().To<AppController>().InSingletonScope();
             Bind<ILobbyController>().To<LobbyController>().InSingletonScope();
-       //     Bind<IGameController>().To<GameController>().InSingletonScope();
-         
+			Bind<IBranchViewController>().To<BranchViewController>().InSingletonScope();
+			
+	   //     Bind<IGameController>().To<GameController>().InSingletonScope();
 
-            #endregion
+
+			#endregion
 
 
-            #region View binds
+			#region View binds
 
-            Bind<IViewStack>().To<ViewStack>().InSingletonScope();
+			Bind<IViewStack>().To<ViewStack>().InSingletonScope();
             Bind<ILobbyView>().To<LobbyView>().InSingletonScope();
 
             #endregion
