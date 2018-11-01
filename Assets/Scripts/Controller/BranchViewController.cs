@@ -22,7 +22,7 @@ namespace Baron.Controller
 		public BranchViewController(IViewStack viewStack, AbstractViewFactory viewFactory) : base(viewStack)
 		{
 			_viewFactory = viewFactory;
-			//_view = viewFactory.CreateLobbyView();
+			_view = viewFactory.CreateBranchView();
 			//_view.Show();
 
 
@@ -77,6 +77,15 @@ namespace Baron.Controller
 			{
 				CustomLogger.Log("BranchViewController Exc" + e.Message);
 			}
+		}
+
+		public void UpdateDisplayedData(string text)
+		{
+			_view.UpdateDisplayedData(text);
+		}
+
+		public void Reset()
+		{
 		}
 	}
 }

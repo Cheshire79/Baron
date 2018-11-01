@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 106994343}
   - component: {fileID: 106994344}
+  - component: {fileID: 106994345}
   m_Layer: 0
   m_Name: Script
   m_TagString: Untagged
@@ -154,6 +155,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeToInstantiate: Baron.Game
+--- !u!114 &106994345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 106994342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a0515a221eb9854dad4602c053eb92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &123368837
 GameObject:
   m_ObjectHideFlags: 0

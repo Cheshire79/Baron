@@ -1,4 +1,5 @@
-﻿using Baron.Entity;
+﻿using Baron.Controller;
+using Baron.Entity;
 using CustomTools;
 using System;
 
@@ -7,10 +8,12 @@ namespace Baron.Service
 	public abstract class BackgroundMediaService
 	{
 		protected GameBase _gameBase;
+		protected IBranchViewController _branchViewController;
 
-		public BackgroundMediaService(GameBase gameBase)
+		public BackgroundMediaService(GameBase gameBase, IBranchViewController branchViewController)
 		{
 			_gameBase = gameBase;
+			_branchViewController = branchViewController;
 		}
 
 		public void Resume(Scenario scenario)

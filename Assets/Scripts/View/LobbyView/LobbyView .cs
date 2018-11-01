@@ -4,7 +4,7 @@ using Baron.View.LobbyView;
 using Uniject;
 using Uniject.Impl;
 
-namespace Assets.Scripts.View.LobbyView
+namespace Baron.View.LobbyView
 {
     public class LobbyView : TestableView, ILobbyView
     {

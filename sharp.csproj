@@ -381,10 +381,14 @@
     <Compile Include="Assets\Scripts\Strategy\Background\TransitionFactory.cs" />
     <Compile Include="Assets\Scripts\Strategy\Decision\CompletedDecision.cs" />
     <Compile Include="Assets\Scripts\Strategy\Decision\Decision.cs" />
+    <Compile Include="Assets\Scripts\Tools\Couple.cs" />
     <Compile Include="Assets\Scripts\Tools\GUI\ButtonAdv.cs" />
+    <Compile Include="Assets\Scripts\Tools\MainThreadRunner.cs" />
     <Compile Include="Assets\Scripts\Tools\UnityLogToFBR.cs" />
     <Compile Include="Assets\Scripts\Utils\RMath.cs" />
     <Compile Include="Assets\Scripts\View\AbstractViewFactory.cs" />
+    <Compile Include="Assets\Scripts\View\BranchView\BranchChildernReference.cs" />
+    <Compile Include="Assets\Scripts\View\BranchView\BranchView.cs" />
     <Compile Include="Assets\Scripts\View\BranchView\IBranchView.cs" />
     <Compile Include="Assets\Scripts\View\IView.cs" />
     <Compile Include="Assets\Scripts\View\IViewStack.cs" />

@@ -7,18 +7,18 @@ namespace Baron.Controller
     {
         private ILobbyController _lobbyController;
 
-        public AppController(ILobbyController lobbyController, IDataLoader dataLoader, IBranchViewController branchViewController)
+        public AppController(ILobbyController lobbyController, IDataLoader dataLoader)
         {
 			GameBase gameBase = new GameBase();
 			History.History history= new History.History(gameBase);
 			gameBase.History = history;
 			dataLoader.LoadData(gameBase);
 			
-			BrunchController brunchController = new BrunchController(gameBase, branchViewController);
-			brunchController.StartGame(true);
+			
 
 
-					   _lobbyController = lobbyController;
+			 _lobbyController = lobbyController;
+			_lobbyController.Init(gameBase);
 			// ShowLobby();
 			//dataLoader.TestLoadOptionJson();
 			//dataLoader.TestLoadTreeJson();
@@ -27,6 +27,7 @@ namespace Baron.Controller
 
 			//dataLoader.ReadFromJson();
 			//	dataLoader.TestArrayJson();
+			ShowLobby();
 		}
 
 		private void ShowLobby()

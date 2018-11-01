@@ -1,5 +1,7 @@
-﻿using Baron.Entity;
+﻿using Baron.Controller;
+using Baron.Entity;
 using Baron.Listener;
+using Baron.Tools;
 using CustomTools;
 using System;
 
@@ -10,7 +12,7 @@ namespace Baron.Service
 	{
 		private string _currentImage = "";
 		private ImageViewedInBranchListener _imageViewedInBranchListener;
-		public BackgroundImageService(GameBase gameBase) : base(gameBase)
+		public BackgroundImageService(GameBase gameBase, IBranchViewController branchViewController) : base(gameBase, branchViewController)
 		{
 			_imageViewedInBranchListener = new ImageViewedInBranchListener(gameBase);
 		}
@@ -61,6 +63,8 @@ namespace Baron.Service
 					_currentImage=currentTrackMedia.Id;
 
 					CustomLogger.Log("----------image------------ BackgroundImageService =" + currentTrackMedia.Id + ", " + currentTrackMedia.AltId);
+					MainThreadRunner.AddTask(()=>_branchViewController.UpdateDisplayedData("image "+currentTrackMedia.Id));
+
 				}
 
 				currentTrackMedia.Progress = milliseconds;

@@ -7,5 +7,6 @@ namespace Baron.View.BranchView
 {
 	public interface IBranchView : IView
 	{
+		void UpdateDisplayedData(string text);
 	}
 }

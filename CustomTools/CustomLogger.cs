@@ -55,7 +55,8 @@ using UnityEngine;
             Warnings = 0x2000,
             Errors = 0x4000,
             Exceptions = 0x8000,
-            All = 0xFFFF,
+			Test = 0x0010,
+			All = 0xFFFF,
 
         }
 

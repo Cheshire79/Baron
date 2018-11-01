@@ -2,9 +2,6 @@
 using Baron.Service;
 using CustomTools;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Baron.Listener
 {
@@ -64,6 +61,7 @@ namespace Baron.Listener
 				catch (Exception e)
 				{
 					CustomLogger.Log("ShowBranchesListener Exc" + e.Message);
+					//CustomLogger.LogException("ShowBranchesListener Exc" + e.Message);
 				}
 
 				//FragmentService.start(activity, R.id.branch_container, new BranchOptionsFragment());

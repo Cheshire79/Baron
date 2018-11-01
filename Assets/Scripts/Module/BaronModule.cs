@@ -1,16 +1,15 @@
-﻿using Assets.Scripts.View;
-using Assets.Scripts.View.LobbyView;
+﻿
+using Baron.View.LobbyView;
 using Baron.Controller;
 using Baron.Service;
 using Baron.View;
-using Baron.View.LobbyView;
+using Baron.View.BranchView;
 using Ninject.Modules;
 //using Poker.Factory;
 //using Baron.Model;
-using Poker.Network;
-//using Poker.View;
 using Uniject.Impl;
 using UnityEditor.PackageManager;
+using Assets.Scripts.View;
 
 namespace Baron
 {
@@ -59,20 +58,21 @@ namespace Baron
 
 			Bind<IViewStack>().To<ViewStack>().InSingletonScope();
             Bind<ILobbyView>().To<LobbyView>().InSingletonScope();
+			Bind<IBranchView>().To<BranchView>().InSingletonScope();
+			
+			#endregion
 
-            #endregion
-
-            #region Self Binding
+			#region Self Binding
 
 
-            // Bind<UIAtlas>().ToProvider<ResourceProvider<UIAtlas>>().WhenTargetHas(typeof(Resource));
+			// Bind<UIAtlas>().ToProvider<ResourceProvider<UIAtlas>>().WhenTargetHas(typeof(Resource));
 
-            #endregion
+			#endregion
 
-            #region Service
-            Bind<IDataLoader>().To<DataLoader>().InSingletonScope();
+			#region Service
+			Bind<IDataLoader>().To<DataLoader>().InSingletonScope();
             
             #endregion
         }
-    }
+	}
 }

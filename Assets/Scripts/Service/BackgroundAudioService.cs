@@ -1,5 +1,7 @@
-﻿using Baron.Entity;
+﻿using Baron.Controller;
+using Baron.Entity;
 using Baron.Listener;
+using Baron.Tools;
 using CustomTools;
 
 namespace Baron.Service
@@ -9,7 +11,7 @@ namespace Baron.Service
 		
 		private AudioPlayedInBranchListener _audioPlayedInBranchListener;
 		private string _currentImage = "";
-		public BackgroundAudioService(GameBase gameBase) : base(gameBase)
+		public BackgroundAudioService(GameBase gameBase, IBranchViewController branchViewController) : base(gameBase,  branchViewController)
 		{
 			_audioPlayedInBranchListener = new AudioPlayedInBranchListener(gameBase);
 		}
@@ -85,6 +87,8 @@ namespace Baron.Service
 				_currentImage = currentTrackAudio.Id;
 
 				CustomLogger.Log("------------ audio----------- BackgroundImageService =" + currentTrackAudio.Id + ", " );
+				MainThreadRunner.AddTask(() => _branchViewController.UpdateDisplayedData("audio " + currentTrackAudio.Id));
+
 			}
 			pauseScenario(scenario, currentTrackAudio);
 

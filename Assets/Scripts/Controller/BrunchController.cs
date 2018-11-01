@@ -29,8 +29,8 @@ namespace Baron.Controller
 		public BrunchController(GameBase gameBase, IBranchViewController branchViewController)
 		{
 			_gameBase = gameBase;
-			_backgroundImageService = new BackgroundImageService(_gameBase);
-			_trackService = new TrackService(_backgroundImageService, new BackgroundAudioService(_gameBase));
+			_backgroundImageService = new BackgroundImageService(_gameBase, branchViewController);
+			_trackService = new TrackService(_backgroundImageService, new BackgroundAudioService(_gameBase, branchViewController));
 
 			_scenarioManager = new BranchScenarioManager(_gameBase, this, _trackService);
 			//backgroundAudioService = new BackgroundAudioService(activity);

@@ -1,13 +1,12 @@
 ﻿using Baron.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Barons.Controller;
 
 namespace Baron.Controller
 {
-	public interface IBranchViewController
+	public interface IBranchViewController: IBaseViewController
 	{
 		void ShowLog(GameBase gameBase,BrunchController brunchController);
+		void UpdateDisplayedData(string text); 
+		 void Reset();
 	}
 }
