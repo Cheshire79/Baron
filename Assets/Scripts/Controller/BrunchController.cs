@@ -38,6 +38,7 @@ namespace Baron.Controller
 
 			_branchDecisionManager = new BranchDecisionManager(gameBase);
 			_branchViewController = branchViewController;
+			_branchViewController.Init(OptionClicked);
 
 		}
 		public void StartGame(bool isBlackBackground)
@@ -279,6 +280,18 @@ namespace Baron.Controller
 				CustomLogger.Log("BrunchController Exc" + e.Message);
 			}
 			return null;
+		}
+		public void OptionClicked(string cid)
+		{
+			_branchViewController.Reset();
+			_gameBase.History.ActiveSave.ClickedBranches.Push(cid);
+
+			Scenario scenario = _scenarioManager.CreateScenario(_gameBase, cid);
+
+			_gameBase.History.SetScenario(scenario);
+
+			////	GameplayService.resumeGameAndStartScenario();
+			_scenarioManager.ResumeScenario();
 		}
 
 	}

@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.View;
-using Baron.Service;
+﻿using Baron.Service;
 using Baron.View;
 using Baron.View.LobbyView;
 using Barons.Controller;

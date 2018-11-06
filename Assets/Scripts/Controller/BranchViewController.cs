@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.View;
-using Baron.Entity;
+﻿using Baron.Entity;
 using Baron.Service;
 using Baron.View;
 using Baron.View.BranchView;
@@ -19,10 +18,16 @@ namespace Baron.Controller
 			get { return _view; }
 		}
 		private List<Branch> _branches;
+		public void Init(Action<string> OptionClicked)
+		{
+			_view.Init(OptionClicked);
+		}
+	
 		public BranchViewController(IViewStack viewStack, AbstractViewFactory viewFactory) : base(viewStack)
 		{
 			_viewFactory = viewFactory;
 			_view = viewFactory.CreateBranchView();
+			
 			//_view.Show();
 
 
@@ -84,8 +89,14 @@ namespace Baron.Controller
 			_view.UpdateDisplayedData(text);
 		}
 
+		public void PlaceOptions(GameBase gameBase, BrunchController brunchController)
+		{
+			_view.PlaceOptions(gameBase, brunchController);
+
+		}
 		public void Reset()
 		{
+			_view.Reset();
 		}
 	}
 }

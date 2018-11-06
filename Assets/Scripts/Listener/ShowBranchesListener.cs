@@ -1,5 +1,6 @@
 ﻿using Baron.Controller;
 using Baron.Service;
+using Baron.Tools;
 using CustomTools;
 using System;
 
@@ -10,13 +11,13 @@ namespace Baron.Listener
 		IBranchViewController _branchViewController;
 
 
-	public ShowBranchesListener(IBranchViewController branchViewController)
+		public ShowBranchesListener(IBranchViewController branchViewController)
 		{
 			_branchViewController = branchViewController;
 		}
 
-		
-	public void OnReceive(GameBase gameBase,BrunchController brunchController)
+
+		public void OnReceive(GameBase gameBase, BrunchController brunchController)
 		{
 			//if (!BranchPresenter.isCreated()) return;
 
@@ -24,7 +25,7 @@ namespace Baron.Listener
 			{
 				CustomLogger.Log("ShowBranchesListener");
 
-			//	BranchPresenter presenter = BranchPresenter.getInstance();
+				//	BranchPresenter presenter = BranchPresenter.getInstance();
 				try
 				{
 					//presenter.removeBranchOptions();
@@ -35,7 +36,7 @@ namespace Baron.Listener
 					CustomLogger.Log("ShowBranchesListener Exc" + e.Message);
 				}
 
-				
+
 
 				try
 				{
@@ -50,7 +51,11 @@ namespace Baron.Listener
 
 				try
 				{
-					_branchViewController.ShowLog( gameBase,brunchController);
+
+
+					_branchViewController.ShowLog(gameBase, brunchController);
+					MainThreadRunner.AddTask(() =>
+					_branchViewController.PlaceOptions(gameBase, brunchController));
 					//FragmentManager fm = activity.getSupportFragmentManager();
 					//Fragment interactionFragment = fm.findFragmentById(R.id.interaction_container);
 					//if (interactionFragment != null)

@@ -1,7 +1,9 @@
-﻿using Assets.Scripts.View;
+﻿using Baron.Tools;
 using Baron.View.BranchView;
 using Baron.View.LobbyView;
+using CustomTools;
 using Ninject;
+using System;
 
 namespace Baron.View
 {
@@ -26,8 +28,13 @@ namespace Baron.View
 			//    Logger.LogException(new InvalidOperationException("CreateLobbyView should be run from the Main thread"));
 			return _kernel.Get<IBranchView>();
 		}
-	
 
+		public override TestableView CreateView<T>()
+		{
+			if (!MainThreadRunner.IsMainThread)
+				CustomLogger.LogException(new InvalidOperationException("CreateView should be run from the Main thread"));
+			return _kernel.Get<T>();
+		}
 
 	}
 }

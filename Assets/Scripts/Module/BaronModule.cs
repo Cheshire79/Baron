@@ -1,15 +1,10 @@
-﻿
-using Baron.View.LobbyView;
+﻿using Baron.View.LobbyView;
 using Baron.Controller;
 using Baron.Service;
 using Baron.View;
 using Baron.View.BranchView;
 using Ninject.Modules;
-//using Poker.Factory;
-//using Baron.Model;
-using Uniject.Impl;
-using UnityEditor.PackageManager;
-using Assets.Scripts.View;
+using Baron.Tools;
 
 namespace Baron
 {
@@ -59,7 +54,10 @@ namespace Baron
 			Bind<IViewStack>().To<ViewStack>().InSingletonScope();
             Bind<ILobbyView>().To<LobbyView>().InSingletonScope();
 			Bind<IBranchView>().To<BranchView>().InSingletonScope();
+			Bind<IInstancesCache>().To<InstancesCache>();
+			Bind<IOptionItem>().To<OptionItem>();
 			
+
 			#endregion
 
 			#region Self Binding
