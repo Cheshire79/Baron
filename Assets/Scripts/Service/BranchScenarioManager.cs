@@ -129,7 +129,7 @@ namespace Baron.Service
 
 			if (CanFinishScenario(altBranch, option)) return;
 
-			Branch match = null;// TreeParser.FindNextBranchByInventory(gameBase, altBranch);
+			Branch match =  TreeParser.FindNextBranchByInventory(gameBase, altBranch);
 
 			if (match != null)
 			{

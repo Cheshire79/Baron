@@ -268,7 +268,7 @@ namespace Baron.History // wait for check
 		{
 			return _initialBranch;
 		}
-		public String GetCurrentBackground()
+		public string GetCurrentBackground()
 		{
 			Save save = _activeSave;
 			String value = save.CurrentBackground;
@@ -277,7 +277,21 @@ namespace Baron.History // wait for check
 
 			return value;
 		}
+		public void SetCurrentBackground(string currentBackground)
+		{
 
+			if (currentBackground != null)
+			{
+				switch (currentBackground)
+				{
+					case BackgroundImageService.PREVIOUS_BACKGROUND:
+					case "black":
+						return;
+				}
+			}
+			
+			_activeSave.CurrentBackground = currentBackground;
+		}
 		public bool ContainsInImageHistory(string id)
 		{
 			foreach (Entry item in _images)
