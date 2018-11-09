@@ -11,5 +11,6 @@ namespace Baron.Controller
 		void UpdateDisplayedData(string text); 
 		 void Reset();
 		void Init(Action<string> OnClickedTest);
+		void SetImage(string image);
 	}
 }

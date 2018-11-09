@@ -13,5 +13,6 @@ namespace Baron.View.BranchView
 		void PlaceOptions(GameBase gameBase, BrunchController brunchController);
 		void Reset();
 		void Init(Action<string> OnClickedTest);
+		void SetImage(string image);
 	}
 }

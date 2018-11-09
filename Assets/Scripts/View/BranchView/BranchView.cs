@@ -20,7 +20,7 @@ namespace Baron.View.BranchView
 		private GridLayoutGroup _optionsList;
 		private List<OptionItem> _optionItems = new List<OptionItem>();
 		private Action<string> _optionClicked;
-
+		private UnityEngine.UI.Image _image;
 		public void Init(Action<string> optionClicked)
 		{
 			_optionClicked = optionClicked;
@@ -36,13 +36,19 @@ namespace Baron.View.BranchView
 			_info = references.Info;
 			_OptionsCache = instancesCache;
 			_optionsList = references.OptionsList;
+			_image = references.MainImage;
 		}
 
 		public void UpdateDisplayedData(string text)
 		{
 			_info.text = _info.text + "\n" + text + " ";
 		}
-
+		public void SetImage(string image)
+		{
+			Resources.UnloadUnusedAssets();
+			string path= "drawable/" + image;
+			_image.sprite = Resources.Load<Sprite>(path);
+		}
 		public void PlaceOptions(GameBase gameBase, BrunchController brunchController)
 		{
 			Branch currentBranch = brunchController.FindCurrentBranch(false);

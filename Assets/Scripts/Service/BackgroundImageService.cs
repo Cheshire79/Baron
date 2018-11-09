@@ -64,6 +64,7 @@ namespace Baron.Service
 
 					CustomLogger.Log("----------image------------ BackgroundImageService =" + currentTrackMedia.Id + ", " + currentTrackMedia.AltId);
 					MainThreadRunner.AddTask(()=>_branchViewController.UpdateDisplayedData("image "+currentTrackMedia.Id));
+					MainThreadRunner.AddTask(() => _branchViewController.SetImage(currentTrackMedia.Id));
 					history.SetCurrentBackground(currentTrackMedia.Id);// todo ask
 				}
 

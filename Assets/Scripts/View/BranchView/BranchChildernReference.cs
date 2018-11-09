@@ -7,5 +7,7 @@ namespace Baron.View.BranchView
 	{
 		public GridLayoutGroup OptionsList;
 		public Text Info;
+		public Image MainImage;
+
 	}
 }

@@ -88,12 +88,18 @@ namespace Baron.Controller
 		{
 			_view.UpdateDisplayedData(text);
 		}
-
+ 
 		public void PlaceOptions(GameBase gameBase, BrunchController brunchController)
 		{
 			_view.PlaceOptions(gameBase, brunchController);
 
 		}
+
+		public void SetImage(string image)
+		{
+			_view.SetImage(image);
+		}
+
 		public void Reset()
 		{
 			_view.Reset();
