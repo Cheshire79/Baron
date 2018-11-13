@@ -12,7 +12,7 @@ namespace Baron.Service
 		private long _lastUpdatedAt;
 		BranchScenarioManager _scenarioManager;
 		//	private BackgroundImageService _backgroundImageService;
-		private readonly System.Timers.Timer _scheduledTask = new System.Timers.Timer(3);
+		private readonly System.Timers.Timer _scheduledTask = new System.Timers.Timer(5);
 
 		private bool _isRunnig = false;
 

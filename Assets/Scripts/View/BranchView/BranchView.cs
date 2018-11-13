@@ -46,7 +46,7 @@ namespace Baron.View.BranchView
 		public void SetImage(string image)
 		{
 			Resources.UnloadUnusedAssets();
-			string path= "drawable/" + image;
+			string path = "drawable/" + image;
 			_image.sprite = Resources.Load<Sprite>(path);
 		}
 		public void PlaceOptions(GameBase gameBase, BrunchController brunchController)
@@ -66,21 +66,18 @@ namespace Baron.View.BranchView
 				for (int i = 0; i < _branches.Count; i++)
 				{
 
-					Branch branch = _branches[i];
-					Option option = OptionRepository.Find(gameBase, branch.OptionId);
-					CustomLogger.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-					CustomLogger.Log("BranchViewController Cid=" + branch.Cid + " Text=" + option.Text);
-					//	View v = adapter.getView(i);
+						Branch branch = _branches[i];
+						Option option = OptionRepository.Find(gameBase, branch.OptionId);
+						CustomLogger.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+						CustomLogger.Log("BranchViewController Cid=" + branch.Cid + " Text=" + option.Text);
+						var newOption = _OptionsCache.Get<OptionItem>();
+						newOption.Init(branch.Cid, option.Text, _optionClicked);
+						_optionItems.Add(newOption);
+						newOption.transform.parent = _optionsList.transform;
+						newOption.transform.localScale = new Vector3(1, 1, 1);
+						newOption.Show();
 
-					//	listView.addView(v);
-					var newOption = _OptionsCache.Get<OptionItem>();
-					_optionItems.Add(newOption);
-					newOption.transform.parent = _optionsList.transform;
-					newOption.Init(branch.Cid, option.Text, _optionClicked);
-					newOption.transform.localScale = new Vector3(1, 1, 1);				
-					newOption.Show();				
 				}
-
 				//	updatePosition();
 			}
 		}
@@ -96,6 +93,7 @@ namespace Baron.View.BranchView
 				item.Reset();
 				_OptionsCache.Put(item);
 			}
+			_optionItems.Clear();
 			_info.text = _info.text + "\n" + "-------------------------------------------------------------" + "\n";
 		}
 	}
