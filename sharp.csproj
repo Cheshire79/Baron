@@ -13,12 +13,14 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2017.3.0p4</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -355,9 +357,11 @@
     <Compile Include="Assets\Scripts\History\InteractionEntry.cs" />
     <Compile Include="Assets\Scripts\History\OptionActionEntry.cs" />
     <Compile Include="Assets\Scripts\History\Save.cs" />
+    <Compile Include="Assets\Scripts\Listener\ApplicationPausedListener.cs" />
     <Compile Include="Assets\Scripts\Listener\ApplicationResumedListener.cs" />
     <Compile Include="Assets\Scripts\Listener\AudioPlayedInBranchListener.cs" />
     <Compile Include="Assets\Scripts\Listener\ImageViewedInBranchListener.cs" />
+    <Compile Include="Assets\Scripts\Listener\ProgressChangeListener .cs" />
     <Compile Include="Assets\Scripts\Listener\ShowBranchesListener.cs" />
     <Compile Include="Assets\Scripts\Listener\TrackCompletedListener.cs" />
     <Compile Include="Assets\Scripts\Module\BaronModule.cs" />
@@ -392,6 +396,7 @@
     <Compile Include="Assets\Scripts\View\BranchView\IBranchView.cs" />
     <Compile Include="Assets\Scripts\View\BranchView\OptionItem.cs" />
     <Compile Include="Assets\Scripts\View\BranchView\OptionItemChildrenReference.cs" />
+    <Compile Include="Assets\Scripts\View\BranchView\Test.cs" />
     <Compile Include="Assets\Scripts\View\IView.cs" />
     <Compile Include="Assets\Scripts\View\IViewStack.cs" />
     <Compile Include="Assets\Scripts\View\LobbyView\ILobbyView.cs" />

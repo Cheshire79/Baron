@@ -14,5 +14,8 @@ namespace Baron.View.BranchView
 		void Reset();
 		void Init(Action<string> OnClickedTest);
 		void SetImage(string image);
+		void InitSlider(int max);
+
+		void SetSliderPosition(int pos, int max);
 	}
 }

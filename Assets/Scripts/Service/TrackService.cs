@@ -15,7 +15,7 @@ namespace Baron.Service
 			_audioService = audioService;
 
 		}
-		public void pause()
+		public void Pause()
 		{
 			CustomLogger.Log(" TrackService pause");
 
@@ -53,7 +53,7 @@ namespace Baron.Service
 
 			if (GameBase.isPaused)
 			{
-				pause();
+				Pause();
 				return;
 			}
 

@@ -104,5 +104,9 @@ namespace Baron.Controller
 		{
 			_view.Reset();
 		}
+		public void SetSliderPosition(int pos, int max)
+		{
+			_view.SetSliderPosition(pos,max);
+		}
 	}
 }

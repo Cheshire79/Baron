@@ -294,5 +294,9 @@ namespace Baron.Controller
 			_scenarioManager.ResumeScenario();
 		}
 
+		public void SetSliderPosition(int pos, int max)
+		{
+			_branchViewController.SetSliderPosition(pos,max);
+		}
 	}
 }

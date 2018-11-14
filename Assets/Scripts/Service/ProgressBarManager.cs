@@ -1,4 +1,5 @@
 ﻿using Baron.Entity;
+using Baron.Tools;
 using CustomTools;
 using System;
 
@@ -290,7 +291,7 @@ namespace Baron.Service
 
 			//presenter.hideLoadingIcon();
 
-			//setUIProgress(scenario.progress, scenario.duration);
+			setUIProgress(scenario.Progress, scenario.Duration);
 
 			//	TrackService trackService = presenter.getTrackService();
 			//	if (trackService != null)
@@ -301,6 +302,25 @@ namespace Baron.Service
 			//});
 
 			_lastUpdatedAt = DateTime.Now.Millisecond;
+		}
+
+		private void setUIProgress(int progress, int max)
+		{
+			MainThreadRunner.AddTask(() => _scenarioManager.SetSliderPosition(progress, max));
+					//bar.setProgress(progress);
+
+		}
+
+
+		public void TPause() // todo
+		{
+			CustomLogger.Log("ApplicationPausedListener ");
+			GameBase.isPaused = true;
+			_trackService.Pause();
+			Stop();
+
+
+			//presenter.getPlayerFragment().toggleControls(); todo
 		}
 	}
 

@@ -495,6 +495,11 @@ namespace Baron.Service
             }
         }
     }
+
+		public void SetSliderPosition(int pos, int max) //todo
+		{
+			_brunchController.SetSliderPosition(pos, max); ;
+		}
 	}
 
 }

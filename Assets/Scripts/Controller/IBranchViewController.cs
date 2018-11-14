@@ -12,5 +12,6 @@ namespace Baron.Controller
 		 void Reset();
 		void Init(Action<string> OnClickedTest);
 		void SetImage(string image);
+		 void SetSliderPosition(int pos, int max);
 	}
 }
