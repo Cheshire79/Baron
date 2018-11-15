@@ -500,6 +500,11 @@ namespace Baron.Service
 		{
 			_brunchController.SetSliderPosition(pos, max); ;
 		}
+
+		public void StopProgressBar()
+		{
+			_progressBarManager.Stop();
+		}
 	}
 
 }

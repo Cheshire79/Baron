@@ -27,15 +27,18 @@ namespace Baron.View.BranchView
 		private GridLayoutGroup _optionsList;
 		private List<OptionItem> _optionItems = new List<OptionItem>();
 		private Action<string> _optionClicked;
+		private Action<float> _onClickedAnotherPosition;
 		private UnityEngine.UI.Image _image;
 		private Slider _slider;
 		private EventTrigger _eventTrigger;
 		private Transform _topOverlay;
 		private Transform _bottomOverlay;
 		private Test _Test;
-		public void Init(Action<string> optionClicked)
+		private bool _IsAutomaticValueChange=false;
+		public void Init(Action<string> optionClicked, Action<float> OnClickedAnotherPosition)
 		{
 			_optionClicked = optionClicked;
+			_onClickedAnotherPosition = OnClickedAnotherPosition;
 		}
 		BranchChildernReference refer;
 		public BranchView([Resource("prefabs/view/BranchView")] TestableGameObject obj, IInstancesCache instancesCache)
@@ -55,27 +58,35 @@ namespace Baron.View.BranchView
 			_Test = references.Test;
 			_slider = references.Slider;
 
-			//_slider.OnDeselect.ListenerMethod. += SliderEvents;
-			//	_slider.OnPointerUp+=
+
 			_eventTrigger = references.EventTrigger;
-		//	_slider.onValueChanged.AddListener(ListenerMethod);
-			references.EndDrag += OnEndDrag1;
+			_slider.onValueChanged.AddListener(OnClickedAnotherPosition);
+		
+			_Test.EndDraging += OnEndDrugging;
 		}
-		public void OnEndDrag1(PointerEventData data)
+
+		private void OnClickedAnotherPosition(float value)
 		{
-			Debug.Log("drag end");
-			
+			if (!_Test.IsBeingDragged() && !_IsAutomaticValueChange)
+			{
+				Reset();
+				if (_onClickedAnotherPosition != null)
+					_onClickedAnotherPosition(value);
 
+				CustomLogger.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=" + _Test.IsBeingDragged()
+					+ " " + value);
+			}
 		}
-		public void ListenerMethod(float value)
+		private void OnEndDrugging()
 		{
-
-			CustomLogger.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=" + _Test.IsBeingDragged() 
-				+" "+value);
-
-
+			CustomLogger.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= value =" 
+				+ " " + _slider.value);
 		}
-
+		private void OnStartDrugging()
+		{
+			CustomLogger.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= value ="
+				+ " " + _slider.value);
+		}
 		public void UpdateDisplayedData(string text)
 		{
 			_info.text = _info.text + "\n" + text + " ";
@@ -146,8 +157,12 @@ namespace Baron.View.BranchView
 		{ }
 		public void SetSliderPosition(int pos, int max)
 		{
+			_IsAutomaticValueChange = true;
 			_slider.maxValue = max;
 			_slider.value = pos;
+			_IsAutomaticValueChange = false;
+
+
 				}
 		public void Reset()
 		{
@@ -163,11 +178,6 @@ namespace Baron.View.BranchView
 			_optionItems.Clear();
 			_info.text = _info.text + "\n" + "-------------------------------------------------------------" + "\n";
 		}
-		//public override void Show()
-		//{
-		//	if ()
-		//	base.Show();
-
-		//}
+	
 	}
 }

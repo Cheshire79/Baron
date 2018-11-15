@@ -38,7 +38,7 @@ namespace Baron.Controller
 
 			_branchDecisionManager = new BranchDecisionManager(gameBase);
 			_branchViewController = branchViewController;
-			_branchViewController.Init(OptionClicked);
+			_branchViewController.Init(OnOptionClicked, OnClickedAnotherPosition);
 
 		}
 		public void StartGame(bool isBlackBackground)
@@ -281,7 +281,7 @@ namespace Baron.Controller
 			}
 			return null;
 		}
-		public void OptionClicked(string cid)
+		private void OnOptionClicked(string cid)
 		{
 			_branchViewController.Reset();
 			_gameBase.History.ActiveSave.ClickedBranches.Push(cid);
@@ -296,7 +296,91 @@ namespace Baron.Controller
 
 		public void SetSliderPosition(int pos, int max)
 		{
-			_branchViewController.SetSliderPosition(pos,max);
+			_branchViewController.SetSliderPosition(pos, max);
 		}
+		private void OnClickedAnotherPosition(float progress)
+		{
+			StartScroll();
+			var scenario = _gameBase.History.GetScenario();
+			_scenarioManager.UpdateScenario(_gameBase,
+							scenario, (int)progress, scenario.Duration);
+
+			StopScroll();
+		}
+		//====================================
+		private void StopScroll()
+		{
+			_applicationResumedListener.onReceive(false, this);
+		}
+
+		public void StartScroll()
+		{
+			PauseGame();
+			//presenter.dispatch(new Intent(Event.APPLICATION_PAUSED));
+
+			// call public void TPause()
+
+			/*
+						final MediaPlayer player = AudioService.getPlayer(presenter.getActivity(), "sfx_audio_scroll_start");
+						player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+							@Override
+
+							public void onCompletion(MediaPlayer mp)
+						{
+							audioService.removeTrack(player);
+						}
+					});
+
+						audioService.addTrack(player);
+						player.start();
+
+						audioService.removeTrack(scrollPlayer);
+						scrollPlayer = AudioService.getPlayer(presenter.getActivity(), "sfx_audio_scroll_end");
+						scrollPlayer.setLooping(true);
+
+						audioService.addTrack(scrollPlayer);
+						scrollPlayer.start();
+						*/
+		}
+
+		public void PauseGame()
+		{
+
+			CustomLogger.Log("BrunchController pauseGame");
+
+			GameBase.isPaused = true;
+
+
+			//	TransitionFactory.stop();
+
+			_trackService.Pause();
+
+			_scenarioManager.StopProgressBar();
+			//	presenter.getPlayerFragment().toggleControls();
+
+			//TrackBranch trackBranch = history.getScenario().currentBranch;
+			//if (trackBranch != null)
+			//{
+			//	trackBranch.isLocked = false;
+			//}
+
+			//Option option = presenter.findCurrentOption(false);
+			//if (option != null)
+			//{
+			//	if (option.currentAudio != null)
+			//	{
+			//		option.currentAudio.isLocked = false;
+			//	}
+			//	if (option.currentImage != null)
+			//	{
+			//		option.currentImage.isLocked = false;
+			//	}
+			//}
+		}
+
+
 	}
+
+
 }
+	

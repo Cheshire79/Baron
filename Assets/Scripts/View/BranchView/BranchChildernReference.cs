@@ -21,28 +21,5 @@ namespace Baron.View.BranchView
 		public EventTrigger EventTrigger;
 		public Test Test;
 
-		public Action<PointerEventData> EndDrag;
-		//private bool isBeingDragged = false;
-		//public bool IsBeingDragged()
-		//{
-		//	return isBeingDragged;
-		//}
-
-		//public void OnEndDrag(PointerEventData data)
-		//{
-		//	CustomLogger.Log("drag end ref" + data.position);
-		//	Debug.Log("drag end");
-		//	isBeingDragged = false;
-		//	if (EndDrag != null)
-		//	{ EndDrag(data); }
-		//}
-
-		//public void OnBeginDrag(PointerEventData data)
-		//{
-		//	CustomLogger.Log("drag start ref" + data.position);
-		//	Debug.Log("drag start");
-
-		//	isBeingDragged = true;
-		//}
 	}
 }

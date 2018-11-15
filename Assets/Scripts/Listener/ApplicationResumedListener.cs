@@ -40,6 +40,7 @@ namespace Baron.Listener
 
 				// опускаем GameplayService
 				//GameplayService.resumeGameAndStartScenario();
+				GameBase.isPaused = false;
 				_scenarioManager.ResumeScenario();
 			}
 			catch (Exception e)
