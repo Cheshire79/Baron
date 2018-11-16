@@ -8,7 +8,7 @@ namespace Baron.View.BranchView
 {
 
 	
-	public class BranchChildernReference : MonoBehaviour//, IEndDragHandler, IBeginDragHandler
+	public class BranchChildernReference : MonoBehaviour
 	{
 		public GridLayoutGroup OptionsList;
 		public Text Info;
@@ -18,8 +18,10 @@ namespace Baron.View.BranchView
 		public Transform BottomOverlay;
 
 		public Slider Slider;
-		public EventTrigger EventTrigger;
+	
 		public Test Test;
+
+		public RectTransform canvasScaler;
 
 	}
 }

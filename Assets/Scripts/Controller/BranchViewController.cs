@@ -18,9 +18,9 @@ namespace Baron.Controller
 			get { return _view; }
 		}
 		private List<Branch> _branches;
-		public void Init(Action<string> OptionClicked, Action<float> OnClickedAnotherPosition)
+		public void Init(Action<string> OptionClicked, Action<float> OnClickedAnotherPosition, Action OnStartDebuging)
 		{
-			_view.Init(OptionClicked, OnClickedAnotherPosition);
+			_view.Init(OptionClicked, OnClickedAnotherPosition,  OnStartDebuging);
 		}
 	
 		public BranchViewController(IViewStack viewStack, AbstractViewFactory viewFactory) : base(viewStack)

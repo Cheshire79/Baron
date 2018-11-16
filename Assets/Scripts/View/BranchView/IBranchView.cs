@@ -12,7 +12,7 @@ namespace Baron.View.BranchView
 		void UpdateDisplayedData(string text);
 		void PlaceOptions(GameBase gameBase, BrunchController brunchController);
 		void Reset();
-		void Init(Action<string> OnClickedTest, Action<float> OnClickedAnotherPosition);
+		void Init(Action<string> OnClickedTest, Action<float> OnClickedAnotherPosition, Action OnStartDebuging);
 		void SetImage(string image);
 		void InitSlider(int max);
 

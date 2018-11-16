@@ -38,7 +38,7 @@ namespace Baron.Controller
 
 			_branchDecisionManager = new BranchDecisionManager(gameBase);
 			_branchViewController = branchViewController;
-			_branchViewController.Init(OnOptionClicked, OnClickedAnotherPosition);
+			_branchViewController.Init(OnOptionClicked, OnClickedAnotherPosition, StartScroll);
 
 		}
 		public void StartGame(bool isBlackBackground)

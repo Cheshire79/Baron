@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using Uniject;
 using Uniject.Impl;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Baron.View.BranchView
@@ -28,19 +27,22 @@ namespace Baron.View.BranchView
 		private List<OptionItem> _optionItems = new List<OptionItem>();
 		private Action<string> _optionClicked;
 		private Action<float> _onClickedAnotherPosition;
+		private Action _onStartDebuging;
 		private UnityEngine.UI.Image _image;
 		private Slider _slider;
-		private EventTrigger _eventTrigger;
+
 		private Transform _topOverlay;
 		private Transform _bottomOverlay;
 		private Test _Test;
-		private bool _IsAutomaticValueChange=false;
-		public void Init(Action<string> optionClicked, Action<float> OnClickedAnotherPosition)
+		private bool _IsAutomaticValueChange = false;
+		public void Init(Action<string> optionClicked, Action<float> OnClickedAnotherPosition, Action OnStartDebuging)
 		{
 			_optionClicked = optionClicked;
 			_onClickedAnotherPosition = OnClickedAnotherPosition;
+			_onStartDebuging = OnStartDebuging; ;
 		}
 		BranchChildernReference refer;
+		RectTransform _RectTransform;
 		public BranchView([Resource("prefabs/view/BranchView")] TestableGameObject obj, IInstancesCache instancesCache)
 			: base(obj)
 		{
@@ -59,10 +61,12 @@ namespace Baron.View.BranchView
 			_slider = references.Slider;
 
 
-			_eventTrigger = references.EventTrigger;
+
 			_slider.onValueChanged.AddListener(OnClickedAnotherPosition);
-		
+
 			_Test.EndDraging += OnEndDrugging;
+			_Test.StartDraging += OnStartDrugging;
+			_RectTransform = references.canvasScaler;
 		}
 
 		private void OnClickedAnotherPosition(float value)
@@ -79,11 +83,17 @@ namespace Baron.View.BranchView
 		}
 		private void OnEndDrugging()
 		{
-			CustomLogger.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= value =" 
+			CustomLogger.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= value ="
 				+ " " + _slider.value);
+
+			if (_onClickedAnotherPosition != null)
+				_onClickedAnotherPosition(_slider.value);
 		}
 		private void OnStartDrugging()
 		{
+			Reset();
+			if (_onStartDebuging != null)
+				_onStartDebuging();
 			CustomLogger.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= value ="
 				+ " " + _slider.value);
 		}
@@ -91,33 +101,63 @@ namespace Baron.View.BranchView
 		{
 			_info.text = _info.text + "\n" + text + " ";
 		}
+
+		ResourceRequest resourceRequest;
 		public void SetImage(string image)
 		{
 			Resources.UnloadUnusedAssets();
+
 			string path = "drawable/" + image;
-			_image.sprite = Resources.Load<Sprite>(path);
+			resourceRequest = Resources.LoadAsync<Sprite>(path);
+			resourceRequest.completed += onImageLoadCompleted;
+		}
+
+		private void onImageLoadCompleted(AsyncOperation obj)
+		{
+			obj.completed -= onImageLoadCompleted;
+			_image.sprite = resourceRequest.asset as Sprite;
+			resourceRequest = null;
+
+
+			//_image.sprite = Resources.LoadAsync<Sprite>(path);
 			_image.SetNativeSize();// todo
-			int imageHeight = (int)_image.sprite.rect.height;
-			CustomLogger.Log(CustomLogger.LogComponents.Test, string.Format(" Screen.height = {0}", imageHeight));
-			_screenHeight = Screen.height;
-			if (imageHeight < Screen.height)
+			int imageHeight = (int)(_image.sprite.rect.height);
+
+			CustomLogger.Log(CustomLogger.LogComponents.Exceptions, string.Format(" Screen.width = {0}", Screen.width));
+			CustomLogger.Log(CustomLogger.LogComponents.Exceptions, string.Format(" Screen.height = {0}", Screen.height));
+			CustomLogger.Log(CustomLogger.LogComponents.Errors, string.Format(" imageHeight = {0}, {1}, {2}", imageHeight, (imageHeight * _RectTransform.localScale.y), Screen.height));
+
+			_screenHeight = Screen.width;
+			if ((imageHeight * _RectTransform.localScale.y) < Screen.height)
 			{
+				CustomLogger.Log(CustomLogger.LogComponents.Errors, string.Format(" ==================== imageHeight = {0}, {1}, {2}", imageHeight, (imageHeight * _RectTransform.localScale.y), Screen.height));
+
 				int top = //imageHeight 
-					+  imageHeight/ 2//+170/2
+					+imageHeight / 2//+170/2
 					;
-				_screenHeight = Screen.height;
-				_topOverlay.localPosition=
+				//_screenHeight = Screen.height;
+				_topOverlay.localPosition =
 					//position = 
 					new Vector3(_topOverlay.localPosition.x,
 					top
 					// _topOverlay.position.y
 					, _topOverlay.localPosition.z);
 
-				int bottom = -( imageHeight) / 2;
+
+				int bottom = -(imageHeight) / 2;
 				_bottomOverlay.localPosition = new Vector3(_bottomOverlay.localPosition.x,
 					 bottom
 					// _topOverlay.position.y
 					, _bottomOverlay.localPosition.z);
+				_topOverlay.gameObject.SetActive(true);
+				_bottomOverlay.gameObject.SetActive(true);
+			}
+			else
+			{
+				CustomLogger.Log(CustomLogger.LogComponents.Warnings, string.Format(" Hide border ="));
+				CustomLogger.Log(CustomLogger.LogComponents.Exceptions, string.Format(" Hide border ="));
+				_topOverlay.gameObject.SetActive(false);
+				_bottomOverlay.gameObject.SetActive(false);
 			}
 		}
 		public void PlaceOptions(GameBase gameBase, BrunchController brunchController)
@@ -163,7 +203,7 @@ namespace Baron.View.BranchView
 			_IsAutomaticValueChange = false;
 
 
-				}
+		}
 		public void Reset()
 		{
 			foreach (var item in _optionItems)
@@ -178,6 +218,6 @@ namespace Baron.View.BranchView
 			_optionItems.Clear();
 			_info.text = _info.text + "\n" + "-------------------------------------------------------------" + "\n";
 		}
-	
+
 	}
 }
