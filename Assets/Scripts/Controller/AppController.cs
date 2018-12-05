@@ -1,6 +1,9 @@
 
 using Baron.Service;
-
+/*
+  //History history = new History(gameBase);
+	 
+	 */
 namespace Baron.Controller
 {
     public class AppController : IAppController
@@ -9,9 +12,8 @@ namespace Baron.Controller
 
         public AppController(ILobbyController lobbyController, IDataLoader dataLoader)
         {
-			GameBase gameBase = new GameBase();
-			History.History history= new History.History(gameBase);
-			gameBase.History = history;
+			GameBase gameBase = new GameBase();			
+			gameBase.History = new History.History();
 			dataLoader.LoadData(gameBase);
 			
 			

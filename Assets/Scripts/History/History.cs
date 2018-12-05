@@ -201,10 +201,6 @@ namespace Baron.History // wait for check
 		[JsonProperty(PropertyName = "achievementPoints")]
 		public int AchievementPoints;
 
-
-		[JsonIgnore]
-		private GameBase _gameBase;
-
 		[JsonProperty(PropertyName = "activeSave")]
 		private Save _activeSave;
 		/**
@@ -223,9 +219,8 @@ namespace Baron.History // wait for check
 		[JsonIgnore]
 		private Branch _initialBranch;
 		//private Scenario _scenario;
-		public History(GameBase gameBase)
+		public History()
 		{
-			_gameBase = gameBase;
 			_saves = new List<Save>(SAVE_LIMIT);
 			_audio = new List<AudioEntry>(10);
 			_images = new List<ImageEntry>(10);
@@ -247,26 +242,16 @@ namespace Baron.History // wait for check
 			_activeSave = new Save();
 			_player = new Player();
 		}
-		public void UpdateInitialBranch()
-		{
-			if (_gameBase == null) return;
 
-			Tree tree = _gameBase.Tree;
-			if (tree == null) return;
-
-			Branch initial = TreeParser.FindBranchByOption(_gameBase, GameBase.INITIAL_BRANCH, true, null);//checked 10_09_18
-			if (initial == null) return;
-			_initialBranch = initial;
-
-		}
 
 		public void SetScenario(Scenario scenario) //todo
 		{
 			_activeSave.Scenario = scenario;
 		}
-		public Branch GetInitialBranch()
+		public Branch InitialBranch
 		{
-			return _initialBranch;
+			get { return _initialBranch; }
+			set { _initialBranch = value; }
 		}
 		public string GetCurrentBackground()
 		{
@@ -516,20 +501,7 @@ namespace Baron.History // wait for check
 			_completedRiddles.Add(id);
 		}
 
-		public void Сlear()
-		{
-			CustomLogger.Log("History clear");
-			_activeSave.Reset();
-
-			Tree tree = _gameBase.Tree;
-			ResetBranches(tree);
-
-			UpdateInitialBranch();
-
-			_activeSave.Scenario.Cid = null;
-		}
-
-		private void ResetBranches(Branch root)
+		public void ResetBranches(Branch root)
 		{
 			if (root == null) return;
 

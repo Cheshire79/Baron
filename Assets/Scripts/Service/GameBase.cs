@@ -26,10 +26,10 @@ namespace Baron.Service
 		private List<Image> _imageRegistry;
 		private List<Audio> _audioRegistry;
 		private List<Item> _itemRegistry;
-		//private List<Riddle> riddleRegistry;
+		private List<Riddle> _riddleRegistry;
 		//private List<BeaconItem> beaconItemRegistry;
-		private TrackImage _previousTrackImage;
-		private TrackAudio currentTrackAudio;
+//		private TrackImage _previousTrackImage;
+	//	private TrackAudio currentTrackAudio;
 
 		public GameBase()
 		{
@@ -59,8 +59,6 @@ namespace Baron.Service
 			get { return _imageRegistry; }
 			set { _imageRegistry = value; }
 		}
-
-
 
 
 		//public void setImageRegistry(List<Image> imageRegistry)
@@ -137,27 +135,13 @@ namespace Baron.Service
 			set { _history = value; }
 		}
 
+		public List<Riddle> RiddleRegistry
+		{
+			get { return _riddleRegistry; }
+			set { value = _riddleRegistry; }
+		}
 
 
-		//public History getHistory()
-		//{
-		//	return history;
-		//}
-
-		//public void setHistory(History history)
-		//{
-		//	this.history = history;
-		//}
-
-		//public List<Riddle> getRiddleRegistry()
-		//{
-		//	return riddleRegistry;
-		//}
-
-		//public void setRiddleRegistry(List<Riddle> riddleRegistry)
-		//{
-		//	this.riddleRegistry = riddleRegistry;
-		//}
 
 		//public boolean hasHistory()
 		//{
@@ -181,8 +165,8 @@ namespace Baron.Service
 
 			try
 			{
-				_previousTrackImage = null;
-				currentTrackAudio = null;
+				//_previousTrackImage = null;
+				//currentTrackAudio = null;
 				isPaused = false;
 				isFinaleReached = false;
 				isTrackCompleted = false;
@@ -197,18 +181,18 @@ namespace Baron.Service
 			}
 		}
 
-		public TrackImage GetPreviousTrackImage()
-		{
-			return _previousTrackImage;
-		}
+		//public TrackImage GetPreviousTrackImage()
+		//{
+		//	return _previousTrackImage;
+		//}
 
-		public void SetPreviousTrackImage(TrackImage trackImage)
-		{
-			if (trackImage != null && BackgroundImageService.PREVIOUS_BACKGROUND.Equals(trackImage.Id))
-				return;
+		//public void SetPreviousTrackImage(TrackImage trackImage)
+		//{
+		//	if (trackImage != null && BackgroundImageService.PREVIOUS_BACKGROUND.Equals(trackImage.Id))
+		//		return;
 
-			_previousTrackImage = trackImage;
-		}
+		//	_previousTrackImage = trackImage;
+		//}
 
 		//public TrackAudio getCurrentTrackAudio()
 		//{
@@ -267,6 +251,30 @@ namespace Baron.Service
 			}
 
 			return false;
+		}
+
+		public void UpdateInitialBranch()
+		{
+
+			Tree tree = Tree;
+			if (tree == null) return;
+
+			Branch initial = TreeParser.FindBranchByOption(this, GameBase.INITIAL_BRANCH, true, null);//checked 10_09_18
+			if (initial == null) return;
+			_history.InitialBranch = initial;
+
+		}
+
+		public void Сlear()
+		{
+			CustomLogger.Log("History clear");
+			_history.ActiveSave.Reset();
+
+			_history.ResetBranches(Tree);
+
+			UpdateInitialBranch();
+
+			_history.ActiveSave.Scenario.Cid = null;
 		}
 	}
 }

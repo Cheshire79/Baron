@@ -225,35 +225,27 @@ namespace Baron.Entity
 
 		public void Update(int progress, int max)
 		{
-			CurrentImage = null;
-			_currentAudio = null;
+			_currentImage = firstImage();
+			_currentAudio = firstAudio();
 
-			if (progress == 0)
+			if (progress == max)
 			{
-				CurrentImage = firstImage();
-				_currentAudio = firstAudio();
-			}
-			else if (progress == max)
-			{
-				CurrentImage = lastImage();
+				_currentImage = lastImage();
 				_currentAudio = lastAudio();
 			}
 
 			foreach (TrackImage trackImage in _images)
 			{
 
+				trackImage.IsCompleted = false;
 				trackImage.Progress = progress;
 
 				if (trackImage.StartsAt <= progress && progress < trackImage.FinishesAt)
 				{
-					trackImage.IsCompleted = false;
-					CurrentImage = trackImage;
+					_currentImage = trackImage;
 				}
-				else if (progress < trackImage.StartsAt)
-				{
-					trackImage.IsCompleted = false;
-				}
-				else if (trackImage.FinishesAt <= progress)
+
+				if (progress >= trackImage.FinishesAt)
 				{
 					trackImage.IsCompleted = true;
 				}
@@ -262,16 +254,15 @@ namespace Baron.Entity
 			foreach (TrackAudio trackAudio in _audio)
 			{
 
+				trackAudio.IsCompleted = false;
+				trackAudio.Progress = progress;
+
 				if (trackAudio.StartsAt <= progress && progress < trackAudio.FinishesAt)
 				{
-					trackAudio.IsCompleted = false;
 					_currentAudio = trackAudio;
 				}
-				else if (progress < trackAudio.StartsAt)
-				{
-					trackAudio.IsCompleted = false;
-				}
-				else if (trackAudio.FinishesAt <= progress)
+
+				if (progress >= trackAudio.FinishesAt)
 				{
 					trackAudio.IsCompleted = true;
 				}

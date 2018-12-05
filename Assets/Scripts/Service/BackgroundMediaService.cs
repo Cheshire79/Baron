@@ -30,6 +30,10 @@ namespace Baron.Service
 		}
 
 		public abstract void Execute(Scenario scenario);
-	
+		public void Pause()
+		{
+
+		}
+
 	}
 }

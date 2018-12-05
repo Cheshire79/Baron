@@ -72,6 +72,12 @@ namespace Baron.History
 		 */
 		[JsonProperty(PropertyName = "currentBackground")]
 		public string CurrentBackground;
+
+		/**
+  * Last background image that was used instead of `unknown`
+  */
+		[JsonProperty(PropertyName = "lastUnknownBackground")]
+		public string LastUnknownBackground;
 		/**
 		 * Protractor interaction attempt count. Resets on NG
 		 */

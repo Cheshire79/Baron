@@ -338,6 +338,9 @@
     <Compile Include="Assets\Scripts\Entity\Option.cs" />
     <Compile Include="Assets\Scripts\Entity\OptionParams.cs" />
     <Compile Include="Assets\Scripts\Entity\OptionRepository.cs" />
+    <Compile Include="Assets\Scripts\Entity\Riddle.cs" />
+    <Compile Include="Assets\Scripts\Entity\RiddleAudio.cs" />
+    <Compile Include="Assets\Scripts\Entity\RiddleOption.cs" />
     <Compile Include="Assets\Scripts\Entity\Scenario.cs" />
     <Compile Include="Assets\Scripts\Entity\Sharing.cs" />
     <Compile Include="Assets\Scripts\Entity\Test\AudioArrayHolder.cs" />
@@ -373,6 +376,7 @@
     <Compile Include="Assets\Scripts\Service\BranchScenarioManager.cs" />
     <Compile Include="Assets\Scripts\Service\DataLoader.cs" />
     <Compile Include="Assets\Scripts\Service\GameBase.cs" />
+    <Compile Include="Assets\Scripts\Service\GameplayService.cs" />
     <Compile Include="Assets\Scripts\Service\IDataLoader.cs" />
     <Compile Include="Assets\Scripts\Service\InteractionFactory.cs" />
     <Compile Include="Assets\Scripts\Service\ProgressBarManager.cs" />

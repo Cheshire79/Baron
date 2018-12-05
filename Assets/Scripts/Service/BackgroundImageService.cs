@@ -18,9 +18,9 @@ namespace Baron.Service
 		}
 		public const string PREVIOUS_BACKGROUND = "unknown";
 
-		public override void Execute(Scenario scenario)
+		public override void Execute(Scenario scenario)//+
 		{
-			 
+
 			// if (!BranchPresenter.isCreated()) return;
 
 			//BranchPresenter presenter = BranchPresenter.getInstance();
@@ -41,7 +41,7 @@ namespace Baron.Service
 
 				if (option == null) return;
 
-				int milliseconds = scenario.Progress;
+			//	int milliseconds = scenario.Progress;
 
 				if (option.IsProxy)
 				{
@@ -58,39 +58,78 @@ namespace Baron.Service
 
 				TrackImage currentTrackMedia = option.CurrentImage;
 				if (currentTrackMedia == null) return;
-				 if (!_currentImage.Equals(currentTrackMedia.Id) )
+
+
+				TrackImage previousTrackMedia = (TrackImage)currentTrackMedia.Previous;
+				string currentBackground = history.GetCurrentBackground();
+
+
+				if (!_currentImage.Equals(currentTrackMedia.Id))
 				{
-					_currentImage=currentTrackMedia.Id;
+					_currentImage = currentTrackMedia.Id;
 
 					CustomLogger.Log("----------image------------ BackgroundImageService =" + currentTrackMedia.Id + ", " + currentTrackMedia.AltId);
-					MainThreadRunner.AddTask(()=>_branchViewController.UpdateDisplayedData("image "+currentTrackMedia.Id));
+					MainThreadRunner.AddTask(() => _branchViewController.UpdateDisplayedData("image " + currentTrackMedia.Id));
 					MainThreadRunner.AddTask(() => _branchViewController.SetImage(currentTrackMedia.Id));
 					history.SetCurrentBackground(currentTrackMedia.Id);// todo ask
 				}
 
-				currentTrackMedia.Progress = milliseconds;
+				//currentTrackMedia.Progress = milliseconds;
 
-				//BranchActivity activity = presenter.getActivity();
+				////BranchActivity activity = presenter.getActivity();
 
-				TrackImage previousTrackMedia = _gameBase.GetPreviousTrackImage();
-				string currentBackground = history.GetCurrentBackground();
+				//TrackImage previousTrackMedia = _gameBase.GetPreviousTrackImage();
+				//string currentBackground = history.GetCurrentBackground();
 
-				switch (currentTrackMedia.Id)
+
+
+
+
+
+
+
+
+
+				//switch (currentTrackMedia.Id)
+				//{
+				//	case PREVIOUS_BACKGROUND:
+				//		if (previousTrackMedia != null && !previousTrackMedia.Id.Equals(PREVIOUS_BACKGROUND))
+				//		{
+				//			currentTrackMedia.AltId = previousTrackMedia.Id;
+				//		}
+				//		else
+				//		{
+				//			currentTrackMedia.AltId = currentBackground;
+				//		}
+				//		break;
+				//}
+
+				if (PREVIOUS_BACKGROUND.Equals(currentTrackMedia.Id))
 				{
-					case PREVIOUS_BACKGROUND:
-						if (previousTrackMedia != null && !previousTrackMedia.Id.Equals(PREVIOUS_BACKGROUND))
-						{
-							currentTrackMedia.AltId = previousTrackMedia.Id;
-						}
-						else
-						{
-							currentTrackMedia.AltId = currentBackground;
-						}
-						break;
+					if (previousTrackMedia != null && !PREVIOUS_BACKGROUND.Equals(previousTrackMedia.Id))
+					{
+						currentTrackMedia.AltId = previousTrackMedia.Id;
+
+						history.ActiveSave.LastUnknownBackground = previousTrackMedia.Id;
+
+					}
+					else
+					{
+						currentTrackMedia.AltId = currentBackground;
+					}
+				}
+				else
+				{
+					currentTrackMedia.AltId = null;
 				}
 
-				currentTrackMedia.Progress = milliseconds;
+				///currentTrackMedia.Progress = milliseconds; todo
 				// do not save allready visit media
+
+				if (currentTrackMedia.IsLocked) return;
+
+				currentTrackMedia.IsLocked = true;
+
 				if (!history.ContainsInImageHistory(currentTrackMedia.Id))
 				{
 					// я так понимаю что тут я должен отметить что видел єту картинку
@@ -110,7 +149,7 @@ namespace Baron.Service
 					// show picture
 					//AbstractTransition currentTransitionIm = TransitionFactory.getCurrentStrategy();
 					//if (currentTransitionIm != null)
-					//{
+					//{ 
 					//	currentTransitionIm.beforeBuild(currentTrackMedia);
 					//}
 
@@ -120,7 +159,7 @@ namespace Baron.Service
 
 					//	transition.build(currentTrackMedia);
 
-					_gameBase.SetPreviousTrackImage(currentTrackMedia);
+					//_gameBase.SetPreviousTrackImage(currentTrackMedia); // what the fack
 
 				}
 				catch (Exception e)
@@ -134,9 +173,6 @@ namespace Baron.Service
 				CustomLogger.Log("BackgroundImageService " + e);
 			}
 		}
-		public void Pause()
-		{
 
-		}
 	}
 }

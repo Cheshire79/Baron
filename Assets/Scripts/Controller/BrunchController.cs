@@ -179,7 +179,7 @@ namespace Baron.Controller
 
 			UpdateInitialBranch(); // just create initial brunch
 
-			Branch defaultBranch = history.GetInitialBranch();
+			Branch defaultBranch = history.InitialBranch;
 			Branch currentBranch;
 			try
 			{
@@ -214,7 +214,7 @@ namespace Baron.Controller
 				return;
 			}
 
-			history.UpdateInitialBranch();
+			_gameBase.UpdateInitialBranch();
 		}
 
 		public Branch FindCurrentBranch(bool enabledOnly)
@@ -234,7 +234,7 @@ namespace Baron.Controller
 			TrackBranch trackBranch = history.GetScenario().CurrentBranch;
 			if (trackBranch == null)
 			{
-				return history.GetInitialBranch();
+				return history.InitialBranch;
 			}
 
 			string id = trackBranch.Id;
