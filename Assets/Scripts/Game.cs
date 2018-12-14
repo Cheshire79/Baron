@@ -19,7 +19,8 @@ namespace Baron
 
         public Game(TestableGameObject obj, IAppController appController) : base(obj)
         {
-            _appController = appController;
+		//	string _dataPath = Application.persistentDataPath;
+			_appController = appController;
             CustomLogger.Log("App Started");
             //   Statistics.OnStartSession();
             //  Preferences.Init();

@@ -10,10 +10,11 @@ namespace Baron.Controller
     {
         private ILobbyController _lobbyController;
 
-        public AppController(ILobbyController lobbyController, IDataLoader dataLoader)
+        public AppController(ILobbyController lobbyController, IDataLoader dataLoader, IHistoryManager historyManager)
         {
-			GameBase gameBase = new GameBase();			
-			gameBase.History = new History.History();
+			GameBase gameBase = new GameBase();
+			gameBase.Init(historyManager);
+
 			dataLoader.LoadData(gameBase);
 			
 			

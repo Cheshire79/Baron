@@ -50,8 +50,8 @@ namespace Baron.Service
 
 			try
 			{
-				// context.getPresenter().syncHistory(); 
-				//todo
+				_gameBase.syncHistory(); 
+				
 			}
 			catch (Exception e)
 			{
@@ -79,7 +79,7 @@ namespace Baron.Service
 				}
 
 
-				//presenter.syncHistory();
+				_gameBase.syncHistory();
 
 			}
 			catch (Exception e)
@@ -111,7 +111,7 @@ namespace Baron.Service
 				_gameBase.History.DecreaseProgress();
 
 
-				//	presenter.syncHistory();
+				_gameBase.syncHistory();
 			}
 			catch (Exception e)
 			{
@@ -162,7 +162,7 @@ namespace Baron.Service
 
 					_gameBase.History.SetScenario(altScenario);
 
-					//				presenter.syncHistory();
+					_gameBase.syncHistory();
 				}
 				else
 				{
@@ -194,7 +194,7 @@ namespace Baron.Service
 				_gameBase.History.ValidateProgress();
 
 
-				//	presenter.syncHistory();
+				_gameBase.syncHistory();
 			}
 			catch (Exception e)
 			{

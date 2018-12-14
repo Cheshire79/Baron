@@ -22,7 +22,7 @@ namespace Baron.Controller
 			_view = viewFactory.CreateLobbyView();
 			_branchViewController = branchViewController;
 
-			_view.PlayNowButtonClicked += PlayNow;
+			_view.BeginButtonClicked += PlayNow;
 			//    _view.BackButtonClicked += ShowDialogBoxOnExit; todo
 		}
 		public void Init(GameBase gameBase)
@@ -34,7 +34,7 @@ namespace Baron.Controller
 			CustomLogger.Log("Start clicked");
 			BrunchController brunchController = new BrunchController(_gameBase, _branchViewController);
 			_branchViewController.ShowView();
-			brunchController.StartGame(true);
+			brunchController.StartGame(true);			
 		}
 
 		public override IView View

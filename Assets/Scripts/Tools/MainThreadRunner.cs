@@ -74,7 +74,7 @@ namespace Baron.Tools
 			if (_tasks.Count < 1) return;
 			try
 			{
-				CustomLogger.LogWarning("Run task");
+				//CustomLogger.LogWarning("Run task");
 				Action action;
 				while (_tasks.Count > 0)
 				{

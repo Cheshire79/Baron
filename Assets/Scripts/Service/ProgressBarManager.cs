@@ -248,7 +248,7 @@ namespace Baron.Service
 					CustomLogger.Log("ProgressBarManager Exc" + e.Message);
 					Stop();
 					scenario.Unlock();
-					//presenter.syncHistory(); todo
+					_gameBase.syncHistory(); 
 
 					return;
 				}
@@ -268,7 +268,7 @@ namespace Baron.Service
 					CustomLogger.Log("ProgressBarManager Exc" + e.Message);
 					Stop();
 					scenario.Unlock();
-					//presenter.syncHistory();
+					_gameBase.syncHistory();
 
 					return;
 				}

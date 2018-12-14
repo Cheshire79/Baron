@@ -18,6 +18,12 @@ namespace Baron.Service
 		public static bool isTrackCompleted = false;
 		public static bool isLoaded = false;
 		public static bool isFinaleReached = false;
+		private IHistoryManager _historyManager;
+		public void Init( IHistoryManager historyManager)
+		{
+			_historyManager = historyManager;
+			_history = historyManager.FetchHistory();
+		}
 
 		private Tree _tree;
 		private History.History _history;
@@ -275,6 +281,12 @@ namespace Baron.Service
 			UpdateInitialBranch();
 
 			_history.ActiveSave.Scenario.Cid = null;
+		}
+
+		public void syncHistory()
+		{
+			_historyManager.Sync(_history);
+			
 		}
 	}
 }

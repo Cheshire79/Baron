@@ -7,5 +7,6 @@ namespace Baron.View.LobbyView
     public class LobbyChildernReference : MonoBehaviour
     {
         public ButtonAdv StartButtonGUI;
-    }
+		public ButtonAdv ContinueButtonGUI;
+	}
 }

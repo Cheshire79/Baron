@@ -69,8 +69,12 @@ namespace Baron
 
 			#region Service
 			Bind<IDataLoader>().To<DataLoader>().InSingletonScope();
-            
-            #endregion
-        }
+			Bind<IHistoryManager>().To<HistoryManager>();//.InSingletonScope();
+			
+
+
+
+			#endregion
+		}
 	}
 }

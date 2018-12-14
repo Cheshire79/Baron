@@ -4,6 +4,7 @@ namespace Baron.View.LobbyView
 {
     public interface ILobbyView : IView
     {
-        event Action PlayNowButtonClicked;
-    }
+        event Action BeginButtonClicked;
+		event Action ContinueButtonClicked;
+	}
 }

@@ -5,12 +5,15 @@ using CustomTools;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Baron.History // wait for check
 {
 	[Serializable]
 	public class History//todo fields
 	{
+		[JsonIgnore]
+		public Action<History> OnChange;
 		public static int DEFAULT_DAY = 1;
 		public static int SAVE_LIMIT = 4;
 
@@ -243,7 +246,6 @@ namespace Baron.History // wait for check
 			_player = new Player();
 		}
 
-
 		public void SetScenario(Scenario scenario) //todo
 		{
 			_activeSave.Scenario = scenario;
@@ -374,6 +376,9 @@ namespace Baron.History // wait for check
 					break;
 			}
 
+
+			if (OnChange != null)
+				OnChange(this);
 			return true;
 		}
 
