@@ -29,12 +29,14 @@ namespace Baron.History
 		{
 		}
 
+		[JsonIgnore]
 		public bool IsPlaying
 		{
 			get { return _isPlaying; }
 			set { _isPlaying = value; }
 		}
 
+		[JsonIgnore]
 		public bool IsPaused
 		{
 			get { return _isPaused; }

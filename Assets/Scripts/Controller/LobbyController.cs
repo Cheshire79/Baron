@@ -3,7 +3,7 @@ using Baron.View;
 using Baron.View.LobbyView;
 using Barons.Controller;
 using CustomTools;
-
+using System;
 
 namespace Baron.Controller
 {
@@ -15,26 +15,90 @@ namespace Baron.Controller
 
 		GameBase _gameBase;
 		//private IDialogBoxWindowController _dialogBoxWindowChipsController;
-
+		private BrunchController _brunchController;
+		private BrunchController BrunchController
+		{
+			get
+			{
+				return _brunchController ?? (_brunchController = new BrunchController(_gameBase, _branchViewController));
+			}
+		}
+		private GameplayService _gameplayService;
 		public LobbyController(IViewStack viewStack, AbstractViewFactory viewFactory, IBranchViewController branchViewController) : base(viewStack)
 		{
 			_viewFactory = viewFactory;
 			_view = viewFactory.CreateLobbyView();
 			_branchViewController = branchViewController;
 
-			_view.BeginButtonClicked += PlayNow;
+			_view.BeginButtonClicked += Begin;
+			_view.ContinueButtonClicked += Continue;
+			
 			//    _view.BackButtonClicked += ShowDialogBoxOnExit; todo
 		}
 		public void Init(GameBase gameBase)
 		{
 			_gameBase = gameBase;
+			_gameplayService = new GameplayService(gameBase);
 		}
-		private void PlayNow()
+		private void Begin()
 		{
-			CustomLogger.Log("Start clicked");
-			BrunchController brunchController = new BrunchController(_gameBase, _branchViewController);
-			_branchViewController.ShowView();
-			brunchController.StartGame(true);			
+			CustomLogger.Log("LobbyController On Begin clicked");
+
+			try
+			{
+				//boolean canShowConfirm = gameBase.hasHistory(); //todo adv
+
+				//if (canShowConfirm)
+				//{
+				//	if (bannerManager != null)
+				//		bannerManager.openNewStoryBanner(fragment);
+				//}
+				//else
+				{
+
+					StartNewGame();
+				}
+			}
+			catch (Exception e)
+			{
+				CustomLogger.Log("LobbyController " + e);
+			}
+
+
+			//BrunchController brunchController = new BrunchController(_gameBase, _branchViewController);
+
+
+
+		}
+		private void Continue()
+		{
+			//CustomLogger.Log("Continue clicked");
+			//BrunchController brunchController = new BrunchController(_gameBase, _branchViewController);
+			//_branchViewController.ShowView();
+			//brunchController.StartGame(true);
+
+			CustomLogger.Log("Continue clicked");
+			try
+			{
+				//ntinueButton.setEnabled(false);
+
+				PlayPlaySoundOnClick();
+				//
+				//MenuSFXManager.m5(activity);
+
+				//isableMenuButtons();
+
+
+				_gameplayService.CleanUpBeforeContinueGame();
+				//BrunchController.ShowView();
+				BrunchController.StartGame(true);
+
+			}
+
+			catch (Exception e)
+			{
+				CustomLogger.Log("LobbyController " + e);
+			}
 		}
 
 		public override IView View
@@ -61,6 +125,59 @@ namespace Baron.Controller
 		{
 			//HoldemTableWindowController.CloseFromAplication();
 
+		}
+		public void StartNewGame()
+		{
+			try
+			{
+				//beginButton.setEnabled(false);
+				PlayPlaySoundOnClick(); // just sound  &
+				//	disableMenuButtons();
+				//final Handler handler = activity.getPresenter().getHandler();
+
+				//MainMenuButtonManager manager = new MainMenuButtonManager(this, handler);
+				//manager.onBeginClicked(beginButton, new Runnable() {
+				_gameplayService.NewGame();
+				//	activity.moveToActivity(BranchActivity.class);
+				//_branchViewController.ShowView();
+				BrunchController.StartGame(true);
+			}
+			catch (Exception e)
+			{
+				CustomLogger.Log("LobbyController " + e);
+			}
+		}
+		public void PlayPlaySoundOnClick()
+		{
+			try
+			{
+
+				//	isButtonClicked = true;
+
+				//	AbstractActivity activity = (AbstractActivity)getActivity();
+				//	if (activity == null) return;
+
+				//	Presenter presenter = activity.getPresenter();
+				//	final AudioService audioService = presenter.getAudioService();
+
+				//	audioService.removeTrack(clickPlayer);
+				//	clickPlayer = AudioService.getPlayer(activity, "sfx_tablet");
+				//	clickPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+				//	@Override
+
+				//	public void onCompletion(MediaPlayer mp)
+				//	{
+				//		audioService.removeTrack(clickPlayer);
+				//	}
+				//});
+
+				//audioService.addTrack(clickPlayer);
+				//clickPlayer.start();
+			}
+			catch (Exception e)
+			{
+				CustomLogger.Log("LobbyController " + e);
+			}
 		}
 	}
 }

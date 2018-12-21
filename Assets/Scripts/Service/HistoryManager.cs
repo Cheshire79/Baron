@@ -88,13 +88,14 @@ namespace Baron.Service
 		}
 		public void PersistHistory(History.History history)
 		{
-			//	if (history.CreatedAt == null) //todo
-			//			history.CreatedAt = DateUtils.now();
+			if (history.CreatedAt == null) //todo
+				history.CreatedAt = DateTime.Now.ToString("yyyy-MM-ddThh:mm:ss");
+			//DateUtils.now();
 			if (history.Cid == null)
 				history.Cid = StringUtils.Cid();
 			//if (history.version == 0)
 			//	history.version = BuildConfig.VERSION_CODE;
-			//history.updatedAt = DateUtils.now();
+			history.UpdatedAt = DateTime.Now.ToString("yyyy-MM-ddThh:mm:ss");
 			ThreadExecutor.Instance.PushTask(() =>
 		{
 			try
@@ -336,6 +337,9 @@ namespace Baron.Service
 			{
 				JsonSerializer ser = new JsonSerializer();
 				ser.Serialize(jsonWriter, history);
+				CustomLogger.Log("HistoryManager save history string" + history.GetScenario().CurrentTrackBranch.Id);
+				CustomLogger.Log("HistoryManager  history.GetScenario().Cid ------------------------------=" + history.GetScenario().Cid);
+
 				jsonWriter.Flush();
 				stream.Position = 0;
 				using (MemoryStream zipStream = CreateToMemoryStream(stream, "test"))

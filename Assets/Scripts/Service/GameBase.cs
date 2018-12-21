@@ -44,7 +44,7 @@ namespace Baron.Service
 			_imageRegistry = new List<Image>();
 			_audioRegistry = new List<Audio>();
 			_itemRegistry = new List<Item>();
-			//riddleRegistry = new List<>();
+			_riddleRegistry = new List<Riddle>();
 			//beaconItemRegistry = new List<>();
 		}
 
@@ -259,7 +259,7 @@ namespace Baron.Service
 			return false;
 		}
 
-		public void UpdateInitialBranch()
+		public void SetInitialBranch()// old name 
 		{
 
 			Tree tree = Tree;
@@ -278,7 +278,7 @@ namespace Baron.Service
 
 			_history.ResetBranches(Tree);
 
-			UpdateInitialBranch();
+			SetInitialBranch();
 
 			_history.ActiveSave.Scenario.Cid = null;
 		}

@@ -28,7 +28,7 @@ namespace Baron.Service
 			try
 			{
 
-				TrackBranch trackBranch = scenario.CurrentBranch;
+				TrackBranch trackBranch = scenario.CurrentTrackBranch;
 				if (trackBranch == null) return;
 
 				//	GameBase gameBase = presenter.getGameBase();

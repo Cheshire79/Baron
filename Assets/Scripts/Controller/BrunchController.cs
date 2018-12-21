@@ -44,132 +44,77 @@ namespace Baron.Controller
 		public void StartGame(bool isBlackBackground)
 		{
 			CustomLogger.Log("BrunchController startGame");
-
+			_branchViewController.ShowView();
 			try
 			{
-				//	if (playerInteraction != null)
-				//		playerInteraction.build(null);
-
-				//	updateCurrentBranch();
+					UpdateCurrentBranch();
 
 				//	activity.getBranchLayout().setVisibility(View.VISIBLE);
 				//	activity.getBranchIntroContainer().setVisibility(View.GONE);
 				//	activity.getBlackCurtains().setVisibility(isBlackBackground ? View.VISIBLE : View.GONE);
 
-				//	if (overlayManager == null)
-				//	{
-				//		overlayManager = new OverlayManager(activity);
-				//	}
-
-				//	overlayManager.start();
-
-				//onHistoryAvailable(new OnHistoryAvailable() {
-				//@Override
-
-				//public void onSuccess(History history)
-				//{
-				//	History.History history = _gameBase.GetHistory();
-				Scenario scenario = new Scenario();
+				Scenario scenario = _gameBase.History.GetScenario();
 				if (scenario.Cid == null)
 				{
 					Branch branch = GetStartBranch();//checked 10_09_18
 					scenario = _scenarioManager.CreateScenario(_gameBase, branch.Cid);
 
 					_gameBase.History.SetScenario(scenario);
-
+				}
 					if (_backgroundImageService != null && _gameBase.History.GetCurrentBackground() != null)
 					{
 						_backgroundImageService.Resume(scenario);
 					}
 
-
 					// dispatch(Event.APPLICATION_RESUMED, false); next
-					// finished origin code
+					
 					_applicationResumedListener.onReceive(false, this);
 
-					foreach (var item in scenario.Branches)
-					{
-						CustomLogger.Log("Getted Branches " + item.Id + " " + item.OptionId);
+							
+				
 
-					}
-
-
-					//
-					TrackBranch trackBranch = scenario.CurrentBranch;
-					if (trackBranch == null) return;
-					Option option = OptionRepository.Find(_gameBase, trackBranch.OptionId);
-
-					foreach (var item in option.TrackImages)
-					{
-						CustomLogger.Log("Getted Branches " + item.Id + " " + item.Duration);
-
-					}
-					Branch currentBranch = FindCurrentBranch(false);
-
-					//HashSet<string> uniqueItems = new HashSet<string>();
-					//InventoryBranch currentInventoryBranch=TreeParser.FindInventoryBranch(_gameBase, currentBranch, uniqueItems);
-					string cid = "";
-					foreach (var item in currentBranch.InventoryBranches)
-					{
-						foreach (var item1 in item.Branches)
-						{
-							CustomLogger.Log("Getted inner  branches " + item1.OptionId);
-							cid = item1.Cid;
-						}
-
-					}
-					//	InventoryBranch currentInventoryBranch = currentBranch.InventoryBranches;
-					//	foreach (var item in currentInventoryBranch.Branches)
-					//{
-					//	CustomLogger.Log("Getted inner  branches " + item.OptionId );
-
-					//}
-
-					CustomLogger.Log("________________________ " + cid);
-
-
-					//scenario = _scenarioManager.CreateScenario(_gameBase, cid);
-
-					//_gameBase.History.SetScenario(scenario);
-					//foreach (var item in scenario.Branches)
-					//{
-					//	CustomLogger.Log(" 2        Getted Branches " + item.Id + " " + item.OptionId);
-					//}
-
-					// trackBranch = scenario.CurrentBranch;
-					//if (trackBranch == null) return;
-					// option = OptionRepository.Find(_gameBase, trackBranch.OptionId);
-
-					//foreach (var item in option.TrackImages)
-					//{
-					//	CustomLogger.Log("2        Getted Branches " + item.Id + " " + item.Duration);
-
-					//}
-
-				}
-
-				//NOTE Restore container
-				//	if (backgroundImageService != null && history.getCurrentBackground() != null)
-				//	{
-				//		backgroundImageService.resume(scenario);
-				//	}
-				//}
-
-				//	@Override
-
-				//	public void onError()
-				//	{
-
-				//	}
-				//});
 
 				//dispatch(Event.APPLICATION_RESUMED, false);
-
+				Test(scenario);
 			}
 			catch (Exception e)
 			{
 				CustomLogger.Log("BrunchController Exc" + e.Message);
 			}
+		}
+
+		private void Test(Scenario scenario)
+		{
+			foreach (var item in scenario.Branches)
+			{
+				CustomLogger.Log("Getted Branches " + item.Id + " " + item.OptionId);
+			}
+
+			TrackBranch trackBranch = scenario.CurrentTrackBranch;
+			if (trackBranch == null) return;
+			Option option = OptionRepository.Find(_gameBase, trackBranch.OptionId);
+
+			foreach (var item in option.TrackImages)
+			{
+				CustomLogger.Log("Getted Branches " + item.Id + " " + item.Duration);
+
+			}
+			Branch currentBranch = FindCurrentBranch(false);
+
+			//HashSet<string> uniqueItems = new HashSet<string>();
+			//InventoryBranch currentInventoryBranch=TreeParser.FindInventoryBranch(_gameBase, currentBranch, uniqueItems);
+			string cid = "";
+			foreach (var item in currentBranch.InventoryBranches)
+			{
+				foreach (var item1 in item.Branches)
+				{
+					CustomLogger.Log("Getted inner  branches " + item1.OptionId);
+					cid = item1.Cid;
+				}
+
+			}
+
+			CustomLogger.Log("________________________ " + cid);
 		}
 		public Branch GetStartBranch()
 		{
@@ -177,7 +122,7 @@ namespace Baron.Controller
 			History.History history = _gameBase.History;
 			if (history == null) return null;
 
-			UpdateInitialBranch(); // just create initial brunch
+			SetInitialBranch(); // just create initial brunch
 
 			Branch defaultBranch = history.InitialBranch;
 			Branch currentBranch;
@@ -199,22 +144,15 @@ namespace Baron.Controller
 			return currentBranch;
 		}
 
-		public void UpdateInitialBranch()
+		public void SetInitialBranch()
 		{
-			if (_gameBase == null)
-			{
-				CustomLogger.Log("BrunchController  _gameBase == null");
-				return;
-			}
-
 			History.History history = _gameBase.History;
 			if (history == null)
 			{
 				CustomLogger.Log("BrunchController  history == null");
 				return;
 			}
-
-			_gameBase.UpdateInitialBranch();
+			_gameBase.SetInitialBranch();
 		}
 
 		public Branch FindCurrentBranch(bool enabledOnly)
@@ -222,7 +160,7 @@ namespace Baron.Controller
 
 			if (_gameBase == null) return null;
 
-			UpdateInitialBranch();
+			SetInitialBranch();
 
 			History.History history = _gameBase.History;
 			if (history == null)
@@ -231,7 +169,7 @@ namespace Baron.Controller
 				return null;
 			}
 
-			TrackBranch trackBranch = history.GetScenario().CurrentBranch;
+			TrackBranch trackBranch = history.GetScenario().CurrentTrackBranch;
 			if (trackBranch == null)
 			{
 				return history.InitialBranch;
@@ -378,6 +316,39 @@ namespace Baron.Controller
 			//}
 		}
 
+		private void UpdateCurrentBranch()
+		{
+			CustomLogger.Log("BrunchController updateCurrentBranch");
+			try
+			{				
+				Branch currentBranch = null;
+
+				SetInitialBranch();
+
+				Branch initial = _gameBase.History.InitialBranch;
+				TrackBranch trackBranch = _gameBase.History.GetScenario().CurrentTrackBranch;
+
+				if (trackBranch != null)
+				{
+					currentBranch = TreeParser.FindBranchByCid(_gameBase, trackBranch.Id);
+				}
+
+				if (currentBranch == null)
+				{
+					currentBranch = initial;
+				}
+
+				Option option = OptionRepository.Find(_gameBase, currentBranch.OptionId);
+
+				CustomLogger.Log("BrunchController Current branch: " + currentBranch);
+				CustomLogger.Log("BrunchController Current option: " + option);
+
+			}
+			catch (Exception e)
+			{
+				CustomLogger.Log("BrunchController Exc" + e.Message);
+			}
+		}
 
 	}
 

@@ -27,6 +27,7 @@ namespace Baron.History
 		{			
 		}
 
+		[JsonIgnore]
 		public bool IsShown
 		{
 			get { return _isShown; }

@@ -146,18 +146,18 @@ namespace Baron.Service
 
 					CustomLogger.Log(" Track is completed: " + progress + "/" + max + " ms");
 
-					if (scenario.CurrentBranch.IsFinal)
+					if (scenario.CurrentTrackBranch.IsFinal)
 					{
 						_scenarioManager.OnFinaleReached(scenario);
 					}
-					else if (scenario.CurrentBranch.IsInteraction)
+					else if (scenario.CurrentTrackBranch.IsInteraction)
 					{
 						_scenarioManager.OnInteractionReached(scenario);
 					}
 					else
 					{
 
-						if (scenario.CurrentBranch.IsBeforeNewScenario)
+						if (scenario.CurrentTrackBranch.IsBeforeNewScenario)
 						{
 							_scenarioManager.OnNewScenarioReached(scenario);
 						}
@@ -230,7 +230,7 @@ namespace Baron.Service
 			if (scenario.IsCompleted)
 			{
 
-				_scenarioManager.OnBranchCompleted(scenario.CurrentBranch);
+				_scenarioManager.OnBranchCompleted(scenario.CurrentTrackBranch);
 
 				Finish();
 
@@ -241,7 +241,7 @@ namespace Baron.Service
 			{
 				try
 				{
-					_scenarioManager.OnBranchStarted(scenario.CurrentBranch);
+					_scenarioManager.OnBranchStarted(scenario.CurrentTrackBranch);
 				}
 				catch (Exception e)
 				{
@@ -256,12 +256,12 @@ namespace Baron.Service
 			else if (hasBranchChanged)
 			{
 
-				TrackBranch prev = (TrackBranch)scenario.CurrentBranch.Previous;
+				TrackBranch prev = (TrackBranch)scenario.CurrentTrackBranch.Previous;
 				_scenarioManager.OnBranchCompleted(prev);
 
 				try
 				{
-					_scenarioManager.OnBranchStarted(scenario.CurrentBranch);
+					_scenarioManager.OnBranchStarted(scenario.CurrentTrackBranch);
 				}
 				catch (Exception e)
 				{

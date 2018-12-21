@@ -49,11 +49,11 @@ namespace Baron.Entity
 		}
 
 		[JsonProperty(PropertyName = "currentBranch")]
-		private TrackBranch _currentBranch;
-		public TrackBranch CurrentBranch
+		private TrackBranch _currentTrackBranch;
+		public TrackBranch CurrentTrackBranch
 		{
-			get { return _currentBranch; }
-			set { _currentBranch = value; }
+			get { return _currentTrackBranch; }
+			set { _currentTrackBranch = value; }
 		}
 
 		[JsonIgnore]
@@ -69,7 +69,7 @@ namespace Baron.Entity
 		{
 			return _isInit && Branches.Count > 0
 					&& _progress >= 0 && _duration >= 0
-					&& _currentBranch != null;
+					&& _currentTrackBranch != null;
 		}
 
 		public void Init()
@@ -155,17 +155,17 @@ namespace Baron.Entity
 
 		public bool Update()
 		{
-			String prevBranch = _currentBranch != null ? _currentBranch.Id : null;
+			String prevBranch = _currentTrackBranch != null ? _currentTrackBranch.Id : null;
 
-			_currentBranch = null;
+			_currentTrackBranch = null;
 
 			if (_progress == 0)
 			{
-				_currentBranch = First();
+				_currentTrackBranch = First();
 			}
 			else if (_progress == _duration)
 			{
-				_currentBranch = Last();
+				_currentTrackBranch = Last();
 			}
 
 			foreach (TrackBranch trackBranch in _branches)
@@ -178,7 +178,7 @@ namespace Baron.Entity
 					trackBranch.IsCompleted = false;
 					trackBranch.IsLocked = true;
 
-					_currentBranch = trackBranch;
+					_currentTrackBranch = trackBranch;
 
 				}
 				else if (_progress < trackBranch.StartsAt)
@@ -193,7 +193,7 @@ namespace Baron.Entity
 				}
 			}
 
-			return _currentBranch != null && !_currentBranch.Id.Equals(prevBranch);
+			return _currentTrackBranch != null && !_currentTrackBranch.Id.Equals(prevBranch);
 		}
 	}
 }

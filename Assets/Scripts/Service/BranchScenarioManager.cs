@@ -258,9 +258,9 @@ namespace Baron.Service
 				//	final BranchActivity activity = presenter.getActivity();
 				//	final Handler handler = presenter.getHandler();
 
-				Branch branch = TreeParser.FindBranchByCid(_gameBase, scenario.CurrentBranch.Id);
+				Branch branch = TreeParser.FindBranchByCid(_gameBase, scenario.CurrentTrackBranch.Id);
 
-				String option = scenario.CurrentBranch.OptionId;
+				String option = scenario.CurrentTrackBranch.OptionId;
 
 				CustomLogger.Log("BranchScenarioManager Final branch reached " + option);
 
@@ -342,7 +342,7 @@ namespace Baron.Service
 			//	public void onSuccess(History history)
 			//{
 
-			Branch currentBranch = TreeParser.FindBranchByCid(_gameBase, scenario.CurrentBranch.Id);
+			Branch currentBranch = TreeParser.FindBranchByCid(_gameBase, scenario.CurrentTrackBranch.Id);
 			Branch nextBranch = TreeParser.FindNextBranchByInventory(_gameBase, currentBranch);
 			if (nextBranch == null)
 			{
@@ -354,7 +354,7 @@ namespace Baron.Service
 			Scenario nextScenario = CreateScenario(_gameBase, nextBranch.Cid);
 
 			_gameBase.History.SetScenario(nextScenario);
-
+			_gameBase.syncHistory();//TODO
 			//GameplayService.resumeGameAndStartScenario();
 			ResumeGameAndStartScenario();
 

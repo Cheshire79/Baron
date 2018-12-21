@@ -57,7 +57,7 @@ namespace Baron.Service
 
 			//	if (!canSchedule()) return;
 
-			TrackBranch trackBranch = scenario.CurrentBranch;
+			TrackBranch trackBranch = scenario.CurrentTrackBranch;
 			int milliseconds = scenario.Progress;
 			int trackDuration = scenario.Duration;
 

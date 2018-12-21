@@ -2,8 +2,7 @@
 using CustomTools;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
 
 namespace Baron.Service
 {
@@ -11,7 +10,7 @@ namespace Baron.Service
 	{
 		private GameBase _gameBase;
 
-		GameplayService(GameBase gameBase)
+		public GameplayService(GameBase gameBase)
 		{
 			_gameBase = gameBase;
 		}
@@ -33,7 +32,7 @@ namespace Baron.Service
 					_gameBase.History.ValidateProgress();
 					_gameBase.History.DecreaseProgress();
 					//option is in History
-					TrackBranch trackBranch = _gameBase.History.GetScenario().CurrentBranch;
+					TrackBranch trackBranch = _gameBase.History.GetScenario().CurrentTrackBranch;
 					if (trackBranch != null)
 					{
 						Option option = OptionRepository.Find(_gameBase, trackBranch.OptionId);
@@ -62,10 +61,8 @@ namespace Baron.Service
 		private void CleanUpBeforeNewGame()
 		{
 			CustomLogger.Log("GameplayService cleanUpBeforeNewGame");
-
 			try
 			{
-
 				_gameBase.Сlear();
 				_gameBase.History.Day = History.History.DEFAULT_DAY;
 				_gameBase.History.SetCurrentBackground(null);
@@ -73,13 +70,9 @@ namespace Baron.Service
 				_gameBase.History.ValidateProgress();
 				_gameBase.History.DecreaseProgress();
 
-				foreach (Riddle riddle in _gameBase.RiddleRegistry)
-				{
-					riddle.Reset();
-				}
-
-
-				_gameBase.syncHistory();
+				foreach (Riddle riddle in _gameBase.RiddleRegistry)			
+					riddle.Reset();				
+				//_gameBase.syncHistory(); //toCheck save
 
 			}
 			catch (Exception e)
@@ -91,15 +84,12 @@ namespace Baron.Service
 		public void NewGame()
 		{
 			CustomLogger.Log(" GameplayService newGame");
-
 			CleanUpBeforeNewGame();
-
 			try
 			{
-
 				_gameBase.History.NGplus();
 
-				_gameBase.UpdateInitialBranch(); // +
+				_gameBase.SetInitialBranch(); // +
 
 				Branch initial = _gameBase.History.InitialBranch;
 				if (initial != null)

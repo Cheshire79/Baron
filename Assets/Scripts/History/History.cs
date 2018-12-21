@@ -250,6 +250,7 @@ namespace Baron.History // wait for check
 		{
 			_activeSave.Scenario = scenario;
 		}
+		[JsonIgnore]
 		public Branch InitialBranch
 		{
 			get { return _initialBranch; }

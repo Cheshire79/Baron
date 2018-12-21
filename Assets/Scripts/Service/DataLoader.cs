@@ -46,16 +46,15 @@ namespace Baron.Service
 			gameBase.AudioRegistry = audios;
 
 
-
+			txtAsset = (TextAsset)Resources.Load("Raw/riddles", typeof(TextAsset));
+			tileFile = Encoding.UTF8.GetString(txtAsset.bytes);
+			List<Riddle> riddles = JsonConvert.DeserializeObject<List<Riddle>>(tileFile);
+			gameBase.RiddleRegistry = riddles;
 			/*
-			 *  List<Item> items = loadItems(resources.openRawResource(R.raw.items));
+			   List<Item> items = loadItems(resources.openRawResource(R.raw.items));
         gameBase.setItemRegistry(items);
 
-        List<Image> images = loadImages(resources.openRawResource(R.raw.images));
-        gameBase.setImageRegistry(images);
-
-        List<Audio> audio = loadAudio(resources.openRawResource(R.raw.audio));
-        gameBase.setAudioRegistry(audio);
+       
 
         List<Riddle> riddles = loadRiddles(resources.openRawResource(R.raw.riddles));
         gameBase.setRiddleRegistry(riddles);

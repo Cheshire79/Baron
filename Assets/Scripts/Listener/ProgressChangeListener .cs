@@ -30,12 +30,12 @@ namespace Baron.Listener
 			{
 				Scenario scenario = _gameBase.History.GetScenario();
 
-				if (scenario.CurrentBranch == null) return;
+				if (scenario.CurrentTrackBranch == null) return;
 
-				Option option = OptionRepository.Find(_gameBase, scenario.CurrentBranch.OptionId);
+				Option option = OptionRepository.Find(_gameBase, scenario.CurrentTrackBranch.OptionId);
 				if (option != null)
 				{
-					option.Init(scenario.CurrentBranch.StartsAt);
+					option.Init(scenario.CurrentTrackBranch.StartsAt);
 				}
 
 				_trackService.Pause();
