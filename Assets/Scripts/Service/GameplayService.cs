@@ -87,20 +87,14 @@ namespace Baron.Service
 			CleanUpBeforeNewGame();
 			try
 			{
-				_gameBase.History.NGplus();
-
-				_gameBase.SetInitialBranch(); // +
-
+				_gameBase.History.NGplus();				
 				Branch initial = _gameBase.History.InitialBranch;
 				if (initial != null)
 				{
 					_gameBase.History.AddStep(initial);
 				}
-
 				_gameBase.History.ValidateProgress();
-				_gameBase.History.DecreaseProgress();
-
-
+				//_gameBase.History.DecreaseProgress();
 				_gameBase.syncHistory();
 			}
 			catch (Exception e)

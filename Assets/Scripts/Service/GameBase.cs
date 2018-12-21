@@ -23,6 +23,8 @@ namespace Baron.Service
 		{
 			_historyManager = historyManager;
 			_history = historyManager.FetchHistory();
+			SetInitialBranch();
+
 		}
 
 		private Tree _tree;
@@ -138,7 +140,7 @@ namespace Baron.Service
 		public History.History History
 		{
 			get { return _history; }
-			set { _history = value; }
+		//	set { _history = value; }
 		}
 
 		public List<Riddle> RiddleRegistry
@@ -146,8 +148,6 @@ namespace Baron.Service
 			get { return _riddleRegistry; }
 			set { value = _riddleRegistry; }
 		}
-
-
 
 		//public boolean hasHistory()
 		//{
@@ -259,12 +259,13 @@ namespace Baron.Service
 			return false;
 		}
 
-		public void SetInitialBranch()// old name 
+		private void SetInitialBranch()// old name 
 		{
 
 			Tree tree = Tree;
 			if (tree == null) return;
-
+			if (_history == null)
+				throw new ArgumentNullException("GameBase:  history is null");
 			Branch initial = TreeParser.FindBranchByOption(this, GameBase.INITIAL_BRANCH, true, null);//checked 10_09_18
 			if (initial == null) return;
 			_history.InitialBranch = initial;

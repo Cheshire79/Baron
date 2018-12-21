@@ -47,35 +47,27 @@ namespace Baron.Controller
 			_branchViewController.ShowView();
 			try
 			{
-					UpdateCurrentBranch();
-
 				//	activity.getBranchLayout().setVisibility(View.VISIBLE);
 				//	activity.getBranchIntroContainer().setVisibility(View.GONE);
 				//	activity.getBlackCurtains().setVisibility(isBlackBackground ? View.VISIBLE : View.GONE);
 
 				Scenario scenario = _gameBase.History.GetScenario();
-				if (scenario.Cid == null)
+				if (scenario.Cid == null)// new Scenario
 				{
 					Branch branch = GetStartBranch();//checked 10_09_18
 					scenario = _scenarioManager.CreateScenario(_gameBase, branch.Cid);
 
 					_gameBase.History.SetScenario(scenario);
 				}
-					if (_backgroundImageService != null && _gameBase.History.GetCurrentBackground() != null)
-					{
-						_backgroundImageService.Resume(scenario);
-					}
+				if (_backgroundImageService != null && _gameBase.History.GetCurrentBackground() != null)
+				{
+					_backgroundImageService.Execute(scenario);
+				}
 
-					// dispatch(Event.APPLICATION_RESUMED, false); next
-					
-					_applicationResumedListener.onReceive(false, this);
-
-							
-				
-
+				_applicationResumedListener.onReceive(false, this);
 
 				//dispatch(Event.APPLICATION_RESUMED, false);
-				Test(scenario);
+			//	Test(scenario);
 			}
 			catch (Exception e)
 			{
@@ -122,7 +114,6 @@ namespace Baron.Controller
 			History.History history = _gameBase.History;
 			if (history == null) return null;
 
-			SetInitialBranch(); // just create initial brunch
 
 			Branch defaultBranch = history.InitialBranch;
 			Branch currentBranch;
@@ -144,23 +135,15 @@ namespace Baron.Controller
 			return currentBranch;
 		}
 
-		public void SetInitialBranch()
-		{
-			History.History history = _gameBase.History;
-			if (history == null)
-			{
-				CustomLogger.Log("BrunchController  history == null");
-				return;
-			}
-			_gameBase.SetInitialBranch();
-		}
+
 
 		public Branch FindCurrentBranch(bool enabledOnly)
 		{
 
-			if (_gameBase == null) return null;
+			if (_gameBase == null)
+				throw new ArgumentNullException("BranchController:  gameBase is null"); ;
 
-			SetInitialBranch();
+
 
 			History.History history = _gameBase.History;
 			if (history == null)
@@ -316,42 +299,10 @@ namespace Baron.Controller
 			//}
 		}
 
-		private void UpdateCurrentBranch()
-		{
-			CustomLogger.Log("BrunchController updateCurrentBranch");
-			try
-			{				
-				Branch currentBranch = null;
 
-				SetInitialBranch();
-
-				Branch initial = _gameBase.History.InitialBranch;
-				TrackBranch trackBranch = _gameBase.History.GetScenario().CurrentTrackBranch;
-
-				if (trackBranch != null)
-				{
-					currentBranch = TreeParser.FindBranchByCid(_gameBase, trackBranch.Id);
-				}
-
-				if (currentBranch == null)
-				{
-					currentBranch = initial;
-				}
-
-				Option option = OptionRepository.Find(_gameBase, currentBranch.OptionId);
-
-				CustomLogger.Log("BrunchController Current branch: " + currentBranch);
-				CustomLogger.Log("BrunchController Current option: " + option);
-
-			}
-			catch (Exception e)
-			{
-				CustomLogger.Log("BrunchController Exc" + e.Message);
-			}
-		}
 
 	}
 
 
 }
-	
+

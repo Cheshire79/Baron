@@ -16,18 +16,18 @@ namespace Baron.Service
 			_branchViewController = branchViewController;
 		}
 
-		public void Resume(Scenario scenario)
-		{
+		//public void Resume(Scenario scenario)
+		//{
 
-			try
-			{
-				Execute(scenario);
-			}
-			catch (Exception e)
-			{
-				CustomLogger.Log("BackgroundMediaService resumen" + e.Message);
-			}
-		}
+		//	try
+		//	{
+		//		Execute(scenario);
+		//	}
+		//	catch (Exception e)
+		//	{
+		//		CustomLogger.Log("BackgroundMediaService resume" + e.Message);
+		//	}
+		//}
 
 		public abstract void Execute(Scenario scenario);
 		public void Pause()

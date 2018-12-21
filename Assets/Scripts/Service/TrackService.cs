@@ -46,11 +46,6 @@ namespace Baron.Service
 		public void Resume(Scenario scenario)
 		{
 
-			//if (!BranchPresenter.isCreated()) return;
-
-			//BranchPresenter presenter = BranchPresenter.getInstance();
-
-
 			if (GameBase.isPaused)
 			{
 				Pause();
@@ -59,7 +54,7 @@ namespace Baron.Service
 
 			try
 			{
-				_imageService.Resume(scenario);
+				_imageService.Execute(scenario);
 			}
 			catch (Exception e)
 			{
@@ -69,7 +64,7 @@ namespace Baron.Service
 
 			try
 			{
-				_audioService.Resume(scenario);
+				_audioService.Execute(scenario);
 			}
 			catch (Exception e)
 			{

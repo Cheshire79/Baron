@@ -20,14 +20,8 @@ namespace Baron.Service
 
 		public override void Execute(Scenario scenario)//+
 		{
-
-			// if (!BranchPresenter.isCreated()) return;
-
-			//BranchPresenter presenter = BranchPresenter.getInstance();
-
 			try
 			{
-
 				TrackBranch trackBranch = scenario.CurrentTrackBranch;
 				if (trackBranch == null) return;
 
@@ -80,15 +74,6 @@ namespace Baron.Service
 
 				//TrackImage previousTrackMedia = _gameBase.GetPreviousTrackImage();
 				//string currentBackground = history.GetCurrentBackground();
-
-
-
-
-
-
-
-
-
 
 				//switch (currentTrackMedia.Id)
 				//{

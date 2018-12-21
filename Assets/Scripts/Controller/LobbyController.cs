@@ -81,20 +81,14 @@ namespace Baron.Controller
 			try
 			{
 				//ntinueButton.setEnabled(false);
-
 				PlayPlaySoundOnClick();
-				//
+				
 				//MenuSFXManager.m5(activity);
-
 				//isableMenuButtons();
-
-
 				_gameplayService.CleanUpBeforeContinueGame();
 				//BrunchController.ShowView();
 				BrunchController.StartGame(true);
-
 			}
-
 			catch (Exception e)
 			{
 				CustomLogger.Log("LobbyController " + e);
@@ -133,8 +127,7 @@ namespace Baron.Controller
 				//beginButton.setEnabled(false);
 				PlayPlaySoundOnClick(); // just sound  &
 				//	disableMenuButtons();
-				//final Handler handler = activity.getPresenter().getHandler();
-
+			
 				//MainMenuButtonManager manager = new MainMenuButtonManager(this, handler);
 				//manager.onBeginClicked(beginButton, new Runnable() {
 				_gameplayService.NewGame();
