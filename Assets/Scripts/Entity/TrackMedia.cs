@@ -35,12 +35,13 @@ namespace Baron.Entity
 
 		public abstract int Duration { get; set; }
 
+		[JsonIgnore]
 		public  int StartsAt
         {
             get { return (int)_startsAt; }
             set { _startsAt = value; }
         }
-
+		[JsonIgnore]
 		public float FinishesAt
         {
             get { return _finishesAt; }
@@ -66,18 +67,21 @@ namespace Baron.Entity
             get { return _isLocked; }
             set { _isLocked = value; }
         }
-	
+
+		
 		public bool IsLast()
         {
             return _next == null;
         }
 
+		[JsonIgnore]
 		public int Progress
         {
             get { return (int)_progress; }
             set { _progress = value; }
         }
 
+		[JsonIgnore]
 		public bool IsCompleted
 		{
 			get { return _isCompleted; }

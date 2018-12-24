@@ -8,7 +8,7 @@ namespace Baron.History
 	{
 		[JsonProperty(PropertyName = "isViewed")]
 		private bool _isViewed;
-
+		[JsonIgnore]
 		public bool IsViewed
 		{
 			get { return _isViewed; }

@@ -14,7 +14,7 @@ namespace Baron.History
 
 		public Entry()
 		{
-			createdAt = DateTime.Today.ToString();
+			createdAt = DateTime.Now.ToString("yyyy-MM-ddThh:mm:ss"); //DateTime.Today.ToString();
 			//todo check
 			//DateUtils.now();
 		}
@@ -24,6 +24,7 @@ namespace Baron.History
 			_name = name;
 		}
 
+		[JsonIgnore]
 		public String Name
 		{
 			get { return _name; }

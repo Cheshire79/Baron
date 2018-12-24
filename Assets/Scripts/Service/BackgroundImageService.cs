@@ -66,6 +66,7 @@ namespace Baron.Service
 					MainThreadRunner.AddTask(() => _branchViewController.UpdateDisplayedData("image " + currentTrackMedia.Id));
 					MainThreadRunner.AddTask(() => _branchViewController.SetImage(currentTrackMedia.Id));
 					history.SetCurrentBackground(currentTrackMedia.Id);// todo ask
+					_gameBase.syncHistory();//todo
 				}
 
 				//currentTrackMedia.Progress = milliseconds;

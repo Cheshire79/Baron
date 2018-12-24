@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Baron.Entity
 {
@@ -10,6 +8,8 @@ namespace Baron.Entity
 	{
 		[JsonProperty(PropertyName = "branches")]
 		private List<TrackBranch> _branches;
+
+		[JsonIgnore]
 		public List<TrackBranch> Branches
 		{
 			get { return _branches; }
@@ -18,6 +18,8 @@ namespace Baron.Entity
 
 		[JsonProperty(PropertyName = "cid")]
 		private string _cid;
+
+		[JsonIgnore]
 		public string Cid
 		{
 			get { return _cid; }
@@ -26,6 +28,7 @@ namespace Baron.Entity
 
 		[JsonIgnore]
 		private float _duration;
+		[JsonIgnore]
 		public int Duration
 		{
 			get { return (int)_duration; }
@@ -34,6 +37,8 @@ namespace Baron.Entity
 
 		[JsonProperty(PropertyName = "isCompleted")]
 		private bool _isCompleted;
+
+		[JsonIgnore]
 		public bool IsCompleted
 		{
 			get { return _isCompleted; }
@@ -42,6 +47,7 @@ namespace Baron.Entity
 
 		[JsonProperty(PropertyName = "progress")]
 		private int _progress;
+		[JsonIgnore]
 		public int Progress
 		{
 			get { return _progress; }
@@ -50,6 +56,8 @@ namespace Baron.Entity
 
 		[JsonProperty(PropertyName = "currentBranch")]
 		private TrackBranch _currentTrackBranch;
+
+		[JsonIgnore]
 		public TrackBranch CurrentTrackBranch
 		{
 			get { return _currentTrackBranch; }

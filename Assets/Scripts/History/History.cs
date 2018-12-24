@@ -5,7 +5,6 @@ using CustomTools;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 
 namespace Baron.History // wait for check
 {
@@ -22,8 +21,9 @@ namespace Baron.History // wait for check
 		 * Unique completed options on all iterations
 		 */
 		[JsonProperty(PropertyName = "completedOptions")]
-		private HashSet<string> _completedOptions;
+		private HashSet<string> _completedOptions;//+
 
+		[JsonIgnore]
 		public HashSet<string> CompletedOptions
 		{
 			get { return _completedOptions; }
@@ -47,6 +47,8 @@ namespace Baron.History // wait for check
 												 */
 		[JsonProperty(PropertyName = "version")]
 		private int _version;
+
+		[JsonIgnore]
 		public int Version
 		{
 			get { return _version; }
@@ -57,6 +59,7 @@ namespace Baron.History // wait for check
 		 */
 		[JsonProperty(PropertyName = "cid")]
 		private string _cid;
+		[JsonIgnore]
 		public string Cid
 		{
 			get { return _cid; }
@@ -68,6 +71,8 @@ namespace Baron.History // wait for check
 
 		[JsonProperty(PropertyName = "createdAt")]
 		private string _createdAt;
+
+		[JsonIgnore]
 		public string CreatedAt
 		{
 			get { return _createdAt; }
@@ -79,6 +84,7 @@ namespace Baron.History // wait for check
 		[JsonProperty(PropertyName = "saves")]
 		private List<Save> _saves;
 
+		[JsonIgnore]
 		public List<Save> Saves
 		{
 			get { return _saves; }
@@ -92,13 +98,22 @@ namespace Baron.History // wait for check
 		 * Opened images on all iterations
 		 */
 		[JsonProperty(PropertyName = "achievements")]
-		private List<AchievementEntry> _achievements;
+		private List<AchievementEntry> _achievements;//
+
+		[JsonIgnore]
+		public List<AchievementEntry> Achievements
+		{
+			get { return _achievements; }
+		}
+
+
 		/**
 		 * Opened images on all iterations
 		 */
 		[JsonProperty(PropertyName = "images")]
 		private List<ImageEntry> _images;
 
+		[JsonIgnore]
 		public List<ImageEntry> Images
 		{
 			get { return _images; }
@@ -113,6 +128,8 @@ namespace Baron.History // wait for check
 		 */
 		[JsonProperty(PropertyName = "playerEvents")]
 		private List<PlayerEvent> _playerEvents;
+
+		[JsonIgnore]
 		public List<PlayerEvent> PlayerEvents
 		{
 			get { return _playerEvents; }
@@ -123,6 +140,7 @@ namespace Baron.History // wait for check
 		[JsonProperty(PropertyName = "unsyncedPlayerEvents")]
 		private List<PlayerEvent> _unsyncedPlayerEvents;
 
+		[JsonIgnore]
 		public List<PlayerEvent> UnsyncedPlayerEvents
 		{
 			get { return _unsyncedPlayerEvents; }
@@ -131,12 +149,16 @@ namespace Baron.History // wait for check
 		 * Opened interactions on all iterations
 		 */
 
-		[JsonProperty(PropertyName = "completedInteractions")]
-		private List<InteractionEntry> _completedInteractions;
+		//[JsonProperty(PropertyName = "completedInteractions")]
+		//private List<InteractionEntry> _completedInteractions;//todo remove
 
+		[JsonIgnore]
 		public List<InteractionEntry> CompletedInteractions
 		{
-			get { return _completedInteractions; }
+			get
+			{
+				return _activeSave.CompletedInteractions;//_completedInteractions; 
+			}
 		}
 		/**
 		 * Completed riddles on all iterations
@@ -144,6 +166,7 @@ namespace Baron.History // wait for check
 		[JsonProperty(PropertyName = "completedRiddles")]
 		private List<string> _completedRiddles;
 
+		[JsonIgnore]
 		public List<string> CompletedRiddles
 		{
 			get { return _completedRiddles; }
@@ -159,6 +182,8 @@ namespace Baron.History // wait for check
 								  */
 		[JsonProperty(PropertyName = "player")]
 		private Player _player;
+
+		[JsonIgnore]
 		public Player Player
 		{
 			get { return _player; }
@@ -169,6 +194,7 @@ namespace Baron.History // wait for check
 		[JsonProperty(PropertyName = "ng")]
 		private int _ng;
 
+		[JsonIgnore]
 		public int Ng
 		{
 			get { return _ng; }
@@ -206,9 +232,8 @@ namespace Baron.History // wait for check
 
 		[JsonProperty(PropertyName = "activeSave")]
 		private Save _activeSave;
-		/**
-		 * Current save
-		 */
+
+		[JsonIgnore]
 		public Save ActiveSave
 		{
 			get { return _activeSave; }
@@ -227,7 +252,7 @@ namespace Baron.History // wait for check
 			_saves = new List<Save>(SAVE_LIMIT);
 			_audio = new List<AudioEntry>(10);
 			_images = new List<ImageEntry>(10);
-			_completedInteractions = new List<InteractionEntry>(5);
+			//_completedInteractions = new List<InteractionEntry>(5);
 			GlobalInventory = new HashSet<string>();
 
 			//_scenario = new Scenario();//todo
@@ -277,7 +302,7 @@ namespace Baron.History // wait for check
 						return;
 				}
 			}
-			
+
 			_activeSave.CurrentBackground = currentBackground;
 		}
 		public bool ContainsInImageHistory(string id)
@@ -402,6 +427,7 @@ namespace Baron.History // wait for check
 			return true;
 		}
 
+		[JsonIgnore]
 		public List<AudioEntry> Audio
 		{
 			get { return _audio; }
@@ -498,7 +524,8 @@ namespace Baron.History // wait for check
 			entry.Type = type;
 			entry.IsCompleted = isCompleted;
 
-			_completedInteractions.Add(entry);
+			//_completedInteractions.Add(entry);
+			_activeSave.CompletedInteractions.Add(entry);
 		}
 
 		public void AddCompletedRiddle(string id)
@@ -541,6 +568,7 @@ namespace Baron.History // wait for check
 			return uniqueItems;
 		}
 
+		[JsonIgnore]
 		public int Day
 		{
 			get { return _activeSave.Day; }

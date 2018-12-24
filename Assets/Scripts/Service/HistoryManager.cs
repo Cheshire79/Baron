@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using ICSharpCode.SharpZipLib.Zip;
 using System.IO;
+using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace Baron.Service
 {
@@ -36,6 +38,7 @@ namespace Baron.Service
 			try
 			{
 				history = LoadHistoryFromFile();
+				//history = LoadHistoryFromZipFile();
 				//loadHistory();
 				//history = LoadHistoryFromFileUsingString();
 				Validate(history);
@@ -100,10 +103,12 @@ namespace Baron.Service
 		{
 			try
 			{
-				saveHistoryToFile(history);
-					//saveHistoryToFileUsingString(history);
-					//saveHistory(history);					
-				}
+				SaveHistoryToFileUsingStringAndOrder(history);
+				//saveHistoryToFile(history);
+				//saveHistoryToZipFile(history);
+				//saveHistoryToFileUsingString(history);
+				//saveHistory(history);					
+			}
 			catch (Exception e)
 			{
 				CustomLogger.Log("HistoryManager cannot write to file " + e);
@@ -329,7 +334,7 @@ namespace Baron.Service
 
 		}
 
-		private void saveHistoryToFile(History.History history)
+		private void saveHistoryToZipFile(History.History history)
 		{
 			using (MemoryStream stream = new MemoryStream())
 			using (StreamWriter writer = new StreamWriter(stream))
@@ -363,7 +368,7 @@ namespace Baron.Service
 				CustomLogger.Log("HistoryManager 3 " + _dataPath + _fileName);
 				using (var fileStream = File.Create(_dataPath + _fileName1))
 				{
-					zipStream.Seek(0, SeekOrigin.Begin); 
+					zipStream.Seek(0, SeekOrigin.Begin);
 					CopyStream(zipStream, fileStream);
 				}
 			}
@@ -388,19 +393,19 @@ namespace Baron.Service
 			}
 		}
 
-		private History.History LoadHistoryFromFile()
+		private History.History LoadHistoryFromZipFile()
 		{
 			try
 			{
 				using (FileStream fileStream = File.OpenRead(_dataPath + _fileName))
 				using (ZipInputStream zipInputStream = new ZipInputStream(fileStream))
-				{ 
+				{
 					ZipEntry zipEntry = zipInputStream.GetNextEntry();
 					History.History history = null;
 					using (StreamReader sr = new StreamReader(zipInputStream))
 					using (JsonReader reader = new JsonTextReader(sr))
 					{
-						JsonSerializer serializer = new JsonSerializer();						
+						JsonSerializer serializer = new JsonSerializer();
 						history = serializer.Deserialize<History.History>(reader);
 					}
 					if (history != null)
@@ -416,7 +421,7 @@ namespace Baron.Service
 			{
 				CustomLogger.Log("HistoryManager " + e);
 				return new History.History();
-			}			
+			}
 		}
 
 		private History.History LoadHistoryFromFileUsingString()
@@ -460,6 +465,116 @@ namespace Baron.Service
 				CustomLogger.Log("HistoryManager cannot Deserialize history");
 				return new History.History();
 			}
+		}
+
+
+		private void saveHistoryToFile(History.History history)
+		{
+			using (MemoryStream stream = new MemoryStream())
+			using (StreamWriter writer = new StreamWriter(stream))
+			using (JsonTextWriter jsonWriter = new JsonTextWriter(writer))
+			{
+				JsonSerializer ser = new JsonSerializer();
+				ser.Serialize(jsonWriter, history);
+				CustomLogger.Log("HistoryManager save history string" + history.GetScenario().CurrentTrackBranch.Id);
+				CustomLogger.Log("HistoryManager  history.GetScenario().Cid ------------------------------=" + history.GetScenario().Cid);
+
+				jsonWriter.Flush();
+				stream.Position = 0;
+				//	using (MemoryStream zipStream = CreateToMemoryStream(stream, "test"))
+				{
+					//zipStream.Position = 0;
+					using (var fileStream = File.Create(_dataPath + _fileName))
+					{
+						stream.Seek(0, SeekOrigin.Begin);
+						CopyStream(stream, fileStream);
+					}
+				}
+			}
+		}
+
+		private History.History LoadHistoryFromFile()
+		{
+			try
+			{
+				using (FileStream fileStream = File.OpenRead(_dataPath + _fileName))
+				//	using (ZipInputStream zipInputStream = new ZipInputStream(fileStream))
+				{
+					//		ZipEntry zipEntry = zipInputStream.GetNextEntry();
+					History.History history = null;
+					using (StreamReader sr = new StreamReader(fileStream))
+					using (JsonReader reader = new JsonTextReader(sr))
+					{
+						JsonSerializer serializer = new JsonSerializer();
+						history = serializer.Deserialize<History.History>(reader);
+					}
+					if (history != null)
+						return history;
+					else
+					{
+						CustomLogger.Log("HistoryManager cannot Deserialize history");
+						return new History.History();
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				CustomLogger.Log("HistoryManager " + e);
+				return new History.History();
+			}
+		}
+
+		private void SaveHistoryToFileUsingStringAndOrder(History.History history)
+		{
+			string text_temp = JsonConvert.SerializeObject(history);
+			string text = NormalizeJsonString(text_temp);
+			CustomLogger.Log("HistoryManager save history string" + text.Length);
+
+			using (MemoryStream zipStream = GenerateStreamFromString(text))
+			{
+				CustomLogger.Log("HistoryManager 3 " + _dataPath + _fileName);
+				using (var fileStream = File.Create(_dataPath + _fileName))
+				{
+					zipStream.Seek(0, SeekOrigin.Begin);
+					CopyStream(zipStream, fileStream);
+				}
+			}
+		}
+
+
+
+		public static string NormalizeJsonString(string json)
+		{
+			// Parse json string into JObject.
+			var parsedObject = JObject.Parse(json);
+
+			// Sort properties of JObject.
+			var normalizedObject = SortPropertiesAlphabetically(parsedObject);
+
+			// Serialize JObject .
+			return JsonConvert.SerializeObject(normalizedObject);
+		}
+
+		private static JObject SortPropertiesAlphabetically(JObject original)
+		{
+			var result = new JObject();
+
+			foreach (var property in original.Properties().ToList().OrderBy(p => p.Name))
+			{
+				var value = property.Value as JObject;
+
+				if (value != null)
+				{
+					value = SortPropertiesAlphabetically(value);
+					result.Add(property.Name, value);
+				}
+				else
+				{
+					result.Add(property.Name, property.Value);
+				}
+			}
+
+			return result;
 		}
 	}
 }

@@ -8,18 +8,13 @@ namespace Baron.History
 {
 	[Serializable]
 	public class Save //todo
-	{
+	{//InteractionEntry
 		[JsonProperty(PropertyName = "isEnabled")]
 		public bool IsEnabled;
 
-		/**
-		 * Id of the save
-		 */
 		[JsonProperty(PropertyName = "id")]
 		public string Id;
-		/**
-		 * Name of the save
-		 */
+	
 		[JsonProperty(PropertyName = "name")]
 		public string Name;
 		/**
@@ -89,6 +84,9 @@ namespace Baron.History
 		[JsonProperty(PropertyName = "clickedBranches")]
 		public Stack<string> ClickedBranches;
 
+		[JsonProperty(PropertyName = "completedInteractions")]
+		public List<InteractionEntry> CompletedInteractions;
+
 		public Save()
 		{
 
@@ -104,6 +102,7 @@ namespace Baron.History
 			CompletedOptionActions = new List<OptionActionEntry>();
 			Scenario = new Scenario();
 			ClickedBranches = new Stack<string>();
+			CompletedInteractions = new List<InteractionEntry>();
 
 			Day = History.DEFAULT_DAY;
 			ProtractorAttemptCount = 1;
@@ -116,6 +115,7 @@ namespace Baron.History
 			DisabledOptions.Clear();
 			Steps.Clear();
 			CompletedOptionActions.Clear();
+			CompletedInteractions.Clear();
 
 			Scenario = new Scenario();
 
