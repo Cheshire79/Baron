@@ -1,7 +1,4 @@
-﻿using CustomTools;
-using System;
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Baron.View.BranchView

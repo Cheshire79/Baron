@@ -149,15 +149,15 @@ namespace Baron.History // wait for check
 		 * Opened interactions on all iterations
 		 */
 
-		//[JsonProperty(PropertyName = "completedInteractions")]
-		//private List<InteractionEntry> _completedInteractions;//todo remove
+		[JsonProperty(PropertyName = "completedInteractions")]
+		private List<InteractionEntry> _completedInteractions; // store here all completed Interactions
 
 		[JsonIgnore]
 		public List<InteractionEntry> CompletedInteractions
 		{
 			get
 			{
-				return _activeSave.CompletedInteractions;//_completedInteractions; 
+				return _completedInteractions; 
 			}
 		}
 		/**
@@ -252,7 +252,7 @@ namespace Baron.History // wait for check
 			_saves = new List<Save>(SAVE_LIMIT);
 			_audio = new List<AudioEntry>(10);
 			_images = new List<ImageEntry>(10);
-			//_completedInteractions = new List<InteractionEntry>(5);
+			_completedInteractions = new List<InteractionEntry>(5);
 			GlobalInventory = new HashSet<string>();
 
 			//_scenario = new Scenario();//todo
@@ -524,8 +524,8 @@ namespace Baron.History // wait for check
 			entry.Type = type;
 			entry.IsCompleted = isCompleted;
 
-			//_completedInteractions.Add(entry);
-			_activeSave.CompletedInteractions.Add(entry);
+			_completedInteractions.Add(entry);// stored all 
+			_activeSave.CompletedInteractions.Add(entry); // stored just for current save
 		}
 
 		public void AddCompletedRiddle(string id)
