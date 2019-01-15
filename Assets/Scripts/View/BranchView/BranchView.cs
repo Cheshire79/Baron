@@ -29,6 +29,7 @@ namespace Baron.View.BranchView
 		private Action<float> _onClickedAnotherPosition;
 		private Action _onStartDebuging;
 		private UnityEngine.UI.Image _image;
+		private UnityEngine.UI.Image _hover;
 		private Slider _slider;
 
 		private Transform _topOverlay;
@@ -55,6 +56,7 @@ namespace Baron.View.BranchView
 			_OptionsCache = instancesCache;
 			_optionsList = references.OptionsList;
 			_image = references.MainImage;
+			_hover = references.Hover;
 			_topOverlay = references.TopOverlay;
 			_bottomOverlay = references.BottomOverlay;
 			_Test = references.Test;
@@ -123,14 +125,14 @@ namespace Baron.View.BranchView
 			_image.SetNativeSize();// todo
 			int imageHeight = (int)(_image.sprite.rect.height);
 
-			CustomLogger.Log(CustomLogger.LogComponents.Exceptions, string.Format(" Screen.width = {0}", Screen.width));
-			CustomLogger.Log(CustomLogger.LogComponents.Exceptions, string.Format(" Screen.height = {0}", Screen.height));
-			CustomLogger.Log(CustomLogger.LogComponents.Errors, string.Format(" imageHeight = {0}, {1}, {2}", imageHeight, (imageHeight * _RectTransform.localScale.y), Screen.height));
+			CustomLogger.Log(CustomLogger.LogComponents.Messages, string.Format(" Screen.width = {0}", Screen.width));
+			CustomLogger.Log(CustomLogger.LogComponents.Messages, string.Format(" Screen.height = {0}", Screen.height));
+			CustomLogger.Log(CustomLogger.LogComponents.Messages, string.Format(" imageHeight = {0}, {1}, {2}", imageHeight, (imageHeight * _RectTransform.localScale.y), Screen.height));
 
 			_screenHeight = Screen.width;
 			if ((imageHeight * _RectTransform.localScale.y) < Screen.height)
 			{
-				CustomLogger.Log(CustomLogger.LogComponents.Errors, string.Format(" ==================== imageHeight = {0}, {1}, {2}", imageHeight, (imageHeight * _RectTransform.localScale.y), Screen.height));
+				CustomLogger.Log(CustomLogger.LogComponents.Messages, string.Format(" ==================== imageHeight = {0}, {1}, {2}", imageHeight, (imageHeight * _RectTransform.localScale.y), Screen.height));
 
 				int top = //imageHeight 
 					+imageHeight / 2//+170/2
@@ -159,10 +161,11 @@ namespace Baron.View.BranchView
 				_topOverlay.gameObject.SetActive(false);
 				_bottomOverlay.gameObject.SetActive(false);
 			}
+			_hover.gameObject.SetActive(false);// after forst time loading mager need yo hide hover
 		}
-		public void PlaceOptions(GameBase gameBase, BrunchController brunchController)
+		public void PlaceOptions(GameBase gameBase, BranchController brunchController)
 		{
-			Branch currentBranch = brunchController.FindCurrentBranch(false);
+			Branch currentBranch = gameBase.FindCurrentBranch(false);
 
 			CustomLogger.Log("BranchViewController onCreate for " + currentBranch);
 
@@ -195,7 +198,7 @@ namespace Baron.View.BranchView
 
 		public void InitSlider(int max)
 		{ }
-		public void SetSliderPosition(int pos, int max)
+		public void ChangeSliderPosition(int pos, int max)
 		{
 			_IsAutomaticValueChange = true;
 			_slider.maxValue = max;

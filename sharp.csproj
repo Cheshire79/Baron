@@ -275,6 +275,9 @@
     <Reference Include="FBRLogger">
       <HintPath>Assets/Plugins/FBRLogger.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>Assets/Plugins/ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>Assets/Plugins/Ninject.dll</HintPath>
     </Reference>
@@ -302,9 +305,6 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/LityukOS/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>Assets/Plugins/ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>D:/Aliot/Program Files/Unity  2017.3.0p4/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
@@ -315,8 +315,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Controller\AppController.cs" />
     <Compile Include="Assets\Scripts\Controller\BaseViewController.cs" />
+    <Compile Include="Assets\Scripts\Controller\BranchController.cs" />
     <Compile Include="Assets\Scripts\Controller\BranchViewController.cs" />
-    <Compile Include="Assets\Scripts\Controller\BrunchController.cs" />
     <Compile Include="Assets\Scripts\Controller\IAppController.cs" />
     <Compile Include="Assets\Scripts\Controller\IBranchViewController.cs" />
     <Compile Include="Assets\Scripts\Controller\ILobbyController.cs" />
@@ -417,6 +417,7 @@
     <None Include="Assets\JsonDotNet\Assemblies\AOT\Newtonsoft.Json.XML" />
     <None Include="Assets\JsonDotNet\Assemblies\Windows\Newtonsoft.Json.XML" />
     <None Include="Assets\JsonDotNet\link.xml" />
+    <None Include="Assets\Scripts\questions.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

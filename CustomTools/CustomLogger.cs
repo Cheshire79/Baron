@@ -26,18 +26,20 @@ using UnityEngine;
     private const bool IsDebugMode = false;
 #endif
 
-        //Customize for your needs!
-        public const LogComponents
-            EnabledComponents = ImportantComponents | LogComponents.All; //<== Customize for your needs!
-        //Customize for your needs!
+		//Customize for your needs!
+		public const LogComponents
+			EnabledComponents = ImportantComponents | LogComponents.ProgressBarManager;
+			//|LogComponents.Branch;//LogComponents.All; //<== Customize for your needs!
+		//Customize for your needs!
 
-        public static bool Enabled = true;
+		public static bool Enabled = true;
 
-        //Used when component is not specified
-        private const LogComponents ImportantComponents = LogComponents.Exceptions | LogComponents.Errors |
-                                                          LogComponents.Warnings;
+		//Used when component is not specified
+		private const LogComponents ImportantComponents = LogComponents.Exceptions;
 
-        [Flags]
+		// | LogComponents.Errors|                                                         LogComponents.Warnings;
+
+		[Flags]
         public enum LogComponents : ushort
         {
             //None = 0x0000,
@@ -56,6 +58,8 @@ using UnityEngine;
             Errors = 0x4000,
             Exceptions = 0x8000,
 			Test = 0x0010,
+			Branch = 0x0020,
+			ProgressBarManager = 0x0040,
 			All = 0xFFFF,
 
         }

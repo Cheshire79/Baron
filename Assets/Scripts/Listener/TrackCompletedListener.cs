@@ -12,12 +12,12 @@ namespace Baron.Listener
 {
 	public class TrackCompletedListener
 	{
-		private BrunchController _brunchController;
+		private BranchController _branchController;
 		GameBase _gameBase;
 
-		public TrackCompletedListener(BrunchController brunchController, GameBase gameBase)
+		public TrackCompletedListener(BranchController branchController, GameBase gameBase)
 		{
-			_brunchController = brunchController;
+			_branchController = branchController;
 			_gameBase=gameBase;
 		}
 
@@ -40,13 +40,13 @@ namespace Baron.Listener
 			{
 			//	final BranchPresenter presenter = BranchPresenter.getInstance();
 
-				Branch branch = _brunchController.FindCurrentBranch(false);
+				Branch branch = _gameBase.FindCurrentBranch(false);
 
 				CustomLogger.Log("TrackCompletedListener Track completed for branch: " + " branch");
 
-				BranchDecisionManager decisionManager = _brunchController.BranchDecisionManager;
+				BranchDecisionManager decisionManager = _branchController.BranchDecisionManager;
 
-				CompletedDecision decision = new CompletedDecision(decisionManager, branch, _brunchController, _gameBase);
+				CompletedDecision decision = new CompletedDecision(decisionManager, branch, _branchController, _gameBase);
 				decision.Decide();
 
 				//presenter.syncHistory();

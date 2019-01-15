@@ -1,5 +1,4 @@
-﻿using Baron.Controller;
-using Baron.Entity;
+﻿using Baron.Entity;
 using Baron.Listener;
 using Baron.Tools;
 using CustomTools;
@@ -12,7 +11,9 @@ namespace Baron.Service
 	{
 		private string _currentImage = "";
 		private ImageViewedInBranchListener _imageViewedInBranchListener;
-		public BackgroundImageService(GameBase gameBase, IBranchViewController branchViewController) : base(gameBase, branchViewController)
+		public event Action<string> OnChangeImage;
+		public event Action<string> OnShowMessage;
+		public BackgroundImageService(GameBase gameBase	) : base(gameBase)
 		{
 			_imageViewedInBranchListener = new ImageViewedInBranchListener(gameBase);
 		}
@@ -35,7 +36,7 @@ namespace Baron.Service
 
 				if (option == null) return;
 
-			//	int milliseconds = scenario.Progress;
+				//	int milliseconds = scenario.Progress;
 
 				if (option.IsProxy)
 				{
@@ -63,8 +64,18 @@ namespace Baron.Service
 					_currentImage = currentTrackMedia.Id;
 
 					CustomLogger.Log("----------image------------ BackgroundImageService =" + currentTrackMedia.Id + ", " + currentTrackMedia.AltId);
-					MainThreadRunner.AddTask(() => _branchViewController.UpdateDisplayedData("image " + currentTrackMedia.Id));
-					MainThreadRunner.AddTask(() => _branchViewController.SetImage(currentTrackMedia.Id));
+				
+					if (OnChangeImage != null)
+					{
+						MainThreadRunner.AddTask(() => OnChangeImage(currentTrackMedia.Id));
+					}
+					if (OnShowMessage != null)
+					{
+						MainThreadRunner.AddTask(() => OnShowMessage("image " + currentTrackMedia.Id));
+					}
+					//public event Action<string> OnChangeImage;// (string image)
+					//public event Action<string> OnShowMessage;// (string image)
+
 					history.SetCurrentBackground(currentTrackMedia.Id);// todo ask
 					_gameBase.syncHistory();//todo
 				}

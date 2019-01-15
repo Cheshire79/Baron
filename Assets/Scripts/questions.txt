@@ -1,0 +1,8 @@
+﻿1. залить в гит хаб проект, что бы префабы хранили ссылки
+2.в  BrunchController (BranchPresenter)
+	в StartGame идет проверка на то создан ли сценарий 	
+	if (scenario.Cid == null)// this means that the  Scenario is new
+а далее по алгоритму
+_scenarioManager.ResumeScenario();
+проверка на корректность сценария происходит в BranchScenarioManager метод ResumeScenario()
+не должны эти обе проверки проиходить в одном классе

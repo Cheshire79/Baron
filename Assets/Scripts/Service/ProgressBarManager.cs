@@ -2,38 +2,45 @@
 using Baron.Tools;
 using CustomTools;
 using System;
-
+//todo stop timer on exit
 namespace Baron.Service
 {
 	public class ProgressBarManager
 	{
+		public event Action<GameBase, Scenario> OnResetScenario;
+		public event Func<GameBase, Scenario, int, int, bool> OnUpdateScenario;
+		public event Action<Scenario> OnFinaleReached;
+		public event Action<Scenario> OnInteractionReached;
+		public event Action<Scenario> OnNewScenarioReached;
+		public event Action OnScenarioCompleted;
+		public event Action<TrackBranch> OnBranchCompleted;
+		public event Action<TrackBranch> OnBranchStarted;
+
+		public event Action<int, int> OnChangeSliderPosition;
+
 		private int _delay = 50;
 		private bool _isSpecialAudioEnabled;
 		GameBase _gameBase;
 		private long _lastUpdatedAt;
-		BranchScenarioManager _scenarioManager;
-		//	private BackgroundImageService _backgroundImageService;
+		
+	
+		
 		private readonly System.Timers.Timer _scheduledTask = new System.Timers.Timer(5);
 
-		private bool _isRunnig = false;
 
+
+		private bool _isRunnig = false;
 		private readonly TrackService _trackService;
 
-		public ProgressBarManager(GameBase gameBase, BranchScenarioManager scenarioManager, TrackService trackService)
+		public ProgressBarManager(GameBase gameBase, TrackService trackService)
 		{
 			_gameBase = gameBase;
-			_scenarioManager = scenarioManager;
-			//_backgroundImageService = bgImServ;
 			_trackService = trackService;
-
 
 			_scheduledTask.Elapsed += (sender, args) => Runnable();
 		}
 		public void Start(Scenario scenario)
 		{
-			//BranchPresenter presenter = BranchPresenter.getInstance();
-			//GameBase gameBase = presenter.getGameBase();
-			//	BranchScenarioManager scenarioManager = presenter.getScenarioManager();
 
 			int progress = scenario.Progress;
 			int max = scenario.Duration;
@@ -43,39 +50,34 @@ namespace Baron.Service
 			Stop();
 
 			//setUIProgress(progress, max);
-
-			_scenarioManager.ResetScenario(_gameBase, scenario);
-
-			_scenarioManager.UpdateScenario(_gameBase, scenario, progress, max);
-
+			if (OnResetScenario != null)
+			{
+				OnResetScenario(_gameBase, scenario);
+				CustomLogger.Log(CustomLogger.LogComponents.ProgressBarManager, " OnResetScenario");
+			}
+			if (OnUpdateScenario != null)
+			{
+				OnUpdateScenario(_gameBase, scenario, progress, max);
+				CustomLogger.Log(CustomLogger.LogComponents.ProgressBarManager, " OnUpdateScenario");
+			}
 			CustomLogger.Log(" ProgressBarManager start " + progress + "/" + max);
 
 			//	GameplayService.resumeGame();// never mind
 
 			if (max == 0)
 			{
-
 				//setUIProgress(50, 50);
-
 				Finish();
-
 				return;
 			}
 			if (max < 0)
 			{
-
 				//setUIProgress(50, 50);
-
 				Finish();
-
 				return;
 			}
-
 			//scheduler = Executors.newScheduledThreadPool(1);
-
 			//presenter.getBackgroundAudioService().preloadScenarioAudio(scenario, new Runnable() {
-
-
 			//public void run()
 			//{
 			//	scheduledTask = scheduler.scheduleAtFixedRate(task, 0, delay, TimeUnit.MILLISECONDS);
@@ -84,23 +86,24 @@ namespace Baron.Service
 			_scheduledTask.Start();
 		}
 
-
 		public void Stop()
 		{
 			//if (!BranchPresenter.isCreated()) return;
-
+			_trackService.Pause();
 			CustomLogger.Log(" ProgressBarManager stop");
 			try
 			{
 
 				if (_scheduledTask != null)
 				{
+
 					_scheduledTask.Stop();
 					//	scheduledTask.cancel(false);
 					//	scheduledTask = null;
 					//}
 				}
 				_lastUpdatedAt = 0;
+
 			}
 			catch (Exception e)
 			{
@@ -144,26 +147,42 @@ namespace Baron.Service
 
 					Stop();
 
-					CustomLogger.Log(" Track is completed: " + progress + "/" + max + " ms");
+					CustomLogger.Log(CustomLogger.LogComponents.Branch, " Track is completed: " + progress + "/" + max + " ms");
 
 					if (scenario.CurrentTrackBranch.IsFinal)
 					{
-						_scenarioManager.OnFinaleReached(scenario);
+						if (OnFinaleReached != null)
+						{
+							OnFinaleReached(scenario);
+							CustomLogger.Log(CustomLogger.LogComponents.ProgressBarManager, " OnFinaleReached");
+						}
 					}
 					else if (scenario.CurrentTrackBranch.IsInteraction)
 					{
-						_scenarioManager.OnInteractionReached(scenario);
+						if (OnInteractionReached != null)
+						{
+							OnInteractionReached(scenario);
+							CustomLogger.Log(CustomLogger.LogComponents.ProgressBarManager, " OnInteractionReached " + scenario.Cid);
+						}
 					}
 					else
 					{
 
 						if (scenario.CurrentTrackBranch.IsBeforeNewScenario)
 						{
-							_scenarioManager.OnNewScenarioReached(scenario);
+							if (OnNewScenarioReached != null)
+							{
+								OnNewScenarioReached(scenario);
+								CustomLogger.Log(CustomLogger.LogComponents.ProgressBarManager, " OnNewScenarioReached " + scenario.Cid);
+							}
 						}
 						else
 						{
-							_scenarioManager.OnScenarioCompleted();
+							if (OnScenarioCompleted != null)
+							{
+								OnScenarioCompleted();
+								CustomLogger.Log(CustomLogger.LogComponents.ProgressBarManager, " OnScenarioCompleted " + scenario.Cid);
+							}
 						}
 					}
 				}
@@ -172,17 +191,16 @@ namespace Baron.Service
 
 			catch (Exception e)
 			{
-				CustomLogger.Log("ProgressBarManager Exc" + e.Message);
+				CustomLogger.LogException(e);
 			}
 		}
-
+		// https://gunnarpeipman.com/net/avoid-overlapping-timer-calls/
 		private void Runnable()
 		{
 			if (!_isRunnig)
 			{
 				_isRunnig = true;
 				float delta = getDelayFromLastRun();
-
 				//if (!BranchPresenter.isCreated()) return;
 
 				//	final BranchPresenter presenter = BranchPresenter.getInstance();
@@ -194,17 +212,17 @@ namespace Baron.Service
 				//	{
 
 				Scenario scenario = _gameBase.History.GetScenario();
-
 				UpdateScenario(scenario, delta);
 				_isRunnig = false;
 			}
+
 		}
 
 		private long getDelayFromLastRun()
 		{
 			if (_lastUpdatedAt > 0)
 			{
-				int delta = Math.Max(_delay, (int)(DateTime.Now.Millisecond - _lastUpdatedAt));
+				int delta = Math.Max(_delay, (int)(DateTime.Now.Ticks - _lastUpdatedAt) / 10000);
 				return (_delay + delta) / 2;
 			}
 
@@ -222,15 +240,23 @@ namespace Baron.Service
 			bool isFirstTrackItem = delta == 0;
 			int progress = (int)(scenario.Progress + delta);
 
-			bool hasBranchChanged = _scenarioManager.UpdateScenario(_gameBase,
-					scenario, progress, scenario.Duration);
+			bool hasBranchChanged = false;
+			if (OnUpdateScenario != null)
+				hasBranchChanged = OnUpdateScenario(_gameBase, scenario, progress, scenario.Duration);
+			else
+			{
+				CustomLogger.LogException(new Exception("OnUpdateScenario is null"));
+			}
 
 			//updatePlayerFragment(); Update graphic
 
 			if (scenario.IsCompleted)
 			{
-
-				_scenarioManager.OnBranchCompleted(scenario.CurrentTrackBranch);
+				if (OnBranchCompleted != null)
+				{
+					OnBranchCompleted(scenario.CurrentTrackBranch);
+					CustomLogger.Log(CustomLogger.LogComponents.ProgressBarManager, " OnBranchCompleted " + scenario.CurrentTrackBranch.Id);
+				}
 
 				Finish();
 
@@ -241,14 +267,18 @@ namespace Baron.Service
 			{
 				try
 				{
-					_scenarioManager.OnBranchStarted(scenario.CurrentTrackBranch);
+					if (OnBranchStarted != null)
+					{
+						OnBranchStarted(scenario.CurrentTrackBranch);
+						CustomLogger.Log(CustomLogger.LogComponents.ProgressBarManager, " OnBranchStarted " + scenario.CurrentTrackBranch.Id);
+					}
 				}
 				catch (Exception e)
 				{
-					CustomLogger.Log("ProgressBarManager Exc" + e.Message);
+					CustomLogger.LogException(e);
 					Stop();
 					scenario.Unlock();
-					_gameBase.syncHistory(); 
+					_gameBase.syncHistory();
 
 					return;
 				}
@@ -257,15 +287,23 @@ namespace Baron.Service
 			{
 
 				TrackBranch prev = (TrackBranch)scenario.CurrentTrackBranch.Previous;
-				_scenarioManager.OnBranchCompleted(prev);
+				if (OnBranchCompleted != null)
+				{
+					OnBranchCompleted(prev);
+					CustomLogger.Log(CustomLogger.LogComponents.ProgressBarManager, " OnBranchCompleted " + scenario.CurrentTrackBranch.Id);
+				}
 
 				try
 				{
-					_scenarioManager.OnBranchStarted(scenario.CurrentTrackBranch);
+					if (OnBranchStarted != null)
+					{
+						OnBranchStarted(scenario.CurrentTrackBranch);
+						CustomLogger.Log(CustomLogger.LogComponents.ProgressBarManager, " OnBranchStarted " + scenario.CurrentTrackBranch.Id);
+					}
 				}
 				catch (Exception e)
 				{
-					CustomLogger.Log("ProgressBarManager Exc" + e.Message);
+					CustomLogger.LogException(e);
 					Stop();
 					scenario.Unlock();
 					_gameBase.syncHistory();
@@ -300,14 +338,15 @@ namespace Baron.Service
 			_trackService.Resume(scenario);
 			//}
 			//});
-
-			_lastUpdatedAt = DateTime.Now.Millisecond;
+			_lastUpdatedAt = DateTime.Now.Ticks;
 		}
 
 		private void setUIProgress(int progress, int max)
 		{
-			MainThreadRunner.AddTask(() => _scenarioManager.SetSliderPosition(progress, max));
-					//bar.setProgress(progress);
+			if (OnChangeSliderPosition != null)
+				MainThreadRunner.AddTask(() => OnChangeSliderPosition(progress, max));
+
+			//bar.setProgress(progress);
 
 		}
 

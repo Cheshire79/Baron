@@ -8,12 +8,10 @@ namespace Baron.Service
 	public abstract class BackgroundMediaService
 	{
 		protected GameBase _gameBase;
-		protected IBranchViewController _branchViewController;
-
-		public BackgroundMediaService(GameBase gameBase, IBranchViewController branchViewController)
+	
+		public BackgroundMediaService(GameBase gameBase	)
 		{
 			_gameBase = gameBase;
-			_branchViewController = branchViewController;
 		}
 
 		//public void Resume(Scenario scenario)

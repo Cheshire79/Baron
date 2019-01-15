@@ -12,9 +12,9 @@ namespace Baron.Strategy.Decision
 		ShowBranchesListener _showBranchesListener;
 
 
-		public CompletedDecision(BranchDecisionManager manager, Branch branch, BrunchController brunchController, GameBase gameBase) : base(manager, branch, brunchController, gameBase)
+		public CompletedDecision(BranchDecisionManager manager, Branch branch, BranchController branchController, GameBase gameBase) : base(manager, branch, branchController, gameBase)
 		{
-			_showBranchesListener = new ShowBranchesListener(brunchController.BranchViewController);
+			_showBranchesListener = new ShowBranchesListener(branchController.BranchViewController);
 		}
 
 
@@ -29,7 +29,7 @@ namespace Baron.Strategy.Decision
 			//BranchPresenter presenter = BranchPresenter.getInstance();
 
 			//presenter.dispatch(Event.SHOW_BRANCHES);
-			_showBranchesListener.OnReceive(_gameBase, _brunchController);
+			_showBranchesListener.OnReceive(_gameBase, _branchController);
 		}
 
 

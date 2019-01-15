@@ -6,7 +6,7 @@ using System;
 
 namespace Baron.Listener
 {
-	public class ApplicationResumedListener
+	public class ApplicationResumedListener // todo remove
 	{
 		private GameBase _gameBase;
 		private BranchScenarioManager _scenarioManager;
@@ -16,7 +16,7 @@ namespace Baron.Listener
 			_gameBase = gameBase;
 			_scenarioManager = scenarioManager;
 		}
-		public void onReceive(bool canHideBlack, BrunchController brunchController)
+		public void onReceive(bool canHideBlack, BranchController branchController)
 		{
 			CustomLogger.Log("ApplicationResumedListener ");
 

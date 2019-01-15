@@ -182,8 +182,7 @@ namespace Baron.Service
 			}
 			catch (Exception e)
 			{
-				//Log.e(tag, e);
-				CustomLogger.Log(" " + e.Message);
+				CustomLogger.LogException(e);
 			}
 		}
 
@@ -288,6 +287,92 @@ namespace Baron.Service
 		{
 			_historyManager.Sync(_history);
 			
+		}
+
+
+
+
+
+		//-------------------- Navigate on Branch and Option
+
+		public Branch FindCurrentBranch(bool enabledOnly)
+		{
+			
+			TrackBranch trackBranch = _history.GetScenario().CurrentTrackBranch;
+			if (trackBranch == null)
+			{
+				return _history.InitialBranch;
+			}
+
+			string id = trackBranch.Id;
+
+			if (enabledOnly)
+			{
+				//HashSet<String> disabledBranches = history.getDisabledBranchCID();
+				//if (disabledBranches.Contains(id))
+				//{
+				//	CustomLogger.Log(" BrunchController Cid " + id + " is disabled");
+				//	return null;
+				//}
+			}
+
+			return TreeParser.FindBranchByCid(this, id);
+		}
+
+		public Option FindCurrentOption(bool enabledOnly)
+		{
+			try
+			{
+				History.History history = _history;
+				if (history == null) return null;
+
+				Branch currentBranch = FindCurrentBranch(enabledOnly);
+				if (currentBranch == null) return null;
+
+				Option currentOption = OptionRepository.Find(this, currentBranch.OptionId);
+				if (currentOption == null) return null;
+
+				if (enabledOnly)
+				{
+					if (history.GetDisabledOptions().Contains(currentOption.Id))
+					{
+						CustomLogger.Log("BrunchController Option " + currentOption.Id + " is disabled");
+						return null;
+					}
+				}
+				return currentOption;
+			}
+			catch (Exception e)
+			{
+				CustomLogger.LogException(e);
+			}
+			return null;
+		}
+		public Branch GetStartBranch()
+		{
+
+			History.History history = _history;
+			if (history == null) return null;
+
+
+			Branch defaultBranch = history.InitialBranch;
+			Branch currentBranch;
+			try
+			{
+				currentBranch = FindCurrentBranch(false);
+				if (currentBranch == null)
+				{
+					currentBranch = defaultBranch;
+				}
+
+			}
+			catch (Exception e)
+			{
+				CustomLogger.LogException(e);
+				currentBranch = defaultBranch;
+			}
+
+			return currentBranch;
 		}
 	}
 }

@@ -6,8 +6,8 @@ namespace Baron.Controller
 {
 	public interface IBranchViewController: IBaseViewController
 	{
-		void ShowLog(GameBase gameBase,BrunchController brunchController);
-		void PlaceOptions(GameBase gameBase, BrunchController brunchController);
+		void ShowLog(GameBase gameBase,BranchController branchController);
+		void PlaceOptions(GameBase gameBase, BranchController branchController);
 		void UpdateDisplayedData(string text); 
 		 void Reset();
 		void Init(Action<string> OnClickedTest, Action<float> OnClickedAnotherPosition, Action OnStartDebuging);

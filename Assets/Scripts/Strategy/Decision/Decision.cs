@@ -10,17 +10,17 @@ namespace Baron.Strategy.Decision
 	{
 		protected Branch branch;
 		protected BranchDecisionManager manager;
-		protected  BrunchController _brunchController;
+		protected  BranchController _branchController;
 		protected GameBase _gameBase;
 
 
 
 
-		protected Decision(BranchDecisionManager manager, Branch branch, BrunchController brunchController, GameBase gameBase)
+		protected Decision(BranchDecisionManager manager, Branch branch, BranchController brunchController, GameBase gameBase)
 		{
 			this.branch = branch;
 			this.manager = manager;
-			_brunchController = brunchController;
+			_branchController = brunchController;
 			 _gameBase=gameBase;
 		}
 

@@ -1,18 +1,17 @@
 ﻿using Baron.Entity;
-using Baron.Listener;
 using Baron.Service;
 using CustomTools;
 using System;
 
 namespace Baron.Controller
 {
-	public class BrunchController
+	public class BranchController
 	{
 		private GameBase _gameBase;
 		private BranchScenarioManager _scenarioManager;
-		private BackgroundImageService _backgroundImageService;
-		private TrackService _trackService;
-		private ApplicationResumedListener _applicationResumedListener;
+		//private BackgroundImageService _backgroundImageService;
+		//private TrackService _trackService;
+		//private ApplicationResumedListener _applicationResumedListener;
 		private BranchDecisionManager _branchDecisionManager;
 
 		public BranchDecisionManager BranchDecisionManager
@@ -26,25 +25,30 @@ namespace Baron.Controller
 		{
 			get { return _branchViewController; }
 		}
-		public BrunchController(GameBase gameBase, IBranchViewController branchViewController)
+		public BranchController(GameBase gameBase, IBranchViewController branchViewController)
 		{
 			_gameBase = gameBase;
-			_backgroundImageService = new BackgroundImageService(_gameBase, branchViewController);
-			_trackService = new TrackService(_backgroundImageService, new BackgroundAudioService(_gameBase, branchViewController));
+			var backgroundImageService = new BackgroundImageService(_gameBase);//, branchViewController);
+			backgroundImageService.OnChangeImage += branchViewController.SetImage;
+			backgroundImageService.OnShowMessage += branchViewController.UpdateDisplayedData;
+			var backgroundAudioService = new BackgroundAudioService(_gameBase);
+			backgroundAudioService.OnShowMessage += branchViewController.UpdateDisplayedData;
+			var trackService = new TrackService(backgroundImageService, backgroundAudioService);
 
-			_scenarioManager = new BranchScenarioManager(_gameBase, this, _trackService);
+			_scenarioManager = new BranchScenarioManager(_gameBase, this, trackService);
+			
 			//backgroundAudioService = new BackgroundAudioService(activity);
-			_applicationResumedListener = new ApplicationResumedListener(_gameBase, _scenarioManager);
+			//_applicationResumedListener = new ApplicationResumedListener(_gameBase, _scenarioManager);
 
 			_branchDecisionManager = new BranchDecisionManager(gameBase);
 			_branchViewController = branchViewController;
 			_branchViewController.Init(OnOptionClicked, OnClickedAnotherPosition, StartScroll);
-
+			_scenarioManager.SetChangeSliderPosition(_branchViewController.SetSliderPosition);
 		}
 		public void StartGame(bool isBlackBackground)
 		{
 			CustomLogger.Log("BrunchController startGame");
-			_branchViewController.ShowView();
+			
 			try
 			{
 				//	activity.getBranchLayout().setVisibility(View.VISIBLE);
@@ -52,22 +56,24 @@ namespace Baron.Controller
 				//	activity.getBlackCurtains().setVisibility(isBlackBackground ? View.VISIBLE : View.GONE);
 
 				Scenario scenario = _gameBase.History.GetScenario();
-				if (scenario.Cid == null)// new Scenario
+				if (scenario.Cid == null)// this means that the  Scenario is new
 				{
-					Branch branch = GetStartBranch();//checked 10_09_18
+					Branch branch = _gameBase.GetStartBranch();
 					scenario = _scenarioManager.CreateScenario(_gameBase, branch.Cid);
 
 					_gameBase.History.SetScenario(scenario);
 				}
-				if (_backgroundImageService != null && _gameBase.History.GetCurrentBackground() != null)
-				{
-					_backgroundImageService.Execute(scenario);
+				// на всякий случай что бы быстрее подгрузилась картинка
+				if ( _gameBase.History.GetCurrentBackground() != null) // вроде лишнее 
+				{// по умолчанию показываю черный бекГраунд
+				//	_backgroundImageService.Execute(scenario);
 				}
 
-				_applicationResumedListener.onReceive(false, this);
 
+				ResumedAplication();
+				//_applicationResumedListener.onReceive(false, this);
 				//dispatch(Event.APPLICATION_RESUMED, false);
-			//	Test(scenario);
+				_branchViewController.ShowView();
 			}
 			catch (Exception e)
 			{
@@ -91,7 +97,7 @@ namespace Baron.Controller
 				CustomLogger.Log("Getted Branches " + item.Id + " " + item.Duration);
 
 			}
-			Branch currentBranch = FindCurrentBranch(false);
+			Branch currentBranch = _gameBase.FindCurrentBranch(false);
 
 			//HashSet<string> uniqueItems = new HashSet<string>();
 			//InventoryBranch currentInventoryBranch=TreeParser.FindInventoryBranch(_gameBase, currentBranch, uniqueItems);
@@ -108,100 +114,8 @@ namespace Baron.Controller
 
 			CustomLogger.Log("________________________ " + cid);
 		}
-		public Branch GetStartBranch()
-		{
+	
 
-			History.History history = _gameBase.History;
-			if (history == null) return null;
-
-
-			Branch defaultBranch = history.InitialBranch;
-			Branch currentBranch;
-			try
-			{
-				currentBranch = FindCurrentBranch(false);
-				if (currentBranch == null)
-				{
-					currentBranch = defaultBranch;
-				}
-
-			}
-			catch (Exception e)
-			{
-				CustomLogger.Log("BrunchController Exc" + e.Message);
-				currentBranch = defaultBranch;
-			}
-
-			return currentBranch;
-		}
-
-
-
-		public Branch FindCurrentBranch(bool enabledOnly)
-		{
-
-			if (_gameBase == null)
-				throw new ArgumentNullException("BranchController:  gameBase is null"); ;
-
-
-
-			History.History history = _gameBase.History;
-			if (history == null)
-			{
-				CustomLogger.Log("BrunchController  history == null");
-				return null;
-			}
-
-			TrackBranch trackBranch = history.GetScenario().CurrentTrackBranch;
-			if (trackBranch == null)
-			{
-				return history.InitialBranch;
-			}
-
-			string id = trackBranch.Id;
-
-			if (enabledOnly)
-			{
-				//HashSet<String> disabledBranches = history.getDisabledBranchCID();
-				//if (disabledBranches.Contains(id))
-				//{
-				//	CustomLogger.Log(" BrunchController Cid " + id + " is disabled");
-				//	return null;
-				//}
-			}
-
-			return TreeParser.FindBranchByCid(_gameBase, id);
-		}
-
-		public Option FindCurrentOption(bool enabledOnly)
-		{
-			try
-			{
-				History.History history = _gameBase.History;
-				if (history == null) return null;
-
-				Branch currentBranch = FindCurrentBranch(enabledOnly);
-				if (currentBranch == null) return null;
-
-				Option currentOption = OptionRepository.Find(_gameBase, currentBranch.OptionId);
-				if (currentOption == null) return null;
-
-				if (enabledOnly)
-				{
-					if (history.GetDisabledOptions().Contains(currentOption.Id))
-					{
-						CustomLogger.Log("BrunchController Option " + currentOption.Id + " is disabled");
-						return null;
-					}
-				}
-				return currentOption;
-			}
-			catch (Exception e)
-			{
-				CustomLogger.Log("BrunchController Exc" + e.Message);
-			}
-			return null;
-		}
 		private void OnOptionClicked(string cid)
 		{
 			_branchViewController.Reset();
@@ -215,10 +129,10 @@ namespace Baron.Controller
 			_scenarioManager.ResumeScenario();
 		}
 
-		public void SetSliderPosition(int pos, int max)
-		{
-			_branchViewController.SetSliderPosition(pos, max);
-		}
+		//public void SetSliderPosition(int pos, int max)
+		//{
+		//	_branchViewController.SetSliderPosition(pos, max);
+		//}
 		private void OnClickedAnotherPosition(float progress)
 		{
 			StartScroll();
@@ -231,7 +145,8 @@ namespace Baron.Controller
 		//====================================
 		private void StopScroll()
 		{
-			_applicationResumedListener.onReceive(false, this);
+			//_applicationResumedListener.onReceive(false, this);
+			ResumedAplication();
 		}
 
 		public void StartScroll()
@@ -274,7 +189,7 @@ namespace Baron.Controller
 
 			//	TransitionFactory.stop();
 
-			_trackService.Pause();
+			// _trackService.Pause(); move into scenarioManager
 
 			_scenarioManager.StopProgressBar();
 			//	presenter.getPlayerFragment().toggleControls();
@@ -300,7 +215,20 @@ namespace Baron.Controller
 		}
 
 
+		private void ResumedAplication()
+		{
+			GameBase.isPaused = false;
+			// made buttons Disable here
+			_gameBase.syncHistory();
 
+			//if (InteractionFactory.hasInteractionStrategy())
+			//{
+			//	Log.w(tag, "resumeGameAndStartScenario is ignored due to interaction: "
+			//			+ InteractionFactory.getCurrentInteractionType());
+			//	return;
+			//}
+			_scenarioManager.ResumeScenario();
+		}
 	}
 
 

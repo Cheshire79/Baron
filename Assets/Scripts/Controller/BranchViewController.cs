@@ -42,7 +42,7 @@ namespace Baron.Controller
 			//HoldemTableWindowController.CloseFromAplication();
 
 		}
-		public void ShowLog(GameBase gameBase, BrunchController brunchController)
+		public void ShowLog(GameBase gameBase, BranchController branchController)
 		{
 
 			//	BranchPresenter presenter = BranchPresenter.getInstance();
@@ -50,7 +50,7 @@ namespace Baron.Controller
 
 			try
 			{
-				Branch currentBranch = brunchController.FindCurrentBranch(false);
+				Branch currentBranch = gameBase.FindCurrentBranch(false);
 
 				CustomLogger.Log("BranchViewController onCreate for " + currentBranch);
 
@@ -87,9 +87,9 @@ namespace Baron.Controller
 			_view.UpdateDisplayedData(text);
 		}
  
-		public void PlaceOptions(GameBase gameBase, BrunchController brunchController)
+		public void PlaceOptions(GameBase gameBase, BranchController branchController)
 		{
-			_view.PlaceOptions(gameBase, brunchController);
+			_view.PlaceOptions(gameBase, branchController);
 
 		}
 
@@ -104,7 +104,7 @@ namespace Baron.Controller
 		}
 		public void SetSliderPosition(int pos, int max)
 		{
-			_view.SetSliderPosition(pos,max);
+			_view.ChangeSliderPosition(pos,max);
 		}
 	}
 }

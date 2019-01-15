@@ -20,5 +20,6 @@ namespace Baron.View.BranchView
 
 		public RectTransform canvasScaler;
 
+		public Image Hover;
 	}
 }

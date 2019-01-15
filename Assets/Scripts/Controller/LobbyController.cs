@@ -15,12 +15,12 @@ namespace Baron.Controller
 
 		GameBase _gameBase;
 		//private IDialogBoxWindowController _dialogBoxWindowChipsController;
-		private BrunchController _brunchController;
-		private BrunchController BrunchController
+		private BranchController _branchController;
+		private BranchController BranchController
 		{
 			get
 			{
-				return _brunchController ?? (_brunchController = new BrunchController(_gameBase, _branchViewController));
+				return _branchController ?? (_branchController = new BranchController(_gameBase, _branchViewController));
 			}
 		}
 		private GameplayService _gameplayService;
@@ -61,7 +61,7 @@ namespace Baron.Controller
 			}
 			catch (Exception e)
 			{
-				CustomLogger.Log("LobbyController " + e);
+				CustomLogger.LogException(e);
 			}
 
 
@@ -87,7 +87,7 @@ namespace Baron.Controller
 				//isableMenuButtons();
 				_gameplayService.CleanUpBeforeContinueGame();
 				//BrunchController.ShowView();
-				BrunchController.StartGame(true);
+				BranchController.StartGame(true);
 			}
 			catch (Exception e)
 			{
@@ -133,11 +133,12 @@ namespace Baron.Controller
 				_gameplayService.NewGame();
 				//	activity.moveToActivity(BranchActivity.class);
 				//_branchViewController.ShowView();
-				BrunchController.StartGame(true);
+				BranchController.StartGame(true);
 			}
 			catch (Exception e)
 			{
-				CustomLogger.Log("LobbyController " + e);
+				CustomLogger.LogException(e);
+			//	CustomLogger.Log(CustomLogger.LogComponents.Exceptions,"LobbyController " + e);
 			}
 		}
 		public void PlayPlaySoundOnClick()
@@ -169,7 +170,7 @@ namespace Baron.Controller
 			}
 			catch (Exception e)
 			{
-				CustomLogger.Log("LobbyController " + e);
+				CustomLogger.LogException(e);
 			}
 		}
 	}

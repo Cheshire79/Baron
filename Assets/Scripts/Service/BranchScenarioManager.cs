@@ -12,16 +12,28 @@ namespace Baron.Service
 	{
 		private GameBase _gameBase;
 		private ProgressBarManager _progressBarManager;
-		private BrunchController _brunchController;
 		private TrackCompletedListener _trackCompletedListener;
-		public BranchScenarioManager(GameBase gameBase, BrunchController brunchController,  TrackService trackService)
+		public BranchScenarioManager(GameBase gameBase, BranchController branchController, TrackService trackService)
 		{
 			_gameBase = gameBase;
-			_progressBarManager = new ProgressBarManager(gameBase, this, trackService);
-			_brunchController = brunchController;
-			_trackCompletedListener = new TrackCompletedListener(brunchController,_gameBase);
+			_progressBarManager = new ProgressBarManager(gameBase, trackService);
+
+			_progressBarManager.OnResetScenario += ResetScenario;
+			_progressBarManager.OnUpdateScenario += UpdateScenario;
+			_progressBarManager.OnFinaleReached += OnFinaleReached;
+			_progressBarManager.OnInteractionReached += OnInteractionReached;
+			_progressBarManager.OnNewScenarioReached += OnNewScenarioReached;
+			_progressBarManager.OnScenarioCompleted += OnScenarioCompleted;
+			_progressBarManager.OnBranchCompleted += OnBranchCompleted;
+			_progressBarManager.OnBranchStarted += OnBranchStarted;
+
+			_trackCompletedListener = new TrackCompletedListener(branchController, _gameBase); //todo
 		}
 
+		public void SetChangeSliderPosition(Action<int, int> ChangeSliderPosition)
+		{
+			_progressBarManager.OnChangeSliderPosition += ChangeSliderPosition;
+		}
 
 		public Scenario CreateScenario(GameBase gameBase, String cid)
 		{
@@ -129,7 +141,7 @@ namespace Baron.Service
 
 			if (CanFinishScenario(altBranch, option)) return;
 
-			Branch match =  TreeParser.FindNextBranchByInventory(gameBase, altBranch);
+			Branch match = TreeParser.FindNextBranchByInventory(gameBase, altBranch);
 
 			if (match != null)
 			{
@@ -177,38 +189,21 @@ namespace Baron.Service
 
 		public void ResumeScenario()
 		{
-
 			CustomLogger.Log("BranchScenarioManager resumeScenario");
-
-			//	if (!BranchPresenter.isCreated()) return;
-
-			//	final BranchPresenter presenter = BranchPresenter.getInstance();
-			//	final BranchActivity activity = presenter.getActivity();
-
 			try
 			{
-
-				//		presenter.onHistoryAvailable(new Presenter.OnHistoryAvailable() {
-				//		@Override
-
-				//		public void onSuccess(History history)
-				//		{
-
 				Scenario scenario = _gameBase.History.GetScenario();
+
+				CustomLogger.Log(CustomLogger.LogComponents.Branch, string.Format("Branches Count = {0} id = {1}", scenario.Branches.Count, scenario.CurrentTrackBranch.Id));
+
 				if (!scenario.IsValid())
 				{
 					CustomLogger.Log("BranchScenarioManager  Scenario is not valid. Resetting");
-					Branch branch = _brunchController.GetStartBranch();//todo !!!!
-
+					Branch branch = _gameBase.GetStartBranch();//todo !!!!
 					scenario = CreateScenario(_gameBase, branch.Cid);
-
 					_gameBase.History.SetScenario(scenario);
 				}
-
 				_progressBarManager.Start(scenario);
-
-
-
 			}
 			catch (Exception e)
 			{
@@ -230,6 +225,12 @@ namespace Baron.Service
 
 		public bool UpdateScenario(GameBase gameBase, Scenario scenario, int progress, int duration)
 		{
+			string id = "";
+			//Option tempOption = OptionRepository.Find(gameBase, scenario.CurrentTrackBranch.);
+			//if (tempOption != null)
+			//				id = tempOption.Id;
+			CustomLogger.Log(CustomLogger.LogComponents.Branch, string.Format(" Update Branches Count = {0} id = {1} opion = {2}", scenario.Branches.Count, scenario.CurrentTrackBranch.Id, scenario.CurrentTrackBranch.OptionId));
+
 
 			bool hasChanged = scenario.Update(progress, duration);
 
@@ -355,7 +356,7 @@ namespace Baron.Service
 
 			_gameBase.History.SetScenario(nextScenario);
 			_gameBase.syncHistory();//TODO
-			//GameplayService.resumeGameAndStartScenario();
+									//GameplayService.resumeGameAndStartScenario();
 			ResumeGameAndStartScenario();
 
 
@@ -398,7 +399,7 @@ namespace Baron.Service
 
 			//BranchPresenter presenter = BranchPresenter.getInstance();
 			AchievementPointService aps = new AchievementPointService(_gameBase); //presenter.getAchievementPointService();
-			// todo !!
+																				  // todo !!
 			Branch currentBranch = TreeParser.FindBranchByCid(_gameBase, trackBranch.Id);
 			Option currentOption = OptionRepository.Find(_gameBase, trackBranch.OptionId);
 
@@ -434,72 +435,72 @@ namespace Baron.Service
 
 			//SuperBonusManager.unlock(gameBase, aps); todo
 		}
-		public void OnBranchStarted(TrackBranch trackBranch) 
+		public void OnBranchStarted(TrackBranch trackBranch)
 		{
 
-        if (trackBranch == null) return;
+			if (trackBranch == null) return;
 
 			//if (gameBase == null) return;
 
 			History.History history = _gameBase.History;
-        if (history == null) return;
+			if (history == null) return;
 
-       // if (!BranchPresenter.isCreated()) return;
+			// if (!BranchPresenter.isCreated()) return;
 
-       // BranchPresenter presenter = BranchPresenter.getInstance();
+			// BranchPresenter presenter = BranchPresenter.getInstance();
 
-		Branch branch = TreeParser.FindBranchByCid(_gameBase, trackBranch.Id);
+			Branch branch = TreeParser.FindBranchByCid(_gameBase, trackBranch.Id);
 
 			CustomLogger.Log("BranchScenarioManager  onBranchStarted " + branch);
 
-        Option option = OptionRepository.Find(_gameBase, trackBranch.OptionId);
-        if (option != null) {
+			Option option = OptionRepository.Find(_gameBase, trackBranch.OptionId);
+			if (option != null)
+			{
 
-            foreach (Item item in option.Items) {
-                history.AddItem(item);
-            }
+				foreach (Item item in option.Items)
+				{
+					history.AddItem(item);
+				}
 
-            foreach (String action in option.Actions)
+				foreach (String action in option.Actions)
 				{
 
-                switch (action) {
-                    case Option.ACTION_INCREMENT_DAY:
+					switch (action)
+					{
+						case Option.ACTION_INCREMENT_DAY:
 
-                        if (!history.ContainsInOptionActionHistory(branch, action)) {
-
-                            history.incrementDay();
-
-                            history.AddCompletedOptionAction(branch.Cid, action);
-
-                            //presenter.dispatch(Event.INCREMENT_DAY, history.getDay());
-							//todo
-                        }
-
-                        break;
-                    case Option.ACTION_ADVERTISEMENT:
-
-                        if (!history.ContainsInOptionActionHistory(branch, action))
+							if (!history.ContainsInOptionActionHistory(branch, action))
 							{
 
-                            //if (AdvService.isEnabled && NetworkService.isNetworkAvailable(presenter.getActivity())) {
+								history.incrementDay();
 
-                            //    history.addCompletedOptionAction(branch.cid, action);
-                            //    presenter.dispatch(Event.ADVERTISEMENT, option.id);
+								history.AddCompletedOptionAction(branch.Cid, action);
 
-                            //    throw new ScenarioInterruptedException(action);
-                           // }
-                        }
+								//presenter.dispatch(Event.INCREMENT_DAY, history.getDay());
+								//todo
+							}
 
-                        break;
-                }
-            }
-        }
-    }
+							break;
+						case Option.ACTION_ADVERTISEMENT:
 
-		public void SetSliderPosition(int pos, int max) //todo
-		{
-			_brunchController.SetSliderPosition(pos, max); ;
+							if (!history.ContainsInOptionActionHistory(branch, action))
+							{
+
+								//if (AdvService.isEnabled && NetworkService.isNetworkAvailable(presenter.getActivity())) {
+
+								//    history.addCompletedOptionAction(branch.cid, action);
+								//    presenter.dispatch(Event.ADVERTISEMENT, option.id);
+
+								//    throw new ScenarioInterruptedException(action);
+								// }
+							}
+
+							break;
+					}
+				}
+			}
 		}
+
 
 		public void StopProgressBar()
 		{

@@ -17,7 +17,7 @@ namespace Baron.Listener
 		}
 
 
-		public void OnReceive(GameBase gameBase, BrunchController brunchController)
+		public void OnReceive(GameBase gameBase, BranchController branchController)
 		{
 			//if (!BranchPresenter.isCreated()) return;
 
@@ -53,9 +53,9 @@ namespace Baron.Listener
 				{
 
 
-					_branchViewController.ShowLog(gameBase, brunchController);
+					_branchViewController.ShowLog(gameBase, branchController);
 					MainThreadRunner.AddTask(() =>
-					_branchViewController.PlaceOptions(gameBase, brunchController));
+					_branchViewController.PlaceOptions(gameBase, branchController));
 					//FragmentManager fm = activity.getSupportFragmentManager();
 					//Fragment interactionFragment = fm.findFragmentById(R.id.interaction_container);
 					//if (interactionFragment != null)
