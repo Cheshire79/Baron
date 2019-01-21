@@ -1,5 +1,4 @@
 ﻿
-using Baron.Controller;
 using Baron.Entity;
 using Baron.Service;
 using Baron.Tools;
@@ -163,7 +162,7 @@ namespace Baron.View.BranchView
 			}
 			_hover.gameObject.SetActive(false);// after forst time loading mager need yo hide hover
 		}
-		public void PlaceOptions(GameBase gameBase, BranchController brunchController)
+		public void PlaceOptions(GameBase gameBase)
 		{
 			Branch currentBranch = gameBase.FindCurrentBranch(false);
 

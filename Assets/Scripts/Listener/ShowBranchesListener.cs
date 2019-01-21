@@ -6,7 +6,7 @@ using System;
 
 namespace Baron.Listener
 {
-	public class ShowBranchesListener
+	public class ShowBranchesListener// call just one can remove
 	{
 		IBranchViewController _branchViewController;
 
@@ -53,9 +53,9 @@ namespace Baron.Listener
 				{
 
 
-					_branchViewController.ShowLog(gameBase, branchController);
+					_branchViewController.ShowLog(gameBase);
 					MainThreadRunner.AddTask(() =>
-					_branchViewController.PlaceOptions(gameBase, branchController));
+					_branchViewController.PlaceOptions(gameBase));
 					//FragmentManager fm = activity.getSupportFragmentManager();
 					//Fragment interactionFragment = fm.findFragmentById(R.id.interaction_container);
 					//if (interactionFragment != null)

@@ -20,14 +20,14 @@ namespace Baron.Controller
 		private List<Branch> _branches;
 		public void Init(Action<string> OptionClicked, Action<float> OnClickedAnotherPosition, Action OnStartDebuging)
 		{
-			_view.Init(OptionClicked, OnClickedAnotherPosition,  OnStartDebuging);
+			_view.Init(OptionClicked, OnClickedAnotherPosition, OnStartDebuging);
 		}
-	
+
 		public BranchViewController(IViewStack viewStack, AbstractViewFactory viewFactory) : base(viewStack)
 		{
 			_viewFactory = viewFactory;
 			_view = viewFactory.CreateBranchView();
-			
+
 			//_view.Show();
 			//    _view.BackButtonClicked += ShowDialogBoxOnExit; todo
 		}
@@ -42,7 +42,7 @@ namespace Baron.Controller
 			//HoldemTableWindowController.CloseFromAplication();
 
 		}
-		public void ShowLog(GameBase gameBase, BranchController branchController)
+		public void ShowLog(GameBase gameBase)
 		{
 
 			//	BranchPresenter presenter = BranchPresenter.getInstance();
@@ -78,7 +78,7 @@ namespace Baron.Controller
 			}
 			catch (Exception e)
 			{
-				CustomLogger.Log("BranchViewController Exc" + e.Message);
+				CustomLogger.LogException(e);
 			}
 		}
 
@@ -86,10 +86,10 @@ namespace Baron.Controller
 		{
 			_view.UpdateDisplayedData(text);
 		}
- 
-		public void PlaceOptions(GameBase gameBase, BranchController branchController)
+
+		public void PlaceOptions(GameBase gameBase)
 		{
-			_view.PlaceOptions(gameBase, branchController);
+			_view.PlaceOptions(gameBase);
 
 		}
 
@@ -104,7 +104,7 @@ namespace Baron.Controller
 		}
 		public void SetSliderPosition(int pos, int max)
 		{
-			_view.ChangeSliderPosition(pos,max);
+			_view.ChangeSliderPosition(pos, max);
 		}
 	}
 }

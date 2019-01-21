@@ -10,14 +10,14 @@ using System.Text;
 
 namespace Baron.Listener
 {
-	public class TrackCompletedListener
+	public class TrackCompletedListener // call just one can remove
 	{
 		private BranchController _branchController;
 		GameBase _gameBase;
 
 		public TrackCompletedListener(BranchController branchController, GameBase gameBase)
 		{
-			_branchController = branchController;
+			//_branchController = branchController;
 			_gameBase=gameBase;
 		}
 
@@ -44,12 +44,14 @@ namespace Baron.Listener
 
 				CustomLogger.Log("TrackCompletedListener Track completed for branch: " + " branch");
 
-				BranchDecisionManager decisionManager = _branchController.BranchDecisionManager;
+			//	BranchDecisionManager decisionManager = _branchController.BranchDecisionManager;
 
-				CompletedDecision decision = new CompletedDecision(decisionManager, branch, _branchController, _gameBase);
+				CompletedDecision decision = new CompletedDecision(//decisionManager,
+					branch, _branchController, _gameBase);
 				decision.Decide();
 
-				//presenter.syncHistory();
+				//presenter.syncHistory(); todo
+				_gameBase.syncHistory();
 
 			}
 			catch (Exception e)

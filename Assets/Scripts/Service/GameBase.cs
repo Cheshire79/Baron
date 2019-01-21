@@ -19,7 +19,7 @@ namespace Baron.Service
 		public static bool isLoaded = false;
 		public static bool isFinaleReached = false;
 		private IHistoryManager _historyManager;
-		public void Init( IHistoryManager historyManager)
+		public void Init(IHistoryManager historyManager)
 		{
 			_historyManager = historyManager;
 			_history = historyManager.FetchHistory();
@@ -36,8 +36,8 @@ namespace Baron.Service
 		private List<Item> _itemRegistry;
 		private List<Riddle> _riddleRegistry;
 		//private List<BeaconItem> beaconItemRegistry;
-//		private TrackImage _previousTrackImage;
-	//	private TrackAudio currentTrackAudio;
+		//		private TrackImage _previousTrackImage;
+		//	private TrackAudio currentTrackAudio;
 
 		public GameBase()
 		{
@@ -140,7 +140,7 @@ namespace Baron.Service
 		public History.History History
 		{
 			get { return _history; }
-		//	set { _history = value; }
+			//	set { _history = value; }
 		}
 
 		public List<Riddle> RiddleRegistry
@@ -286,7 +286,7 @@ namespace Baron.Service
 		public void syncHistory()
 		{
 			_historyManager.Sync(_history);
-			
+
 		}
 
 
@@ -297,7 +297,7 @@ namespace Baron.Service
 
 		public Branch FindCurrentBranch(bool enabledOnly)
 		{
-			
+
 			TrackBranch trackBranch = _history.GetScenario().CurrentTrackBranch;
 			if (trackBranch == null)
 			{
@@ -348,7 +348,7 @@ namespace Baron.Service
 			}
 			return null;
 		}
-		public Branch GetStartBranch()
+		public Branch GetCurrentSavedBranch()// current saved branch
 		{
 
 			History.History history = _history;

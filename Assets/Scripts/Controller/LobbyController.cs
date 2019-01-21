@@ -91,7 +91,7 @@ namespace Baron.Controller
 			}
 			catch (Exception e)
 			{
-				CustomLogger.Log("LobbyController " + e);
+				CustomLogger.LogException(e);
 			}
 		}
 
@@ -137,8 +137,7 @@ namespace Baron.Controller
 			}
 			catch (Exception e)
 			{
-				CustomLogger.LogException(e);
-			//	CustomLogger.Log(CustomLogger.LogComponents.Exceptions,"LobbyController " + e);
+				CustomLogger.LogException(e);			
 			}
 		}
 		public void PlayPlaySoundOnClick()

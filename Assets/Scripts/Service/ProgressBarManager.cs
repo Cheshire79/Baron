@@ -168,7 +168,7 @@ namespace Baron.Service
 					else
 					{
 
-						if (scenario.CurrentTrackBranch.IsBeforeNewScenario)
+						if (scenario.CurrentTrackBranch.IsBeforeNewScenario)// what does it mean
 						{
 							if (OnNewScenarioReached != null)
 							{
@@ -231,11 +231,6 @@ namespace Baron.Service
 
 		public void UpdateScenario(Scenario scenario, float delta)
 		{
-			//final BranchPresenter presenter = BranchPresenter.getInstance();
-			//final BranchScenarioManager scenarioManager = presenter.getScenarioManager();
-			//final GameBase gameBase = presenter.getGameBase();
-			//final BranchActivity activity = presenter.getActivity();
-			//Handler handler = presenter.getHandler();
 
 			bool isFirstTrackItem = delta == 0;
 			int progress = (int)(scenario.Progress + delta);
@@ -331,13 +326,8 @@ namespace Baron.Service
 
 			setUIProgress(scenario.Progress, scenario.Duration);
 
-			//	TrackService trackService = presenter.getTrackService();
-			//	if (trackService != null)
-			//	trackService.resume(scenario);
-
 			_trackService.Resume(scenario);
-			//}
-			//});
+		
 			_lastUpdatedAt = DateTime.Now.Ticks;
 		}
 

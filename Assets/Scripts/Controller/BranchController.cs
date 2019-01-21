@@ -1,5 +1,6 @@
 ﻿using Baron.Entity;
 using Baron.Service;
+using Baron.Tools;
 using CustomTools;
 using System;
 
@@ -35,7 +36,7 @@ namespace Baron.Controller
 			backgroundAudioService.OnShowMessage += branchViewController.UpdateDisplayedData;
 			var trackService = new TrackService(backgroundImageService, backgroundAudioService);
 
-			_scenarioManager = new BranchScenarioManager(_gameBase, this, trackService);
+			_scenarioManager = new BranchScenarioManager(_gameBase, this, trackService, ScenarioCompleted);
 			
 			//backgroundAudioService = new BackgroundAudioService(activity);
 			//_applicationResumedListener = new ApplicationResumedListener(_gameBase, _scenarioManager);
@@ -58,7 +59,7 @@ namespace Baron.Controller
 				Scenario scenario = _gameBase.History.GetScenario();
 				if (scenario.Cid == null)// this means that the  Scenario is new
 				{
-					Branch branch = _gameBase.GetStartBranch();
+					Branch branch = _gameBase.GetCurrentSavedBranch();
 					scenario = _scenarioManager.CreateScenario(_gameBase, branch.Cid);
 
 					_gameBase.History.SetScenario(scenario);
@@ -77,7 +78,7 @@ namespace Baron.Controller
 			}
 			catch (Exception e)
 			{
-				CustomLogger.Log("BrunchController Exc" + e.Message);
+				CustomLogger.LogException(e);
 			}
 		}
 
@@ -228,6 +229,157 @@ namespace Baron.Controller
 			//	return;
 			//}
 			_scenarioManager.ResumeScenario();
+		}
+
+
+		private void ScenarioCompleted()
+		{
+			CustomLogger.Log(" Scenario completed");
+			try
+			{
+				//	final BranchPresenter presenter = BranchPresenter.getInstance();
+
+				Branch branch = _gameBase.FindCurrentBranch(false);
+
+				CustomLogger.Log("TrackCompletedListener Track completed for branch: " + " branch");
+
+				//	BranchDecisionManager decisionManager = _branchController.BranchDecisionManager;
+
+				//CompletedDecision decision = new CompletedDecision(//decisionManager,
+				//	branch, this, _gameBase);
+				//decision.Decide();
+
+				CustomLogger.Log("CompletedDecision  Handle: " + branch);
+
+				//if (!BranchPresenter.isCreated()) return;
+
+				if (!CheckIfCanContinueGame(branch)) return;
+
+				//BranchPresenter presenter = BranchPresenter.getInstance();
+
+				//presenter.dispatch(Event.SHOW_BRANCHES);
+				//_showBranchesListener.OnReceive(_gameBase, _branchController);
+
+
+				try
+				{
+					CustomLogger.Log("ShowBranchesListener");
+
+					//	BranchPresenter presenter = BranchPresenter.getInstance();
+					try
+					{
+						//presenter.removeBranchOptions();
+						//todo refesh view
+					}
+					catch (Exception e)
+					{
+						CustomLogger.LogException(e);
+					}
+
+
+
+					try
+					{
+						//presenter.dispatch(Event.APPLICATION_PAUSED);
+						//todo pause
+					}
+					catch (Exception e)
+					{
+						CustomLogger.LogException(e);
+					}
+
+
+					try
+					{
+
+
+						_branchViewController.ShowLog(_gameBase);
+						MainThreadRunner.AddTask(() =>
+						_branchViewController.PlaceOptions(_gameBase));
+						//FragmentManager fm = activity.getSupportFragmentManager();
+						//Fragment interactionFragment = fm.findFragmentById(R.id.interaction_container);
+						//if (interactionFragment != null)
+						//{
+						//	FragmentService.stop(activity, interactionFragment);
+						//}
+					}
+					catch (Exception e)
+					{
+						CustomLogger.LogException(e);
+					}
+
+					//FragmentService.start(activity, R.id.branch_container, new BranchOptionsFragment());
+
+				}
+				catch (Exception e)
+				{
+					CustomLogger.LogException(e);
+				}
+
+
+
+				//presenter.syncHistory(); todo
+				_gameBase.syncHistory();
+
+			}
+			catch (Exception e)
+			{
+				CustomLogger.LogException(e);
+			}
+		}
+
+		protected bool CheckIfCanContinueGame(Branch branch)
+		{
+
+			//	if (!BranchPresenter.isCreated()) return false;
+
+			try
+			{
+
+				OptionParams @params;
+				switch (branch.OptionId)
+				{
+					case Option.DEATH:
+						GameBase.isFinaleReached = true;
+						//NOTE OptionParams are ignored
+						//						activity.redirectToDefeatActivity();
+						CustomLogger.Log("Decision Final branch reached " + branch.OptionId);
+						return false;
+					case Option.VICTORY:
+
+						GameBase.isFinaleReached = true;
+
+						@params = branch.Params;
+
+						if (@params != null)
+						{
+							//	if (handler != null)
+							//		handler.postDelayed(new Runnable() {
+							//		@Override
+
+							//		public void run()
+							//	{
+							//		activity.redirectToVictoryActivity(params);
+							//	}
+							//}, params.getDelayX());
+							CustomLogger.Log("Decision redirectToVictoryActivity ");
+						}
+						else
+						{
+							//activity.redirectToVictoryActivity();
+						}
+						CustomLogger.Log("Decision Final branch reached " + branch.OptionId);
+						return false;
+
+				}
+
+			}
+			catch (Exception e)
+			{
+				CustomLogger.LogException(e);
+			}
+
+			return true;
 		}
 	}
 

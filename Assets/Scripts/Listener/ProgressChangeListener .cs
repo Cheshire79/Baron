@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Baron.Listener
 {
-	public class ProgressChangeListener
+	public class ProgressChangeListener // useless
 	{
 		private GameBase _gameBase;
 		private TrackService _trackService;

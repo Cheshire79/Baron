@@ -69,8 +69,8 @@ namespace Baron.Entity
 			set { _currentAudio = value; }
 		}
 
-		[JsonIgnore]
-		public bool IsInitialized;
+		//[JsonIgnore]
+	//	public bool IsInitialized;
 		public Option()
 		{
 			_images = new List<TrackImage>(2);
@@ -172,8 +172,7 @@ namespace Baron.Entity
 					current.FinishesAt = Math.Max(current.FinishesAt, _duration);
 				}
 			}
-
-			IsInitialized = true;
+			//IsInitialized = true;
 		}
 
 		public override string ToString()

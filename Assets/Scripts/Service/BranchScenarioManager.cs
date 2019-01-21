@@ -13,7 +13,7 @@ namespace Baron.Service
 		private GameBase _gameBase;
 		private ProgressBarManager _progressBarManager;
 		private TrackCompletedListener _trackCompletedListener;
-		public BranchScenarioManager(GameBase gameBase, BranchController branchController, TrackService trackService)
+		public BranchScenarioManager(GameBase gameBase, BranchController branchController, TrackService trackService, Action ScenarioCompleted)
 		{
 			_gameBase = gameBase;
 			_progressBarManager = new ProgressBarManager(gameBase, trackService);
@@ -23,7 +23,7 @@ namespace Baron.Service
 			_progressBarManager.OnFinaleReached += OnFinaleReached;
 			_progressBarManager.OnInteractionReached += OnInteractionReached;
 			_progressBarManager.OnNewScenarioReached += OnNewScenarioReached;
-			_progressBarManager.OnScenarioCompleted += OnScenarioCompleted;
+			_progressBarManager.OnScenarioCompleted += ScenarioCompleted;
 			_progressBarManager.OnBranchCompleted += OnBranchCompleted;
 			_progressBarManager.OnBranchStarted += OnBranchStarted;
 
@@ -199,7 +199,7 @@ namespace Baron.Service
 				if (!scenario.IsValid())
 				{
 					CustomLogger.Log("BranchScenarioManager  Scenario is not valid. Resetting");
-					Branch branch = _gameBase.GetStartBranch();//todo !!!!
+					Branch branch = _gameBase.GetCurrentSavedBranch();//todo !!!!
 					scenario = CreateScenario(_gameBase, branch.Cid);
 					_gameBase.History.SetScenario(scenario);
 				}
@@ -219,33 +219,32 @@ namespace Baron.Service
 			{
 				Option option = OptionRepository.Find(gameBase, branch.OptionId);
 				if (option != null)
-					option.IsInitialized = false;
+				{
+					//option.IsInitialized = false;
+					option.Init((int)branch.StartsAt);
+				}
 			}
 		}
 
 		public bool UpdateScenario(GameBase gameBase, Scenario scenario, int progress, int duration)
 		{
-			string id = "";
-			//Option tempOption = OptionRepository.Find(gameBase, scenario.CurrentTrackBranch.);
-			//if (tempOption != null)
-			//				id = tempOption.Id;
 			CustomLogger.Log(CustomLogger.LogComponents.Branch, string.Format(" Update Branches Count = {0} id = {1} opion = {2}", scenario.Branches.Count, scenario.CurrentTrackBranch.Id, scenario.CurrentTrackBranch.OptionId));
 
 
-			bool hasChanged = scenario.Update(progress, duration);
+			bool hasBranchChanged = scenario.Update(progress, duration);
 
 			foreach (TrackBranch branch in scenario.Branches)
 			{
 				Option option = OptionRepository.Find(gameBase, branch.OptionId);
 				if (option == null) continue;
 
-				if (!option.IsInitialized)
-					option.Init((int)branch.StartsAt); //todo
+				//if (!option.IsInitialized)
+				//	option.Init((int)branch.StartsAt); //todo
 
 				option.Update(progress, duration);
 			}
 
-			return hasChanged;
+			return hasBranchChanged;
 		}
 
 		public void OnFinaleReached(Scenario scenario)
@@ -364,14 +363,14 @@ namespace Baron.Service
 
 		public void OnScenarioCompleted()
 		{
-			CustomLogger.Log("BranchScenarioManager Scenario completed");
+		//	CustomLogger.Log("BranchScenarioManager Scenario completed");
 
-			//if (!BranchPresenter.isCreated()) return;
+		//	//if (!BranchPresenter.isCreated()) return;
 
-			//final BranchPresenter presenter = BranchPresenter.getInstance();
+		//	//final BranchPresenter presenter = BranchPresenter.getInstance();
 
-			//presenter.dispatch(Event.TRACK_COMPLETED); todo
-			_trackCompletedListener.OnReceive();
+		//	//presenter.dispatch(Event.TRACK_COMPLETED); todo
+			_trackCompletedListener.OnReceive(); //todo
 		}
 		private void ResumeGameAndStartScenario()
 		{
@@ -417,7 +416,7 @@ namespace Baron.Service
 							if (history.ContainsInOptionActionHistory(currentBranch, action)) continue;
 
 							history.AddCompletedOptionAction(currentBranch.Cid, action);
-							history.AddDisabledOption(currentOption.Id);
+							history.AddDisabledOption(currentOption.Id);//why
 
 							break;
 					}
