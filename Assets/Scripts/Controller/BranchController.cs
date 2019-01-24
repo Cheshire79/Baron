@@ -36,7 +36,7 @@ namespace Baron.Controller
 			backgroundAudioService.OnShowMessage += branchViewController.UpdateDisplayedData;
 			var trackService = new TrackService(backgroundImageService, backgroundAudioService);
 
-			_scenarioManager = new BranchScenarioManager(_gameBase, this, trackService, ScenarioCompleted);
+			_scenarioManager = new BranchScenarioManager(_gameBase, trackService, ScenarioCompleted);
 			
 			//backgroundAudioService = new BackgroundAudioService(activity);
 			//_applicationResumedListener = new ApplicationResumedListener(_gameBase, _scenarioManager);

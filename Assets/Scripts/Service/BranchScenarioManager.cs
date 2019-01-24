@@ -12,9 +12,8 @@ namespace Baron.Service
 	{
 		private GameBase _gameBase;
 		private ProgressBarManager _progressBarManager;
-		private TrackCompletedListener _trackCompletedListener;
 		private AchievementPointService _achievementPoint;
-		public BranchScenarioManager(GameBase gameBase, BranchController branchController, TrackService trackService, Action ScenarioCompleted)
+		public BranchScenarioManager(GameBase gameBase, TrackService trackService, Action ScenarioCompleted)
 		{
 			
 			_gameBase = gameBase;
@@ -29,8 +28,6 @@ namespace Baron.Service
 			_progressBarManager.OnScenarioCompleted += ScenarioCompleted;
 			_progressBarManager.OnBranchCompleted += OnBranchCompleted;
 			_progressBarManager.OnBranchStarted += OnBranchStarted;
-
-			_trackCompletedListener = new TrackCompletedListener(branchController, _gameBase); //todo
 		}
 
 		public void SetChangeSliderPosition(Action<int, int> ChangeSliderPosition)
@@ -297,6 +294,7 @@ namespace Baron.Service
 			}
 
 		}
+
 		public void OnInteractionReached(Scenario scenario)
 		{
 
@@ -332,17 +330,6 @@ namespace Baron.Service
 			ResumeGameAndStartScenario();
 		}
 
-		public void OnScenarioCompleted()
-		{
-		//	CustomLogger.Log("BranchScenarioManager Scenario completed");
-
-		//	//if (!BranchPresenter.isCreated()) return;
-
-		//	//final BranchPresenter presenter = BranchPresenter.getInstance();
-
-		//	//presenter.dispatch(Event.TRACK_COMPLETED); todo
-			_trackCompletedListener.OnReceive(); //todo
-		}
 		private void ResumeGameAndStartScenario()
 		{
 			GameBase.isPaused = false;
@@ -350,7 +337,6 @@ namespace Baron.Service
 									//syncHistory();
 			ResumeScenario();
 		}
-
 
 		//public void onError()
 		//{
@@ -431,7 +417,6 @@ namespace Baron.Service
 				}
 			}
 		}
-
 
 		public void StopProgressBar()
 		{
