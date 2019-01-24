@@ -13,7 +13,7 @@ namespace Baron.Service
 		public event Action<Scenario> OnInteractionReached;
 		public event Action<Scenario> OnNewScenarioReached;
 		public event Action OnScenarioCompleted;
-		public event Action<TrackBranch> OnBranchCompleted;
+		public event Action<TrackBranch> OnBranchCompleted; // means option Completed because Option - это то что нужно показать при переходе от одного Branch к другому
 		public event Action<TrackBranch> OnBranchStarted;
 
 		public event Action<int, int> OnChangeSliderPosition;
@@ -21,14 +21,8 @@ namespace Baron.Service
 		private int _delay = 50;
 		private bool _isSpecialAudioEnabled;
 		GameBase _gameBase;
-		private long _lastUpdatedAt;
-		
-	
-		
+		private long _lastUpdatedAt;	
 		private readonly System.Timers.Timer _scheduledTask = new System.Timers.Timer(5);
-
-
-
 		private bool _isRunnig = false;
 		private readonly TrackService _trackService;
 
@@ -39,7 +33,7 @@ namespace Baron.Service
 
 			_scheduledTask.Elapsed += (sender, args) => Runnable();
 		}
-		public void Start(Scenario scenario)
+		public void Start(Scenario scenario)//+
 		{
 
 			int progress = scenario.Progress;
@@ -76,34 +70,26 @@ namespace Baron.Service
 				Finish();
 				return;
 			}
-			//scheduler = Executors.newScheduledThreadPool(1);
 			//presenter.getBackgroundAudioService().preloadScenarioAudio(scenario, new Runnable() {
-			//public void run()
-			//{
-			//	scheduledTask = scheduler.scheduleAtFixedRate(task, 0, delay, TimeUnit.MILLISECONDS);
-			//}
 			_trackService.PreloadScenarioAudio(scenario);
 			_scheduledTask.Start();
 		}
 
-		public void Stop()
+		public void Stop()//+
 		{
 			//if (!BranchPresenter.isCreated()) return;
 			_trackService.Pause();
 			CustomLogger.Log(" ProgressBarManager stop");
 			try
 			{
-
 				if (_scheduledTask != null)
 				{
-
 					_scheduledTask.Stop();
 					//	scheduledTask.cancel(false);
 					//	scheduledTask = null;
 					//}
 				}
 				_lastUpdatedAt = 0;
-
 			}
 			catch (Exception e)
 			{
@@ -112,24 +98,12 @@ namespace Baron.Service
 		}
 
 		private void Finish()
-		{
-			// if (!BranchPresenter.isCreated()) return;
-
+		{		
 			CustomLogger.Log(" ProgressBarManager finish");
-
 			try
 			{
-				//	final BranchPresenter presenter = BranchPresenter.getInstance();
-				//	final BranchScenarioManager scenarioManager = presenter.getScenarioManager();
-
 				//	presenter.getHandler().post(audioTask);
-
-				//	presenter.hideLoadingIcon();
-
-				//	presenter.onHistoryAvailable(new Presenter.OnHistoryAvailable() {
-				//	@Override
-
-				//	public void onSuccess(History history)
+				//	presenter.hideLoadingIcon();	
 				{
 					Scenario scenario = _gameBase.History.GetScenario();
 
@@ -142,11 +116,8 @@ namespace Baron.Service
 
 					int progress = scenario.Progress;
 					int max = scenario.Duration;
-
 					//setUIProgress(scenario.duration, scenario.duration);
-
 					Stop();
-
 					CustomLogger.Log(CustomLogger.LogComponents.Branch, " Track is completed: " + progress + "/" + max + " ms");
 
 					if (scenario.CurrentTrackBranch.IsFinal)
@@ -168,7 +139,7 @@ namespace Baron.Service
 					else
 					{
 
-						if (scenario.CurrentTrackBranch.IsBeforeNewScenario)// what does it mean
+						if (scenario.CurrentTrackBranch.IsBeforeNewScenario)// what does it mean // aftr day increase
 						{
 							if (OnNewScenarioReached != null)
 							{
@@ -180,7 +151,7 @@ namespace Baron.Service
 						{
 							if (OnScenarioCompleted != null)
 							{
-								OnScenarioCompleted();
+								OnScenarioCompleted();// draw new branches
 								CustomLogger.Log(CustomLogger.LogComponents.ProgressBarManager, " OnScenarioCompleted " + scenario.Cid);
 							}
 						}
@@ -195,21 +166,12 @@ namespace Baron.Service
 			}
 		}
 		// https://gunnarpeipman.com/net/avoid-overlapping-timer-calls/
-		private void Runnable()
+		private void Runnable()//+
 		{
 			if (!_isRunnig)
 			{
 				_isRunnig = true;
 				float delta = getDelayFromLastRun();
-				//if (!BranchPresenter.isCreated()) return;
-
-				//	final BranchPresenter presenter = BranchPresenter.getInstance();
-
-				//presenter.onHistoryAvailable(new Presenter.OnHistoryAvailable() {
-				//		@Override
-
-				//		public void onSuccess(final History history)
-				//	{
 
 				Scenario scenario = _gameBase.History.GetScenario();
 				UpdateScenario(scenario, delta);
@@ -245,20 +207,18 @@ namespace Baron.Service
 
 			//updatePlayerFragment(); Update graphic
 
-			if (scenario.IsCompleted)
+			if (scenario.IsCompleted)//+
 			{
 				if (OnBranchCompleted != null)
 				{
 					OnBranchCompleted(scenario.CurrentTrackBranch);
 					CustomLogger.Log(CustomLogger.LogComponents.ProgressBarManager, " OnBranchCompleted " + scenario.CurrentTrackBranch.Id);
 				}
-
 				Finish();
-
 				return;
 			}
 
-			if (isFirstTrackItem)
+			if (isFirstTrackItem) // только стартовали сценарий
 			{
 				try
 				{
@@ -274,20 +234,17 @@ namespace Baron.Service
 					Stop();
 					scenario.Unlock();
 					_gameBase.syncHistory();
-
 					return;
 				}
 			}
-			else if (hasBranchChanged)
+			else if (hasBranchChanged)// перешли к следующей бранче
 			{
-
 				TrackBranch prev = (TrackBranch)scenario.CurrentTrackBranch.Previous;
 				if (OnBranchCompleted != null)
 				{
 					OnBranchCompleted(prev);
 					CustomLogger.Log(CustomLogger.LogComponents.ProgressBarManager, " OnBranchCompleted " + scenario.CurrentTrackBranch.Id);
 				}
-
 				try
 				{
 					if (OnBranchStarted != null)
@@ -302,32 +259,11 @@ namespace Baron.Service
 					Stop();
 					scenario.Unlock();
 					_gameBase.syncHistory();
-
 					return;
 				}
-			}
-
-			//if (handler != null)
-			//{
-			//	if (scenario.progress > scenario.duration * 0.95f)
-			//	{
-			//		handler.post(audioTask);
-			//	}
-			//}
-
-			//if (activity != null)
-			//	activity.runOnUiThread(new Runnable() {
-			//	@Override
-
-			//	public void run()
-			//{
-
-			//presenter.hideLoadingIcon();
-
+			}			
 			setUIProgress(scenario.Progress, scenario.Duration);
-
-			_trackService.Resume(scenario);
-		
+			_trackService.Resume(scenario);		
 			_lastUpdatedAt = DateTime.Now.Ticks;
 		}
 

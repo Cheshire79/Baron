@@ -31,9 +31,7 @@ namespace Baron.History // wait for check
 		public bool AddCompletedOption(string id)
 		{
 			if (_completedOptions.Contains(id)) return false;
-
 			_completedOptions.Add(id);
-
 			return true;
 		}
 		/**
@@ -626,8 +624,6 @@ namespace Baron.History // wait for check
 		{
 			OptionActionEntry entry = new OptionActionEntry(action);
 			entry.BranchCid = cid;
-
-
 			_activeSave.CompletedOptionActions.Add(entry);
 		}
 

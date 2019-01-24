@@ -162,7 +162,7 @@ namespace Baron.View.BranchView
 			}
 			_hover.gameObject.SetActive(false);// after forst time loading mager need yo hide hover
 		}
-		public void PlaceOptions(GameBase gameBase)
+		public void PlaceOptions(GameBase gameBase) // need to move at controler((
 		{
 			Branch currentBranch = gameBase.FindCurrentBranch(false);
 

@@ -46,8 +46,7 @@ namespace Baron.Listener
 
 			//	BranchDecisionManager decisionManager = _branchController.BranchDecisionManager;
 
-				CompletedDecision decision = new CompletedDecision(//decisionManager,
-					branch, _branchController, _gameBase);
+				CompletedDecision decision = new CompletedDecision(	branch, _branchController, _gameBase);
 				decision.Decide();
 
 				//presenter.syncHistory(); todo

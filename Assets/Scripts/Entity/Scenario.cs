@@ -163,7 +163,7 @@ namespace Baron.Entity
 
 		public bool Update()
 		{
-			String prevBranch = _currentTrackBranch != null ? _currentTrackBranch.Id : null;
+			string prevBranchId = _currentTrackBranch != null ? _currentTrackBranch.Id : null;
 
 			_currentTrackBranch = null;
 
@@ -201,7 +201,7 @@ namespace Baron.Entity
 				}
 			}
 
-			return _currentTrackBranch != null && !_currentTrackBranch.Id.Equals(prevBranch);
+			return _currentTrackBranch != null && !_currentTrackBranch.Id.Equals(prevBranchId);
 		}
 	}
 }
