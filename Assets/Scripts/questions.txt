@@ -7,3 +7,4 @@ _scenarioManager.ResumeScenario();
 проверка на корректность сценария происходит в BranchScenarioManager метод ResumeScenario()
 не должны эти обе проверки проиходить в одном классе
 3. OnExit - stop timer в ProgressBarManager
+4. image load setting

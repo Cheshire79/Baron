@@ -207,7 +207,7 @@ namespace Baron.Service
 			}
 			catch (Exception e)
 			{
-				CustomLogger.Log("BranchScenarioManager ResumeScenario" + e);
+				CustomLogger.LogException(e);
 			}
 		}
 

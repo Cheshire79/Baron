@@ -1,23 +1,27 @@
-﻿using Baron.Controller;
-using Baron.Entity;
+﻿using Baron.Entity;
 using Baron.Listener;
 using Baron.Tools;
 using CustomTools;
 using System;
+using System.Collections;
+using UnityEngine;
+
 
 namespace Baron.Service
 {
 	public class BackgroundAudioService : BackgroundMediaService
 	{
+		ResourceRequest resourceRequest;
+		
 		public event Action<string> OnShowMessage;
 		private AudioPlayedInBranchListener _audioPlayedInBranchListener;
 		private string _currentImage = "";
-		public BackgroundAudioService(GameBase gameBase	) : base(gameBase)
+		public BackgroundAudioService(GameBase gameBase) : base(gameBase)
 		{
 			_audioPlayedInBranchListener = new AudioPlayedInBranchListener(gameBase);
 		}
 
-		public void Destroy()
+		public void Release()
 		{
 
 		}
@@ -55,9 +59,7 @@ namespace Baron.Service
 
 		public override void Execute(Scenario scenario)
 		{
-
-			//	if (!canSchedule()) return;
-
+		//	CustomLogger.Log(CustomLogger.LogComponents.Audio, "------------ audio----------- BackgroundImageService =Execute ");
 			TrackBranch trackBranch = scenario.CurrentTrackBranch;
 			int milliseconds = scenario.Progress;
 			int trackDuration = scenario.Duration;
@@ -67,11 +69,8 @@ namespace Baron.Service
 				return;
 			}
 
-			//BranchPresenter presenter = BranchPresenter.getInstance();
-			//	GameBase gameBase = presenter.getGameBase();
-
 			History.History history = _gameBase.History;
-			if (history == null) return;
+			
 
 			Option option = OptionRepository.Find(_gameBase, trackBranch.OptionId);
 			if (option == null || option.IsProxy)
@@ -79,7 +78,7 @@ namespace Baron.Service
 				return;
 			}
 
-		
+
 			TrackAudio currentTrackAudio = option.CurrentAudio;
 			if (currentTrackAudio == null) return;
 
@@ -87,14 +86,14 @@ namespace Baron.Service
 			{
 				_currentImage = currentTrackAudio.Id;
 
-				CustomLogger.Log("------------ audio----------- BackgroundImageService =" + currentTrackAudio.Id + ", " );
-		
+				CustomLogger.Log("------------ audio----------- BackgroundImageService =" + currentTrackAudio.Id + ", ");
+
 				if (OnShowMessage != null)
 				{
 					MainThreadRunner.AddTask(() => OnShowMessage("audio " + currentTrackAudio.Id));
 				}
 			}
-			pauseScenario(scenario, currentTrackAudio);
+			pauseScenario(scenario, currentTrackAudio);// ??
 
 			if (currentTrackAudio.IsLocked || currentTrackAudio.IsCompleted)
 			{
@@ -104,14 +103,14 @@ namespace Baron.Service
 
 			int delay = currentTrackAudio.Progress - currentTrackAudio.StartsAt;
 
-			if (currentTrackAudio.IsPrepared && !currentTrackAudio.IsLocked)
+			if (currentTrackAudio.IsPrepared && !currentTrackAudio.IsLocked	)
 			{
 
 				currentTrackAudio.IsLocked = true;
 
-				CustomLogger.Log("BackgroundAudioService execute " + currentTrackAudio
-						+ " progress=" + scenario.Progress + "/" + scenario.Duration
-						+ " delay=" + delay);
+				//CustomLogger.Log(CustomLogger.LogComponents.Audio,"BackgroundAudioService execute " + currentTrackAudio
+				//		+ " progress=" + scenario.Progress + "/" + scenario.Duration
+				//		+ " delay=" + delay);
 
 				if (!history.ContainsInAudioHistory(currentTrackAudio.Id))
 				{
@@ -124,10 +123,12 @@ namespace Baron.Service
 				{
 					if (delay > 400)
 					{
-						//	currentTrackAudio.Player.seekTo(delay);
+						MainThreadRunner.AddTask(() => AudioService.Play(currentTrackAudio.Id, delay));
 					}
-
-					//currentTrackAudio.player.start();
+					else
+					{
+						MainThreadRunner.AddTask(() => AudioService.Play(currentTrackAudio.Id));
+					}
 				}
 			}
 		}
@@ -135,74 +136,62 @@ namespace Baron.Service
 		public void PreloadScenarioAudio(Scenario scenario//, Task onFirstPrepared
 			)
 		{
+			bool hasAudioInScenario = false;
+			foreach (TrackBranch track in scenario.Branches)
+			{
+				Option option = OptionRepository.Find(_gameBase, track.OptionId);
+				if (option == null) continue;
 
-			//BranchPresenter presenter = BranchPresenter.getInstance();
-			//	 AudioService audioService = presenter.getAudioService();
-			//	GameBase gameBase = presenter.getGameBase();
-			//	final Handler handler = presenter.getHandler();
+				foreach (TrackAudio trackAudio in option.Audio)
+				{
 
-					bool hasAudioInScenario = false;
+					hasAudioInScenario = true;
+					//				final boolean isFirst = option.audio.indexOf(trackAudio) == 0 && scenario.branches.indexOf(track) == 0;
 
-					foreach (TrackBranch track in scenario.Branches)
+					if (!trackAudio.IsPrepared && !trackAudio.IsPreparing)
 					{
+						trackAudio.IsPreparing = true;
 
-						Option option = OptionRepository.Find(_gameBase, track.OptionId);
-						if (option == null) continue;
+						Audio audio = AudioRepository.Find(_gameBase, trackAudio.Id);
+						
 
-						foreach ( TrackAudio trackAudio in option.Audio)
-						{
+						CustomLogger.Log(CustomLogger.LogComponents.Audio, string.Format(" AudioClip = {0}", audio.File));
 
-							hasAudioInScenario = true;
-			//				final boolean isFirst = option.audio.indexOf(trackAudio) == 0 && scenario.branches.indexOf(track) == 0;
+						string path = "Audio/" + audio.File;
+						resourceRequest = Resources.LoadAsync<AudioClip>(path);	
+						resourceRequest.completed += ((AsyncOperation obj) => {
 
-							if (!trackAudio.IsPrepared && !trackAudio.IsPreparing)
+						//	obj.completed -= OnAudioLoadCompleted;// todo ask
+							ResourceRequest request = obj as ResourceRequest;
+							if (request == null)
+								throw new Exception("Cannot load audio file ");
+							AudioClip clip = request.asset as AudioClip;
+
+							if (clip != null)
 							{
-								trackAudio.IsPreparing = true;
+								AudioService.AddSound(request.asset.name, clip);
+							}
+							else
+								throw new Exception("Cannot load audio file " + request.asset.name);
+							resourceRequest = null;
+							CustomLogger.Log(CustomLogger.LogComponents.Audio, string.Format("loaded  AudioClip = {0}", clip.name));
+							trackAudio.IsPrepared = true;
+							trackAudio.IsPreparing = false;
 
-								Audio audio = AudioRepository.Find(_gameBase, trackAudio.Id);
+						});
+						
+					}
 
-			//					presenter.getHandler().post(new Runnable() {
-			//					@Override
-
-			//					public void run()
-			//					{
-			//						trackAudio.startedLoadingAt = System.nanoTime();
-			//						MediaPlayer player = AudioService.getPlayerAsync(activity, audio);
-
-			//						player.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-			//							@Override
-
-			//							public void onPrepared(MediaPlayer mediaPlayer)
-			//						{
-
-			//							if (isFirst)
-			//							{
-			//								handler.post(onFirstPrepared);
-			//							}
-
-			//							trackAudio.completedLoadingAt = System.nanoTime();
-										trackAudio.IsPrepared = true;
-										trackAudio.IsPreparing = false;
-			//							trackAudio.player = mediaPlayer;
-
-			//							Log.i(tag, trackAudio + " prepared in "
-			//									+ TimeUnit.MILLISECONDS.convert(trackAudio.completedLoadingAt - trackAudio.startedLoadingAt, TimeUnit.NANOSECONDS) + "ms");
-
-									//	audioService.addTrack(mediaPlayer);todo
-									}
-			//					});
 				}
-			//});
-			//               } else if (isFirst) {
-			//                   handler.post(onFirstPrepared);
-			//               }
-			          }
-			//       }
+
+			}
 
 			//  if (!hasAudioInScenario) {
 			//       handler.post(onFirstPrepared);
 			//  }
 		}
+
+	
 
 		public void pauseScenario(Scenario scenario, TrackAudio currentTrackAudio)
 		{
@@ -236,5 +225,49 @@ namespace Baron.Service
 			//	}
 			//}
 		}
+
+		#region useless
+		public void LoadAudio(string name)// useless
+		{	
+			string path = "Audio/" + name;
+			resourceRequest = Resources.LoadAsync<AudioClip>(path);
+			resourceRequest.completed += OnAudioLoadCompleted;
+		//	resourceRequest.completed += ((AsyncOperation obj) => { });
+		}
+
+		private  void OnAudioLoadCompleted(AsyncOperation obj)// useless
+		{
+			obj.completed -= OnAudioLoadCompleted;
+			ResourceRequest request = obj as ResourceRequest;
+			if (request == null)
+				throw new Exception("Cannot load audio file ");
+			AudioClip clip = request.asset as AudioClip;
+
+			if (clip != null)
+			{
+				AudioService.AddSound(request.asset.name, clip);
+			}
+			else
+				throw new Exception("Cannot load audio file " + request.asset.name);
+			resourceRequest = null;
+			CustomLogger.Log(CustomLogger.LogComponents.Audio, string.Format("loaded  AudioClip = {0}", clip.name));
+		}
+
+		IEnumerator loadFromResourcesFolder()// useless
+		{
+			//Request data to be loaded
+			ResourceRequest loadAsync = Resources.LoadAsync("shipPrefab", typeof(GameObject));
+
+			//Wait till we are done loading
+			while (!loadAsync.isDone)
+			{
+				Debug.Log("Load Progress: " + loadAsync.progress);
+				yield return null;
+			}
+
+			//Get the loaded data
+			GameObject prefab = loadAsync.asset as GameObject;
+		}
+		#endregion
 	}
 }

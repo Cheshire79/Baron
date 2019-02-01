@@ -372,6 +372,7 @@
     <Compile Include="Assets\Scripts\Listener\TrackCompletedListener.cs" />
     <Compile Include="Assets\Scripts\Module\BaronModule.cs" />
     <Compile Include="Assets\Scripts\Service\AchievementPointService.cs" />
+    <Compile Include="Assets\Scripts\Service\AudioService.cs" />
     <Compile Include="Assets\Scripts\Service\BackgroundAudioService.cs" />
     <Compile Include="Assets\Scripts\Service\BackgroundImageService.cs" />
     <Compile Include="Assets\Scripts\Service\BackgroundMediaService.cs" />
@@ -395,6 +396,7 @@
     <Compile Include="Assets\Scripts\Tools\IInstancesCache.cs" />
     <Compile Include="Assets\Scripts\Tools\InstancesCache.cs" />
     <Compile Include="Assets\Scripts\Tools\MainThreadRunner.cs" />
+    <Compile Include="Assets\Scripts\Tools\MonoBehaviourExtensions.cs" />
     <Compile Include="Assets\Scripts\Tools\ThreadExecutor.cs" />
     <Compile Include="Assets\Scripts\Tools\UnityLogToFBR.cs" />
     <Compile Include="Assets\Scripts\Utils\RMath.cs" />

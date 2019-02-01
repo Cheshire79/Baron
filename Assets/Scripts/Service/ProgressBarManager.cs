@@ -21,8 +21,8 @@ namespace Baron.Service
 		private int _delay = 50;
 		private bool _isSpecialAudioEnabled;
 		GameBase _gameBase;
-		private long _lastUpdatedAt;	
-		private readonly System.Timers.Timer _scheduledTask = new System.Timers.Timer(5);
+		private long _lastUpdatedAt;
+		private readonly System.Timers.Timer _scheduledTask = new System.Timers.Timer(10);
 		private bool _isRunnig = false;
 		private readonly TrackService _trackService;
 
@@ -98,10 +98,11 @@ namespace Baron.Service
 		}
 
 		private void Finish()
-		{		
+		{
 			CustomLogger.Log(" ProgressBarManager finish");
 			try
 			{
+				AudioService.ClearSound();
 				//	presenter.getHandler().post(audioTask);
 				//	presenter.hideLoadingIcon();	
 				{
@@ -110,6 +111,7 @@ namespace Baron.Service
 					if (!scenario.IsValid())
 					{
 						//presenter.getActivity().redirectToDefeatActivity();
+
 						CustomLogger.Log("ProgressBarManager Defeat");
 						return;
 					}
@@ -261,9 +263,9 @@ namespace Baron.Service
 					_gameBase.syncHistory();
 					return;
 				}
-			}			
+			}
 			setUIProgress(scenario.Progress, scenario.Duration);
-			_trackService.Resume(scenario);		
+			_trackService.Resume(scenario);
 			_lastUpdatedAt = DateTime.Now.Ticks;
 		}
 

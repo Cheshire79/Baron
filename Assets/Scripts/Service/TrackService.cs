@@ -15,6 +15,7 @@ namespace Baron.Service
 			_audioService = audioService;
 
 		}
+
 		public void Pause()
 		{
 			CustomLogger.Log(" TrackService pause");

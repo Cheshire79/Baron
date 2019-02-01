@@ -116,7 +116,10 @@ namespace Baron.View.BranchView
 		private void onImageLoadCompleted(AsyncOperation obj)
 		{
 			obj.completed -= onImageLoadCompleted;
-			_image.sprite = resourceRequest.asset as Sprite;
+			ResourceRequest request = obj as ResourceRequest;
+			if (request == null)
+				throw new Exception("Cannot load image file ");
+			_image.sprite = request.asset as Sprite;
 			resourceRequest = null;
 
 
