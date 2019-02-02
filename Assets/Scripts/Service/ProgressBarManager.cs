@@ -22,7 +22,7 @@ namespace Baron.Service
 		private bool _isSpecialAudioEnabled;
 		GameBase _gameBase;
 		private long _lastUpdatedAt;
-		private readonly System.Timers.Timer _scheduledTask = new System.Timers.Timer(10);
+		private readonly System.Timers.Timer _scheduledTask = new System.Timers.Timer(50);
 		private bool _isRunnig = false;
 		private readonly TrackService _trackService;
 
@@ -77,17 +77,13 @@ namespace Baron.Service
 
 		public void Stop()//+
 		{
-			//if (!BranchPresenter.isCreated()) return;
-			_trackService.Pause();
+			MainThreadRunner.AddTask(() => _trackService.Pause());
 			CustomLogger.Log(" ProgressBarManager stop");
 			try
 			{
 				if (_scheduledTask != null)
 				{
 					_scheduledTask.Stop();
-					//	scheduledTask.cancel(false);
-					//	scheduledTask = null;
-					//}
 				}
 				_lastUpdatedAt = 0;
 			}
@@ -102,7 +98,7 @@ namespace Baron.Service
 			CustomLogger.Log(" ProgressBarManager finish");
 			try
 			{
-				AudioService.ClearSound();
+				
 				//	presenter.getHandler().post(audioTask);
 				//	presenter.hideLoadingIcon();	
 				{
@@ -278,17 +274,6 @@ namespace Baron.Service
 
 		}
 
-
-		public void TPause() // todo
-		{
-			CustomLogger.Log("ApplicationPausedListener ");
-			GameBase.isPaused = true;
-			_trackService.Pause();
-			Stop();
-
-
-			//presenter.getPlayerFragment().toggleControls(); todo
-		}
 	}
 
 }

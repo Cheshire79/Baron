@@ -28,8 +28,9 @@ namespace CustomTools
 
 		//Customize for your needs!
 		public const LogComponents
-			EnabledComponents = ImportantComponents | LogComponents.ProgressBarManager | LogComponents.Audio;
-		//|LogComponents.Branch;//LogComponents.All; //<== Customize for your needs!
+			EnabledComponents = ImportantComponents |// LogComponents.ProgressBarManager | LogComponents.Audio;
+		//|LogComponents.Branch;//
+		LogComponents.All; //<== Customize for your needs!
 		//Customize for your needs!
 
 		public static bool Enabled = true;
@@ -60,7 +61,8 @@ namespace CustomTools
 			Test = 0x0010,
 			Branch = 0x0020,
 			ProgressBarManager = 0x0040,
-			Audio = 0x0040,
+			Audio = 0x0080,
+			BrunchController = 0x0100,
 			All = 0xFFFF,
 
 		}

@@ -26,34 +26,23 @@ namespace Baron.Service
 
 		}
 
-		public void Pause()
-		{
+		public override void Pause()
+		{	
+			try
+			{
+				Option option = _gameBase.FindCurrentOption(false);
+				if (option == null) return;
 
-			//BranchPresenter presenter = BranchPresenter.getInstance();
-
-			//try
-			//{
-
-			//	Option option = _brunchController.FindCurrentOption(false);
-			//	if (option == null) return;
-
-			//	foreach (TrackAudio trackAudio in option.TrackAudio)
-			//	{
-
-			//		trackAudio.IsLocked = false;
-
-			//		//	if (trackAudio.Player != null && trackAudio.player.isPlaying())
-			//		//	{
-			//		//		trackAudio.player.seekTo(0);
-			//		//		trackAudio.player.pause();
-			//		//	}
-			//	}
-
-			//}
-			//catch (Exception e)
-			//{
-			//	CustomLogger.Log("BackgroundAudioService " + e);
-			//}
+				foreach (TrackAudio trackAudio in option.TrackAudio)
+				{
+					trackAudio.IsLocked = false;
+					AudioService.StopAudioClip(trackAudio.Id);
+				}
+			}
+			catch (Exception e)
+			{
+				CustomLogger.LogException(e);
+			}
 		}
 
 
@@ -123,7 +112,7 @@ namespace Baron.Service
 				{
 					if (delay > 400)
 					{
-						MainThreadRunner.AddTask(() => AudioService.Play(currentTrackAudio.Id, delay));
+						MainThreadRunner.AddTask(() => AudioService.Play(currentTrackAudio.Id, delay/1000.0f));
 					}
 					else
 					{

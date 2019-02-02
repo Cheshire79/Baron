@@ -37,19 +37,19 @@ namespace Baron.Controller
 			var trackService = new TrackService(backgroundImageService, backgroundAudioService);
 
 			_scenarioManager = new BranchScenarioManager(_gameBase, trackService, ScenarioCompleted);
-			
+
 			//backgroundAudioService = new BackgroundAudioService(activity);
 			//_applicationResumedListener = new ApplicationResumedListener(_gameBase, _scenarioManager);
 
 			_branchDecisionManager = new BranchDecisionManager(gameBase);
 			_branchViewController = branchViewController;
-			_branchViewController.Init(OnOptionClicked, OnClickedAnotherPosition, StartScroll);
+			_branchViewController.Init(OnOptionClicked, OnClickedAnotherPosition, StartScroll, PauseGame, ResumeGameAndStartScenario);
 			_scenarioManager.SetChangeSliderPosition(_branchViewController.SetSliderPosition);
 		}
 		public void StartGame(bool isBlackBackground)
 		{
 			CustomLogger.Log("BrunchController startGame");
-			
+
 			try
 			{
 				//	activity.getBranchLayout().setVisibility(View.VISIBLE);
@@ -65,14 +65,13 @@ namespace Baron.Controller
 					_gameBase.History.SetScenario(scenario);
 				}
 				// на всякий случай что бы быстрее подгрузилась картинка
-				if ( _gameBase.History.GetCurrentBackground() != null) // вроде лишнее 
+				if (_gameBase.History.GetCurrentBackground() != null) // вроде лишнее 
 				{// по умолчанию показываю черный бекГраунд
-				//	_backgroundImageService.Execute(scenario);
+				 //	_backgroundImageService.Execute(scenario);
 				}
 
 
-				ResumedAplication();
-				//_applicationResumedListener.onReceive(false, this);
+				ResumeGameAndStartScenario();
 				//dispatch(Event.APPLICATION_RESUMED, false);
 				_branchViewController.ShowView();
 			}
@@ -115,10 +114,11 @@ namespace Baron.Controller
 
 			CustomLogger.Log("________________________ " + cid);
 		}
-	
+
 
 		private void OnOptionClicked(string cid)
 		{
+			AudioService.ClearSound();
 			_branchViewController.Reset();
 			_gameBase.History.ActiveSave.ClickedBranches.Push(cid);
 
@@ -147,7 +147,7 @@ namespace Baron.Controller
 		private void StopScroll()
 		{
 			//_applicationResumedListener.onReceive(false, this);
-			ResumedAplication();
+			ResumeGameAndStartScenario();
 		}
 
 		public void StartScroll()
@@ -182,9 +182,25 @@ namespace Baron.Controller
 
 		public void PauseGame()
 		{
+			//todo
+			//try
+			//{
+			//	View black = activity.getBlackCurtains();
+			//	if (black != null && black.getVisibility() != View.GONE)
+			//	{
+			//		black.setVisibility(View.GONE);
+			//	}
 
-			CustomLogger.Log("BrunchController pauseGame");
+			//	if (activity instanceof BranchActivity) {
+			//		BranchActivity branchActivity = (BranchActivity)activity;
 
+			//		branchActivity.getBranchLayout().setVisibility(View.VISIBLE);
+			//		branchActivity.getBranchIntroContainer().setVisibility(View.GONE);
+			//	}
+
+
+
+			CustomLogger.Log(CustomLogger.LogComponents.BrunchController, "BrunchController pauseGame");
 			GameBase.isPaused = true;
 
 
@@ -193,43 +209,59 @@ namespace Baron.Controller
 			// _trackService.Pause(); move into scenarioManager
 
 			_scenarioManager.StopProgressBar();
+
+			MainThreadRunner.AddTask(() => _branchViewController.ToggleControls()); //todo
+
+			TrackBranch trackBranch = _gameBase.History.GetScenario().CurrentTrackBranch;
+			if (trackBranch != null)
+			{
+				trackBranch.IsLocked = false;
+			}
+
+			Option option = _gameBase.FindCurrentOption(false);
+			if (option != null)
+			{
+				if (option.CurrentAudio != null)
+				{
+					option.CurrentAudio.IsLocked = false;
+				}
+				if (option.CurrentImage != null)
+				{
+					option.CurrentImage.IsLocked = false;
+				}
+			}
+		}
+
+		public void ResumeGameAndStartScenario()
+		{
+			ResumeGame();
+			_gameBase.History.ValidateProgress();
+			_gameBase.syncHistory();
+			//if (InteractionFactory.hasInteractionStrategy()) {
+			//    Log.w(tag, "resumeGameAndStartScenario is ignored due to interaction: "
+			//            + InteractionFactory.getCurrentInteractionType());
+			//    return;
+			//}
+
+			_scenarioManager.ResumeScenario();
+
+		}
+
+		public void ResumeGame()
+		{
+			CustomLogger.Log(CustomLogger.LogComponents.BrunchController, "resumeGame");
+
+			GameBase.isPaused = false;
+
+			MainThreadRunner.AddTask(() => _branchViewController.ToggleControls());
+			//{
 			//	presenter.getPlayerFragment().toggleControls();
 
-			//TrackBranch trackBranch = history.getScenario().currentBranch;
-			//if (trackBranch != null)
-			//{
-			//	trackBranch.isLocked = false;
-			//}
-
-			//Option option = presenter.findCurrentOption(false);
-			//if (option != null)
-			//{
-			//	if (option.currentAudio != null)
-			//	{
-			//		option.currentAudio.isLocked = false;
-			//	}
-			//	if (option.currentImage != null)
-			//	{
-			//		option.currentImage.isLocked = false;
-			//	}
+			//	presenter.setPlayerFragmentPlayButtonEnabled(true);
+			//	presenter.setPlayerFragmentPauseButtonEnabled(true);
 			//}
 		}
 
-
-		private void ResumedAplication()
-		{
-			GameBase.isPaused = false;
-			// made buttons Disable here
-			_gameBase.syncHistory();
-
-			//if (InteractionFactory.hasInteractionStrategy())
-			//{
-			//	Log.w(tag, "resumeGameAndStartScenario is ignored due to interaction: "
-			//			+ InteractionFactory.getCurrentInteractionType());
-			//	return;
-			//}
-			_scenarioManager.ResumeScenario();
-		}
 
 
 		private void ScenarioCompleted()
@@ -280,6 +312,7 @@ namespace Baron.Controller
 
 					try
 					{
+						PauseGame();
 						//presenter.dispatch(Event.APPLICATION_PAUSED);
 						//todo pause
 					}

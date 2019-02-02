@@ -14,23 +14,11 @@ namespace Baron.Service
 			_gameBase = gameBase;
 		}
 
-		//public void Resume(Scenario scenario)
-		//{
-
-		//	try
-		//	{
-		//		Execute(scenario);
-		//	}
-		//	catch (Exception e)
-		//	{
-		//		CustomLogger.Log("BackgroundMediaService resume" + e.Message);
-		//	}
-		//}
 
 		public abstract void Execute(Scenario scenario);
-		public void Pause()
-		{
 
+		public virtual void Pause()
+		{
 		}
 
 	}

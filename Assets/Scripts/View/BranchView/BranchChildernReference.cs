@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Baron.Tools.GUI;
 
 namespace Baron.View.BranchView
 {
 
-	
 	public class BranchChildernReference : MonoBehaviour
 	{
 		public GridLayoutGroup OptionsList;
@@ -21,5 +21,11 @@ namespace Baron.View.BranchView
 		public RectTransform canvasScaler;
 
 		public Image Hover;
+
+		public ButtonAdv StartButton;
+		public ButtonAdv PreviousButton;
+		public ButtonAdv PauseButton;
+		public ButtonAdv PlayButton;
+		public ButtonAdv EndButton;
 	}
 }

@@ -35,31 +35,40 @@ namespace Baron.View.BranchView
 		private Transform _bottomOverlay;
 		private Test _Test;
 		private bool _IsAutomaticValueChange = false;
-		public void Init(Action<string> optionClicked, Action<float> OnClickedAnotherPosition, Action OnStartDebuging)
+
+		private event Action StartButtonClicked;
+		private event Action PreviousButtonClicked;
+		private event Action PauseButtonClicked;
+		private event Action PlayButtonClicked;
+		private event Action EndButtonClicked;
+
+
+
+		public void Init(Action<string> optionClicked, Action<float> OnClickedAnotherPosition, Action OnStartDebuging, Action OnPauseGame, Action ResumeGameAndStartScenario)
 		{
 			_optionClicked = optionClicked;
 			_onClickedAnotherPosition = OnClickedAnotherPosition;
-			_onStartDebuging = OnStartDebuging; ;
+			_onStartDebuging = OnStartDebuging;
+			PauseButtonClicked += OnPauseGame;
+			PlayButtonClicked += ResumeGameAndStartScenario;
 		}
-		BranchChildernReference refer;
+		BranchChildernReference _reference;
 		RectTransform _RectTransform;
 		public BranchView([Resource("prefabs/view/BranchView")] TestableGameObject obj, IInstancesCache instancesCache)
 			: base(obj)
 		{
-			var references = ((UnityGameObject)obj).obj.GetComponent<BranchChildernReference>();
+			_reference = ((UnityGameObject)obj).obj.GetComponent<BranchChildernReference>();
 			//  EventDelegate.Add(references.PlayNowButton.onClick, OnPlayNowButtonClicked);
-			//if (references.StartButtonGUI != null)
-			//	references.StartButtonGUI.onClick.AddListener(OnPlayNowButtonClicked);
-			refer = references;
-			_info = references.Info;
+
+			_info = _reference.Info;
 			_OptionsCache = instancesCache;
-			_optionsList = references.OptionsList;
-			_image = references.MainImage;
-			_hover = references.Hover;
-			_topOverlay = references.TopOverlay;
-			_bottomOverlay = references.BottomOverlay;
-			_Test = references.Test;
-			_slider = references.Slider;
+			_optionsList = _reference.OptionsList;
+			_image = _reference.MainImage;
+			_hover = _reference.Hover;
+			_topOverlay = _reference.TopOverlay;
+			_bottomOverlay = _reference.BottomOverlay;
+			_Test = _reference.Test;
+			_slider = _reference.Slider;
 
 
 
@@ -67,7 +76,35 @@ namespace Baron.View.BranchView
 
 			_Test.EndDraging += OnEndDrugging;
 			_Test.StartDraging += OnStartDrugging;
-			_RectTransform = references.canvasScaler;
+			_RectTransform = _reference.canvasScaler;
+
+			if (_reference.StartButton != null)
+				_reference.StartButton.onClick.AddListener(OnStartButtonClicked);
+
+			if (_reference.PauseButton != null)
+				_reference.PauseButton.onClick.AddListener(OnPauseButtonClicked);
+
+			if (_reference.PlayButton != null)
+				_reference.PlayButton.onClick.AddListener(OnPlayButtonClicked);
+
+		}
+
+		private void OnStartButtonClicked()
+		{
+			Action handler = StartButtonClicked;
+			if (handler != null) handler();
+		}
+
+		private void OnPauseButtonClicked()
+		{
+			Action handler = PauseButtonClicked;
+			if (handler != null) handler();
+		}
+
+		private void OnPlayButtonClicked()
+		{
+			Action handler = PlayButtonClicked;
+			if (handler != null) handler();
 		}
 
 		private void OnClickedAnotherPosition(float value)
@@ -224,5 +261,21 @@ namespace Baron.View.BranchView
 			_info.text = _info.text + "\n" + "-------------------------------------------------------------" + "\n";
 		}
 
+
+		//-------
+		public void ToggleControls()
+		{
+			if (GameBase.isPaused)
+			{
+				_reference.PlayButton.gameObject.SetActive(true);
+				_reference.PauseButton.gameObject.SetActive(false);
+			}
+			else
+			{
+				_reference.PlayButton.gameObject.SetActive(false);
+				_reference.PauseButton.gameObject.SetActive(true);
+			}
+		}
+		//----
 	}
 }

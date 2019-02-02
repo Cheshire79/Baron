@@ -18,9 +18,9 @@ namespace Baron.Controller
 			get { return _view; }
 		}
 		private List<Branch> _branches;
-		public void Init(Action<string> OptionClicked, Action<float> OnClickedAnotherPosition, Action OnStartDebuging)
+		public void Init(Action<string> OptionClicked, Action<float> OnClickedAnotherPosition, Action OnStartDebuging, Action OnPauseGame, Action ResumeGameAndStartScenario)
 		{
-			_view.Init(OptionClicked, OnClickedAnotherPosition, OnStartDebuging);
+			_view.Init(OptionClicked, OnClickedAnotherPosition, OnStartDebuging, OnPauseGame, ResumeGameAndStartScenario);
 		}
 
 		public BranchViewController(IViewStack viewStack, AbstractViewFactory viewFactory) : base(viewStack)
@@ -105,6 +105,10 @@ namespace Baron.Controller
 		public void SetSliderPosition(int pos, int max)
 		{
 			_view.ChangeSliderPosition(pos, max);
+		}
+		public void ToggleControls()
+		{
+			_view.ToggleControls();
 		}
 	}
 }

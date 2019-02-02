@@ -159,9 +159,9 @@ namespace Baron.Service
 			}
 		}
 
-		public static void StopAudioClip(AudioClip clip) 
+		public static void StopAudioClip(string name) 
 		{
-			AudioSource instance = SoundSources.Find(r => r.clip.name == clip.name && r.isPlaying);
+			AudioSource instance = SoundSources.Find(r => r.clip.name == name && r.isPlaying);
 			if (instance == null) return;
 			instance.Stop();
 		}

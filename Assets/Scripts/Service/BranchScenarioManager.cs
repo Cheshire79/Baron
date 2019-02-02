@@ -227,7 +227,7 @@ namespace Baron.Service
 
 		public bool UpdateScenario(GameBase gameBase, Scenario scenario, int progress, int duration)
 		{
-			CustomLogger.Log(CustomLogger.LogComponents.Branch, string.Format(" Update Branches Count = {0} id = {1} opion = {2}", scenario.Branches.Count, scenario.CurrentTrackBranch.Id, scenario.CurrentTrackBranch.OptionId));
+		//	CustomLogger.Log(CustomLogger.LogComponents.Branch, string.Format(" Update Branches Count = {0} id = {1} opion = {2}", scenario.Branches.Count, scenario.CurrentTrackBranch.Id, scenario.CurrentTrackBranch.OptionId));
 			bool hasBranchChanged = scenario.Update(progress, duration);
 			foreach (TrackBranch branch in scenario.Branches)
 			{
