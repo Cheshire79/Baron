@@ -372,7 +372,8 @@
     <Compile Include="Assets\Scripts\Listener\TrackCompletedListener.cs" />
     <Compile Include="Assets\Scripts\Module\BaronModule.cs" />
     <Compile Include="Assets\Scripts\Service\AchievementPointService.cs" />
-    <Compile Include="Assets\Scripts\Service\AudioService.cs" />
+    <Compile Include="Assets\Scripts\Service\Audio\AudioContainer.cs" />
+    <Compile Include="Assets\Scripts\Service\Audio\AudioService.cs" />
     <Compile Include="Assets\Scripts\Service\BackgroundAudioService.cs" />
     <Compile Include="Assets\Scripts\Service\BackgroundImageService.cs" />
     <Compile Include="Assets\Scripts\Service\BackgroundMediaService.cs" />

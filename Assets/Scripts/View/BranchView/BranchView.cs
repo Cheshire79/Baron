@@ -78,8 +78,8 @@ namespace Baron.View.BranchView
 			_Test.StartDraging += OnStartDrugging;
 			_RectTransform = _reference.canvasScaler;
 
-			if (_reference.StartButton != null)
-				_reference.StartButton.onClick.AddListener(OnStartButtonClicked);
+			if (_reference.MoveToStartButton != null)
+				_reference.MoveToStartButton.onClick.AddListener(OnStartButtonClicked);
 
 			if (_reference.PauseButton != null)
 				_reference.PauseButton.onClick.AddListener(OnPauseButtonClicked);
@@ -97,12 +97,14 @@ namespace Baron.View.BranchView
 
 		private void OnPauseButtonClicked()
 		{
+			AudioService.PlayCommonSound(AudioService.SoundType.Pause);
 			Action handler = PauseButtonClicked;
 			if (handler != null) handler();
 		}
 
 		private void OnPlayButtonClicked()
 		{
+			AudioService.PlayCommonSound(AudioService.SoundType.Play);
 			Action handler = PlayButtonClicked;
 			if (handler != null) handler();
 		}

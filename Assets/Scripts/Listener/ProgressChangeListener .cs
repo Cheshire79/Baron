@@ -38,7 +38,7 @@ namespace Baron.Listener
 					option.Init(scenario.CurrentTrackBranch.StartsAt);
 				}
 
-				_trackService.Pause();
+				_trackService.Pause();// todo
 
 
 

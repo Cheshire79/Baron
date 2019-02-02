@@ -1,4 +1,5 @@
 ﻿using Baron.Entity;
+using Baron.Tools;
 using CustomTools;
 using System;
 
@@ -47,9 +48,11 @@ namespace Baron.Service
 		public void Resume(Scenario scenario)
 		{
 
-			if (GameBase.isPaused)
+			if (GameBase.isPaused) //todo
 			{
-				Pause();
+				CustomLogger.Log(CustomLogger.LogComponents.ProgressBarManager, "TrackService pause at Resume " );
+
+				MainThreadRunner.AddTask(() => Pause());
 				return;
 			}
 

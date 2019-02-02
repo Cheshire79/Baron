@@ -22,10 +22,10 @@ namespace Baron.View.BranchView
 
 		public Image Hover;
 
-		public ButtonAdv StartButton;
-		public ButtonAdv PreviousButton;
+		public ButtonAdv MoveToStartButton;
+		public ButtonAdv MovePreviousButton;
 		public ButtonAdv PauseButton;
 		public ButtonAdv PlayButton;
-		public ButtonAdv EndButton;
+		public ButtonAdv MoveToEndButton;
 	}
 }

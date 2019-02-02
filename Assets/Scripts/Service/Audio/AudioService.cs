@@ -8,21 +8,21 @@ namespace Baron.Service
 {
 	public class AudioService : MonoBehaviour
 	{
-		class AudioContainer
+
+		public enum SoundType
 		{
-			public string Name;
-			public AudioClip Audio;
+			Play,
+			Pause			
 		}
-		private static List<AudioContainer> _sounds = new List<AudioContainer>();
+		private static List<AudioClip> _sounds = new List<AudioClip>();
 
 		public static void AddSound(string name, AudioClip audio)
 		{
-			if (_sounds.Find(r => r.Name == name) == null)
-				_sounds.Add(new AudioContainer() { Name = name, Audio = audio });
+			if (_sounds.Find(r => r.name == name) == null)
+				_sounds.Add(audio);
 			else
 				CustomLogger.Log(CustomLogger.LogComponents.Audio, string.Format(" Already load sound with name = {0}", name));
 			CustomLogger.Log(CustomLogger.LogComponents.Audio, string.Format(" _sounds {0}", _sounds.Count));
-
 		}
 
 		public static void ClearSound()
@@ -32,14 +32,30 @@ namespace Baron.Service
 
 		public static void Play(string name, float time = 0f)
 		{
-			AudioContainer container = _sounds.Find(r => r.Name == name);
-			if (container != null && container.Audio != null)
+			AudioClip audio = _sounds.Find(r => r.name == name);
+			if (audio != null && audio != null)
 			{
-				CustomLogger.Log(CustomLogger.LogComponents.Audio, "Start playing id " + container.Audio.name);
-				PlaySoundAudioClip(container.Audio, false, 0, 1, time);
+				CustomLogger.Log(CustomLogger.LogComponents.Audio, "Start playing id " + audio.name);
+				PlaySoundAudioClip(audio, false, 0, 1, time);
 			}
 			else
 				throw new ArgumentException("There is no sound as " + name);
+		}
+
+		public static void PlayCommonSound(SoundType type)
+		{
+			switch (type)
+			{
+				case SoundType.Play:
+					PlaySoundAudioClip(AudioContainer.Instance.Play);
+					break;
+				case SoundType.Pause:
+					PlaySoundAudioClip(AudioContainer.Instance.Pause);
+					break;
+
+				default:
+					break;
+			}
 		}
 
 		private const float NORMAL_VOLUME = 1f;
@@ -88,27 +104,29 @@ namespace Baron.Service
 		/// <param name="clip"></param>
 		/// <returns></returns>
 		private void PlayAudioClip(AudioClip clip, bool isLoop = false, float volume = 1f, float pitch = 1f, float startFromPosition = 0f)
-		{
+		{//todo refactoring
 			AudioSource existingClip = SoundSources.Find(r => r.clip.name == clip.name);
-			if (existingClip != null && existingClip.clip.name == clip.name)
-			{
-				if (startFromPosition == 0)
-				{
-					CustomLogger.Log(CustomLogger.LogComponents.Audio, " started the same audio" + clip.name);
-					return;
-				}
-				else
-				{
-					CustomLogger.Log(CustomLogger.LogComponents.Audio, " will moved current position in playing  audio" + clip.name);
-					// do this further
-				}
-			}
+			// if audio was paused it is the same as it never exist (paused video source cuold be rewrite by another audio)
+
+			//if (existingClip != null && existingClip.clip.name == clip.name)
+			//{
+			//	if (startFromPosition == 0)
+			//	{
+			//		CustomLogger.Log(CustomLogger.LogComponents.Audio, " started the same audio" + clip.name);
+			//	//	return;
+			//	}
+			//	else
+			//	{
+			//		CustomLogger.Log(CustomLogger.LogComponents.Audio, " will moved current position in playing  audio" + clip.name);
+			//		// do this further
+			//	}
+			//}
 			bool isStartTheSame = !isLoop && startFromPosition == 0;
 			bool isResetTheSame = startFromPosition > 0;
 			if (existingClip == null || isStartTheSame)
 			{
 				GameObject go = null;
-				AudioSource source = SoundSources.Find(r => !r.isPlaying);
+				AudioSource source = SoundSources.Find(r => !r.isPlaying); // will create the next same sound only if previos is playing
 				if (source == null)
 				{
 					go = new GameObject("OneShotAudio");
@@ -116,26 +134,25 @@ namespace Baron.Service
 					go.transform.position = _audioPoolContainer.transform.position;
 					source = go.AddComponent<AudioSource>();
 				}
-
-				source.time = 0;
+			
 				source.volume = volume;
 				source.loop = isLoop;
 				source.pitch = pitch;
 				source.clip = clip;
+				if (startFromPosition < clip.length)
+				{
+					source.time = startFromPosition;
+				}
+				else
+				{
+					CustomLogger.Log(CustomLogger.LogComponents.Audio, " Cannot play " + clip.name + " from position" + source.time);
+				}
 				source.rolloffMode = AudioRolloffMode.Custom;
 				source.maxDistance = 999999999;
 				source.Play();
+				
 				SoundSources.Add(source);
 
-				//if (!isLoop)
-				//{
-				//	this.DelayedStart(() =>
-				//	{
-				//		//	SoundSources.Remove(source);
-				//		//	_audioPool.Add(go);
-				//	}, clip.length - startFromPosition);
-				//	//	this.DelayedStart(() => _audioPool.Add(go), clip.length);
-				//}
 			}
 			else
 			{
@@ -231,7 +248,6 @@ namespace Baron.Service
 		{
 			return PlaySoundAudioClip(clip, 1.0f, isLoop, delay, pitch, startFromPosition);
 		}
-
 
 		public static float PlaySoundAudioClip(AudioClip clip, float volume, bool isLoop = false, float delay = 0,	float pitch = 1f, float startFromPosition = 0f)
 		{
