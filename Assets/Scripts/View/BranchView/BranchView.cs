@@ -44,14 +44,18 @@ namespace Baron.View.BranchView
 
 
 
-		public void Init(Action<string> optionClicked, Action<float> OnClickedAnotherPosition, Action OnStartDebuging, Action OnPauseGame, Action ResumeGameAndStartScenario)
+		public void Init(Action<string> optionClicked, Action<float> OnClickedAnotherPosition, Action OnStartDebuging, Action OnPauseGame, Action ResumeGameAndStartScenario, Action MoveToStartScenarioPoint, Action MoveToEndtScenarioPoint)
 		{
 			_optionClicked = optionClicked;
 			_onClickedAnotherPosition = OnClickedAnotherPosition;
 			_onStartDebuging = OnStartDebuging;
 			PauseButtonClicked += OnPauseGame;
 			PlayButtonClicked += ResumeGameAndStartScenario;
+			StartButtonClicked += MoveToStartScenarioPoint;
+			EndButtonClicked += MoveToEndtScenarioPoint;
+			PreviousButtonClicked += null;
 		}
+
 		BranchChildernReference _reference;
 		RectTransform _RectTransform;
 		public BranchView([Resource("prefabs/view/BranchView")] TestableGameObject obj, IInstancesCache instancesCache)
@@ -78,8 +82,15 @@ namespace Baron.View.BranchView
 			_Test.StartDraging += OnStartDrugging;
 			_RectTransform = _reference.canvasScaler;
 
+			if (_reference.MoveToEndButton != null)
+				_reference.MoveToEndButton.onClick.AddListener(OnEndButtonClicked);
+
 			if (_reference.MoveToStartButton != null)
 				_reference.MoveToStartButton.onClick.AddListener(OnStartButtonClicked);
+
+
+			if (_reference.MovePreviousButton != null)
+				_reference.MovePreviousButton.onClick.AddListener(OnPreviosButtonClicked);
 
 			if (_reference.PauseButton != null)
 				_reference.PauseButton.onClick.AddListener(OnPauseButtonClicked);
@@ -89,8 +100,23 @@ namespace Baron.View.BranchView
 
 		}
 
+
+		private void OnPreviosButtonClicked()
+		{
+			AudioService.PlayCommonSound(AudioService.SoundType.Play);
+			Action handler = PreviousButtonClicked;
+			if (handler != null) handler();
+		}
+		private void OnEndButtonClicked()
+		{
+			AudioService.PlayCommonSound(AudioService.SoundType.Play);
+			Action handler = EndButtonClicked;
+			if (handler != null) handler();
+		}
+
 		private void OnStartButtonClicked()
 		{
+			AudioService.PlayCommonSound(AudioService.SoundType.Play);
 			Action handler = StartButtonClicked;
 			if (handler != null) handler();
 		}
@@ -121,6 +147,7 @@ namespace Baron.View.BranchView
 					+ " " + value);
 			}
 		}
+
 		private void OnEndDrugging()
 		{
 			CustomLogger.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= value ="
@@ -129,6 +156,7 @@ namespace Baron.View.BranchView
 			if (_onClickedAnotherPosition != null)
 				_onClickedAnotherPosition(_slider.value);
 		}
+
 		private void OnStartDrugging()
 		{
 			Reset();

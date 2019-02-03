@@ -7,7 +7,7 @@ namespace Baron.Service
 {
 	public class ProgressBarManager
 	{
-		public event Action<GameBase, Scenario> OnResetScenario;
+		public event Action<Scenario> OnResetScenario;
 		public event Func<GameBase, Scenario, int, int, bool> OnUpdateScenario;
 		public event Action<Scenario> OnFinaleReached;
 		public event Action<Scenario> OnInteractionReached;
@@ -46,7 +46,7 @@ namespace Baron.Service
 			//setUIProgress(progress, max);
 			if (OnResetScenario != null)
 			{
-				OnResetScenario(_gameBase, scenario);
+				OnResetScenario(scenario);
 				CustomLogger.Log(CustomLogger.LogComponents.ProgressBarManager, " OnResetScenario");
 			}
 			if (OnUpdateScenario != null)
@@ -191,7 +191,6 @@ namespace Baron.Service
 
 		public void UpdateScenario(Scenario scenario, float delta)
 		{
-
 			bool isFirstTrackItem = delta == 0;
 			int progress = (int)(scenario.Progress + delta);
 

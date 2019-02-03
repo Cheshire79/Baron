@@ -751,11 +751,11 @@ MonoBehaviour:
   Test: {fileID: 114318533790284262}
   canvasScaler: {fileID: 224600924378385314}
   Hover: {fileID: 114009760768037176}
-  StartButton: {fileID: 114349537812602428}
-  PreviousButton: {fileID: 114747518723414242}
+  MoveToStartButton: {fileID: 114349537812602428}
+  MovePreviousButton: {fileID: 0}
   PauseButton: {fileID: 114533379563647048}
   PlayButton: {fileID: 114588467404323738}
-  EndButton: {fileID: 114848354960970812}
+  MoveToEndButton: {fileID: 114848354960970812}
 --- !u!114 &114488337785980870
 MonoBehaviour:
   m_ObjectHideFlags: 1

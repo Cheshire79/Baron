@@ -43,7 +43,7 @@ namespace Baron.Controller
 
 			_branchDecisionManager = new BranchDecisionManager(gameBase);
 			_branchViewController = branchViewController;
-			_branchViewController.Init(OnOptionClicked, OnClickedAnotherPosition, StartScroll, PauseGame, ResumeGameAndStartScenario);
+			_branchViewController.Init(OnOptionClicked, OnClickedAnotherPosition, StartScroll, PauseGame, ResumeGameAndStartScenario, MoveToStartScenarioPoint, MoveToEndtScenarioPoint);
 			_scenarioManager.SetChangeSliderPosition(_branchViewController.SetSliderPosition);
 		}
 		public void StartGame(bool isBlackBackground)
@@ -414,8 +414,21 @@ namespace Baron.Controller
 
 			return true;
 		}
-	}
 
+		private void MoveToStartScenarioPoint()
+		{
+			_gameBase.History.GetScenario().Progress = 0;
+			_scenarioManager.ResetScenario(_gameBase.History.GetScenario());
+			MainThreadRunner.AddTask(() => AudioService.PauseSounds());
+		}
+
+		private void MoveToEndtScenarioPoint()
+		{
+
+			_gameBase.History.GetScenario().Progress = _gameBase.History.GetScenario().Duration;
+		}
+
+	}
 
 }
 

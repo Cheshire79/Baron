@@ -18,9 +18,9 @@ namespace Baron.Controller
 			get { return _view; }
 		}
 		private List<Branch> _branches;
-		public void Init(Action<string> OptionClicked, Action<float> OnClickedAnotherPosition, Action OnStartDebuging, Action OnPauseGame, Action ResumeGameAndStartScenario)
+		public void Init(Action<string> OptionClicked, Action<float> OnClickedAnotherPosition, Action OnStartDebuging, Action OnPauseGame, Action ResumeGameAndStartScenario, Action MoveToStartScenarioPoint, Action MoveToEndtScenarioPoint)
 		{
-			_view.Init(OptionClicked, OnClickedAnotherPosition, OnStartDebuging, OnPauseGame, ResumeGameAndStartScenario);
+			_view.Init(OptionClicked, OnClickedAnotherPosition, OnStartDebuging, OnPauseGame, ResumeGameAndStartScenario,MoveToStartScenarioPoint, MoveToEndtScenarioPoint);
 		}
 
 		public BranchViewController(IViewStack viewStack, AbstractViewFactory viewFactory) : base(viewStack)

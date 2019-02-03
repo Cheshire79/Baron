@@ -1,7 +1,5 @@
-﻿using Baron.Controller;
-using Baron.Entity;
+﻿using Baron.Entity;
 using Baron.Entity.Chrono;
-using Baron.Listener;
 using CustomTools;
 using System;
 using System.Text;
@@ -211,12 +209,11 @@ namespace Baron.Service
 			}
 		}
 
-		public void ResetScenario(GameBase gameBase, Scenario scenario)
+		public void ResetScenario(Scenario scenario)
 		{
-			if (gameBase == null) return;
 			foreach (TrackBranch branch in scenario.Branches)
 			{
-				Option option = OptionRepository.Find(gameBase, branch.OptionId);
+				Option option = OptionRepository.Find(_gameBase, branch.OptionId);
 				if (option != null)
 				{
 					//option.IsInitialized = false;

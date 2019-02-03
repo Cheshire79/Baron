@@ -8,7 +8,7 @@ namespace Baron.View.BranchView
 		void UpdateDisplayedData(string text);
 		void PlaceOptions(GameBase gameBase);
 		void Reset();
-		void Init(Action<string> OnClickedTest, Action<float> OnClickedAnotherPosition, Action OnStartDebuging, Action OnPauseGame, Action ResumeGameAndStartScenari);
+		void Init(Action<string> OnClickedTest, Action<float> OnClickedAnotherPosition, Action OnStartDebuging, Action OnPauseGame, Action ResumeGameAndStartScenario, Action MoveToStartScenarioPoint, Action MoveToEndtScenarioPoint);
 		void SetImage(string image);
 		void InitSlider(int max);
 
