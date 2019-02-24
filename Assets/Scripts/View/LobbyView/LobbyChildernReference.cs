@@ -1,12 +1,12 @@
 ﻿
-using Baron.Tools.GUI;
+using Baron.View.BranchView;
 using UnityEngine;
 
 namespace Baron.View.LobbyView
 {
     public class LobbyChildernReference : MonoBehaviour
     {
-        public ButtonAdv StartButtonGUI;
-		public ButtonAdv ContinueButtonGUI;
+        public ButtonTouchListener StartButtonGUI;
+		public ButtonTouchListener ContinueButtonGUI;
 	}
 }

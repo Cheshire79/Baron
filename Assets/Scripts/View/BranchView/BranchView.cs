@@ -85,30 +85,37 @@ namespace Baron.View.BranchView
 			_RectTransform = _reference.canvasScaler;
 
 			if (_reference.MoveToEndButton != null)
-				_reference.MoveToEndButton.onClick.AddListener(OnEndButtonClicked);
+				_reference.MoveToEndButton.OnClick += OnEndButtonClicked;
 
 			if (_reference.MoveToStartButton != null)
-				_reference.MoveToStartButton.onClick.AddListener(OnStartButtonClicked);
+				_reference.MoveToStartButton.OnClick += OnStartButtonClicked;
 
 
 			if (_reference.MovePreviousButton != null)
-				_reference.MovePreviousButton.onClick.AddListener(OnPreviosButtonClicked);
+				_reference.MovePreviousButton.OnClick += OnPreviosButtonClicked;
 
 			if (_reference.PauseButton != null)
-				_reference.PauseButton.onClick.AddListener(OnPauseButtonClicked);
+				_reference.PauseButton.OnClick += OnPauseButtonClicked;
 
 			if (_reference.PlayButton != null)
-				_reference.PlayButton.onClick.AddListener(OnPlayButtonClicked);
+				_reference.PlayButton.OnClick += OnPlayButtonClicked;
 
 			//if (_reference.MovePreviousButton != null)
 			//	_reference.PlayButton.OnPointerUp.AddListener(PreviousButtonUp);
 
-		}
-		private void PreviousButtonUp(PointerEventData eventData)
-		{
+			_previousButtonTouchListener.OnDown += PreviousButtonDown;
+			_previousButtonTouchListener.OnUp += PreviousButtonUp;
 		}
 
-			private void OnPreviosButtonClicked()
+		private void PreviousButtonUp()
+		{
+			CustomLogger.Log(CustomLogger.LogComponents.Branch, string.Format(" PreviousButtonUp  "));
+		}
+		private void PreviousButtonDown()
+		{
+			CustomLogger.Log(CustomLogger.LogComponents.Branch, string.Format(" PreviousButtonDown  "));
+		}
+		private void OnPreviosButtonClicked()
 		{
 			AudioService.PlayCommonSound(AudioService.SoundType.Play);
 			Action handler = PreviousButtonClicked;

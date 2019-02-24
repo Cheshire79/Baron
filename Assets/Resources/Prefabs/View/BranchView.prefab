@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 222040478914791696}
   - component: {fileID: 114524904926589462}
   - component: {fileID: 114848354960970812}
+  - component: {fileID: 114470966031484866}
   m_Layer: 0
   m_Name: End
   m_TagString: Untagged
@@ -142,6 +143,7 @@ GameObject:
   - component: {fileID: 222241732706373332}
   - component: {fileID: 114069999545155554}
   - component: {fileID: 114588467404323738}
+  - component: {fileID: 114639690028636368}
   m_Layer: 0
   m_Name: Play
   m_TagString: Untagged
@@ -246,6 +248,7 @@ GameObject:
   - component: {fileID: 222913169116291510}
   - component: {fileID: 114938148276857196}
   - component: {fileID: 114533379563647048}
+  - component: {fileID: 114726952889600890}
   m_Layer: 0
   m_Name: Pause
   m_TagString: Untagged
@@ -313,6 +316,7 @@ GameObject:
   - component: {fileID: 222040963156701802}
   - component: {fileID: 114337302301997748}
   - component: {fileID: 114349537812602428}
+  - component: {fileID: 114909037672596472}
   m_Layer: 0
   m_Name: Start
   m_TagString: Untagged
@@ -732,6 +736,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114470966031484866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1212238492278878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e28c65d2928f74f8f08e8c8332bb99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114478829718307478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -752,12 +767,12 @@ MonoBehaviour:
   Test: {fileID: 114318533790284262}
   canvasScaler: {fileID: 224600924378385314}
   Hover: {fileID: 114009760768037176}
-  MoveToStartButton: {fileID: 114349537812602428}
-  MovePreviousButton: {fileID: 114747518723414242}
+  MoveToStartButton: {fileID: 114909037672596472}
+  MovePreviousButton: {fileID: 114749505468858102}
   MovepreviousButtonTouchListener: {fileID: 114749505468858102}
-  PauseButton: {fileID: 114533379563647048}
-  PlayButton: {fileID: 114588467404323738}
-  MoveToEndButton: {fileID: 114848354960970812}
+  PauseButton: {fileID: 114726952889600890}
+  PlayButton: {fileID: 114639690028636368}
+  MoveToEndButton: {fileID: 114470966031484866}
 --- !u!114 &114488337785980870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1028,6 +1043,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114639690028636368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1345264896827406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e28c65d2928f74f8f08e8c8332bb99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114716306244699510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1055,6 +1081,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114726952889600890
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1586933704033066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e28c65d2928f74f8f08e8c8332bb99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114747518723414242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1258,6 +1295,17 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 1
+--- !u!114 &114909037672596472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1747923504488288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e28c65d2928f74f8f08e8c8332bb99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114924171795145166
 MonoBehaviour:
   m_ObjectHideFlags: 1
