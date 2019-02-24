@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Uniject;
 using Uniject.Impl;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Baron.View.BranchView
@@ -34,6 +35,7 @@ namespace Baron.View.BranchView
 		private Transform _topOverlay;
 		private Transform _bottomOverlay;
 		private Test _Test;
+		private ButtonTouchListener _previousButtonTouchListener;
 		private bool _IsAutomaticValueChange = false;
 
 		private event Action StartButtonClicked;
@@ -73,7 +75,7 @@ namespace Baron.View.BranchView
 			_bottomOverlay = _reference.BottomOverlay;
 			_Test = _reference.Test;
 			_slider = _reference.Slider;
-
+			_previousButtonTouchListener = _reference.MovepreviousButtonTouchListener;
 
 
 			_slider.onValueChanged.AddListener(OnClickedAnotherPosition);
@@ -98,10 +100,15 @@ namespace Baron.View.BranchView
 			if (_reference.PlayButton != null)
 				_reference.PlayButton.onClick.AddListener(OnPlayButtonClicked);
 
+			//if (_reference.MovePreviousButton != null)
+			//	_reference.PlayButton.OnPointerUp.AddListener(PreviousButtonUp);
+
+		}
+		private void PreviousButtonUp(PointerEventData eventData)
+		{
 		}
 
-
-		private void OnPreviosButtonClicked()
+			private void OnPreviosButtonClicked()
 		{
 			AudioService.PlayCommonSound(AudioService.SoundType.Play);
 			Action handler = PreviousButtonClicked;

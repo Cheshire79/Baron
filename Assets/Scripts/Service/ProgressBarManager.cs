@@ -114,7 +114,7 @@ namespace Baron.Service
 
 					int progress = scenario.Progress;
 					int max = scenario.Duration;
-					//setUIProgress(scenario.duration, scenario.duration);
+					setUIProgress(scenario.Duration, scenario.Duration);// to set at end position
 					Stop();
 					CustomLogger.Log(CustomLogger.LogComponents.Branch, " Track is completed: " + progress + "/" + max + " ms");
 

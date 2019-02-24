@@ -13,14 +13,12 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2017.3.0p4</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -404,6 +402,7 @@
     <Compile Include="Assets\Scripts\View\AbstractViewFactory.cs" />
     <Compile Include="Assets\Scripts\View\BranchView\BranchChildernReference.cs" />
     <Compile Include="Assets\Scripts\View\BranchView\BranchView.cs" />
+    <Compile Include="Assets\Scripts\View\BranchView\ButtonTouchListener.cs" />
     <Compile Include="Assets\Scripts\View\BranchView\IBranchView.cs" />
     <Compile Include="Assets\Scripts\View\BranchView\OptionItem.cs" />
     <Compile Include="Assets\Scripts\View\BranchView\OptionItemChildrenReference.cs" />
@@ -421,6 +420,7 @@
     <None Include="Assets\JsonDotNet\Assemblies\AOT\Newtonsoft.Json.XML" />
     <None Include="Assets\JsonDotNet\Assemblies\Windows\Newtonsoft.Json.XML" />
     <None Include="Assets\JsonDotNet\link.xml" />
+    <None Include="Assets\Plugins\link.xml" />
     <None Include="Assets\Scripts\questions.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

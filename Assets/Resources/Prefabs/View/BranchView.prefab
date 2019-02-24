@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 222569703894340232}
   - component: {fileID: 114716306244699510}
   - component: {fileID: 114747518723414242}
+  - component: {fileID: 114749505468858102}
   m_Layer: 0
   m_Name: Previous
   m_TagString: Untagged
@@ -752,7 +753,8 @@ MonoBehaviour:
   canvasScaler: {fileID: 224600924378385314}
   Hover: {fileID: 114009760768037176}
   MoveToStartButton: {fileID: 114349537812602428}
-  MovePreviousButton: {fileID: 0}
+  MovePreviousButton: {fileID: 114747518723414242}
+  MovepreviousButtonTouchListener: {fileID: 114749505468858102}
   PauseButton: {fileID: 114533379563647048}
   PlayButton: {fileID: 114588467404323738}
   MoveToEndButton: {fileID: 114848354960970812}
@@ -1094,6 +1096,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114749505468858102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1572990908620876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e28c65d2928f74f8f08e8c8332bb99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114830712189229966
 MonoBehaviour:
   m_ObjectHideFlags: 1

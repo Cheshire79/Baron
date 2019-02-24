@@ -24,6 +24,7 @@ namespace Baron.View.BranchView
 
 		public ButtonAdv MoveToStartButton;
 		public ButtonAdv MovePreviousButton;
+		public ButtonTouchListener MovepreviousButtonTouchListener;
 		public ButtonAdv PauseButton;
 		public ButtonAdv PlayButton;
 		public ButtonAdv MoveToEndButton;
